@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gallery Upload Test</title>
+</head>
+
+<body>
+    <h1>Gallery Upload Test</h1>
+    <input type="file" id="testFile" accept="image/*" multiple>
+    <button onclick="testUpload()">Test Upload</button>
+    <div id="result"></div>
+
+    <script>
+        async function testUpload() {
+            const fileInput = document.getElementById('testFile');
+            const resultDiv = document.getElementById('result');
+
+            if (fileInput.files.length === 0) {
+                resultDiv.innerHTML = '<p style="color: red;">Please select at least one image</p>';
+                return;
+            }
+
+            const formData = new FormData();
+            for (let i = 0; i < fileInput.files.length; i++) {
+                formData.append('images[]', fileInput.files[i]);
+            }
+
+            resultDiv.innerHTML = '<p>Uploading...</p>';
+
+            try {
+                const response = await fetch('api/naroda_landmark_api.php?action=save_gallery', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                resultDiv.innerHTML = `
+                    <h3>Response:</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                    <p>Status: ${response.status}</p>
+                `;
+
+                console.log('API Response:', data);
+            } catch (error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                console.error('Upload error:', error);
+            }
+        }
+    </script>
+</body>
+
+</html>

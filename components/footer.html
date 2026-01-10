@@ -1,0 +1,282 @@
+<!-- Footer Component -->
+<style>
+    /* Footer Styles */
+    .site-footer {
+        background: #071a2e;
+        color: #b0b7c3;
+        padding-top: 70px;
+        overflow: hidden;
+    }
+
+    .footer-title {
+        color: white;
+        font-size: 1.25rem;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .footer-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(135deg, #c9a96e, #d4b87a);
+        border-radius: 2px;
+    }
+
+    .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 25px 0;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+    }
+    
+    .social-link {
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        color: white;
+        font-size: 0.95rem;
+        text-decoration: none;
+    }
+    
+    .social-link:hover {
+        background: linear-gradient(135deg, #c9a96e, #d4b87a);
+        transform: translateY(-3px);
+        color: #0a2a4a;
+    }
+    
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+        color: #b0b7c3;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 0.95rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+    
+    .footer-links a:hover {
+        color: #c9a96e;
+        padding-left: 5px;
+    }
+    
+    .footer-links i {
+        margin-right: 8px;
+        font-size: 0.8rem;
+        opacity: 0.7;
+    }
+    
+    .project-mini-card {
+        display: block;
+        margin-bottom: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .project-mini-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-3px);
+    }
+    
+    .contact-info {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    .contact-info i {
+        color: #c9a96e;
+        font-size: 1.2rem;
+        margin-right: 15px;
+        margin-top: 5px;
+        min-width: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .site-footer {
+            padding-top: 50px;
+        }
+        
+        .footer-title {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .site-footer {
+            padding-top: 40px;
+        }
+        
+        .footer-title {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <div class="mb-4">
+                    <a class="navbar-brand" href="index.html" style="color: white; text-decoration: none;">
+                        <div class="logo-icon d-inline-flex align-items-center justify-content-center me-2">NG</div>
+                        Naroda <span style="color: #c9a96e;">Group</span>
+                    </a>
+                </div>
+                <p class="mb-4" data-i18n="footer.description">
+                    Creating landmark properties that redefine excellence. From premium commercial spaces 
+                    to luxury residential living, we build dreams with quality and commitment.
+                </p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook page">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter profile">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram profile">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn company page">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube channel">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-lg-2 col-md-6">
+                <h3 class="footer-title" data-i18n="footer.quick_links">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.home">Home</span></a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.about">About Us</span></a></li>
+                    <li><a href="projects.html"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.projects">Projects</span></a></li>
+                    <li><a href="properties.html"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.properties">Properties</span></a></li>
+                    <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.gallery">Gallery</span></a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.contact">Contact</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <h3 class="footer-title" data-i18n="footer.our_projects">Our Projects</h3>
+                <a href="projects-landmark.html" class="project-mini-card">
+                    <h6 class="text-white mb-1" data-i18n="nav.landmark">Naroda Landmark</h6>
+                    <p class="small text-muted text-white mb-0" data-i18n="footer.landmark_desc">Premium Commercial Spaces</p>
+                </a>
+                <a href="projects-irish.html" class="project-mini-card">
+                    <h6 class="text-white mb-1" data-i18n="nav.irish">Naroda Irish</h6>
+                    <p class="small text-muted mb-0" data-i18n="footer.irish_desc">Luxury Residential Living</p>
+                </a>
+                <a href="projects.html" class="project-mini-card">
+                    <h6 class="text-white mb-1" data-i18n="footer.view_all_projects">View All Projects</h6>
+                    <p class="small text-muted mb-0" data-i18n="footer.explore_portfolio">Explore our portfolio</p>
+                </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <h3 class="footer-title" data-i18n="footer.contact_info">Contact Info</h3>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h6 class="text-white mb-1" data-i18n="footer.phone">Phone Number</h6>
+                        <p class="mb-0">+91 98765 43210</p>
+                        <small class="text-muted" data-i18n="footer.phone_hours">Mon - Sat: 10 AM - 7 PM</small>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h6 class="text-white mb-1" data-i18n="footer.email">Email Address</h6>
+                        <p class="mb-0">info@narodagroup.com</p>
+                        <small class="text-muted" data-i18n="footer.email_response">We reply within 24 hours</small>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h6 class="text-white mb-1" data-i18n="footer.address">Office Address</h6>
+                        <p class="mb-0" data-i18n="footer.address_line1">Naroda - Bhat Road</p>
+                        <small class="text-muted" data-i18n="footer.address_line2">Ahmedabad, Gujarat 382330</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; <span id="currentYear"></span> Naroda Group. <span data-i18n="footer.rights">All rights reserved.</span></p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="privacy.html" class="text-muted me-3" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="terms.html" class="text-muted me-3" data-i18n="footer.terms">Terms of Service</a>
+                    <a href="rera.html" class="text-muted" data-i18n="footer.rera">RERA Registration</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Footer functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Smooth scroll for footer links
+        document.querySelectorAll('footer a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>

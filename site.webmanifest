@@ -1,0 +1,16 @@
+{
+  "name": "Naroda Group",
+  "short_name": "Naroda",
+  "description": "Premium real estate properties in Ahmedabad",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a2a4a",
+  "theme_color": "#0a2a4a",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

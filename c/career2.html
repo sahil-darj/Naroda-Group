@@ -1,0 +1,5163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Management | Naroda Group Admin</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3a0ca3;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
+      --light-bg: #f8fafc;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --sidebar-width: 260px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Translation Tabs Styling */
+    .nav-tabs {
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    .nav-tabs .nav-link {
+      border: none;
+      color: var(--text-gray);
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 6px 6px 0 0;
+      margin-right: 5px;
+    }
+
+    .nav-tabs .nav-link:hover {
+      border: none;
+      color: var(--primary-color);
+    }
+
+    .nav-tabs .nav-link.active {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.05);
+      border-bottom: 3px solid var(--primary-color);
+    }
+
+    .translation-tab-content {
+      padding: 15px 0;
+    }
+
+    /* Rich Text Editor */
+    .rich-text-editor {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .editor-toolbar {
+      background-color: #f8fafc;
+      padding: 10px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .editor-btn {
+      width: 35px;
+      height: 35px;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .editor-btn:hover {
+      background-color: #f1f5f9;
+      border-color: var(--primary-color);
+    }
+
+    .editor-content {
+      min-height: 200px;
+      padding: 15px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .editor-content:empty:before {
+      content: "Start typing here...";
+      color: var(--text-gray);
+    }
+
+    /* Top Navbar */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .top-navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .sidebar-toggle-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-toggle-btn:hover {
+      background-color: var(--light-bg);
+      color: var(--primary-color);
+    }
+
+    .top-navbar-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .top-navbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    @media screen and (max-width: 426px) {
+      .navbar-time-display .time {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .top-navbar-title {
+        display: none;
+      }
+    }
+
+    /* Language Selector */
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      background-color: white;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .language-selector select {
+      border: none;
+      background: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    .language-selector select:focus {
+      outline: none;
+    }
+
+    .lang-flag {
+      width: 24px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    /* Time display */
+    .navbar-time-display {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+
+    .navbar-time-display .time {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+
+    .navbar-time-display .date {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-gray);
+    }
+
+    /* User profile */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      border-radius: 10px;
+    }
+
+    .user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-color);
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .user-role {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 70px;
+      height: calc(100vh - 70px);
+      width: var(--sidebar-width);
+      background-color: white;
+      color: var(--text-dark);
+      z-index: 999;
+      transition: all 0.3s ease;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+      border-right: 1px solid #e2e8f0;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+
+    .sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+
+    /* Logo in sidebar */
+    .sidebar-logo {
+      padding: 0 20px 25px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .sidebar-logo .logo {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg,
+          var(--primary-color),
+          var(--secondary-color));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .sidebar-logo h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-dark);
+    }
+
+    /* Navigation menu */
+    .sidebar-menu {
+      padding: 0 15px;
+    }
+
+    .nav-item {
+      margin-bottom: 8px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 14px 15px;
+      color: var(--text-gray);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-radius: 10px;
+      border-left: 4px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.05);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .nav-link.active {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.1);
+      border-left: 4px solid var(--primary-color);
+      font-weight: 600;
+    }
+
+    .nav-link i {
+      width: 24px;
+      font-size: 18px;
+      margin-right: 15px;
+      text-align: center;
+    }
+
+    .nav-link span {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Logout button */
+    .nav-logout {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .nav-logout .nav-link {
+      color: var(--danger-color);
+    }
+
+    .nav-logout .nav-link:hover {
+      color: white;
+      background-color: var(--danger-color);
+    }
+
+    /* Main content area */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      margin-top: 70px;
+      padding: 30px;
+      min-height: calc(100vh - 70px);
+      transition: all 0.3s ease;
+    }
+
+    .main-content.expanded {
+      margin-left: 0;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .page-header h1 {
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 2rem;
+      margin-bottom: 0;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-admin {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-admin-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-admin-primary:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+    }
+
+    .btn-admin-secondary {
+      background-color: white;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+
+    .btn-admin-secondary:hover {
+      background-color: rgba(67, 97, 238, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .btn-admin-success {
+      background-color: var(--success-color);
+      color: white;
+    }
+
+    .btn-admin-success:hover {
+      background-color: #0da271;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+
+    .btn-admin-warning {
+      background-color: var(--warning-color);
+      color: white;
+    }
+
+    .btn-admin-warning:hover {
+      background-color: #d97706;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+    }
+
+    .btn-admin-danger {
+      background-color: var(--danger-color);
+      color: white;
+    }
+
+    .btn-admin-danger:hover {
+      background-color: #dc2626;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+    }
+
+    /* Career Management Container */
+    .career-management-container {
+      background-color: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 30px;
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .stat-content h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--text-dark);
+    }
+
+    .stat-content p {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    /* Search and Filter Bar */
+    .search-filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 45px 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    .search-box i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-gray);
+    }
+
+    .filter-options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-select {
+      padding: 10px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background-color: white;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    /* Tabs Navigation */
+    .nav-tabs-custom {
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 25px;
+    }
+
+    .nav-tabs-custom .nav-link {
+      border: none;
+      color: var(--text-gray);
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 8px 8px 0 0;
+      margin-bottom: -2px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-tabs-custom .nav-link:hover {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.05);
+    }
+
+    .nav-tabs-custom .nav-link.active {
+      color: var(--primary-color);
+      background-color: white;
+      border-bottom: 2px solid var(--primary-color);
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+    }
+
+    .table {
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    .table th {
+      border-top: none;
+      color: var(--text-gray);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      background-color: #f8fafc;
+      white-space: nowrap;
+    }
+
+    .table td {
+      vertical-align: middle;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* Status Badges */
+    .badge {
+      padding: 6px 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .badge-success {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .badge-warning {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+    }
+
+    .badge-danger {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--danger-color);
+    }
+
+    .badge-info {
+      background-color: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+    }
+
+    .badge-secondary {
+      background-color: rgba(100, 116, 139, 0.1);
+      color: var(--text-gray);
+    }
+
+    /* Action Buttons in Table */
+    .table-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-gray);
+      background: none;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Specific button styles */
+    .btn-edit {
+      background-color: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+    }
+
+    .btn-edit:hover {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    .btn-delete {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--danger-color);
+    }
+
+    .btn-delete:hover {
+      background-color: var(--danger-color);
+      color: white;
+    }
+
+    .btn-view {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .btn-view:hover {
+      background-color: var(--success-color);
+      color: white;
+    }
+
+    .btn-download {
+      background-color: rgba(168, 85, 247, 0.1);
+      color: #a855f7;
+    }
+
+    .btn-download:hover {
+      background-color: #a855f7;
+      color: white;
+    }
+
+    .btn-translate {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+    }
+
+    .btn-translate:hover {
+      background-color: var(--warning-color);
+      color: white;
+    }
+
+    /* Job Postings */
+    .job-posting-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .job-posting-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .job-title {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      color: var(--text-dark);
+    }
+
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .job-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    .job-meta-item i {
+      color: var(--primary-color);
+    }
+
+    .job-description {
+      color: var(--text-gray);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* Add/Edit Modal */
+    .modal-content {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 12px 12px 0 0;
+      padding: 20px 25px;
+      border: none;
+    }
+
+    .modal-header .modal-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .modal-body {
+      padding: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .form-control,
+    .form-select,
+    .form-textarea {
+      padding: 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .form-control:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-text {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      margin-top: 5px;
+    }
+
+    /* Requirements Input */
+    .requirements-input {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .requirement-tag {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .requirement-tag i {
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    /* Bulk Actions */
+    .bulk-actions {
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .bulk-actions.show {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* Pagination */
+    .admin-pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .page-link {
+      border: none;
+      color: var(--primary-color);
+      margin: 0 2px;
+      border-radius: 6px;
+      padding: 8px 12px;
+      transition: all 0.3s ease;
+    }
+
+    .page-link:hover {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    .page-item.active .page-link {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Overlay for mobile sidebar */
+    .overlay {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 70px);
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Custom Delete Modal */
+    .delete-confirmation-modal .modal-dialog {
+      max-width: 400px;
+    }
+
+    .delete-confirmation-modal .modal-content {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .delete-confirmation-modal .modal-header {
+      background-color: var(--danger-color);
+    }
+
+    .delete-confirmation-modal .modal-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .delete-confirmation-modal .modal-body {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .delete-confirmation-modal .modal-body i {
+      font-size: 4rem;
+      color: var(--danger-color);
+      margin-bottom: 20px;
+    }
+
+    .delete-confirmation-modal .modal-footer {
+      justify-content: center;
+      border-top: none;
+      padding-bottom: 25px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 991px) {
+      .main-content {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .search-box {
+        min-width: 100%;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        padding: 20px;
+      }
+
+      .career-management-container {
+        padding: 20px;
+      }
+
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .action-buttons {
+        width: 100%;
+      }
+
+      .search-filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .filter-options {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .filter-select {
+        flex: 1;
+      }
+
+      .job-header {
+        flex-direction: column;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .table-actions {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .btn-action {
+        width: 30px;
+        height: 30px;
+      }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .nav-tabs-custom .nav-link {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navbar -->
+  <nav class="top-navbar">
+    <div class="top-navbar-left">
+      <button class="sidebar-toggle-btn" id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 class="top-navbar-title" id="page-title" data-i18n="career_management">
+        Career Management
+      </h1>
+    </div>
+
+    <div class="top-navbar-right">
+      <!-- Language Selector -->
+      <div class="language-selector">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag" id="current-flag" />
+        <select id="global-language-selector">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+        </select>
+      </div>
+
+      <!-- Real-time Date and Time Display -->
+      <div class="navbar-time-display">
+        <div class="date" id="navbar-current-date">Loading...</div>
+        <div class="time" id="navbar-current-time">Loading...</div>
+      </div>
+
+      <!-- User Profile -->
+      <div class="user-profile">
+        <img src="https://ui-avatars.com/api/?name=Admin+User&background=4361ee&color=fff&size=128" alt="Admin User" />
+        <div class="user-info">
+          <div class="user-name" data-i18n="admin_name">Admin User</div>
+          <div class="user-role" data-i18n="system_administrator">
+            System Administrator
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <!-- Logo in sidebar -->
+    <div class="sidebar-logo">
+      <div class="logo">NG</div>
+      <h2 data-i18n="naroda_group">Naroda Group</h2>
+    </div>
+
+    <!-- Navigation menu in sidebar -->
+    <div class="sidebar-menu">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span data-i18n="dashboard">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="users.html" class="nav-link">
+            <i class="fas fa-users"></i>
+            <span data-i18n="users">Users</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="projects.html" class="nav-link">
+            <i class="fas fa-project-diagram"></i>
+            <span data-i18n="projects">Projects</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="blogs.html" class="nav-link">
+            <i class="fas fa-blog"></i>
+            <span data-i18n="blogs">Blogs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="faq.html" class="nav-link">
+            <i class="fas fa-question-circle"></i>
+            <span data-i18n="faq">FAQ</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="team.html" class="nav-link">
+            <i class="fas fa-user-friends"></i>
+            <span data-i18n="team">Team</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link">
+            <i class="fas fa-images"></i>
+            <span data-i18n="gallery">Gallery</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="career.html" class="nav-link active">
+            <i class="fas fa-briefcase"></i>
+            <span data-i18n="career">Career</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="news.html" class="nav-link">
+            <i class="fas fa-newspaper"></i>
+            <span data-i18n="news">News</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Logout button at the bottom -->
+      <div class="nav-logout">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="#" class="nav-link" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              <span data-i18n="log_out">Log Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay for mobile sidebar -->
+  <div class="overlay" id="sidebar-overlay"></div>
+
+  <!-- Main Content Area -->
+  <main class="main-content" id="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 data-i18n="career_management">Career Management</h1>
+      <div class="action-buttons">
+        <button class="btn-admin btn-admin-secondary" id="export-btn">
+          <i class="fas fa-download"></i>
+          <span data-i18n="export">Export</span>
+        </button>
+        <button class="btn-admin btn-admin-primary" id="add-job-btn">
+          <i class="fas fa-plus"></i> <span data-i18n="add_job">Add Job</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" style="
+              background-color: rgba(67, 97, 238, 0.1);
+              color: var(--primary-color);
+            ">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="stat-content">
+          <h3 id="active-jobs-count">8</h3>
+          <p data-i18n="active_job_postings">Active Job Postings</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="
+              background-color: rgba(16, 185, 129, 0.1);
+              color: var(--success-color);
+            ">
+          <i class="fas fa-file-contract"></i>
+        </div>
+        <div class="stat-content">
+          <h3 id="total-applications-count">12</h3>
+          <p data-i18n="total_applications">Total Applications</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="
+              background-color: rgba(245, 158, 11, 0.1);
+              color: var(--warning-color);
+            ">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="stat-content">
+          <h3 id="pending-review-count">4</h3>
+          <p data-i18n="pending_review">Pending Review</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="
+              background-color: rgba(239, 68, 68, 0.1);
+              color: var(--danger-color);
+            ">
+          <i class="fas fa-user-check"></i>
+        </div>
+        <div class="stat-content">
+          <h3 id="new-hires-count">2</h3>
+          <p data-i18n="new_hires_this_month">New Hires This Month</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Career Management Container -->
+    <div class="career-management-container">
+      <!-- Tabs Navigation -->
+      <ul class="nav nav-tabs-custom" id="careerTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="jobs-tab" data-bs-toggle="tab" data-bs-target="#jobs" type="button"
+            role="tab">
+            <i class="fas fa-briefcase me-2"></i>
+            <span data-i18n="job_postings">Job Postings</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="applications-tab" data-bs-toggle="tab" data-bs-target="#applications"
+            type="button" role="tab">
+            <i class="fas fa-file-alt me-2"></i>
+            <span data-i18n="applications">Applications</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="departments-tab" data-bs-toggle="tab" data-bs-target="#departments" type="button"
+            role="tab">
+            <i class="fas fa-building me-2"></i>
+            <span data-i18n="departments">Departments</span>
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content" id="careerTabsContent">
+        <!-- Job Postings Tab -->
+        <div class="tab-pane fade show active" id="jobs" role="tabpanel">
+          <!-- Search and Filter Bar -->
+          <div class="search-filter-bar">
+            <div class="search-box">
+              <input type="text" id="job-search" data-i18n-placeholder="search_jobs_placeholder"
+                placeholder="Search jobs by title, department, or location..." />
+              <i class="fas fa-search"></i>
+            </div>
+
+            <div class="filter-options">
+              <select class="filter-select" id="job-department-filter">
+                <option value="" data-i18n="all_departments">
+                  All Departments
+                </option>
+                <option value="sales" data-i18n="sales_marketing">
+                  Sales & Marketing
+                </option>
+                <option value="construction" data-i18n="construction">
+                  Construction
+                </option>
+                <option value="design" data-i18n="design_architecture">
+                  Design & Architecture
+                </option>
+                <option value="operations" data-i18n="operations">
+                  Operations
+                </option>
+                <option value="finance" data-i18n="finance_legal">
+                  Finance & Legal
+                </option>
+                <option value="hr" data-i18n="human_resources">
+                  Human Resources
+                </option>
+                <option value="it" data-i18n="it_technology">
+                  IT & Technology
+                </option>
+                <option value="admin" data-i18n="administration">
+                  Administration
+                </option>
+              </select>
+
+              <select class="filter-select" id="job-status-filter">
+                <option value="" data-i18n="all_status">All Status</option>
+                <option value="active" data-i18n="active">Active</option>
+                <option value="closed" data-i18n="closed">Closed</option>
+                <option value="draft" data-i18n="draft">Draft</option>
+              </select>
+
+              <select class="filter-select" id="job-type-filter">
+                <option value="" data-i18n="all_types">All Types</option>
+                <option value="fulltime" data-i18n="full_time">
+                  Full-time
+                </option>
+                <option value="parttime" data-i18n="part_time">
+                  Part-time
+                </option>
+                <option value="contract" data-i18n="contract">
+                  Contract
+                </option>
+                <option value="internship" data-i18n="internship">
+                  Internship
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Job Postings List -->
+          <div id="job-postings-list">
+            <!-- Job cards will be loaded here dynamically -->
+          </div>
+
+          <!-- No Jobs Message -->
+          <div class="text-center py-5 d-none" id="no-jobs-message">
+            <i class="fas fa-briefcase fa-3x text-muted mb-3"></i>
+            <h4 class="text-muted mb-3" data-i18n="no_jobs_found">
+              No job postings found
+            </h4>
+            <p class="text-muted mb-4" data-i18n="adjust_filters_add_job">
+              Try adjusting your filters or add a new job posting
+            </p>
+            <button class="btn-admin btn-admin-primary" id="add-first-job">
+              <i class="fas fa-plus me-2"></i>
+              <span data-i18n="add_first_job">Add First Job</span>
+            </button>
+          </div>
+
+          <!-- Bulk Actions -->
+          <div class="bulk-actions" id="job-bulk-actions">
+            <span id="jobs-selected-count" data-i18n="jobs_selected">0 jobs selected</span>
+            <select class="filter-select" id="job-bulk-action">
+              <option value="" data-i18n="bulk_actions">Bulk Actions</option>
+              <option value="activate" data-i18n="activate">Activate</option>
+              <option value="deactivate" data-i18n="deactivate">
+                Deactivate
+              </option>
+              <option value="duplicate" data-i18n="duplicate">
+                Duplicate
+              </option>
+              <option value="delete" data-i18n="delete">Delete</option>
+            </select>
+            <button class="btn-admin btn-admin-secondary" id="apply-job-bulk-action" data-i18n="apply">
+              Apply
+            </button>
+          </div>
+        </div>
+
+        <!-- Applications Tab -->
+        <div class="tab-pane fade" id="applications" role="tabpanel">
+          <!-- Search and Filter Bar -->
+          <div class="search-filter-bar">
+            <div class="search-box">
+              <input type="text" id="application-search" data-i18n-placeholder="search_applications_placeholder"
+                placeholder="Search applications by name, email, or job..." />
+              <i class="fas fa-search"></i>
+            </div>
+
+            <div class="filter-options">
+              <select class="filter-select" id="application-status-filter">
+                <option value="" data-i18n="all_status">All Status</option>
+                <option value="new" data-i18n="new">New</option>
+                <option value="reviewed" data-i18n="reviewed">
+                  Reviewed
+                </option>
+                <option value="shortlisted" data-i18n="shortlisted">
+                  Shortlisted
+                </option>
+                <option value="interview" data-i18n="interview">
+                  Interview
+                </option>
+                <option value="rejected" data-i18n="rejected">
+                  Rejected
+                </option>
+                <option value="hired" data-i18n="hired">Hired</option>
+              </select>
+
+              <select class="filter-select" id="application-job-filter">
+                <option value="" data-i18n="all_jobs">All Jobs</option>
+                <option value="senior-sales">Senior Sales Manager</option>
+                <option value="site-engineer">Site Engineer</option>
+                <option value="interior-designer">Interior Designer</option>
+                <option value="project-manager">Project Manager</option>
+              </select>
+
+              <select class="filter-select" id="application-date-filter">
+                <option value="" data-i18n="all_dates">All Dates</option>
+                <option value="today" data-i18n="today">Today</option>
+                <option value="week" data-i18n="this_week">This Week</option>
+                <option value="month" data-i18n="this_month">
+                  This Month
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Applications Table -->
+          <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox" id="select-all-applications" />
+                  </th>
+                  <th data-i18n="name">Name</th>
+                  <th data-i18n="email">Email</th>
+                  <th data-i18n="job_applied">Job Applied</th>
+                  <th data-i18n="applied_date">Applied Date</th>
+                  <th data-i18n="status">Status</th>
+                  <th data-i18n="experience">Experience</th>
+                  <th data-i18n="actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="applications-table-body">
+                <!-- Applications will be loaded here dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- No Applications Message -->
+          <div class="text-center py-5 d-none" id="no-applications-message">
+            <i class="fas fa-file-alt fa-3x text-muted mb-3"></i>
+            <h4 class="text-muted mb-3" data-i18n="no_applications_found">
+              No applications found
+            </h4>
+            <p class="text-muted" data-i18n="no_matching_applications">
+              No applications match your current filters
+            </p>
+          </div>
+
+          <!-- Bulk Actions -->
+          <div class="bulk-actions" id="application-bulk-actions">
+            <span id="applications-selected-count" data-i18n="applications_selected">0 applications selected</span>
+            <select class="filter-select" id="application-bulk-action">
+              <option value="" data-i18n="bulk_actions">Bulk Actions</option>
+              <option value="shortlist" data-i18n="shortlist">
+                Shortlist
+              </option>
+              <option value="reject" data-i18n="reject">Reject</option>
+              <option value="schedule-interview" data-i18n="schedule_interview">
+                Schedule Interview
+              </option>
+              <option value="delete" data-i18n="delete">Delete</option>
+            </select>
+            <button class="btn-admin btn-admin-secondary" id="apply-application-bulk-action" data-i18n="apply">
+              Apply
+            </button>
+          </div>
+
+          <!-- Pagination -->
+          <div class="admin-pagination">
+            <nav aria-label="Applications pagination">
+              <ul class="pagination" id="applications-pagination">
+                <!-- Pagination will be generated here -->
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Departments Tab -->
+        <div class="tab-pane fade" id="departments" role="tabpanel">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="search-filter-bar">
+                <div class="search-box">
+                  <input type="text" id="department-search" data-i18n-placeholder="search_departments_placeholder"
+                    placeholder="Search departments..." />
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+
+              <!-- Departments Table -->
+              <div class="table-container">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th data-i18n="department">Department</th>
+                      <th data-i18n="head">Head</th>
+                      <th data-i18n="open_positions">Open Positions</th>
+                      <th data-i18n="total_employees">Total Employees</th>
+                      <th data-i18n="status">Status</th>
+                      <th data-i18n="actions">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="departments-table-body">
+                    <!-- Departments will be loaded here dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="job-posting-card">
+                <h4 class="mb-3" data-i18n="add_new_department">
+                  Add New Department
+                </h4>
+                <form id="department-form">
+                  <div class="form-group">
+                    <label for="department-name" class="form-label" data-i18n="department_name">
+                      Department Name
+                    </label>
+                    <input type="text" class="form-control" id="department-name"
+                      data-i18n-placeholder="department_name_placeholder" placeholder="e.g., Sales & Marketing"
+                      required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="department-head" class="form-label" data-i18n="department_head">
+                      Department Head
+                    </label>
+                    <input type="text" class="form-control" id="department-head"
+                      data-i18n-placeholder="department_head_placeholder" placeholder="Name of department head" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="department-description" class="form-label" data-i18n="description">
+                      Description
+                    </label>
+                    <textarea class="form-textarea" id="department-description"
+                      data-i18n-placeholder="department_description_placeholder"
+                      placeholder="Brief description of department..." rows="3"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="department-status" class="form-label" data-i18n="status">
+                      Status
+                    </label>
+                    <select class="form-select" id="department-status">
+                      <option value="active" data-i18n="active">
+                        Active
+                      </option>
+                      <option value="inactive" data-i18n="inactive">
+                        Inactive
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="d-flex gap-3">
+                    <button type="reset" class="btn-admin btn-admin-secondary flex-fill" data-i18n="reset">
+                      Reset
+                    </button>
+                    <button type="submit" class="btn-admin btn-admin-primary flex-fill" data-i18n="add_department">
+                      <i class="fas fa-plus me-2"></i> Add Department
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add/Edit Job Modal -->
+  <div class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="jobModalLabel" data-i18n="add_new_job">
+            Add New Job
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Translation Tabs -->
+          <ul class="nav nav-tabs" id="translation-tabs">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#english-tab">
+                <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-2"
+                  style="width: 16px; height: 12px" />
+                <span data-i18n="english">English</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#hindi-tab">
+                <img src="https://flagcdn.com/w20/in.png" alt="Hindi" class="me-2" style="width: 16px; height: 12px" />
+                <span data-i18n="hindi">हिन्दी</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#gujarati-tab">
+                <img src="https://flagcdn.com/w20/in.png" alt="Gujarati" class="me-2"
+                  style="width: 16px; height: 12px" />
+                <span data-i18n="gujarati">ગુજરાતી</span>
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- English Tab -->
+            <div class="tab-pane fade show active translation-tab-content" id="english-tab">
+              <form id="jobForm">
+                <input type="hidden" id="job-id" />
+
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <label for="job-title-en" class="form-label" data-i18n="job_title">Job Title *</label>
+                      <input type="text" class="form-control" id="job-title-en"
+                        data-i18n-placeholder="job_title_placeholder" placeholder="e.g., Senior Sales Manager"
+                        required />
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="job-department" class="form-label" data-i18n="department">Department *</label>
+                      <select class="form-select" id="job-department" required>
+                        <option value="" data-i18n="select_department">
+                          Select Department
+                        </option>
+                        <option value="sales" data-i18n="sales_marketing">
+                          Sales & Marketing
+                        </option>
+                        <option value="construction" data-i18n="construction">
+                          Construction
+                        </option>
+                        <option value="design" data-i18n="design_architecture">
+                          Design & Architecture
+                        </option>
+                        <option value="operations" data-i18n="operations">
+                          Operations
+                        </option>
+                        <option value="finance" data-i18n="finance_legal">
+                          Finance & Legal
+                        </option>
+                        <option value="hr" data-i18n="human_resources">
+                          Human Resources
+                        </option>
+                        <option value="it" data-i18n="it_technology">
+                          IT & Technology
+                        </option>
+                        <option value="admin" data-i18n="administration">
+                          Administration
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="job-description-en" class="form-label" data-i18n="job_description">Job Description
+                    *</label>
+                  <div class="rich-text-editor">
+                    <div class="editor-toolbar">
+                      <button type="button" class="editor-btn" data-command="bold">
+                        <i class="fas fa-bold"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="italic">
+                        <i class="fas fa-italic"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="underline">
+                        <i class="fas fa-underline"></i>
+                      </button>
+                      <div class="vr mx-1"></div>
+                      <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                        <i class="fas fa-list-ul"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="insertOrderedList">
+                        <i class="fas fa-list-ol"></i>
+                      </button>
+                      <div class="vr mx-1"></div>
+                      <button type="button" class="editor-btn" data-command="createLink">
+                        <i class="fas fa-link"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="unlink">
+                        <i class="fas fa-unlink"></i>
+                      </button>
+                    </div>
+                    <div class="editor-content" id="job-description-en" contenteditable="true"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="job-requirements-en" class="form-label"
+                    data-i18n="requirements_qualifications">Requirements & Qualifications *</label>
+                  <div class="rich-text-editor">
+                    <div class="editor-toolbar">
+                      <button type="button" class="editor-btn" data-command="bold">
+                        <i class="fas fa-bold"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="italic">
+                        <i class="fas fa-italic"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="underline">
+                        <i class="fas fa-underline"></i>
+                      </button>
+                      <div class="vr mx-1"></div>
+                      <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                        <i class="fas fa-list-ul"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="insertOrderedList">
+                        <i class="fas fa-list-ol"></i>
+                      </button>
+                    </div>
+                    <div class="editor-content" id="job-requirements-en" contenteditable="true"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="job-benefits-en" class="form-label" data-i18n="benefits_perks">Benefits & Perks</label>
+                  <div class="rich-text-editor">
+                    <div class="editor-toolbar">
+                      <button type="button" class="editor-btn" data-command="bold">
+                        <i class="fas fa-bold"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="italic">
+                        <i class="fas fa-italic"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                        <i class="fas fa-list-ul"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="insertOrderedList">
+                        <i class="fas fa-list-ol"></i>
+                      </button>
+                    </div>
+                    <div class="editor-content" id="job-benefits-en" contenteditable="true"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Hindi Tab -->
+            <div class="tab-pane fade translation-tab-content" id="hindi-tab">
+              <div class="form-group">
+                <label for="job-title-hi" class="form-label" data-i18n="job_title">नौकरी का शीर्षक *</label>
+                <input type="text" class="form-control" id="job-title-hi" placeholder="जैसे, वरिष्ठ बिक्री प्रबंधक" />
+                <div class="form-text" data-i18n="auto_translated_hint">
+                  यह स्वचालित रूप से अंग्रेजी से अनुवादित होगा (आप इसे संपादित
+                  कर सकते हैं)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="job-description-hi" class="form-label" data-i18n="job_description">नौकरी विवरण *</label>
+                <div class="rich-text-editor">
+                  <div class="editor-toolbar">
+                    <button type="button" class="editor-btn" data-command="bold">
+                      <i class="fas fa-bold"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="italic">
+                      <i class="fas fa-italic"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="underline">
+                      <i class="fas fa-underline"></i>
+                    </button>
+                    <div class="vr mx-1"></div>
+                    <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                      <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertOrderedList">
+                      <i class="fas fa-list-ol"></i>
+                    </button>
+                  </div>
+                  <div class="editor-content" id="job-description-hi" contenteditable="true"></div>
+                </div>
+                <div class="form-text" data-i18n="auto_translated_content_hint">
+                  यह स्वचालित रूप से अंग्रेजी सामग्री से अनुवादित होगा (आप इसे
+                  संपादित कर सकते हैं)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="job-requirements-hi" class="form-label" data-i18n="requirements_qualifications">आवश्यकताएं
+                  और योग्यताएं *</label>
+                <div class="rich-text-editor">
+                  <div class="editor-toolbar">
+                    <button type="button" class="editor-btn" data-command="bold">
+                      <i class="fas fa-bold"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="italic">
+                      <i class="fas fa-italic"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                      <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertOrderedList">
+                      <i class="fas fa-list-ol"></i>
+                    </button>
+                  </div>
+                  <div class="editor-content" id="job-requirements-hi" contenteditable="true"></div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="job-benefits-hi" class="form-label" data-i18n="benefits_perks">लाभ और सुविधाएं</label>
+                <div class="rich-text-editor">
+                  <div class="editor-toolbar">
+                    <button type="button" class="editor-btn" data-command="bold">
+                      <i class="fas fa-bold"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="italic">
+                      <i class="fas fa-italic"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                      <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertOrderedList">
+                      <i class="fas fa-list-ol"></i>
+                    </button>
+                  </div>
+                  <div class="editor-content" id="job-benefits-hi" contenteditable="true"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gujarati Tab -->
+            <div class="tab-pane fade translation-tab-content" id="gujarati-tab">
+              <div class="form-group">
+                <label for="job-title-gu" class="form-label" data-i18n="job_title">નોકરીનું શીર્ષક *</label>
+                <input type="text" class="form-control" id="job-title-gu" placeholder="જેમ કે, સિનિયર સેલ્સ મેનેજર" />
+                <div class="form-text" data-i18n="auto_translated_hint">
+                  આ આપોઆપ અંગ્રેજીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત કરી
+                  શકો છો)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="job-description-gu" class="form-label" data-i18n="job_description">નોકરી વર્ણન *</label>
+                <div class="rich-text-editor">
+                  <div class="editor-toolbar">
+                    <button type="button" class="editor-btn" data-command="bold">
+                      <i class="fas fa-bold"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="italic">
+                      <i class="fas fa-italic"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="underline">
+                      <i class="fas fa-underline"></i>
+                    </button>
+                    <div class="vr mx-1"></div>
+                    <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                      <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertOrderedList">
+                      <i class="fas fa-list-ol"></i>
+                    </button>
+                  </div>
+                  <div class="editor-content" id="job-description-gu" contenteditable="true"></div>
+                </div>
+                <div class="form-text" data-i18n="auto_translated_content_hint">
+                  આ આપોઆપ અંગ્રેજી સામગ્રીમાંથી ભાષાંતરિત થશે (તમે તેને
+                  સંપાદિત કરી શકો છો)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="job-requirements-gu" class="form-label" data-i18n="requirements_qualifications">જરૂરિયાતો
+                  અને લાયકાત *</label>
+                <div class="rich-text-editor">
+                  <div class="editor-toolbar">
+                    <button type="button" class="editor-btn" data-command="bold">
+                      <i class="fas fa-bold"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="italic">
+                      <i class="fas fa-italic"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                      <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertOrderedList">
+                      <i class="fas fa-list-ol"></i>
+                    </button>
+                  </div>
+                  <div class="editor-content" id="job-requirements-gu" contenteditable="true"></div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="job-benefits-gu" class="form-label" data-i18n="benefits_perks">લાભ અને સુવિધાઓ</label>
+                <div class="rich-text-editor">
+                  <div class="editor-toolbar">
+                    <button type="button" class="editor-btn" data-command="bold">
+                      <i class="fas fa-bold"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="italic">
+                      <i class="fas fa-italic"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                      <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertOrderedList">
+                      <i class="fas fa-list-ol"></i>
+                    </button>
+                  </div>
+                  <div class="editor-content" id="job-benefits-gu" contenteditable="true"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Common Fields (outside tabs) -->
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="job-type" class="form-label" data-i18n="job_type">Job Type *</label>
+                <select class="form-select" id="job-type" required>
+                  <option value="" data-i18n="select_type">
+                    Select Type
+                  </option>
+                  <option value="fulltime" data-i18n="full_time">
+                    Full-time
+                  </option>
+                  <option value="parttime" data-i18n="part_time">
+                    Part-time
+                  </option>
+                  <option value="contract" data-i18n="contract">
+                    Contract
+                  </option>
+                  <option value="internship" data-i18n="internship">
+                    Internship
+                  </option>
+                  <option value="remote" data-i18n="remote">Remote</option>
+                  <option value="hybrid" data-i18n="hybrid">Hybrid</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="job-location" class="form-label" data-i18n="location">Location *</label>
+                <input type="text" class="form-control" id="job-location" data-i18n-placeholder="location_placeholder"
+                  placeholder="e.g., Ahmedabad, Gujarat" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="job-experience" class="form-label" data-i18n="experience_required">Experience Required
+                  *</label>
+                <input type="text" class="form-control" id="job-experience"
+                  data-i18n-placeholder="experience_placeholder" placeholder="e.g., 3-5 years" required />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="job-salary" class="form-label" data-i18n="salary_range">Salary Range</label>
+                <input type="text" class="form-control" id="job-salary" data-i18n-placeholder="salary_placeholder"
+                  placeholder="e.g., ₹6-8 LPA" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="job-vacancies" class="form-label" data-i18n="number_of_vacancies">Number of
+                  Vacancies</label>
+                <input type="number" class="form-control" id="job-vacancies"
+                  data-i18n-placeholder="vacancies_placeholder" placeholder="e.g., 2" min="1" value="1" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="job-status" class="form-label" data-i18n="status">Status *</label>
+                <select class="form-select" id="job-status" required>
+                  <option value="draft" data-i18n="draft">Draft</option>
+                  <option value="active" data-i18n="active">Active</option>
+                  <option value="closed" data-i18n="closed">Closed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="application-deadline" class="form-label" data-i18n="application_deadline">Application
+                  Deadline</label>
+                <input type="date" class="form-control" id="application-deadline" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label" data-i18n="posting_date">Posting Date</label>
+                <input type="date" class="form-control" id="posting-date" value="2025-01-20" readonly />
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <button type="button" class="btn-admin btn-admin-secondary" id="auto-translate-btn">
+                <i class="fas fa-language"></i>
+                <span data-i18n="auto_translate">Auto Translate</span>
+              </button>
+            </div>
+            <div class="d-flex gap-3">
+              <button type="button" class="btn-admin btn-admin-secondary" data-bs-dismiss="modal" data-i18n="cancel">
+                Cancel
+              </button>
+              <button type="button" class="btn-admin btn-admin-primary" id="save-job-btn" data-i18n="save_job">
+                Save Job
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Detail Modal -->
+  <div class="modal fade" id="applicationModal" tabindex="-1" aria-labelledby="applicationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="applicationModalLabel" data-i18n="application_details">
+            Application Details
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="application-detail-content">
+          <!-- Application details will be loaded here dynamically -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-secondary" data-bs-dismiss="modal" data-i18n="close">
+            Close
+          </button>
+          <div class="table-actions">
+            <button class="btn-action btn-download" title="Download Resume" data-i18n-title="download_resume">
+              <i class="fas fa-download"></i>
+            </button>
+            <button class="btn-action btn-edit" title="Update Status" data-i18n-title="update_status">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="btn-action btn-delete" title="Delete Application" data-i18n-title="delete_application">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Translations Modal -->
+  <div class="modal fade" id="viewTranslationsModal" tabindex="-1" aria-labelledby="viewTranslationsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewTranslationsModalLabel" data-i18n="view_translations">
+            View Translations
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0" data-i18n="english">English</h6>
+                </div>
+                <div class="card-body">
+                  <h5 id="view-title-en"></h5>
+                  <div id="view-description-en" class="small mb-3"></div>
+                  <h6>Requirements:</h6>
+                  <div id="view-requirements-en" class="small"></div>
+                  <h6 class="mt-3">Benefits:</h6>
+                  <div id="view-benefits-en" class="small"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header bg-success text-white">
+                  <h6 class="mb-0" data-i18n="hindi">हिन्दी</h6>
+                </div>
+                <div class="card-body">
+                  <h5 id="view-title-hi"></h5>
+                  <div id="view-description-hi" class="small mb-3"></div>
+                  <h6>आवश्यकताएं:</h6>
+                  <div id="view-requirements-hi" class="small"></div>
+                  <h6 class="mt-3">लाभ:</h6>
+                  <div id="view-benefits-hi" class="small"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header bg-warning text-white">
+                  <h6 class="mb-0" data-i18n="gujarati">ગુજરાતી</h6>
+                </div>
+                <div class="card-body">
+                  <h5 id="view-title-gu"></h5>
+                  <div id="view-description-gu" class="small mb-3"></div>
+                  <h6>જરૂરિયાતો:</h6>
+                  <div id="view-requirements-gu" class="small"></div>
+                  <h6 class="mt-3">લાભ:</h6>
+                  <div id="view-benefits-gu" class="small"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade delete-confirmation-modal" id="deleteConfirmationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <span data-i18n="confirm_delete">Confirm Delete</span>
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <i class="fas fa-trash-alt"></i>
+          <h4 id="delete-modal-title" class="mt-3 mb-3" data-i18n="are_you_sure">
+            Are you sure?
+          </h4>
+          <p id="delete-modal-message" class="text-muted">
+            This action cannot be undone.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-admin btn-admin-secondary" data-bs-dismiss="modal">
+            <span data-i18n="cancel">Cancel</span>
+          </button>
+          <button type="button" class="btn-admin btn-admin-danger" id="confirm-delete-btn">
+            <i class="fas fa-trash me-2"></i>
+            <span data-i18n="delete">Delete</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Complete translation dictionaries for Career Management
+    const translations = {
+      en: {
+        // UI Elements
+        career_management: "Career Management",
+        export: "Export",
+        add_job: "Add Job",
+        search_jobs_placeholder:
+          "Search jobs by title, department, or location...",
+        all_departments: "All Departments",
+        sales_marketing: "Sales & Marketing",
+        construction: "Construction",
+        design_architecture: "Design & Architecture",
+        operations: "Operations",
+        finance_legal: "Finance & Legal",
+        human_resources: "Human Resources",
+        all_status: "All Status",
+        active: "Active",
+        closed: "Closed",
+        draft: "Draft",
+        all_types: "All Types",
+        full_time: "Full-time",
+        part_time: "Part-time",
+        contract: "Contract",
+        internship: "Internship",
+        remote: "Remote",
+        hybrid: "Hybrid",
+        all_jobs: "All Jobs",
+        all_dates: "All Dates",
+        today: "Today",
+        this_week: "This Week",
+        this_month: "This Month",
+        name: "Name",
+        email: "Email",
+        job_applied: "Job Applied",
+        applied_date: "Applied Date",
+        status: "Status",
+        experience: "Experience",
+        actions: "Actions",
+        search_applications_placeholder:
+          "Search applications by name, email, or job...",
+        new: "New",
+        reviewed: "Reviewed",
+        shortlisted: "Shortlisted",
+        interview: "Interview",
+        rejected: "Rejected",
+        hired: "Hired",
+        no_matching_applications:
+          "No applications match your current filters",
+        search_departments_placeholder: "Search departments...",
+        department: "Department",
+        head: "Head",
+        open_positions: "Open Positions",
+        total_employees: "Total Employees",
+        add_new_department: "Add New Department",
+        department_name: "Department Name",
+        department_name_placeholder: "e.g., Sales & Marketing",
+        department_head: "Department Head",
+        department_head_placeholder: "Name of department head",
+        description: "Description",
+        department_description_placeholder:
+          "Brief description of department...",
+        inactive: "Inactive",
+        reset: "Reset",
+        add_department: "Add Department",
+        add_new_job: "Add New Job",
+        job_title: "Job Title",
+        job_title_placeholder: "e.g., Senior Sales Manager",
+        select_department: "Select Department",
+        it_technology: "IT & Technology",
+        administration: "Administration",
+        job_type: "Job Type",
+        select_type: "Select Type",
+        location: "Location",
+        location_placeholder: "e.g., Ahmedabad, Gujarat",
+        experience_required: "Experience Required",
+        experience_placeholder: "e.g., 3-5 years",
+        salary_range: "Salary Range",
+        salary_placeholder: "e.g., ₹6-8 LPA",
+        job_description: "Job Description",
+        job_description_placeholder:
+          "Describe the role, responsibilities, and expectations...",
+        requirements_qualifications: "Requirements & Qualifications",
+        add_requirement_placeholder: "Add a requirement...",
+        add: "Add",
+        add_requirements_hint: "Press Enter or click Add to add requirements",
+        benefits_perks: "Benefits & Perks",
+        benefits_placeholder: "List the benefits offered...",
+        number_of_vacancies: "Number of Vacancies",
+        vacancies_placeholder: "e.g., 2",
+        application_deadline: "Application Deadline",
+        posting_date: "Posting Date",
+        cancel: "Cancel",
+        save_job: "Save Job",
+        application_details: "Application Details",
+        close: "Close",
+        download_resume: "Download Resume",
+        update_status: "Update Status",
+        delete_application: "Delete Application",
+        english: "English",
+        hindi: "हिन्दी",
+        gujarati: "ગુજરાતી",
+        auto_translate: "Auto Translate",
+        view_translations: "View Translations",
+        auto_translated_hint:
+          "This will be automatically translated from English (you can edit it)",
+        auto_translated_content_hint:
+          "This will be automatically translated from English content (you can edit it)",
+
+        // Stats
+        active_job_postings: "Active Job Postings",
+        total_applications: "Total Applications",
+        pending_review: "Pending Review",
+        new_hires_this_month: "New Hires This Month",
+
+        // Tabs
+        job_postings: "Job Postings",
+        applications: "Applications",
+        departments: "Departments",
+
+        // Messages
+        no_jobs_found: "No job postings found",
+        adjust_filters_add_job:
+          "Try adjusting your filters or add a new job posting",
+        add_first_job: "Add First Job",
+        jobs_selected: "jobs selected",
+        bulk_actions: "Bulk Actions",
+        activate: "Activate",
+        deactivate: "Deactivate",
+        duplicate: "Duplicate",
+        delete: "Delete",
+        apply: "Apply",
+        no_applications_found: "No applications found",
+        applications_selected: "applications selected",
+        shortlist: "Shortlist",
+        reject: "Reject",
+        schedule_interview: "Schedule Interview",
+
+        // Sidebar Menu
+        dashboard: "Dashboard",
+        users: "Users",
+        projects: "Projects",
+        blogs: "Blogs",
+        faq: "FAQ",
+        team: "Team",
+        gallery: "Gallery",
+        career: "Career",
+        news: "News",
+        log_out: "Log Out",
+
+        // User Info
+        admin_name: "Admin User",
+        system_administrator: "System Administrator",
+
+        // Naroda Group
+        naroda_group: "Naroda Group",
+
+        // Status Badges
+        badge_new: "New",
+        badge_reviewed: "Reviewed",
+        badge_shortlisted: "Shortlisted",
+        badge_interview: "Interview",
+        badge_rejected: "Rejected",
+        badge_hired: "Hired",
+        badge_active: "Active",
+        badge_closed: "Closed",
+        badge_draft: "Draft",
+
+        // Success/Error Messages
+        confirm_delete: "Confirm Delete",
+        are_you_sure: "Are you sure?",
+        confirm_delete_job:
+          "Are you sure you want to delete this job posting?",
+        confirm_delete_application:
+          "Are you sure you want to delete this application?",
+        confirm_delete_department:
+          "Are you sure you want to delete this department?",
+        confirm_bulk_delete_jobs:
+          "Are you sure you want to delete {count} job(s)?",
+        confirm_bulk_delete_applications:
+          "Are you sure you want to delete {count} application(s)?",
+        confirm_logout: "Are you sure you want to log out?",
+        logout_success: "You have been logged out successfully.",
+        job_added: "Job added successfully!",
+        job_updated: "Job updated successfully!",
+        job_deleted: "Job deleted successfully!",
+        department_added: "Department added successfully!",
+        department_deleted: "Department deleted successfully!",
+        application_deleted: "Application deleted successfully!",
+        please_select_action: "Please select a bulk action first.",
+        no_items_selected: "No items selected.",
+        bulk_action_applied:
+          'Bulk action "{action}" applied to {count} item(s)',
+        downloading_resume: "Downloading resume...",
+        translation_complete: "Translation completed successfully!",
+        translation_failed: "Translation failed. Please try again.",
+        fill_english_first: "Please fill in English content first",
+
+        // Days and Months
+        monday: "Monday",
+        tuesday: "Tuesday",
+        wednesday: "Wednesday",
+        thursday: "Thursday",
+        friday: "Friday",
+        saturday: "Saturday",
+        sunday: "Sunday",
+
+        january: "January",
+        february: "February",
+        march: "March",
+        april: "April",
+        may: "May",
+        june: "June",
+        july: "July",
+        august: "August",
+        september: "September",
+        october: "October",
+        november: "November",
+        december: "December",
+      },
+      hi: {
+        // UI Elements
+        career_management: "करियर प्रबंधन",
+        export: "निर्यात",
+        add_job: "नौकरी जोड़ें",
+        search_jobs_placeholder:
+          "शीर्षक, विभाग या स्थान द्वारा नौकरियां खोजें...",
+        all_departments: "सभी विभाग",
+        sales_marketing: "बिक्री और विपणन",
+        construction: "निर्माण",
+        design_architecture: "डिजाइन और आर्किटेक्चर",
+        operations: "संचालन",
+        finance_legal: "वित्त और कानूनी",
+        human_resources: "मानव संसाधन",
+        all_status: "सभी स्थिति",
+        active: "सक्रिय",
+        closed: "बंद",
+        draft: "मसौदा",
+        all_types: "सभी प्रकार",
+        full_time: "पूर्णकालिक",
+        part_time: "अंशकालिक",
+        contract: "अनुबंध",
+        internship: "इंटर्नशिप",
+        remote: "रिमोट",
+        hybrid: "हाइब्रिड",
+        all_jobs: "सभी नौकरियां",
+        all_dates: "सभी तारीखें",
+        today: "आज",
+        this_week: "इस सप्ताह",
+        this_month: "इस महीने",
+        name: "नाम",
+        email: "ईमेल",
+        job_applied: "आवेदन की गई नौकरी",
+        applied_date: "आवेदन तिथि",
+        status: "स्थिति",
+        experience: "अनुभव",
+        actions: "कार्रवाइयां",
+        search_applications_placeholder:
+          "नाम, ईमेल या नौकरी द्वारा आवेदन खोजें...",
+        new: "नया",
+        reviewed: "समीक्षित",
+        shortlisted: "शॉर्टलिस्टेड",
+        interview: "इंटरव्यू",
+        rejected: "अस्वीकृत",
+        hired: "नियुक्त",
+        no_matching_applications:
+          "आपके वर्तमान फ़िल्टर से कोई आवेदन मेल नहीं खाता",
+        search_departments_placeholder: "विभाग खोजें...",
+        department: "विभाग",
+        head: "प्रमुख",
+        open_positions: "खुली पदों",
+        total_employees: "कुल कर्मचारी",
+        add_new_department: "नया विभाग जोड़ें",
+        department_name: "विभाग का नाम",
+        department_name_placeholder: "जैसे, बिक्री और विपणन",
+        department_head: "विभाग प्रमुख",
+        department_head_placeholder: "विभाग प्रमुख का नाम",
+        description: "विवरण",
+        department_description_placeholder: "विभाग का संक्षिप्त विवरण...",
+        inactive: "निष्क्रिय",
+        reset: "रीसेट",
+        add_department: "विभाग जोड़ें",
+        add_new_job: "नई नौकरी जोड़ें",
+        job_title: "नौकरी का शीर्षक",
+        job_title_placeholder: "जैसे, वरिष्ठ बिक्री प्रबंधक",
+        select_department: "विभाग चुनें",
+        it_technology: "आईटी और प्रौद्योगिकी",
+        administration: "प्रशासन",
+        job_type: "नौकरी का प्रकार",
+        select_type: "प्रकार चुनें",
+        location: "स्थान",
+        location_placeholder: "जैसे, अहमदाबाद, गुजरात",
+        experience_required: "आवश्यक अनुभव",
+        experience_placeholder: "जैसे, 3-5 वर्ष",
+        salary_range: "वेतन सीमा",
+        salary_placeholder: "जैसे, ₹6-8 LPA",
+        job_description: "नौकरी विवरण",
+        job_description_placeholder:
+          "भूमिका, जिम्मेदारियों और अपेक्षाओं का वर्णन करें...",
+        requirements_qualifications: "आवश्यकताएं और योग्यताएं",
+        add_requirement_placeholder: "एक आवश्यकता जोड़ें...",
+        add: "जोड़ें",
+        add_requirements_hint:
+          "आवश्यकताएं जोड़ने के लिए Enter दबाएं या जोड़ें पर क्लिक करें",
+        benefits_perks: "लाभ और सुविधाएं",
+        benefits_placeholder: "प्रदान किए गए लाभों की सूची बनाएं...",
+        number_of_vacancies: "रिक्तियों की संख्या",
+        vacancies_placeholder: "जैसे, 2",
+        application_deadline: "आवेदन की अंतिम तिथि",
+        posting_date: "पोस्टिंग तिथि",
+        cancel: "रद्द करें",
+        save_job: "नौकरी सहेजें",
+        application_details: "आवेदन विवरण",
+        close: "बंद करें",
+        download_resume: "रिज्यूम डाउनलोड करें",
+        update_status: "स्थिति अपडेट करें",
+        delete_application: "आवेदन हटाएं",
+        english: "अंग्रेजी",
+        hindi: "हिन्दी",
+        gujarati: "ગુજરાતી",
+        auto_translate: "स्वचालित अनुवाद",
+        view_translations: "अनुवाद देखें",
+        auto_translated_hint:
+          "यह स्वचालित रूप से अंग्रेजी से अनुवादित होगा (आप इसे संपादित कर सकते हैं)",
+        auto_translated_content_hint:
+          "यह स्वचालित रूप से अंग्रेजी सामग्री से अनुवादित होगा (आप इसे संपादित कर सकते हैं)",
+
+        // Stats
+        active_job_postings: "सक्रिय नौकरी पोस्टिंग",
+        total_applications: "कुल आवेदन",
+        pending_review: "लंबित समीक्षा",
+        new_hires_this_month: "इस महीने नए नियुक्तियां",
+
+        // Tabs
+        job_postings: "नौकरी पोस्टिंग",
+        applications: "आवेदन",
+        departments: "विभाग",
+
+        // Messages
+        no_jobs_found: "कोई नौकरी पोस्टिंग नहीं मिली",
+        adjust_filters_add_job:
+          "अपने फ़िल्टर को समायोजित करें या एक नई नौकरी पोस्टिंग जोड़ें",
+        add_first_job: "पहली नौकरी जोड़ें",
+        jobs_selected: "नौकरियां चयनित",
+        bulk_actions: "बल्क एक्शन",
+        activate: "सक्रिय करें",
+        deactivate: "निष्क्रिय करें",
+        duplicate: "डुप्लिकेट",
+        delete: "हटाएं",
+        apply: "लागू करें",
+        no_applications_found: "कोई आवेदन नहीं मिला",
+        applications_selected: "आवेदन चयनित",
+        shortlist: "शॉर्टलिस्ट",
+        reject: "अस्वीकार",
+        schedule_interview: "इंटरव्यू शेड्यूल करें",
+
+        // Sidebar Menu
+        dashboard: "डैशबोर्ड",
+        users: "उपयोगकर्ता",
+        projects: "परियोजनाएं",
+        blogs: "ब्लॉग",
+        faq: "सामान्य प्रश्न",
+        team: "टीम",
+        gallery: "गैलरी",
+        career: "करियर",
+        news: "समाचार",
+        log_out: "लॉग आउट",
+
+        // User Info
+        admin_name: "व्यवस्थापक उपयोगकर्ता",
+        system_administrator: "सिस्टम व्यवस्थापक",
+
+        // Naroda Group
+        naroda_group: "नारोदा ग्रुप",
+
+        // Status Badges
+        badge_new: "नया",
+        badge_reviewed: "समीक्षित",
+        badge_shortlisted: "शॉर्टलिस्टेड",
+        badge_interview: "इंटरव्यू",
+        badge_rejected: "अस्वीकृत",
+        badge_hired: "नियुक्त",
+        badge_active: "सक्रिय",
+        badge_closed: "बंद",
+        badge_draft: "मसौदा",
+
+        // Success/Error Messages
+        confirm_delete: "हटाने की पुष्टि करें",
+        are_you_sure: "क्या आप सुनिश्चित हैं?",
+        confirm_delete_job:
+          "क्या आप वाकई इस नौकरी पोस्टिंग को हटाना चाहते हैं?",
+        confirm_delete_application:
+          "क्या आप वाकई इस आवेदन को हटाना चाहते हैं?",
+        confirm_delete_department:
+          "क्या आप वाकई इस विभाग को हटाना चाहते हैं?",
+        confirm_bulk_delete_jobs:
+          "क्या आप वाकई {count} नौकरी हटाना चाहते हैं?",
+        confirm_bulk_delete_applications:
+          "क्या आप वाकई {count} आवेदन हटाना चाहते हैं?",
+        confirm_logout: "क्या आप वाकई लॉग आउट करना चाहते हैं?",
+        logout_success: "आप सफलतापूर्वक लॉग आउट हो गए हैं।",
+        job_added: "नौकरी सफलतापूर्वक जोड़ी गई!",
+        job_updated: "नौकरी सफलतापूर्वक अपडेट की गई!",
+        job_deleted: "नौकरी सफलतापूर्वक हटाई गई!",
+        department_added: "विभाग सफलतापूर्वक जोड़ा गया!",
+        department_deleted: "विभाग सफलतापूर्वक हटाया गया!",
+        application_deleted: "आवेदन सफलतापूर्वक हटाया गया!",
+        please_select_action: "कृपया पहले एक बल्क एक्शन चुनें।",
+        no_items_selected: "कोई आइटम चयनित नहीं है।",
+        bulk_action_applied:
+          'बल्क एक्शन "{action}" {count} आइटम पर लागू किया गया',
+        downloading_resume: "रिज्यूम डाउनलोड हो रहा है...",
+        translation_complete: "अनुवाद सफलतापूर्वक पूरा हुआ!",
+        translation_failed: "अनुवाद विफल। कृपया पुनः प्रयास करें।",
+        fill_english_first: "कृपया पहले अंग्रेजी सामग्री भरें",
+
+        // Days and Months
+        monday: "सोमवार",
+        tuesday: "मंगलवार",
+        wednesday: "बुधवार",
+        thursday: "गुरुवार",
+        friday: "शुक्रवार",
+        saturday: "शनिवार",
+        sunday: "रविवार",
+
+        january: "जनवरी",
+        february: "फरवरी",
+        march: "मार्च",
+        april: "अप्रैल",
+        may: "मई",
+        june: "जून",
+        july: "जुलाई",
+        august: "अगस्त",
+        september: "सितंबर",
+        october: "अक्टूबर",
+        november: "नवंबर",
+        december: "दिसंबर",
+      },
+      gu: {
+        // UI Elements
+        career_management: "કારકિર્દી વ્યવસ્થાપન",
+        export: "નિકાસ",
+        add_job: "નોકરી ઉમેરો",
+        search_jobs_placeholder:
+          "શીર્ષક, વિભાગ અથવા સ્થાન દ્વારા નોકરીઓ શોધો...",
+        all_departments: "બધા વિભાગો",
+        sales_marketing: "વેચાણ અને માર્કેટિંગ",
+        construction: "કોન્સ્ટ્રક્શન",
+        design_architecture: "ડિઝાઇન અને આર્કિટેક્ચર",
+        operations: "ઓપરેશન્સ",
+        finance_legal: "વિત્ત અને કાનૂની",
+        human_resources: "માનવ સંસાધન",
+        all_status: "બધી સ્થિતિ",
+        active: "સક્રિય",
+        closed: "બંધ",
+        draft: "ડ્રાફ્ટ",
+        all_types: "બધા પ્રકાર",
+        full_time: "ફુલ-ટાઇમ",
+        part_time: "પાર્ટ-ટાઇમ",
+        contract: "કોન્ટ્રાક્ટ",
+        internship: "ઇન્ટર્નશિપ",
+        remote: "રિમોટ",
+        hybrid: "હાઇબ્રિડ",
+        all_jobs: "બધી નોકરીઓ",
+        all_dates: "બધી તારીખો",
+        today: "આજે",
+        this_week: "આ અઠવાડિયે",
+        this_month: "આ મહિને",
+        name: "નામ",
+        email: "ઈમેલ",
+        job_applied: "અરજી કરેલી નોકરી",
+        applied_date: "અરજી તારીખ",
+        status: "સ્થિતિ",
+        experience: "અનુભવ",
+        actions: "ક્રિયાઓ",
+        search_applications_placeholder:
+          "નામ, ઈમેલ અથવા નોકરી દ્વારા અરજીઓ શોધો...",
+        new: "નવી",
+        reviewed: "રિવ્યુ કરેલ",
+        shortlisted: "શોર્ટલિસ્ટેડ",
+        interview: "ઇન્ટરવ્યુ",
+        rejected: "નકારી",
+        hired: "નિયુક્ત",
+        no_matching_applications:
+          "તમારા વર્તમાન ફિલ્ટર્સ સાથે કોઈ અરજી મળતી નથી",
+        search_departments_placeholder: "વિભાગો શોધો...",
+        department: "વિભાગ",
+        head: "મુખ્ય",
+        open_positions: "ખુલ્લી પદો",
+        total_employees: "કુલ કર્મચારીઓ",
+        add_new_department: "નવો વિભાગ ઉમેરો",
+        department_name: "વિભાગનું નામ",
+        department_name_placeholder: "જેમ કે, વેચાણ અને માર્કેટિંગ",
+        department_head: "વિભાગ મુખ્ય",
+        department_head_placeholder: "વિભાગ મુખ્યનું નામ",
+        description: "વર્ણન",
+        department_description_placeholder: "વિભાગનું સંક્ષિપ્ત વર્ણન...",
+        inactive: "નિષ્ક્રિય",
+        reset: "રીસેટ",
+        add_department: "વિભાગ ઉમેરો",
+        add_new_job: "નવી નોકરી ઉમેરો",
+        job_title: "નોકરીનું શીર્ષક",
+        job_title_placeholder: "જેમ કે, સિનિયર સેલ્સ મેનેજર",
+        select_department: "વિભાગ પસંદ કરો",
+        it_technology: "આઈટી અને ટેક્નોલોજી",
+        administration: "એડમિનિસ્ટ્રેશન",
+        job_type: "નોકરીનો પ્રકાર",
+        select_type: "પ્રકાર પસંદ કરો",
+        location: "સ્થાન",
+        location_placeholder: "જેમ કે, અમદાવાદ, ગુજરાત",
+        experience_required: "જરૂરી અનુભવ",
+        experience_placeholder: "જેમ કે, 3-5 વર્ષ",
+        salary_range: "સેનો ભથ્થું",
+        salary_placeholder: "જેમ કે, ₹6-8 LPA",
+        job_description: "નોકરી વર્ણન",
+        job_description_placeholder:
+          "ભૂમિકા, જવાબદારીઓ અને અપેક્ષાઓનું વર્ણન કરો...",
+        requirements_qualifications: "જરૂરિયાતો અને લાયકાત",
+        add_requirement_placeholder: "એક જરૂરિયાત ઉમેરો...",
+        add: "ઉમેરો",
+        add_requirements_hint:
+          "જરૂરિયાતો ઉમેરવા માટે Enter દબાવો અથવા ઉમેરો પર ક્લિક કરો",
+        benefits_perks: "લાભ અને સુવિધાઓ",
+        benefits_placeholder: "ઓફર કરાયેલા લાભોની યાદી બનાવો...",
+        number_of_vacancies: "રિક્તિઓની સંખ્યા",
+        vacancies_placeholder: "જેમ કે, 2",
+        application_deadline: "અરજીની અંતિમ તારીખ",
+        posting_date: "પોસ્ટિંગ તારીખ",
+        cancel: "રદ કરો",
+        save_job: "નોકરી સાચવો",
+        application_details: "અરજીની વિગતો",
+        close: "બંધ કરો",
+        download_resume: "રિઝ્યુમ ડાઉનલોડ કરો",
+        update_status: "સ્થિતિ અપડેટ કરો",
+        delete_application: "અરજી કાઢી નાખો",
+        english: "અંગ્રેજી",
+        hindi: "હિંદી",
+        gujarati: "ગુજરાતી",
+        auto_translate: "સ્વચાલિત અનુવાદ",
+        view_translations: "અનુવાદ જુઓ",
+        auto_translated_hint:
+          "આ આપોઆપ અંગ્રેજીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત કરી શકો છો)",
+        auto_translated_content_hint:
+          "આ આપોઆપ અંગ્રેજી સામગ્રીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત કરી શકો છો)",
+
+        // Stats
+        active_job_postings: "સક્રિય નોકરી પોસ્ટિંગ્સ",
+        total_applications: "કુલ અરજીઓ",
+        pending_review: "પેન્ડિંગ રિવ્યુ",
+        new_hires_this_month: "આ મહિને નવી ભરતી",
+
+        // Tabs
+        job_postings: "નોકરી પોસ્ટિંગ્સ",
+        applications: "અરજીઓ",
+        departments: "વિભાગો",
+
+        // Messages
+        no_jobs_found: "કોઈ નોકરી પોસ્ટિંગ્સ મળી નથી",
+        adjust_filters_add_job:
+          "તમારા ફિલ્ટર્સ એડજસ્ટ કરો અથવા નવી નોકરી પોસ્ટિંગ ઉમેરો",
+        add_first_job: "પહેલી નોકરી ઉમેરો",
+        jobs_selected: "નોકરીઓ પસંદ કર્યા",
+        bulk_actions: "બલ્ક ક્રિયાઓ",
+        activate: "સક્રિય કરો",
+        deactivate: "નિષ્ક્રિય કરો",
+        duplicate: "ડુપ્લિકેટ",
+        delete: "કાઢી નાખો",
+        apply: "લાગુ કરો",
+        no_applications_found: "કોઈ અરજીઓ મળી નથી",
+        applications_selected: "અરજીઓ પસંદ કર્યા",
+        shortlist: "શોર્ટલિસ્ટ",
+        reject: "નકારો",
+        schedule_interview: "ઇન્ટરવ્યુ શેડ્યૂલ કરો",
+
+        // Sidebar Menu
+        dashboard: "ડેશબોર્ડ",
+        users: "વપરાશકર્તાઓ",
+        projects: "પ્રોજેક્ટ્સ",
+        blogs: "બ્લોગ્સ",
+        faq: "સામાન્ય પ્રશ્નો",
+        team: "ટીમ",
+        gallery: "ગેલેરી",
+        career: "કારકિર્દી",
+        news: "સમાચાર",
+        log_out: "લોગ આઉટ",
+
+        // User Info
+        admin_name: "એડમિન વપરાશકર્તા",
+        system_administrator: "સિસ્ટમ એડમિનિસ્ટ્રેટર",
+
+        // Naroda Group
+        naroda_group: "નારોદા ગ્રુપ",
+
+        // Status Badges
+        badge_new: "નવી",
+        badge_reviewed: "રિવ્યુ કરેલ",
+        badge_shortlisted: "શોર્ટલિસ્ટેડ",
+        badge_interview: "ઇન્ટરવ્યુ",
+        badge_rejected: "નકારી",
+        badge_hired: "નિયુક્ત",
+        badge_active: "સક્રિય",
+        badge_closed: "બંધ",
+        badge_draft: "ડ્રાફ્ટ",
+
+        // Success/Error Messages
+        confirm_delete: "કાઢી નાખવાની પુષ્ટિ કરો",
+        are_you_sure: "શું તમે ચોક્કસ છો?",
+        confirm_delete_job:
+          "શું તમે ખરેખર આ નોકરી પોસ્ટિંગ કાઢી નાખવા માંગો છો?",
+        confirm_delete_application:
+          "શું તમે ખરેખર આ અરજી કાઢી નાખવા માંગો છો?",
+        confirm_delete_department:
+          "શું તમે ખરેખર આ વિભાગ કાઢી નાખવા માંગો છો?",
+        confirm_bulk_delete_jobs:
+          "શું તમે ખરેખર {count} નોકરી કાઢી નાખવા માંગો છો?",
+        confirm_bulk_delete_applications:
+          "શું તમે ખરેખર {count} અરજી કાઢી નાખવા માંગો છો?",
+        confirm_logout: "શું તમે ખરેખર લોગ આઉટ કરવા માંગો છો?",
+        logout_success: "તમે સફળતાપૂર્વક લોગ આઉટ થયા છો.",
+        job_added: "નોકરી સફળતાપૂર્વક ઉમેરાઈ!",
+        job_updated: "નોકરી સફળતાપૂર્વક અપડેટ થઈ!",
+        job_deleted: "નોકરી સફળતાપૂર્વક કાઢી નાખાઈ!",
+        department_added: "વિભાગ સફળતાપૂર્વક ઉમેરાયો!",
+        department_deleted: "વિભાગ સફળતાપૂર્વક કાઢી નાખાયો!",
+        application_deleted: "અરજી સફળતાપૂર્વક કાઢી નાખાઈ!",
+        please_select_action: "કૃપા કરીને પહેલા બલ્ક ક્રિયા પસંદ કરો.",
+        no_items_selected: "કોઈ આઇટમ પસંદ કરવામાં આવ્યા નથી.",
+        bulk_action_applied:
+          'બલ્ક ક્રિયા "{action}" {count} આઇટમ પર લાગુ કરવામાં આવી',
+        downloading_resume: "રિઝ્યુમ ડાઉનલોડ થઈ રહ્યું છે...",
+        translation_complete: "અનુવાદ સફળતાપૂર્વક પૂર્ણ થયો!",
+        translation_failed: "અનુવાદ નિષ્ફળ. કૃપા કરીને ફરી પ્રયાસ કરો.",
+        fill_english_first: "કૃપા કરીને પહેલા અંગ્રેજી સામગ્રી ભરો",
+
+        // Days and Months
+        monday: "સોમવાર",
+        tuesday: "મંગળવાર",
+        wednesday: "બુધવાર",
+        thursday: "ગુરુવાર",
+        friday: "શુક્રવાર",
+        saturday: "શનિવાર",
+        sunday: "રવિવાર",
+
+        january: "જાન્યુઆરી",
+        february: "ફેબ્રુઆરી",
+        march: "માર્ચ",
+        april: "એપ્રિલ",
+        may: "મે",
+        june: "જૂન",
+        july: "જુલાઈ",
+        august: "ઑગસ્ટ",
+        september: "સપ્ટેમ્બર",
+        october: "ઓક્ટોબર",
+        november: "નવેમ્બર",
+        december: "ડિસેમ્બર",
+      },
+    };
+
+    // Global variables for career management
+    const API_URL = "api/career_api.php";
+    let currentLanguage = "en";
+    let currentJobId = null;
+    let currentTab = "jobs";
+    let selectedJobs = new Set();
+    let selectedApplications = new Set();
+    let filteredApplications = [];
+    let editingDepartmentId = null;
+
+    // Pagination variables
+    let currentPage = 1;
+    const itemsPerPage = 10;
+
+    // Data variables (Fetched from API or fallback)
+    let jobData = [];
+    let applicationsData = [];
+    let departmentsData = [];
+
+    // Variables for delete confirmation
+    let pendingDeleteType = null;
+    let pendingDeleteId = null;
+    let pendingDeleteCallback = null;
+
+    // Initialize when DOM is loaded
+    document.addEventListener("DOMContentLoaded", function () {
+      // Sidebar toggle
+      const sidebarToggle = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebar-overlay");
+
+      // Logout button
+      const logoutBtn = document.getElementById("logout-btn");
+
+      // Language selector
+      const languageSelector = document.getElementById(
+        "global-language-selector"
+      );
+
+      // Mobile sidebar toggle functionality
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("active");
+          overlay.classList.toggle("active");
+        });
+      }
+
+      // Close sidebar when clicking on overlay
+      if (overlay) {
+        overlay.addEventListener("click", function () {
+          sidebar.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+      }
+
+      // Logout button functionality
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const confirmMsg = translations[currentLanguage].confirm_logout;
+          const successMsg = translations[currentLanguage].logout_success;
+
+          if (confirm(confirmMsg)) {
+            alert(successMsg);
+            window.location.href = "login.html";
+          }
+        });
+      }
+
+      // Language selector functionality
+      if (languageSelector) {
+        languageSelector.addEventListener("change", function (e) {
+          currentLanguage = e.target.value;
+
+          // Update flag
+          const flagImg = document.getElementById("current-flag");
+          switch (currentLanguage) {
+            case "hi":
+              flagImg.src = "https://flagcdn.com/w40/in.png";
+              break;
+            case "gu":
+              flagImg.src = "https://flagcdn.com/w40/in.png";
+              break;
+            default:
+              flagImg.src = "https://flagcdn.com/w40/gb.png";
+          }
+
+          // Translate everything
+          translateEverything();
+        });
+      }
+
+      // Close sidebar when window is resized to desktop size
+      window.addEventListener("resize", function () {
+        if (window.innerWidth >= 992) {
+          sidebar.classList.remove("active");
+          overlay.classList.remove("active");
+        }
+      });
+
+      // Auto-translate button functionality
+      const autoTranslateBtn = document.getElementById("auto-translate-btn");
+      if (autoTranslateBtn) {
+        autoTranslateBtn.addEventListener("click", autoTranslateJob);
+      }
+
+      // Initialize career management
+      initCareerManagement();
+
+      // Initial translation
+      translateEverything();
+
+      // Update time immediately and then every second
+      updateNavbarDateTime();
+      setInterval(updateNavbarDateTime, 1000);
+    });
+
+    // Helper to fetch API and handle non-JSON responses
+    async function fetchApi(url, options = {}) {
+      try {
+        const response = await fetch(url, options);
+        const text = await response.text();
+
+        try {
+          const data = JSON.parse(text);
+          return { ok: response.ok, ...data, originalResponse: response };
+        } catch (e) {
+          console.warn(`Non-JSON response from ${url}:`, text.substring(0, 100));
+          return { success: false, data: [], message: "Using fallback data" };
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
+        return { success: false, data: [], message: "Network error - using fallback" };
+      }
+    }
+
+    function getDepartmentName(code) {
+      const names = {
+        sales: translations[currentLanguage].sales_marketing,
+        construction: translations[currentLanguage].construction,
+        design: translations[currentLanguage].design_architecture,
+        operations: translations[currentLanguage].operations,
+        finance: translations[currentLanguage].finance_legal,
+        hr: translations[currentLanguage].human_resources,
+        it: translations[currentLanguage].it_technology,
+        admin: translations[currentLanguage].administration,
+      };
+      return names[code] || code;
+    }
+
+    function getStatusText(status) {
+      const statusMap = {
+        new: translations[currentLanguage].badge_new,
+        reviewed: translations[currentLanguage].badge_reviewed,
+        shortlisted: translations[currentLanguage].badge_shortlisted,
+        interview: translations[currentLanguage].badge_interview,
+        rejected: translations[currentLanguage].badge_rejected,
+        hired: translations[currentLanguage].badge_hired,
+        active: translations[currentLanguage].badge_active,
+        closed: translations[currentLanguage].badge_closed,
+        draft: translations[currentLanguage].badge_draft,
+      };
+      return statusMap[status] || status;
+    }
+
+    function showNotification(message, type) {
+      // Create notification element
+      const notification = document.createElement("div");
+      notification.className = `notification notification-${type}`;
+      notification.style.cssText = `
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: ${type === "success"
+          ? "#10b981"
+          : type === "warning"
+            ? "#f59e0b"
+            : type === "info"
+              ? "#3b82f6"
+              : "#ef4444"
+        };
+          color: white;
+          padding: 15px 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          z-index: 10000;
+          animation: slideIn 0.3s ease;
+        `;
+
+      notification.innerHTML = `
+          <i class="fas fa-${type === "success"
+          ? "check-circle"
+          : type === "warning"
+            ? "exclamation-triangle"
+            : type === "info"
+              ? "info-circle"
+              : "exclamation-circle"
+        }"></i>
+          <span class="ms-2">${message}</span>
+        `;
+
+      document.body.appendChild(notification);
+
+      // Remove after 3 seconds
+      setTimeout(() => {
+        notification.style.animation = "slideOut 0.3s ease";
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+
+      // Add CSS for animations
+      if (!document.querySelector("#notification-styles")) {
+        const style = document.createElement("style");
+        style.id = "notification-styles";
+        style.textContent = `
+            @keyframes slideIn {
+              from { transform: translateX(100%); opacity: 0; }
+              to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+              from { transform: translateX(0); opacity: 1; }
+              to { transform: translateX(100%); opacity: 0; }
+            }
+          `;
+        document.head.appendChild(style);
+      }
+    }
+
+    // Update time and date in real-time for top navbar
+    function updateNavbarDateTime() {
+      const now = new Date();
+
+      const dayNames = {
+        en: [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        hi: [
+          "रविवार",
+          "सोमवार",
+          "मंगलवार",
+          "बुधवार",
+          "गुरुवार",
+          "शुक्रवार",
+          "शनिवार",
+        ],
+        gu: [
+          "રવિવાર",
+          "સોમવાર",
+          "મંગળવાર",
+          "બુધવાર",
+          "ગુરુવાર",
+          "શુક્રવાર",
+          "શનિવાર",
+        ],
+      };
+
+      const monthNames = {
+        en: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ],
+        hi: [
+          "जनवरी",
+          "फरवरी",
+          "मार्च",
+          "अप्रैल",
+          "मई",
+          "जून",
+          "जुलाई",
+          "अगस्त",
+          "सितंबर",
+          "अक्टूबर",
+          "नवंबर",
+          "दिसंबर",
+        ],
+        gu: [
+          "જાન્યુઆરી",
+          "ફેબ્રુઆરી",
+          "માર્ચ",
+          "એપ્રિલ",
+          "મે",
+          "જૂન",
+          "જુલાઈ",
+          "ઑગસ્ટ",
+          "સપ્ટેમ્બર",
+          "ઓક્ટોબર",
+          "નવેમ્બર",
+          "ડિસેમ્બર",
+        ],
+      };
+
+      const dayName = dayNames[currentLanguage][now.getDay()];
+      const monthName = monthNames[currentLanguage][now.getMonth()];
+      const date = now.getDate();
+      const year = now.getFullYear();
+
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+
+      if (currentLanguage === "en") {
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById(
+          "navbar-current-time"
+        ).textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+        document.getElementById(
+          "navbar-current-date"
+        ).textContent = `${dayName}, ${monthName} ${date}, ${year}`;
+      } else if (currentLanguage === "hi") {
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById(
+          "navbar-current-time"
+        ).textContent = `${hours}:${minutes}:${seconds}`;
+        document.getElementById(
+          "navbar-current-date"
+        ).textContent = `${dayName}, ${date} ${monthName}, ${year}`;
+      } else if (currentLanguage === "gu") {
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById(
+          "navbar-current-time"
+        ).textContent = `${hours}:${minutes}:${seconds}`;
+        document.getElementById(
+          "navbar-current-date"
+        ).textContent = `${dayName}, ${date} ${monthName}, ${year}`;
+      }
+    }
+
+    // Translate UI elements
+    function translateUI() {
+      // Translate all elements with data-i18n attribute
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          element.textContent = translations[currentLanguage][key];
+        }
+      });
+
+      // Translate all placeholder elements
+      document
+        .querySelectorAll("[data-i18n-placeholder]")
+        .forEach((element) => {
+          const key = element.getAttribute("data-i18n-placeholder");
+          if (
+            translations[currentLanguage] &&
+            translations[currentLanguage][key]
+          ) {
+            element.placeholder = translations[currentLanguage][key];
+          }
+        });
+
+      // Translate all title attributes
+      document.querySelectorAll("[data-i18n-title]").forEach((element) => {
+        const key = element.getAttribute("data-i18n-title");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          element.title = translations[currentLanguage][key];
+        }
+      });
+
+      // Update select options
+      const selectOptions = document.querySelectorAll("option[data-i18n]");
+      selectOptions.forEach((option) => {
+        const key = option.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          option.textContent = translations[currentLanguage][key];
+        }
+      });
+    }
+
+    // Translate dates in real-time
+    function translateDates() {
+      updateNavbarDateTime();
+    }
+
+    // Load job postings
+    function loadJobPostings() {
+      const container = document.getElementById("job-postings-list");
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      if (jobData.length === 0) {
+        const noJobsMessage = document.getElementById("no-jobs-message");
+        if (noJobsMessage) {
+          noJobsMessage.classList.remove("d-none");
+        }
+        return;
+      }
+
+      const noJobsMessage = document.getElementById("no-jobs-message");
+      if (noJobsMessage) {
+        noJobsMessage.classList.add("d-none");
+      }
+
+      jobData.forEach((job) => {
+        const card = createJobCard(job);
+        container.appendChild(card);
+      });
+
+      // Add checkbox event listeners
+      document.querySelectorAll(".job-checkbox").forEach((checkbox) => {
+        checkbox.addEventListener("change", function () {
+          const jobId = parseInt(this.value);
+          if (this.checked) {
+            selectedJobs.add(jobId);
+          } else {
+            selectedJobs.delete(jobId);
+          }
+          updateJobBulkActions();
+        });
+      });
+
+      // Update active jobs count
+      const activeJobs = jobData.filter(
+        (job) => job.status === "active"
+      ).length;
+      const activeJobsCount = document.getElementById("active-jobs-count");
+      if (activeJobsCount) {
+        activeJobsCount.textContent = activeJobs;
+      }
+    }
+
+    function createJobCard(job) {
+      const card = document.createElement("div");
+      card.className = "job-posting-card";
+      card.setAttribute("data-department", job.department);
+      card.setAttribute("data-status", job.status);
+      card.setAttribute("data-type", job.type);
+
+      const statusBadge =
+        job.status === "active"
+          ? "badge-success"
+          : job.status === "draft"
+            ? "badge-warning"
+            : "badge-secondary";
+
+      const typeLabel =
+        job.type === "fulltime"
+          ? translations[currentLanguage].full_time
+          : job.type === "parttime"
+            ? translations[currentLanguage].part_time
+            : job.type === "contract"
+              ? translations[currentLanguage].contract
+              : job.type === "internship"
+                ? translations[currentLanguage].internship
+                : job.type === "remote"
+                  ? translations[currentLanguage].remote
+                  : translations[currentLanguage].hybrid;
+
+      const title = job.title[currentLanguage] || job.title.en || job.title;
+      const location =
+        job.location[currentLanguage] || job.location.en || job.location;
+      const experience =
+        job.experience[currentLanguage] ||
+        job.experience.en ||
+        job.experience;
+      const description =
+        job.description[currentLanguage] ||
+        job.description.en ||
+        job.description;
+
+      // Create a short description from the HTML content
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = description;
+      const shortDescription = tempDiv.textContent.substring(0, 150) + "...";
+
+      card.innerHTML = `
+          <div class="job-header">
+            <div>
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <input type="checkbox" class="job-checkbox" value="${job.id}">
+                <h3 class="job-title mb-0">${title}</h3>
+                <span class="badge ${statusBadge}">${getStatusText(
+        job.status
+      )}</span>
+              </div>
+              <div class="job-meta">
+                <span class="job-meta-item">
+                  <i class="fas fa-building"></i>
+                  <span>${getDepartmentName(job.department)}</span>
+                </span>
+                <span class="job-meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>${typeLabel}</span>
+                </span>
+                <span class="job-meta-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>${location}</span>
+                </span>
+                <span class="job-meta-item">
+                  <i class="fas fa-briefcase"></i>
+                  <span>${experience}</span>
+                </span>
+                <span class="job-meta-item">
+                  <i class="fas fa-users"></i>
+                  <span>${job.vacancies} ${translations[currentLanguage].vacancies_placeholder || "vacancies"
+        }</span>
+                </span>
+              </div>
+            </div>
+            <div class="d-flex flex-column gap-2">
+              <button class="btn-admin btn-admin-primary btn-sm edit-job-btn" data-job-id="${job.id
+        }">
+                <i class="fas fa-edit me-1"></i> ${translations[currentLanguage].edit || "Edit"
+        }
+              </button>
+              <button class="btn-admin btn-admin-success btn-sm view-applications-btn" data-job-id="${job.id
+        }">
+                <i class="fas fa-eye me-1"></i> ${translations[currentLanguage].view || "View"
+        } (${job.applications || 0})
+              </button>
+            </div>
+          </div>
+          <p class="job-description">${shortDescription}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <span class="text-muted me-3">
+                <i class="fas fa-calendar me-1"></i> ${translations[currentLanguage].posted || "Posted"
+        }: ${new Date(job.posted).toLocaleDateString()}
+              </span>
+              <span class="text-muted">
+                <i class="fas fa-clock me-1"></i> ${translations[currentLanguage].deadline || "Deadline"
+        }: ${job.deadline
+          ? new Date(job.deadline).toLocaleDateString()
+          : translations[currentLanguage].not_set || "Not set"
+        }
+              </span>
+            </div>
+            <div class="table-actions">
+              <button class="btn-action btn-view view-job-btn" data-job-id="${job.id
+        }" title="${translations[currentLanguage].view_details || "View Details"
+        }">
+                <i class="fas fa-eye"></i>
+              </button>
+              <button class="btn-action btn-translate view-translations-btn" data-job-id="${job.id
+        }" title="${translations[currentLanguage].view_translations || "View Translations"
+        }">
+                <i class="fas fa-language"></i>
+              </button>
+              <button class="btn-action btn-edit edit-job-btn-table" data-job-id="${job.id
+        }" title="${translations[currentLanguage].edit || "Edit"}">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn-action btn-delete delete-job-btn" data-job-id="${job.id
+        }" title="${translations[currentLanguage].delete || "Delete"}">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `;
+
+      // Add event listeners to buttons
+      const editButtons = card.querySelectorAll(
+        ".edit-job-btn, .edit-job-btn-table"
+      );
+      editButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const jobId = parseInt(this.getAttribute("data-job-id"));
+          editJob(jobId);
+        });
+      });
+
+      const viewJobBtn = card.querySelector(".view-job-btn");
+      if (viewJobBtn) {
+        viewJobBtn.addEventListener("click", function () {
+          const jobId = parseInt(this.getAttribute("data-job-id"));
+          viewJob(jobId);
+        });
+      }
+
+      const viewTranslationsBtn = card.querySelector(
+        ".view-translations-btn"
+      );
+      if (viewTranslationsBtn) {
+        viewTranslationsBtn.addEventListener("click", function () {
+          const jobId = parseInt(this.getAttribute("data-job-id"));
+          viewJobTranslations(jobId);
+        });
+      }
+
+      const deleteJobBtn = card.querySelector(".delete-job-btn");
+      if (deleteJobBtn) {
+        deleteJobBtn.addEventListener("click", function () {
+          const jobId = parseInt(this.getAttribute("data-job-id"));
+          showDeleteConfirmation("job", jobId, function () {
+            deleteJob(jobId);
+          });
+        });
+      }
+
+      const viewApplicationsBtn = card.querySelector(
+        ".view-applications-btn"
+      );
+      if (viewApplicationsBtn) {
+        viewApplicationsBtn.addEventListener("click", function () {
+          const jobId = parseInt(this.getAttribute("data-job-id"));
+          viewApplications(jobId);
+        });
+      }
+
+      return card;
+    }
+
+    // Load applications
+    function loadApplications() {
+      const tableBody = document.getElementById("applications-table-body");
+      if (!tableBody) return;
+
+      tableBody.innerHTML = "";
+
+      if (filteredApplications.length === 0) {
+        const noApplicationsMessage = document.getElementById(
+          "no-applications-message"
+        );
+        if (noApplicationsMessage) {
+          noApplicationsMessage.classList.remove("d-none");
+        }
+        const bulkActions = document.getElementById(
+          "application-bulk-actions"
+        );
+        if (bulkActions) {
+          bulkActions.classList.remove("show");
+        }
+        return;
+      }
+
+      const noApplicationsMessage = document.getElementById(
+        "no-applications-message"
+      );
+      if (noApplicationsMessage) {
+        noApplicationsMessage.classList.add("d-none");
+      }
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const appsToShow = filteredApplications.slice(startIndex, endIndex);
+
+      appsToShow.forEach((app) => {
+        const row = document.createElement("tr");
+
+        // Get status badge
+        let statusBadge = "";
+        switch (app.status) {
+          case "new":
+            statusBadge =
+              '<span class="badge badge-info">' +
+              getStatusText(app.status) +
+              "</span>";
+            break;
+          case "reviewed":
+            statusBadge =
+              '<span class="badge badge-secondary">' +
+              getStatusText(app.status) +
+              "</span>";
+            break;
+          case "shortlisted":
+            statusBadge =
+              '<span class="badge badge-success">' +
+              getStatusText(app.status) +
+              "</span>";
+            break;
+          case "interview":
+            statusBadge =
+              '<span class="badge badge-warning">' +
+              getStatusText(app.status) +
+              "</span>";
+            break;
+          case "rejected":
+            statusBadge =
+              '<span class="badge badge-danger">' +
+              getStatusText(app.status) +
+              "</span>";
+            break;
+          case "hired":
+            statusBadge =
+              '<span class="badge badge-success">' +
+              getStatusText(app.status) +
+              "</span>";
+            break;
+        }
+
+        row.innerHTML = `
+            <td>
+              <input type="checkbox" class="application-checkbox" value="${app.id
+          }">
+            </td>
+            <td>
+              <strong>${app.name}</strong>
+            </td>
+            <td>${app.email}</td>
+            <td>${app.jobTitle || app.job}</td>
+            <td>${new Date(app.appliedDate || app.applied).toLocaleDateString()}</td>
+            <td>${statusBadge}</td>
+            <td>${app.experience}</td>
+            <td>
+              <div class="table-actions">
+                <button class="btn-action btn-view view-application-btn" data-application-id="${app.id
+          }" title="${translations[currentLanguage].view || "View"}">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="btn-action btn-download download-resume-btn" data-application-id="${app.id
+          }" title="${translations[currentLanguage].download_resume || "Download Resume"
+          }">
+                  <i class="fas fa-download"></i>
+                </button>
+                <button class="btn-action btn-delete delete-application-btn" data-application-id="${app.id
+          }" title="${translations[currentLanguage].delete || "Delete"}">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          `;
+
+        tableBody.appendChild(row);
+      });
+
+      // Add event listeners to checkboxes
+      document
+        .querySelectorAll(".application-checkbox")
+        .forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const appId = parseInt(this.value);
+            if (this.checked) {
+              selectedApplications.add(appId);
+            } else {
+              selectedApplications.delete(appId);
+            }
+            updateApplicationBulkActions();
+          });
+        });
+
+      // Add event listeners to action buttons
+      document.querySelectorAll(".view-application-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const appId = parseInt(this.getAttribute("data-application-id"));
+          viewApplication(appId);
+        });
+      });
+
+      document.querySelectorAll(".download-resume-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const appId = parseInt(this.getAttribute("data-application-id"));
+          downloadResume(appId);
+        });
+      });
+
+      document.querySelectorAll(".delete-application-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const appId = parseInt(this.getAttribute("data-application-id"));
+          showDeleteConfirmation("application", appId, function () {
+            deleteApplication(appId);
+          });
+        });
+      });
+
+      // Setup pagination
+      setupApplicationsPagination();
+
+      // Select all checkbox
+      const selectAll = document.getElementById("select-all-applications");
+      if (selectAll) {
+        selectAll.addEventListener("change", function () {
+          const checkboxes = document.querySelectorAll(
+            ".application-checkbox"
+          );
+          checkboxes.forEach((checkbox) => {
+            checkbox.checked = this.checked;
+            const appId = parseInt(checkbox.value);
+            if (this.checked) {
+              selectedApplications.add(appId);
+            } else {
+              selectedApplications.delete(appId);
+            }
+          });
+          updateApplicationBulkActions();
+        });
+      }
+    }
+
+    function setupApplicationsPagination() {
+      const pagination = document.getElementById("applications-pagination");
+      if (!pagination) return;
+
+      pagination.innerHTML = "";
+
+      const totalPages = Math.ceil(
+        filteredApplications.length / itemsPerPage
+      );
+
+      if (totalPages <= 1) return;
+
+      // Previous button
+      const prevLi = document.createElement("li");
+      prevLi.className = "page-item" + (currentPage === 1 ? " disabled" : "");
+      prevLi.innerHTML = `
+          <a class="page-link" href="#" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        `;
+      prevLi.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+          currentPage--;
+          loadApplications();
+        }
+      });
+      pagination.appendChild(prevLi);
+
+      // Page numbers
+      const maxVisiblePages = 5;
+      let startPage = Math.max(
+        1,
+        currentPage - Math.floor(maxVisiblePages / 2)
+      );
+      let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+      if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        const pageLi = document.createElement("li");
+        pageLi.className = "page-item" + (i === currentPage ? " active" : "");
+        pageLi.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+
+        pageLi.addEventListener("click", function (e) {
+          e.preventDefault();
+          currentPage = i;
+          loadApplications();
+        });
+
+        pagination.appendChild(pageLi);
+      }
+
+      // Next button
+      const nextLi = document.createElement("li");
+      nextLi.className =
+        "page-item" + (currentPage === totalPages ? " disabled" : "");
+      nextLi.innerHTML = `
+          <a class="page-link" href="#" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        `;
+      nextLi.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+          currentPage++;
+          loadApplications();
+        }
+      });
+      pagination.appendChild(nextLi);
+    }
+
+    // Load departments
+    async function loadDepartments() {
+      try {
+        const result = await fetchApi(`${API_URL}?action=get_departments`);
+
+        if (result.success && result.data && result.data.length > 0) {
+          departmentsData = result.data.map((dept) => ({
+            ...dept,
+            name: {
+              en: dept.name && dept.name.en ? dept.name.en : (dept.name_en || dept.name || ""),
+              hi: dept.name && dept.name.hi ? dept.name.hi : (dept.name_hi || ""),
+              gu: dept.name && dept.name.gu ? dept.name.gu : (dept.name_gu || ""),
+            },
+            description: {
+              en: dept.description && dept.description.en ? dept.description.en : (dept.description_en || ""),
+              hi: dept.description && dept.description.hi ? dept.description.hi : (dept.description_hi || ""),
+              gu: dept.description && dept.description.gu ? dept.description.gu : (dept.description_gu || ""),
+            },
+          }));
+        } else {
+          // Fallback data for localhost/dev
+          departmentsData = [
+            {
+              id: 1,
+              name: { en: "Sales & Marketing", hi: "बिक्री और विपणन", gu: "વેચાણ અને માર્કેટિંગ" },
+              head: "Amit Shah",
+              status: "active",
+              openPositions: 3,
+              totalEmployees: 12
+            },
+            {
+              id: 2,
+              name: { en: "IT & Technology", hi: "आईटी और प्रौद्योगिकी", gu: "આઈટી અને ટેક્નોલોજી" },
+              head: "Priya Patel",
+              status: "active",
+              openPositions: 5,
+              totalEmployees: 25
+            },
+            {
+              id: 3,
+              name: { en: "Construction", hi: "निर्माण", gu: "બાંધકામ" },
+              head: "Rajesh Kumar",
+              status: "active",
+              openPositions: 2,
+              totalEmployees: 40
+            },
+            {
+              id: 4,
+              name: { en: "Human Resources", hi: "मानव संसाधन", gu: "માનવ સંસાધન" },
+              head: "Sneha Gupta",
+              status: "active",
+              openPositions: 1,
+              totalEmployees: 8
+            },
+            {
+              id: 5,
+              name: { en: "Finance", hi: "वित्त", gu: "નાણા" },
+              head: "Vikram Singh",
+              status: "active",
+              openPositions: 0,
+              totalEmployees: 6
+            },
+            {
+              id: 6,
+              name: { en: "Administration", hi: "प्रशासन", gu: "પ્રશાસન" },
+              head: "Ravi Verma",
+              status: "active",
+              openPositions: 1,
+              totalEmployees: 10
+            },
+            {
+              id: 7,
+              name: { en: "Design & Architecture", hi: "डिजाइन और वास्तुकला", gu: "ડિઝાઇન અને સ્થાપત્ય" },
+              head: "Anjali Desai",
+              status: "active",
+              openPositions: 2,
+              totalEmployees: 15
+            },
+            {
+              id: 8,
+              name: { en: "Operations", hi: "कार्य संचालन", gu: "કાર્યક્ષેત્ર" },
+              head: "Karan Mehta",
+              status: "active",
+              openPositions: 4,
+              totalEmployees: 20
+            }
+          ];
+        }
+      } catch (error) {
+        console.warn("Error loading departments:", error);
+        // Use same fallback data
+        departmentsData = [
+          {
+            id: 1,
+            name: { en: "Sales & Marketing", hi: "बिक्री और विपणन", gu: "વેચાણ અને માર્કેટિંગ" },
+            head: "Amit Shah",
+            status: "active",
+            openPositions: 3,
+            totalEmployees: 12
+          },
+          // ... rest of fallback data
+        ];
+      }
+
+      // Render departments
+      renderDepartments();
+
+      // Populate department dropdowns
+      populateDepartmentDropdowns();
+    }
+
+    // Render departments
+    function renderDepartments() {
+      const tableBody = document.getElementById("departments-table-body");
+      if (!tableBody) return;
+
+      tableBody.innerHTML = "";
+
+      departmentsData.forEach((dept) => {
+        const row = document.createElement("tr");
+        const statusBadge =
+          dept.status === "active" ? "badge-success" : "badge-secondary";
+
+        // Helper to safely get translated text
+        const getTranslated = (data) => {
+          if (!data) return "";
+          if (typeof data === "string") return data;
+          return data[currentLanguage] || data.en || "";
+        };
+
+        const name = getTranslated(dept.name);
+        const description = getTranslated(dept.description);
+
+        row.innerHTML = `
+            <td>
+              <strong>${name}</strong>
+              <div class="text-muted small mt-1">${description}</div>
+            </td>
+            <td>${dept.head}</td>
+            <td>
+              <span class="badge badge-primary">${dept.openPositions}</span>
+            </td>
+            <td>${dept.totalEmployees}</td>
+            <td><span class="badge ${statusBadge}">${getStatusText(
+          dept.status
+        )}</span></td>
+            <td>
+              <div class="table-actions">
+                <button class="btn-action btn-edit edit-department-btn" data-department-id="${dept.id
+          }" title="${translations[currentLanguage].edit || "Edit"}">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn-action btn-delete delete-department-btn" data-department-id="${dept.id
+          }" title="${translations[currentLanguage].delete || "Delete"}">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          `;
+
+        tableBody.appendChild(row);
+      });
+
+      // Add event listeners to department buttons
+      document.querySelectorAll(".edit-department-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const deptId = parseInt(this.getAttribute("data-department-id"));
+          editDepartment(deptId);
+        });
+      });
+
+      document.querySelectorAll(".delete-department-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const deptId = parseInt(this.getAttribute("data-department-id"));
+          showDeleteConfirmation("department", deptId, function () {
+            deleteDepartment(deptId);
+          });
+        });
+      });
+    }
+
+    function populateDepartmentDropdowns() {
+      const filterSelect = document.getElementById('job-department-filter');
+      const jobSelect = document.getElementById('job-department');
+
+      // Populate FILTER dropdown
+      if (filterSelect) {
+        const currentValue = filterSelect.value;
+        filterSelect.innerHTML = `
+            <option value="" data-i18n="all_departments">All Departments</option>
+        `;
+
+        // Add hardcoded filter options
+        const filterOptions = [
+          { value: 'sales', i18n: 'sales_marketing', text: 'Sales & Marketing' },
+          { value: 'construction', i18n: 'construction', text: 'Construction' },
+          { value: 'design', i18n: 'design_architecture', text: 'Design & Architecture' },
+          { value: 'operations', i18n: 'operations', text: 'Operations' },
+          { value: 'finance', i18n: 'finance_legal', text: 'Finance & Legal' },
+          { value: 'hr', i18n: 'human_resources', text: 'Human Resources' },
+          { value: 'it', i18n: 'it_technology', text: 'IT & Technology' },
+          { value: 'admin', i18n: 'administration', text: 'Administration' }
+        ];
+
+        filterOptions.forEach(opt => {
+          const option = document.createElement('option');
+          option.value = opt.value;
+          option.setAttribute('data-i18n', opt.i18n);
+          option.textContent = opt.text;
+          filterSelect.appendChild(option);
+        });
+
+        if (currentValue) filterSelect.value = currentValue;
+      }
+
+      // Populate JOB MODAL dropdown
+      if (jobSelect && departmentsData.length > 0) {
+        const currentValue = jobSelect.value;
+        jobSelect.innerHTML = '<option value="" data-i18n="select_department">Select Department</option>';
+
+        departmentsData.forEach(dept => {
+          const option = document.createElement('option');
+          const name = dept.name[currentLanguage] || dept.name.en || dept.name;
+          option.value = dept.id;
+          option.textContent = name;
+          jobSelect.appendChild(option);
+        });
+
+        if (currentValue) jobSelect.value = currentValue;
+      }
+
+      // Re-translate after populating
+      translateUI();
+    }
+
+    function updateJobBulkActions() {
+      const bulkActions = document.getElementById("job-bulk-actions");
+      const countSpan = document.getElementById("jobs-selected-count");
+
+      if (!bulkActions || !countSpan) return;
+
+      if (selectedJobs.size > 0) {
+        bulkActions.classList.add("show");
+        countSpan.textContent = `${selectedJobs.size} ${translations[currentLanguage].jobs_selected}`;
+      } else {
+        bulkActions.classList.remove("show");
+      }
+    }
+
+    function updateApplicationBulkActions() {
+      const bulkActions = document.getElementById("application-bulk-actions");
+      const countSpan = document.getElementById(
+        "applications-selected-count"
+      );
+
+      if (!bulkActions || !countSpan) return;
+
+      if (selectedApplications.size > 0) {
+        bulkActions.classList.add("show");
+        countSpan.textContent = `${selectedApplications.size} ${translations[currentLanguage].applications_selected}`;
+      } else {
+        bulkActions.classList.remove("show");
+      }
+    }
+
+    // Show delete confirmation modal
+    function showDeleteConfirmation(type, id, callback) {
+      pendingDeleteType = type;
+      pendingDeleteId = id;
+      pendingDeleteCallback = callback;
+
+      let title = "";
+      let message = "";
+
+      switch (type) {
+        case "job":
+          const job = jobData.find((j) => j.id === id);
+          title = job
+            ? job.title[currentLanguage] || job.title.en || job.title
+            : "Item";
+          message = translations[currentLanguage].confirm_delete_job;
+          break;
+        case "application":
+          const app = applicationsData.find((a) => a.id === id);
+          title = app ? app.name : "Item";
+          message = translations[currentLanguage].confirm_delete_application;
+          break;
+        case "department":
+          const dept = departmentsData.find((d) => d.id === id);
+          title = dept
+            ? dept.name[currentLanguage] || dept.name.en || dept.name
+            : "Item";
+          message = translations[currentLanguage].confirm_delete_department;
+          break;
+      }
+
+      document.getElementById("delete-modal-title").textContent = title;
+      document.getElementById("delete-modal-message").textContent = message;
+
+      const modal = new bootstrap.Modal(
+        document.getElementById("deleteConfirmationModal")
+      );
+      modal.show();
+    }
+
+    // Initialize career management
+    function initCareerManagement() {
+      console.log("Initializing career management...");
+
+      // Initialize data with fallback
+      initializeData();
+
+      // Tab switching
+      const tabs = document.querySelectorAll('[data-bs-toggle="tab"]');
+      tabs.forEach((tab) => {
+        tab.addEventListener("shown.bs.tab", function (event) {
+          const target = event.target.getAttribute("data-bs-target");
+          if (target === "#jobs") {
+            currentTab = "jobs";
+            selectedJobs.clear();
+            updateJobBulkActions();
+            loadJobPostings();
+          } else if (target === "#applications") {
+            currentTab = "applications";
+            currentPage = 1;
+            selectedApplications.clear();
+            updateApplicationBulkActions();
+            filterApplications();
+          } else if (target === "#departments") {
+            currentTab = "departments";
+            renderDepartments();
+          }
+        });
+      });
+
+      // Add Job Button
+      const addJobBtn = document.getElementById("add-job-btn");
+      const addFirstJobBtn = document.getElementById("add-first-job");
+      if (addJobBtn) {
+        addJobBtn.addEventListener("click", function () {
+          addNewJob();
+        });
+      }
+      if (addFirstJobBtn) {
+        addFirstJobBtn.addEventListener("click", function () {
+          addNewJob();
+        });
+      }
+
+      // Export Button
+      const exportBtn = document.getElementById("export-btn");
+      if (exportBtn) {
+        exportBtn.addEventListener("click", exportData);
+      }
+
+      // Job Search and Filters
+      const jobSearch = document.getElementById("job-search");
+      if (jobSearch) {
+        jobSearch.addEventListener("input", filterJobs);
+      }
+
+      const jobDeptFilter = document.getElementById("job-department-filter");
+      const jobStatusFilter = document.getElementById("job-status-filter");
+      const jobTypeFilter = document.getElementById("job-type-filter");
+
+      if (jobDeptFilter) {
+        jobDeptFilter.addEventListener("change", filterJobs);
+      }
+      if (jobStatusFilter) {
+        jobStatusFilter.addEventListener("change", filterJobs);
+      }
+      if (jobTypeFilter) {
+        jobTypeFilter.addEventListener("change", filterJobs);
+      }
+
+      // Application Search and Filters
+      const applicationSearch = document.getElementById("application-search");
+      if (applicationSearch) {
+        applicationSearch.addEventListener("input", filterApplications);
+      }
+
+      const appStatusFilter = document.getElementById(
+        "application-status-filter"
+      );
+      const appJobFilter = document.getElementById("application-job-filter");
+      const appDateFilter = document.getElementById(
+        "application-date-filter"
+      );
+
+      if (appStatusFilter) {
+        appStatusFilter.addEventListener("change", filterApplications);
+      }
+      if (appJobFilter) {
+        appJobFilter.addEventListener("change", filterApplications);
+      }
+      if (appDateFilter) {
+        appDateFilter.addEventListener("change", filterApplications);
+      }
+
+      // Department Search
+      const departmentSearch = document.getElementById("department-search");
+      if (departmentSearch) {
+        departmentSearch.addEventListener("input", filterDepartments);
+      }
+
+      // Job Bulk Actions
+      const applyJobBulkAction = document.getElementById(
+        "apply-job-bulk-action"
+      );
+      if (applyJobBulkAction) {
+        applyJobBulkAction.addEventListener(
+          "click",
+          applyJobBulkActionHandler
+        );
+      }
+
+      // Application Bulk Actions
+      const applyAppBulkAction = document.getElementById(
+        "apply-application-bulk-action"
+      );
+      if (applyAppBulkAction) {
+        applyAppBulkAction.addEventListener(
+          "click",
+          applyApplicationBulkActionHandler
+        );
+      }
+
+      // Save Job Button
+      const saveJobBtn = document.getElementById("save-job-btn");
+      if (saveJobBtn) {
+        saveJobBtn.addEventListener("click", saveJob);
+      }
+
+      // Auto Translate Button
+      const autoTranslateBtn = document.getElementById("auto-translate-btn");
+      if (autoTranslateBtn) {
+        autoTranslateBtn.addEventListener("click", autoTranslateJob);
+      }
+
+      // Department Form
+      const departmentForm = document.getElementById("department-form");
+      if (departmentForm) {
+        departmentForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          saveDepartment(e);
+        });
+      }
+
+      // Confirm Delete Button
+      const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
+      if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener("click", function () {
+          if (pendingDeleteCallback) {
+            pendingDeleteCallback();
+          }
+          const modal = bootstrap.Modal.getInstance(
+            document.getElementById("deleteConfirmationModal")
+          );
+          if (modal) {
+            modal.hide();
+          }
+        });
+      }
+
+      // Setup rich text editor functionality
+      setupRichTextEditors();
+    }
+
+    // Initialize data with fallback
+    function initializeData() {
+      // Fallback job data
+      jobData = [
+        {
+          id: 1,
+          title: { en: "Senior Architect", hi: "वरिष्ठ वास्तुकार", gu: "વરિષ્ઠ આર્કિટેક્ટ" },
+          description: { en: "We are looking for an experienced architect...", hi: "हम एक अनुभवी वास्तुकार की तलाश कर रहे हैं...", gu: "અમે અનુભવી આર્કિટેક્ટ શોધી રહ્યા છીએ..." },
+          requirements: { en: "5+ years experience...", hi: "5+ साल का अनुभव...", gu: "5+ વર્ષનો અનુભવ..." },
+          benefits: { en: "Health insurance...", hi: "स्वास्थ्य बीमा...", gu: "આરોગ્ય વીમો..." },
+          department: "construction",
+          type: "fulltime",
+          location: { en: "Ahmedabad", hi: "अहमदाबाद", gu: "અમદાવાદ" },
+          experience: { en: "5-8 Years", hi: "5-8 साल", gu: "5-8 વર્ષ" },
+          salary: { en: "12-18 LPA", hi: "12-18 लाख", gu: "12-18 લાખ" },
+          vacancies: 2,
+          status: "active",
+          applications: 4,
+          deadline: "2024-12-31",
+          posted: "2024-01-15"
+        },
+        {
+          id: 2,
+          title: { en: "Sales Executive", hi: "बिक्री कार्यकारी", gu: "સેલ્સ એક્ઝિક્યુટિવ" },
+          description: { en: "Join our dynamic sales team...", hi: "हमारी गतिशील बिक्री टीम में शामिल हों...", gu: "અમારી ડાયનેમિક સેલ્સ ટીમમાં જોડાઓ..." },
+          requirements: { en: "Strong communication...", hi: "मजबूत संचार...", gu: "મજબૂત સંચાર..." },
+          benefits: { en: "Incentives...", hi: "प्रोत्साहन...", gu: "પ્રોત્સાહન..." },
+          department: "sales",
+          type: "fulltime",
+          location: { en: "Surat", hi: "सूरत", gu: "સુરત" },
+          experience: { en: "1-3 Years", hi: "1-3 साल", gu: "1-3 વર્ષ" },
+          salary: { en: "4-6 LPA", hi: "4-6 लाख", gu: "4-6 લાખ" },
+          vacancies: 5,
+          status: "active",
+          applications: 8,
+          deadline: "2024-11-30",
+          posted: "2024-02-01"
+        },
+        {
+          id: 3,
+          title: { en: "Project Manager", hi: "परियोजना प्रबंधक", gu: "પ્રોજેક્ટ મેનેજર" },
+          description: { en: "Manage construction projects...", hi: "निर्माण परियोजनाओं का प्रबंधन करें...", gu: "કોન્સ્ટ્રક્શન પ્રોજેક્ટ્સ મેનેજ કરો..." },
+          requirements: { en: "PMP certification...", hi: "पीएमपी प्रमाणन...", gu: "PMP સર્ટિફિકેશન..." },
+          benefits: { en: "Company car...", hi: "कंपनी की कार...", gu: "કંપની કાર..." },
+          department: "construction",
+          type: "fulltime",
+          location: { en: "Ahmedabad", hi: "अहमदाबाद", gu: "અમદાવાદ" },
+          experience: { en: "8-12 Years", hi: "8-12 साल", gu: "8-12 વર્ષ" },
+          salary: { en: "18-25 LPA", hi: "18-25 लाख", gu: "18-25 લાખ" },
+          vacancies: 1,
+          status: "active",
+          applications: 2,
+          deadline: "2024-10-31",
+          posted: "2024-01-20"
+        },
+        {
+          id: 4,
+          title: { en: "Interior Designer", hi: "इंटीरियर डिजाइनर", gu: "ઇન્ટિરિયર ડિઝાઇનર" },
+          description: { en: "Creative interior design work...", hi: "रचनात्मक इंटीरियर डिजाइन कार्य...", gu: "ક્રિએટિવ ઇન્ટિરિયર ડિઝાઇન વર્ક..." },
+          requirements: { en: "B.Des degree...", hi: "बी.डेस डिग्री...", gu: "B.Des ડિગ્રી..." },
+          benefits: { en: "Flexible hours...", hi: "लचीले घंटे...", gu: "ફ્લેક્સિબલ આવર્સ..." },
+          department: "design",
+          type: "fulltime",
+          location: { en: "Vadodara", hi: "वडोदरा", gu: "વડોદરા" },
+          experience: { en: "2-4 Years", hi: "2-4 साल", gu: "2-4 વર્ષ" },
+          salary: { en: "5-8 LPA", hi: "5-8 लाख", gu: "5-8 લાખ" },
+          vacancies: 3,
+          status: "active",
+          applications: 5,
+          deadline: "2024-09-30",
+          posted: "2024-02-05"
+        },
+        {
+          id: 5,
+          title: { en: "HR Manager", hi: "एचआर मैनेजर", gu: "HR મેનેજર" },
+          description: { en: "Human resources management...", hi: "मानव संसाधन प्रबंधन...", gu: "માનવ સંસાધન વ્યવસ્થાપન..." },
+          requirements: { en: "MBA in HR...", hi: "एचआर में एमबीए...", gu: "HR માં MBA..." },
+          benefits: { en: "Annual bonus...", hi: "वार्षिक बोनस...", gu: "વાર્ષિક બોનસ..." },
+          department: "hr",
+          type: "fulltime",
+          location: { en: "Ahmedabad", hi: "अहमदाबाद", gu: "અમદાવાદ" },
+          experience: { en: "5-7 Years", hi: "5-7 साल", gu: "5-7 વર્ષ" },
+          salary: { en: "10-15 LPA", hi: "10-15 लाख", gu: "10-15 લાખ" },
+          vacancies: 1,
+          status: "draft",
+          applications: 0,
+          deadline: "2024-08-31",
+          posted: "2024-02-10"
+        },
+        {
+          id: 6,
+          title: { en: "IT Support Specialist", hi: "आईटी सपोर्ट विशेषज्ञ", gu: "IT સપોર્ટ સ્પેશિયલિસ્ટ" },
+          description: { en: "Technical support and maintenance...", hi: "तकनीकी सहायता और रखरखाव...", gu: "ટેકનિકલ સપોર્ટ અને મેઇન્ટેનન્સ..." },
+          requirements: { en: "CCNA certification...", hi: "सीसीएनए प्रमाणन...", gu: "CCNA સર્ટિફિકેશન..." },
+          benefits: { en: "Training budget...", hi: "प्रशिक्षण बजट...", gu: "ટ્રેનિંગ બજેટ..." },
+          department: "it",
+          type: "fulltime",
+          location: { en: "Gandhinagar", hi: "गांधीनगर", gu: "ગાંધીનગર" },
+          experience: { en: "3-5 Years", hi: "3-5 साल", gu: "3-5 વર્ષ" },
+          salary: { en: "6-9 LPA", hi: "6-9 लाख", gu: "6-9 લાખ" },
+          vacancies: 2,
+          status: "active",
+          applications: 3,
+          deadline: "2024-07-31",
+          posted: "2024-01-25"
+        },
+        {
+          id: 7,
+          title: { en: "Accountant", hi: "लेखाकार", gu: "એકાઉન્ટન્ટ" },
+          description: { en: "Financial accounting and reporting...", hi: "वित्तीय लेखा और रिपोर्टिंग...", gu: "ફાઇનાન્શિયલ એકાઉન્ટિંગ અને રિપોર્ટિંગ..." },
+          requirements: { en: "CA/CPA qualified...", hi: "सीए/सीपीए योग्य...", gu: "CA/CPA યોગ્ય..." },
+          benefits: { en: "Provident fund...", hi: "भविष्य निधि...", gu: "પ્રોવિડન્ટ ફંડ..." },
+          department: "finance",
+          type: "fulltime",
+          location: { en: "Ahmedabad", hi: "अहमदाबाद", gu: "અમદાવાદ" },
+          experience: { en: "4-6 Years", hi: "4-6 साल", gu: "4-6 વર્ષ" },
+          salary: { en: "8-12 LPA", hi: "8-12 लाख", gu: "8-12 લાખ" },
+          vacancies: 2,
+          status: "closed",
+          applications: 12,
+          deadline: "2024-06-30",
+          posted: "2024-01-10"
+        },
+        {
+          id: 8,
+          title: { en: "Administrative Assistant", hi: "प्रशासनिक सहायक", gu: "એડમિનિસ્ટ્રેટિવ એસિસ્ટન્ટ" },
+          description: { en: "Office administration support...", hi: "कार्यालय प्रशासन सहायता...", gu: "ઓફિસ એડમિનિસ્ટ્રેશન સપોર્ટ..." },
+          requirements: { en: "Proficient in MS Office...", hi: "एमएस ऑफिस में कुशल...", gu: "MS Office માં પ્રોફિશિયન્ટ..." },
+          benefits: { en: "Paid leave...", hi: "वेतनभोगी अवकाश...", gu: "પેડ લીવ..." },
+          department: "admin",
+          type: "fulltime",
+          location: { en: "Surat", hi: "सूरत", gu: "સુરત" },
+          experience: { en: "1-2 Years", hi: "1-2 साल", gu: "1-2 વર્ષ" },
+          salary: { en: "3-4 LPA", hi: "3-4 लाख", gu: "3-4 લાખ" },
+          vacancies: 3,
+          status: "active",
+          applications: 7,
+          deadline: "2024-05-31",
+          posted: "2024-02-15"
+        }
+      ];
+
+      // Fallback applications data
+      applicationsData = [
+        {
+          id: 1,
+          name: "Rahul Sharma",
+          email: "rahul@example.com",
+          phone: "+91 9876543210",
+          jobTitle: "Senior Architect",
+          appliedDate: "2024-03-10",
+          status: "new",
+          experience: "6 Years",
+          education: "B.Arch",
+          resume: "resume.pdf",
+          coverLetter: "I am excited to apply..."
+        },
+        {
+          id: 2,
+          name: "Priya Singh",
+          email: "priya@example.com",
+          phone: "+91 9876543211",
+          jobTitle: "Sales Executive",
+          appliedDate: "2024-03-12",
+          status: "shortlisted",
+          experience: "2 Years",
+          education: "MBA",
+          resume: "resume_priya.pdf",
+          coverLetter: "Here is my application..."
+        },
+        {
+          id: 3,
+          name: "Amit Patel",
+          email: "amit@example.com",
+          phone: "+91 9876543212",
+          jobTitle: "Project Manager",
+          appliedDate: "2024-03-08",
+          status: "interview",
+          experience: "10 Years",
+          education: "B.Tech Civil",
+          resume: "amit_resume.pdf",
+          coverLetter: "With 10 years experience..."
+        },
+        {
+          id: 4,
+          name: "Sneha Gupta",
+          email: "sneha@example.com",
+          phone: "+91 9876543213",
+          jobTitle: "Interior Designer",
+          appliedDate: "2024-03-15",
+          status: "new",
+          experience: "3 Years",
+          education: "B.Des",
+          resume: "sneha_resume.pdf",
+          coverLetter: "Passionate about design..."
+        },
+        {
+          id: 5,
+          name: "Rajesh Kumar",
+          email: "rajesh@example.com",
+          phone: "+91 9876543214",
+          jobTitle: "HR Manager",
+          appliedDate: "2024-03-05",
+          status: "reviewed",
+          experience: "6 Years",
+          education: "MBA HR",
+          resume: "rajesh_resume.pdf",
+          coverLetter: "Experienced HR professional..."
+        },
+        {
+          id: 6,
+          name: "Anjali Desai",
+          email: "anjali@example.com",
+          phone: "+91 9876543215",
+          jobTitle: "IT Support Specialist",
+          appliedDate: "2024-03-18",
+          status: "shortlisted",
+          experience: "4 Years",
+          education: "B.Tech IT",
+          resume: "anjali_resume.pdf",
+          coverLetter: "Technical support expert..."
+        },
+        {
+          id: 7,
+          name: "Vikram Singh",
+          email: "vikram@example.com",
+          phone: "+91 9876543216",
+          jobTitle: "Accountant",
+          appliedDate: "2024-03-03",
+          status: "hired",
+          experience: "5 Years",
+          education: "CA",
+          resume: "vikram_resume.pdf",
+          coverLetter: "Certified accountant..."
+        },
+        {
+          id: 8,
+          name: "Meera Joshi",
+          email: "meera@example.com",
+          phone: "+91 9876543217",
+          jobTitle: "Administrative Assistant",
+          appliedDate: "2024-03-20",
+          status: "new",
+          experience: "1 Year",
+          education: "B.Com",
+          resume: "meera_resume.pdf",
+          coverLetter: "Detail-oriented assistant..."
+        },
+        {
+          id: 9,
+          name: "Karan Mehta",
+          email: "karan@example.com",
+          phone: "+91 9876543218",
+          jobTitle: "Senior Architect",
+          appliedDate: "2024-03-11",
+          status: "rejected",
+          experience: "7 Years",
+          education: "M.Arch",
+          resume: "karan_resume.pdf",
+          coverLetter: "Architect with 7 years..."
+        },
+        {
+          id: 10,
+          name: "Neha Sharma",
+          email: "neha@example.com",
+          phone: "+91 9876543219",
+          jobTitle: "Sales Executive",
+          appliedDate: "2024-03-14",
+          status: "interview",
+          experience: "3 Years",
+          education: "MBA Marketing",
+          resume: "neha_resume.pdf",
+          coverLetter: "Sales professional..."
+        },
+        {
+          id: 11,
+          name: "Ravi Verma",
+          email: "ravi@example.com",
+          phone: "+91 9876543220",
+          jobTitle: "Project Manager",
+          appliedDate: "2024-03-09",
+          status: "hired",
+          experience: "9 Years",
+          education: "B.E Civil",
+          resume: "ravi_resume.pdf",
+          coverLetter: "Project management expert..."
+        },
+        {
+          id: 12,
+          name: "Pooja Patel",
+          email: "pooja@example.com",
+          phone: "+91 9876543221",
+          jobTitle: "Interior Designer",
+          appliedDate: "2024-03-16",
+          status: "reviewed",
+          experience: "2 Years",
+          education: "Diploma in Interior Design",
+          resume: "pooja_resume.pdf",
+          coverLetter: "Creative designer..."
+        }
+      ];
+
+      filteredApplications = [...applicationsData];
+
+      // Load departments
+      loadDepartments();
+
+      // Update stats
+      updateStats();
+
+      // Load initial views
+      loadJobPostings();
+      loadApplications();
+    }
+
+    // Update Stats
+    function updateStats() {
+      // Active Job Postings
+      const activeJobs = jobData.filter((j) => j.status === "active").length;
+      const activeJobsEl = document.getElementById("active-jobs-count");
+      if (activeJobsEl) activeJobsEl.textContent = activeJobs;
+
+      // Total Applications
+      const totalAppsEl = document.getElementById("total-applications-count");
+      if (totalAppsEl) totalAppsEl.textContent = applicationsData.length;
+
+      // Pending Review (status = 'new')
+      const pendingReview = applicationsData.filter(
+        (a) => a.status === "new"
+      ).length;
+      const pendingReviewEl = document.getElementById("pending-review-count");
+      if (pendingReviewEl) pendingReviewEl.textContent = pendingReview;
+
+      // New Hires (status = 'hired')
+      const hired = applicationsData.filter(
+        (a) => a.status === "hired"
+      ).length;
+      const hiredEl = document.getElementById("new-hires-count");
+      if (hiredEl) hiredEl.textContent = hired;
+    }
+
+    // Call the function when needed - for example:
+    document.addEventListener('DOMContentLoaded', updateStats);
+    // Or when data changes:
+    // updateStats();
+
+    async function handleTranslation() {
+      const translateButton = document.querySelector('.btn-translate');
+      const originalText = translateButton ? translateButton.innerHTML : null;
+
+      try {
+        if (translationPromises && translationPromises.length > 0) {
+          const translationResults = await Promise.all(translationPromises);
+
+          // Update the target elements with translations
+          translationResults.forEach((translatedText, index) => {
+            if (fieldsToTranslate && fieldsToTranslate[index]) {
+              const { element, isRichText } = fieldsToTranslate[index];
+              if (element) {
+                if (isRichText) {
+                  element.innerHTML = translatedText;
+                } else {
+                  element.value = translatedText;
+                }
+              }
+            }
+          });
+
+          showNotification('Translation completed successfully!', 'success');
+        }
+      } catch (error) {
+        console.error('Translation error:', error);
+        showNotification('Error during translation. Please try again.', 'error');
+      } finally {
+        const translateButton = document.querySelector('.btn-translate');
+        if (translateButton) {
+          translateButton.innerHTML = originalText || 'Auto Translate';
+          translateButton.disabled = false;
+        }
+      }
+    }
+
+    // To use this function, you would call it:
+    // handleTranslation();
+
+    // Filter jobs based on search and filters
+    function filterJobs() {
+      const searchTerm = document.getElementById('job-search').value.toLowerCase();
+      const departmentFilter = document.getElementById('job-department-filter').value;
+      const statusFilter = document.getElementById('job-status-filter').value;
+      const typeFilter = document.getElementById('job-type-filter').value;
+
+      const filteredJobs = jobData.filter(job => {
+        // Search term filter
+        const matchesSearch = !searchTerm ||
+          (job.title && job.title.toLowerCase().includes(searchTerm)) ||
+          (job.description && job.description.toLowerCase().includes(searchTerm)) ||
+          (job.location && job.location.toLowerCase().includes(searchTerm));
+
+        // Department filter
+        const matchesDepartment = !departmentFilter || job.department === departmentFilter;
+
+        // Status filter
+        const matchesStatus = !statusFilter || job.status === statusFilter;
+
+        // Job type filter
+        const matchesType = !typeFilter || job.type === typeFilter;
+
+        return matchesSearch && matchesDepartment && matchesStatus && matchesType;
+      });
+
+      // Update the job listings
+      const jobsContainer = document.getElementById('jobs-container');
+      if (jobsContainer) {
+        // Clear current listings
+        jobsContainer.innerHTML = '';
+
+        if (filteredJobs.length === 0) {
+          jobsContainer.innerHTML = `
+            <div class="alert alert-info">
+              ${translations[currentLanguage].no_jobs_found}
+            </div>
+          `;
+        } else {
+          // Add filtered jobs
+          filteredJobs.forEach(job => {
+            const jobCard = createJobCard(job);
+            if (jobCard) {
+              jobsContainer.appendChild(jobCard);
+            }
+          });
+        }
+      }
+
+      // Update stats
+      updateStats();
+    }
+
+    // Translate text function (Google Translate GTX API)
+    async function translateText(text, sourceLang, targetLang) {
+      if (!text) return "";
+      try {
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data && data[0]) {
+          return data[0].map(part => part[0]).join("");
+        }
+        return text;
+      } catch (error) {
+        console.warn("Translation failed:", error);
+        return text;
+      }
+    }
+
+    // Auto translate job content
+    async function autoTranslateJob() {
+      // Get English content
+      const titleEn = document.getElementById("job-title-en").value.trim();
+      const descriptionEn = document.getElementById("job-description-en").innerHTML.trim();
+      const requirementsEn = document.getElementById("job-requirements-en").innerHTML.trim();
+      const benefitsEn = document.getElementById("job-benefits-en").innerHTML.trim();
+
+      if (!titleEn && !descriptionEn) {
+        showNotification(translations[currentLanguage].fill_english_first || "Please fill English fields first", "warning");
+        return;
+      }
+
+      showNotification(translations[currentLanguage].translating || "Translating content...", "info");
+
+      try {
+        // Translate to Hindi
+        const [titleHi, descriptionHi, requirementsHi, benefitsHi] = await Promise.all([
+          titleEn ? translateText(titleEn, 'en', 'hi') : '',
+          descriptionEn ? translateText(descriptionEn, 'en', 'hi') : '',
+          requirementsEn ? translateText(requirementsEn, 'en', 'hi') : '',
+          benefitsEn ? translateText(benefitsEn, 'en', 'hi') : ''
+        ]);
+
+        // Translate to Gujarati
+        const [titleGu, descriptionGu, requirementsGu, benefitsGu] = await Promise.all([
+          titleEn ? translateText(titleEn, 'en', 'gu') : '',
+          descriptionEn ? translateText(descriptionEn, 'en', 'gu') : '',
+          requirementsEn ? translateText(requirementsEn, 'en', 'gu') : '',
+          benefitsEn ? translateText(benefitsEn, 'en', 'gu') : ''
+        ]);
+
+        // Update Hindi fields
+        if (document.getElementById("job-title-hi")) document.getElementById("job-title-hi").value = titleHi;
+        if (document.getElementById("job-description-hi")) document.getElementById("job-description-hi").innerHTML = descriptionHi;
+        if (document.getElementById("job-requirements-hi")) document.getElementById("job-requirements-hi").innerHTML = requirementsHi;
+        if (document.getElementById("job-benefits-hi")) document.getElementById("job-benefits-hi").innerHTML = benefitsHi;
+
+        // Update Gujarati fields
+        if (document.getElementById("job-title-gu")) document.getElementById("job-title-gu").value = titleGu;
+        if (document.getElementById("job-description-gu")) document.getElementById("job-description-gu").innerHTML = descriptionGu;
+        if (document.getElementById("job-requirements-gu")) document.getElementById("job-requirements-gu").innerHTML = requirementsGu;
+        if (document.getElementById("job-benefits-gu")) document.getElementById("job-benefits-gu").innerHTML = benefitsGu;
+
+        showNotification(translations[currentLanguage].translation_complete || "Translation completed successfully!", "success");
+      } catch (error) {
+        console.error('Translation error:', error);
+        showNotification(translations[currentLanguage].translation_failed || "Translation failed", "error");
+      }
+    }
+
+    // Apply job bulk actions
+    function applyJobBulkActionHandler() {
+      const action = document.getElementById("job-bulk-action").value;
+      if (!action) {
+        showNotification(
+          translations[currentLanguage].please_select_action,
+          "error"
+        );
+        return;
+      }
+
+      if (selectedJobs.size === 0) {
+        showNotification(
+          translations[currentLanguage].no_items_selected,
+          "error"
+        );
+        return;
+      }
+
+      // Confirm for delete action
+      if (action === "delete") {
+        const confirmMsg = translations[
+          currentLanguage
+        ].confirm_bulk_delete_jobs.replace("{count}", selectedJobs.size);
+        if (!confirm(confirmMsg)) {
+          return;
+        }
+      }
+
+      selectedJobs.forEach((jobId) => {
+        const index = jobData.findIndex((j) => j.id === jobId);
+        if (index !== -1) {
+          switch (action) {
+            case "activate":
+              jobData[index].status = "active";
+              break;
+            case "deactivate":
+              jobData[index].status = "closed";
+              break;
+            case "duplicate":
+              // Create duplicate
+              const original = jobData[index];
+              const newId = Math.max(...jobData.map((j) => j.id)) + 1;
+              const duplicate = JSON.parse(JSON.stringify(original));
+              duplicate.id = newId;
+              duplicate.title.en = original.title.en + " (Copy)";
+              duplicate.status = "draft";
+              duplicate.applications = 0;
+              jobData.push(duplicate);
+              break;
+            case "delete":
+              jobData.splice(index, 1);
+              break;
+          }
+        }
+      });
+
+      // Clear selection
+      selectedJobs.clear();
+
+      // Update UI
+      loadJobPostings();
+      updateJobBulkActions();
+      updateStats();
+
+      showNotification(
+        `Bulk action "${action}" applied to ${selectedJobs.size} item(s)`,
+        "success"
+      );
+    }
+
+    // Apply application bulk actions
+    function applyApplicationBulkActionHandler() {
+      const action = document.getElementById("application-bulk-action").value;
+      if (!action) {
+        showNotification(
+          translations[currentLanguage].please_select_action,
+          "error"
+        );
+        return;
+      }
+
+      if (selectedApplications.size === 0) {
+        showNotification(
+          translations[currentLanguage].no_items_selected,
+          "error"
+        );
+        return;
+      }
+
+      // Confirm for delete action
+      if (action === "delete") {
+        const confirmMsg = translations[
+          currentLanguage
+        ].confirm_bulk_delete_applications.replace(
+          "{count}",
+          selectedApplications.size
+        );
+        if (!confirm(confirmMsg)) {
+          return;
+        }
+      }
+
+      selectedApplications.forEach((appId) => {
+        const index = applicationsData.findIndex((a) => a.id === appId);
+        if (index !== -1) {
+          switch (action) {
+            case "shortlist":
+              applicationsData[index].status = "shortlisted";
+              break;
+            case "reject":
+              applicationsData[index].status = "rejected";
+              break;
+            case "schedule-interview":
+              applicationsData[index].status = "interview";
+              break;
+            case "delete":
+              applicationsData.splice(index, 1);
+              break;
+          }
+        }
+      });
+
+      // Update filtered applications
+      filteredApplications = filteredApplications
+        .map((app) => {
+          if (selectedApplications.has(app.id)) {
+            switch (action) {
+              case "shortlist":
+                return { ...app, status: "shortlisted" };
+              case "reject":
+                return { ...app, status: "rejected" };
+              case "schedule-interview":
+                return { ...app, status: "interview" };
+              default:
+                return app;
+            }
+          }
+          return app;
+        })
+        .filter(
+          (app) => action !== "delete" || !selectedApplications.has(app.id)
+        );
+
+      // Clear selection
+      selectedApplications.clear();
+
+      // Update UI
+      loadApplications();
+      updateApplicationBulkActions();
+
+      showNotification(
+        `Bulk action "${action}" applied to ${selectedApplications.size} item(s)`,
+        "success"
+      );
+    }
+
+    // Export data
+    function exportData() {
+      // Create CSV content
+      let csvContent = "";
+
+      if (currentTab === "jobs") {
+        // Export jobs
+        csvContent =
+          "Job Title,Department,Type,Location,Experience,Salary,Status,Vacancies,Applications\n";
+        jobData.forEach((job) => {
+          csvContent += `"${job.title.en || job.title}","${getDepartmentName(
+            job.department
+          )}","${job.type}","${job.location.en || job.location}","${job.experience.en || job.experience}","${job.salary.en || job.salary
+            }","${job.status}","${job.vacancies}","${job.applications || 0}"\n`;
+        });
+      } else if (currentTab === "applications") {
+        // Export applications
+        csvContent =
+          "Name,Email,Job Applied,Applied Date,Status,Experience,Phone\n";
+        applicationsData.forEach((app) => {
+          csvContent += `"${app.name}","${app.email}","${app.jobTitle || app.job}","${app.appliedDate || app.applied}","${app.status}","${app.experience}","${app.phone}"\n`;
+        });
+      } else if (currentTab === "departments") {
+        // Export departments
+        csvContent =
+          "Department Name,Head,Open Positions,Total Employees,Status\n";
+        departmentsData.forEach((dept) => {
+          csvContent += `"${dept.name.en || dept.name}","${dept.head}","${dept.openPositions}","${dept.totalEmployees}","${dept.status}"\n`;
+        });
+      }
+
+      // Create download link
+      const blob = new Blob([csvContent], { type: "text/csv" });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `career_export_${currentTab}_${new Date().toISOString().split("T")[0]
+        }.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+
+      showNotification("Data exported successfully!", "success");
+    }
+
+    // Setup rich text editors
+    function setupRichTextEditors() {
+      // Handle editor toolbar buttons
+      document.querySelectorAll(".editor-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const command = this.getAttribute("data-command");
+          const editorId =
+            this.closest(".rich-text-editor").querySelector(
+              ".editor-content"
+            ).id;
+          const editor = document.getElementById(editorId);
+
+          if (command === "createLink") {
+            const url = prompt("Enter URL:", "https://");
+            if (url) {
+              document.execCommand(command, false, url);
+            }
+          } else if (command === "unlink") {
+            document.execCommand(command, false, null);
+          } else {
+            document.execCommand(command, false, null);
+          }
+
+          editor.focus();
+        });
+      });
+    }
+
+    // View job translations
+    function viewJobTranslations(jobId) {
+      const job = jobData.find((j) => j.id === jobId);
+      if (!job) return;
+
+      document.getElementById("view-title-en").textContent = job.title.en || job.title;
+      document.getElementById("view-description-en").innerHTML = job.description.en || job.description;
+      document.getElementById("view-requirements-en").innerHTML = job.requirements.en || job.requirements;
+      document.getElementById("view-benefits-en").innerHTML = job.benefits.en || job.benefits;
+
+      document.getElementById("view-title-hi").textContent = job.title.hi || job.title.en || job.title;
+      document.getElementById("view-description-hi").innerHTML = job.description.hi || job.description.en || job.description;
+      document.getElementById("view-requirements-hi").innerHTML = job.requirements.hi || job.requirements.en || job.requirements;
+      document.getElementById("view-benefits-hi").innerHTML = job.benefits.hi || job.benefits.en || job.benefits;
+
+      document.getElementById("view-title-gu").textContent = job.title.gu || job.title.en || job.title;
+      document.getElementById("view-description-gu").innerHTML = job.description.gu || job.description.en || job.description;
+      document.getElementById("view-requirements-gu").innerHTML = job.requirements.gu || job.requirements.en || job.requirements;
+      document.getElementById("view-benefits-gu").innerHTML = job.benefits.gu || job.benefits.en || job.benefits;
+
+      const modal = new bootstrap.Modal(
+        document.getElementById("viewTranslationsModal")
+      );
+      modal.show();
+    }
+
+    // Add new job
+    function addNewJob() {
+      currentJobId = null;
+      const modal = new bootstrap.Modal(document.getElementById("jobModal"));
+
+      // Reset form
+      const jobForm = document.getElementById("jobForm");
+      if (jobForm) jobForm.reset();
+
+      const jobIdField = document.getElementById("job-id");
+      if (jobIdField) jobIdField.value = "";
+
+      // Clear rich text editors
+      [
+        "job-description-en",
+        "job-requirements-en",
+        "job-benefits-en",
+        "job-description-hi",
+        "job-requirements-hi",
+        "job-benefits-hi",
+        "job-description-gu",
+        "job-requirements-gu",
+        "job-benefits-gu"
+      ].forEach((id) => {
+        const editor = document.getElementById(id);
+        if (editor) {
+          editor.innerHTML = "";
+        }
+      });
+
+      // Reset other fields
+      const fields = [
+        "job-title-en",
+        "job-department",
+        "job-type",
+        "job-location",
+        "job-experience",
+        "job-salary"
+      ];
+
+      fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) field.value = "";
+      });
+
+      // Set default values
+      const vacanciesField = document.getElementById("job-vacancies");
+      const statusField = document.getElementById("job-status");
+      const deadlineField = document.getElementById("application-deadline");
+      const postingDateField = document.getElementById("posting-date");
+
+      if (vacanciesField) vacanciesField.value = "1";
+      if (statusField) statusField.value = "draft";
+      if (deadlineField) deadlineField.value = "";
+      if (postingDateField) {
+        postingDateField.value = new Date().toISOString().split("T")[0];
+      }
+
+      // Clear translation fields
+      const translationFields = ["job-title-hi", "job-title-gu"];
+      translationFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) field.value = "";
+      });
+
+      // Set modal title
+      const modalTitle = document.getElementById("jobModalLabel");
+      if (modalTitle) {
+        modalTitle.textContent = translations[currentLanguage].add_new_job || "Add New Job";
+      }
+
+      // Activate English tab
+      const englishTab = document.querySelector(
+        "#translation-tabs .nav-link:first-child"
+      );
+      if (englishTab) {
+        const tab = new bootstrap.Tab(englishTab);
+        tab.show();
+      }
+
+      modal.show();
+    }
+
+    // View job details
+    function viewJob(jobId) {
+      const job = jobData.find((j) => j.id === jobId);
+      if (!job) return;
+
+      const content = `
+        <div class="row">
+          <div class="col-md-8">
+            <h4>${job.title.en || job.title}</h4>
+            <p class="text-muted">${getDepartmentName(job.department)} • ${job.type}</p>
+          </div>
+          <div class="col-md-4 text-end">
+            <span class="badge ${job.status === 'active' ? 'badge-success' : job.status === 'draft' ? 'badge-warning' : 'badge-secondary'}">
+              ${getStatusText(job.status)}
+            </span>
+          </div>
+        </div>
+        <hr>
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <p><strong>Location:</strong><br>${job.location.en || job.location}</p>
+            <p><strong>Experience:</strong><br>${job.experience.en || job.experience}</p>
+            <p><strong>Vacancies:</strong><br>${job.vacancies}</p>
+          </div>
+          <div class="col-md-6">
+            <p><strong>Salary:</strong><br>${job.salary.en || job.salary}</p>
+            <p><strong>Posted:</strong><br>${new Date(job.posted).toLocaleDateString()}</p>
+            <p><strong>Deadline:</strong><br>${job.deadline ? new Date(job.deadline).toLocaleDateString() : 'Not set'}</p>
+          </div>
+        </div>
+        <div class="mb-4">
+          <h5>Job Description</h5>
+          <div class="bg-light p-3 rounded">${job.description.en || job.description}</div>
+        </div>
+        <div class="mb-4">
+          <h5>Requirements</h5>
+          <div class="bg-light p-3 rounded">${job.requirements.en || job.requirements}</div>
+        </div>
+        <div class="mb-4">
+          <h5>Benefits</h5>
+          <div class="bg-light p-3 rounded">${job.benefits.en || job.benefits}</div>
+        </div>
+      `;
+
+      // Create a custom modal for job view
+      const modalContent = `
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Job Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              ${content}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn-admin btn-admin-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn-admin btn-admin-primary" onclick="editJob(${jobId})">Edit Job</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Create modal dynamically
+      const modalContainer = document.createElement('div');
+      modalContainer.className = 'modal fade';
+      modalContainer.id = 'jobViewModal';
+      modalContainer.innerHTML = modalContent;
+      document.body.appendChild(modalContainer);
+
+      const modal = new bootstrap.Modal(modalContainer);
+      modal.show();
+
+      // Remove modal from DOM when hidden
+      modalContainer.addEventListener('hidden.bs.modal', function () {
+        document.body.removeChild(modalContainer);
+      });
+    }
+
+    // Translate everything
+    function translateEverything() {
+      translateUI(); s
+      translateDates();
+      loadJobPostings();
+      loadApplications();
+      renderDepartments();
+    }
+  </script>
+</body>
+
+</html>

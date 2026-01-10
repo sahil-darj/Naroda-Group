@@ -1,0 +1,150 @@
+<!-- Floating Buttons Component -->
+<style>
+    /* Floating Buttons */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 150px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: #25D366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 999;
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        font-size: 1.4rem;
+    }
+
+    .whatsapp-float:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    .back-to-top {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #c9a96e, #d4b87a);
+        color: #0a2a4a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 5px 15px rgba(201, 169, 110, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        font-size: 1.2rem;
+    }
+
+    .back-to-top.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(201, 169, 110, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .whatsapp-float {
+            bottom: 85px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+        }
+        
+        .back-to-top {
+            bottom: 145px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .whatsapp-float {
+            bottom: 80px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+        }
+        
+        .back-to-top {
+            bottom: 140px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+        }
+    }
+</style>
+
+<a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</div>
+
+<script>
+    // Floating buttons functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTop = document.querySelector('.back-to-top');
+        const whatsappFloat = document.querySelector('.whatsapp-float');
+        
+        // Back to top
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Adjust position for mobile nav
+        function adjustFloatingButtons() {
+            const mobileNav = document.querySelector('.mobile-bottom-nav');
+            
+            if (window.innerWidth <= 991 && mobileNav && getComputedStyle(mobileNav).display !== 'none') {
+                const navHeight = mobileNav.offsetHeight;
+                whatsappFloat.style.bottom = (navHeight + 20) + 'px';
+                backToTop.style.bottom = (navHeight + 70) + 'px';
+            } else {
+                whatsappFloat.style.bottom = '150px';
+                backToTop.style.bottom = '90px';
+            }
+        }
+        
+        // Initial adjustment
+        setTimeout(adjustFloatingButtons, 100);
+        
+        // Adjust on resize
+        window.addEventListener('resize', adjustFloatingButtons);
+        
+        // WhatsApp click animation
+        whatsappFloat.addEventListener('click', function(e) {
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        });
+    });
+</script>

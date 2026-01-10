@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Floor Plans - Premium UI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-dark: #0a2a4a;
+            --primary-light: #1a3a5a;
+            --accent-gold: #d4af37;
+            --accent-gold-light: #e4bf47;
+            --accent-emerald: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .luxury-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-emerald), #34d399);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .floor-plan-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .floor-plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .tabs-container {
+            padding: 30px 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            background: var(--bg-light);
+            padding: 6px;
+            border-radius: var(--radius-lg);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            background: transparent;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-btn i {
+            font-size: 0.875rem;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary-dark);
+            background: rgba(10, 42, 74, 0.05);
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-btn.active i {
+            color: var(--accent-gold);
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: row;
+            min-height: 600px;
+        }
+
+        .image-section {
+            flex: 1;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .image-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .floor-plan-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Show the entire image without cropping */
+            padding: 10px;
+            /* Add small padding so it doesn't touch edges */
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .details-section {
+            flex: 1;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .badge-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            color: var(--accent-gold);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .badge-premium i {
+            font-size: 0.75rem;
+        }
+
+        .plan-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .plan-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .highlights-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+
+        .highlight-item:hover {
+            background: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-emerald);
+            border-radius: var(--radius-md);
+            font-size: 1.25rem;
+        }
+
+        .highlight-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-dark);
+        }
+
+        .highlight-content p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .features-list {
+            margin-bottom: 30px;
+        }
+
+        .features-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9375rem;
+            color: var(--text-dark);
+        }
+
+        .feature-item i {
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .btn-inquire {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-inquire:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, var(--accent-gold-light), var(--accent-gold));
+        }
+
+        .btn-download {
+            background: white;
+            color: var(--primary-dark);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-download:hover {
+            border-color: var(--primary-dark);
+            background: var(--bg-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .availability-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-emerald);
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 50px;
+            margin-top: 20px;
+        }
+
+        .availability-tag i {
+            font-size: 0.75rem;
+        }
+
+        /* Animation for tab switching */
+        .fade-in {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content-container {
+                min-height: 500px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .content-container {
+                flex-direction: column;
+            }
+
+            .image-section,
+            .details-section {
+                flex: none;
+            }
+
+            .image-section {
+                min-height: 400px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .plan-title {
+                font-size: 1.75rem;
+            }
+
+            .tabs-nav {
+                flex-direction: column;
+                max-width: 100%;
+            }
+
+            .highlights-container,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+            }
+
+            .tabs-container {
+                padding: 20px 20px 0;
+            }
+
+            .details-section {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .plan-title {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 14px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="luxury-container">
+        <div class="section-header">
+            <span class="section-badge"><i class="fas fa-crown"></i> Premium Layouts</span>
+            <h1 class="section-title">Luxury Floor Plans</h1>
+            <p class="section-subtitle">Experience sophisticated living with thoughtfully designed spaces that blend
+                elegance with functionality</p>
+        </div>
+
+        <div class="floor-plan-card">
+            <div class="tabs-container">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-bhk="1bhk">
+                        <i class="fas fa-home"></i> 1 BHK
+                    </button>
+                    <button class="tab-btn" data-bhk="2bhk">
+                        <i class="fas fa-home"></i> 2 BHK
+                    </button>
+                    <button class="tab-btn" data-bhk="3bhk">
+                        <i class="fas fa-home"></i> 3 BHK
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <!-- Image Section (50%) -->
+                <div class="image-section">
+                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="1 BHK Floor Plan" class="floor-plan-image fade-in" id="floorPlanImage">
+                </div>
+
+                <!-- Details Section (50%) -->
+                <div class="details-section">
+                    <div>
+                        <div class="badge-premium">
+                            <i class="fas fa-star"></i> PREMIUM LAYOUT
+                        </div>
+
+                        <h2 class="plan-title" id="planTitle">Sophisticated 1 BHK</h2>
+                        <p class="plan-subtitle" id="planSubtitle">Perfect for individuals or couples seeking a modern,
+                            efficient living space with premium finishes and smart design.</p>
+
+                        <div class="highlights-container">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-ruler-combined"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h4 id="highlightArea">650 Sq.Ft.</h4>
+                                    <p>Total Area</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h4 id="highlightBedrooms">1 Bedroom</h4>
+                                    <p>Spacious Master</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-bath"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h4 id="highlightBathrooms">1 Bathroom</h4>
+                                    <p>Modern Fittings</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <h4 id="highlightBalcony">1 Balcony</h4>
+                                    <p>Garden View</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="features-list">
+                            <h4 class="features-title">Key Features</h4>
+                            <div class="features-grid" id="featuresList">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Modular Kitchen</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Wooden Flooring</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Parking Included</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Smart Home Ready</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="availability-tag">
+                            <i class="fas fa-check-circle"></i>
+                            <span id="availabilityStatus">Available for Immediate Possession</span>
+                        </div>
+                    </div>
+
+                    <div class="buttons-container">
+                        <button class="btn btn-inquire" id="inquireBtn">
+                            <i class="fas fa-envelope"></i> Inquire Now
+                        </button>
+                        <button class="btn btn-download" id="downloadBtn">
+                            <i class="fas fa-download"></i> View/Download Floor Plan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Floor plan data (will be populated from database)
+        let floorPlans = {
+            "1bhk": null,
+            "2bhk": null,
+            "3bhk": null
+        };
+
+        // DOM elements
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const floorPlanImage = document.getElementById('floorPlanImage');
+        const planTitle = document.getElementById('planTitle');
+        const planSubtitle = document.getElementById('planSubtitle');
+        const highlightArea = document.getElementById('highlightArea');
+        const highlightBedrooms = document.getElementById('highlightBedrooms');
+        const highlightBathrooms = document.getElementById('highlightBathrooms');
+        const highlightBalcony = document.getElementById('highlightBalcony');
+        const featuresList = document.getElementById('featuresList');
+        const availabilityStatus = document.getElementById('availabilityStatus');
+        const inquireBtn = document.getElementById('inquireBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        // Current active tab
+        let currentTab = '1bhk';
+
+        // Fetch Floor Plans from API
+        async function fetchFloorPlans() {
+            try {
+                const response = await fetch('api.php?action=get_project_data');
+                const data = await response.json();
+
+                if (data && data.apartment_plans) {
+                    // Map the data to our floorPlans structure
+                    Object.keys(data.apartment_plans).forEach(type => {
+                        const plans = data.apartment_plans[type];
+                        if (plans && plans.length > 0) {
+                            const plan = plans[0]; // Take the first plan for each type
+
+                            // Map DB fields to UI structure
+                            // Description field often contains {en, hi, gu} or {title, subtitle, features}
+                            // Fallback to static values if nested data is missing
+                            const desc = plan.description || {};
+
+                            floorPlans[type] = {
+                                id: plan.id,
+                                image: plan.image || 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                                title: desc.title || (type.toUpperCase() + " Apartment"),
+                                subtitle: desc.subtitle || desc.en || "Experience sophisticated living with thoughtfully designed spaces.",
+                                area: plan.area ? `${plan.area} Sq.Ft.` : "TBA",
+                                bedrooms: plan.bedrooms ? `${plan.bedrooms} Bedroom` + (parseInt(plan.bedrooms) > 1 ? 's' : '') : "TBA",
+                                bathrooms: plan.bathrooms ? `${plan.bathrooms} Bathroom` + (parseInt(plan.bathrooms) > 1 ? 's' : '') : "TBA",
+                                balcony: plan.balconies ? `${plan.balconies} Balcony` + (parseInt(plan.balconies) > 1 ? 's' : '') : "TBA",
+                                availability: plan.status === 'available' ? "Available for Immediate Possession" :
+                                    (plan.status === 'limited' ? "Limited Units Available" : "Sold Out"),
+                                features: Array.isArray(desc.features) ? desc.features : [
+                                    "Modular Kitchen",
+                                    "Premium Fittings",
+                                    "Parking Included",
+                                    "Natural Lighting"
+                                ],
+                                document: plan.image // Use image as fallback for download if doc missing
+                            };
+                        }
+                    });
+
+                    // Initialize display after data is loaded
+                    updateFloorPlanDisplay(currentTab);
+                }
+            } catch (error) {
+                console.error("Error fetching floor plans:", error);
+                // Fallback or error message could be added here
+            }
+        }
+
+        // Initialize display
+        fetchFloorPlans();
+
+        // Add click event to tab buttons
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const bhkType = button.getAttribute('data-bhk');
+
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                // Update display with selected floor plan
+                updateFloorPlanDisplay(bhkType);
+            });
+        });
+
+        // Function to update floor plan display
+        function updateFloorPlanDisplay(bhkType) {
+            currentTab = bhkType;
+            const plan = floorPlans[bhkType];
+
+            if (!plan) {
+                // Show loading or "Coming Soon" if no data for this type
+                planTitle.textContent = "Coming Soon";
+                planSubtitle.textContent = "We are currently updating our layouts for this category. Please check back later.";
+                floorPlanImage.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+                highlightArea.textContent = "-";
+                highlightBedrooms.textContent = "-";
+                highlightBathrooms.textContent = "-";
+                highlightBalcony.textContent = "-";
+                featuresList.innerHTML = '<div class="feature-item"><span>Check back for updates</span></div>';
+                availabilityStatus.textContent = "Updates arriving soon";
+                return;
+            }
+
+            // Add fade-in animation
+            floorPlanImage.classList.remove('fade-in');
+            void floorPlanImage.offsetWidth; // Trigger reflow
+            floorPlanImage.classList.add('fade-in');
+
+            // Update image with fade effect
+            floorPlanImage.style.opacity = '0.5';
+            setTimeout(() => {
+                floorPlanImage.src = plan.image;
+                floorPlanImage.alt = `${bhkType.toUpperCase()} Floor Plan`;
+                floorPlanImage.style.opacity = '1';
+            }, 150);
+
+            // Update text content with animation
+            fadeOutElement(planTitle, () => {
+                planTitle.textContent = plan.title;
+                fadeInElement(planTitle);
+            });
+
+            fadeOutElement(planSubtitle, () => {
+                planSubtitle.textContent = plan.subtitle;
+                fadeInElement(planSubtitle);
+            });
+
+            fadeOutElement(highlightArea, () => {
+                highlightArea.textContent = plan.area;
+                fadeInElement(highlightArea);
+            });
+
+            fadeOutElement(highlightBedrooms, () => {
+                highlightBedrooms.textContent = plan.bedrooms;
+                fadeInElement(highlightBedrooms);
+            });
+
+            fadeOutElement(highlightBathrooms, () => {
+                highlightBathrooms.textContent = plan.bathrooms;
+                fadeInElement(highlightBathrooms);
+            });
+
+            fadeOutElement(highlightBalcony, () => {
+                highlightBalcony.textContent = plan.balcony;
+                fadeInElement(highlightBalcony);
+            });
+
+            fadeOutElement(availabilityStatus, () => {
+                availabilityStatus.textContent = plan.availability;
+                fadeInElement(availabilityStatus);
+            });
+
+            // Update features list
+            fadeOutElement(featuresList, () => {
+                featuresList.innerHTML = '';
+                plan.features.forEach(feature => {
+                    const featureItem = document.createElement('div');
+                    featureItem.className = 'feature-item';
+                    featureItem.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <span>${feature}</span>
+                    `;
+                    featuresList.appendChild(featureItem);
+                });
+                fadeInElement(featuresList);
+            });
+        }
+
+        // Animation helper functions
+        function fadeOutElement(element, callback) {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(10px)';
+            setTimeout(callback, 150);
+        }
+
+        function fadeInElement(element) {
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        // Button click handlers
+        inquireBtn.addEventListener('click', () => {
+            // Simulate inquiry action
+            inquireBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            inquireBtn.disabled = true;
+
+            setTimeout(() => {
+                alert(`Thank you for your interest in our ${currentTab.toUpperCase()} floor plan! Our representative will contact you shortly.`);
+                inquireBtn.innerHTML = '<i class="fas fa-envelope"></i> Inquire Now';
+                inquireBtn.disabled = false;
+            }, 1500);
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const plan = floorPlans[currentTab];
+            if (!plan) return;
+
+            // Simulate download/view action
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            downloadBtn.disabled = true;
+
+            setTimeout(() => {
+                // Use actual plan image or document if available
+                const downloadUrl = plan.image;
+
+                // Create a temporary link for download
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.target = '_blank';
+                link.download = `${currentTab}-floor-plan.jpg`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                downloadBtn.innerHTML = '<i class="fas fa-download"></i> View/Download Floor Plan';
+                downloadBtn.disabled = false;
+
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #10b981;
+                    color: white;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    font-weight: 500;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 1000;
+                    animation: slideIn 0.3s ease;
+                `;
+                successMsg.innerHTML = `
+                    <i class="fas fa-check-circle me-2"></i>
+                    Opening ${currentTab.toUpperCase()} floor plan...
+                `;
+                document.body.appendChild(successMsg);
+
+                setTimeout(() => {
+                    successMsg.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => successMsg.remove(), 300);
+                }, 3000);
+            }, 1000);
+        });
+
+        // Add CSS for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add hover effect to buttons
+        [inquireBtn, downloadBtn].forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-2px)';
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '1') {
+                document.querySelector('[data-bhk="1bhk"]').click();
+            } else if (e.key === '2') {
+                document.querySelector('[data-bhk="2bhk"]').click();
+            } else if (e.key === '3') {
+                document.querySelector('[data-bhk="3bhk"]').click();
+            } else if (e.key === 'i' || e.key === 'I') {
+                inquireBtn.click();
+            } else if (e.key === 'd' || e.key === 'D') {
+                downloadBtn.click();
+            }
+        });
+    </script>
+</body>
+
+</html>

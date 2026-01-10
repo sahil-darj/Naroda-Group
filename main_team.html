@@ -1,0 +1,3741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Our Team | Naroda Group Leadership</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Meet the experienced leadership team at Naroda Group. Professionals with decades of expertise in real estate development." />
+  <meta name="keywords"
+    content="naroda group team, leadership team, real estate experts, management team, company executives" />
+  <meta name="author" content="Naroda Group" />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Our Team | Naroda Group Leadership" />
+  <meta property="og:description"
+    content="Meet the experienced professionals who guide our vision and drive our success" />
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" />
+  <meta property="og:url" content="https://narodagroup.com/team.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Naroda Group" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Our Team | Naroda Group Leadership" />
+  <meta name="twitter:description"
+    content="Meet the experienced professionals who guide our vision and drive our success" />
+  <meta name="twitter:image"
+    content="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://narodagroup.com/team.html" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0a2a4a" />
+  <meta name="msapplication-TileColor" content="#0a2a4a" />
+  <meta name="theme-color" content="#0a2a4a" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --primary-color: #0a2a4a;
+      --primary-dark: #071a2e;
+      --secondary-color: #c9a96e;
+      --accent-color: #2e8b57;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      --shadow-hover: 0 25px 60px rgba(0, 0, 0, 0.2);
+      --border-radius: 16px;
+    }
+
+    /* ===== Base Styles ===== */
+    body {
+      font-family: "Inter", sans-serif;
+      color: #212529;
+      overflow-x: hidden;
+      line-height: 1.7;
+      background-color: #ffffff;
+      padding-top: 0;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .gold-text {
+      color: var(--secondary-color);
+    }
+
+    .text-gold {
+      color: var(--secondary-color) !important;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 42, 74, 0.95);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      padding: 15px 0;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 42, 74, 0.98);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-family: "Playfair Display", serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      color: var(--primary-color);
+      font-weight: 900;
+      font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      padding: 8px 15px;
+      margin: 0 3px;
+      border-radius: 30px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: white;
+      background: rgba(201, 169, 110, 0.2);
+    }
+
+    /* Dropdown menus */
+    .dropdown-menu {
+      background: rgba(10, 42, 74, 0.98);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 10px;
+      min-width: 200px;
+    }
+
+    .dropdown-item {
+      color: rgba(255, 255, 255, 0.9);
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(201, 169, 110, 0.2);
+      color: white;
+    }
+
+    .dropdown-divider {
+      border-color: rgba(255, 255, 255, 0.1);
+      margin: 8px 0;
+    }
+
+    /* ===== Language Switcher ===== */
+    .language-switcher {
+      position: relative;
+    }
+
+    .language-dropdown {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 8px 15px;
+      border-radius: 30px;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .language-dropdown:hover {
+      color: white;
+      background: rgba(201, 169, 110, 0.2);
+    }
+
+    .language-dropdown i {
+      margin-right: 5px;
+    }
+
+    .language-options {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: rgba(10, 42, 74, 0.98);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 10px;
+      min-width: 120px;
+      display: none;
+      z-index: 1001;
+    }
+
+    .language-options.show {
+      display: block;
+    }
+
+    .language-option {
+      display: block;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: var(--transition);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .language-option:hover {
+      background: rgba(201, 169, 110, 0.2);
+      color: white;
+    }
+
+    .language-option.active {
+      background: rgba(201, 169, 110, 0.3);
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+
+    /* ===== Login Button ===== */
+    .login-btn {
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      color: var(--primary-color) !important;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(201, 169, 110, 0.3);
+    }
+
+    /* ===== Hero Section ===== */
+    .hero-section {
+      min-height: 60vh;
+      background: linear-gradient(rgba(10, 42, 74, 0.95),
+          rgba(10, 42, 74, 0.85)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 83px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* ===== Team Cards ===== */
+    .leader-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      margin-bottom: 30px;
+    }
+
+    .leader-card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .leader-card:hover:before {
+      transform: scaleX(1);
+    }
+
+    .leader-card:hover {
+      transform: translateY(-15px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .leader-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 25px;
+      border: 5px solid white;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .leader-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .leader-card:hover .leader-img img {
+      transform: scale(1.1);
+    }
+
+    .leader-info {
+      margin-bottom: 20px;
+    }
+
+    .leader-name {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .leader-position {
+      color: var(--secondary-color);
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .leader-experience {
+      display: inline-block;
+      background: rgba(201, 169, 110, 0.1);
+      color: var(--secondary-color);
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .leader-bio {
+      color: #6c757d;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .leader-social {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background: #e9ecef;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #212529;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* ===== Department Cards ===== */
+    .department-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .department-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .department-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg,
+          rgba(10, 42, 74, 0.1) 0%,
+          rgba(10, 42, 74, 0.05) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--primary-color);
+      font-size: 32px;
+    }
+
+    .department-name {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .department-head {
+      color: var(--secondary-color);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .team-size {
+      display: inline-block;
+      background: rgba(46, 139, 87, 0.1);
+      color: var(--accent-color);
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+    }
+
+    /* ===== Team Stats ===== */
+    .team-stats-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary-color), #0e3a64);
+      color: white;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .stat-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--secondary-color), #ffd166);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== Value Cards ===== */
+    .value-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .value-card:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .value-card:hover:before {
+      transform: scaleX(1);
+    }
+
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .value-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg,
+          rgba(201, 169, 110, 0.1) 0%,
+          rgba(201, 169, 110, 0.05) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: var(--secondary-color);
+      font-size: 32px;
+    }
+
+    /* ===== Section Title ===== */
+    .section-title {
+      position: relative;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .section-title:after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .section-title.left {
+      text-align: left;
+    }
+
+    .section-title.left:after {
+      left: 0;
+      transform: none;
+    }
+
+    /* ===== Buttons ===== */
+    .btn-gold {
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      color: var(--primary-color) !important;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(201, 169, 110, 0.3);
+    }
+
+    /* ===== Badge ===== */
+    .badge {
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      font-size: 18px;
+    }
+
+    .bg-gradient-secondary {
+      background: linear-gradient(135deg,
+          var(--secondary-color),
+          #d4b87a) !important;
+      height: 38px;
+    }
+
+    /* ===== Content Sections ===== */
+    .team-hero-section {
+      padding: 80px 0;
+      background: #f9fafb;
+    }
+
+    .leadership-section,
+    .department-section,
+    .team-values-section {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .cta-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg,
+          var(--primary-dark),
+          var(--primary-color));
+      color: white;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--primary-dark);
+      color: #b0b7c3;
+      padding-top: 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-title {
+      color: white;
+      font-size: 1.25rem;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .footer-title:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      border-radius: 2px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 25px 0;
+      margin-top: 50px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-link {
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      color: white !important;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      transform: translateY(-3px);
+      z-index: 3;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-links a {
+      color: #b0b7c3;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-color);
+      padding-left: 5px;
+    }
+
+    /* ===== Floating Buttons ===== */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1050;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .floating-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+      border: none;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-btn.whatsapp {
+      background: #25d366;
+    }
+
+    .floating-btn.phone {
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+    }
+
+    .floating-btn.chat {
+      background: var(--primary-color);
+    }
+
+    /* ===== Mobile Navigation ===== */
+    .mobile-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 10px 0;
+      display: none;
+    }
+
+    .mobile-nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #6c757d;
+      transition: var(--transition);
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    .mobile-nav-item.active,
+    .mobile-nav-item:hover {
+      color: var(--primary-color);
+      background: rgba(10, 42, 74, 0.05);
+    }
+
+    .mobile-nav-icon {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .mobile-nav-text {
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+
+    /* ===== Contact Info in Footer ===== */
+    .contact-info {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-info i {
+      color: var(--secondary-color);
+      margin-right: 15px;
+      margin-top: 5px;
+      font-size: 1.1rem;
+      min-width: 20px;
+    }
+
+    /* ===== Project Mini Card ===== */
+    .project-mini-card {
+      display: block;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    .project-mini-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ===== Modal Styles ===== */
+    .modal-team-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 5px solid white;
+      box-shadow: var(--shadow);
+    }
+
+    .modal-team-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1199px) {
+      .navbar-nav .nav-link {
+        padding: 6px 10px;
+        margin: 0 2px;
+        font-size: 0.9rem;
+      }
+
+      .dropdown-menu {
+        min-width: 180px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background: rgba(10, 42, 74, 0.98);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin-top: 10px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-nav .nav-link {
+        padding: 10px 15px;
+        margin: 2px 0;
+      }
+
+      .dropdown-menu {
+        background: rgba(7, 26, 46, 0.98);
+        margin-left: 15px;
+        border-left: 2px solid var(--secondary-color);
+      }
+
+      .hero-section {
+        min-height: 50vh;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+
+      main {
+        padding-bottom: 60px !important;
+      }
+
+      .floating-buttons {
+        bottom: 80px;
+        right: 15px;
+      }
+
+      .language-switcher {
+        margin-right: 10px;
+      }
+
+      .section-title.left:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        min-height: 40vh;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .team-hero-section,
+      .leadership-section,
+      .department-section,
+      .team-stats-section,
+      .team-values-section,
+      .cta-section {
+        padding: 60px 0;
+      }
+
+      .floating-buttons {
+        bottom: 85px;
+      }
+
+      .language-options {
+        right: auto;
+        left: 0;
+      }
+
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      .leader-img {
+        width: 150px;
+        height: 150px;
+      }
+
+      .leader-name {
+        font-size: 1.3rem;
+      }
+
+      .leader-card {
+        padding: 20px;
+      }
+
+      .leader-bio {
+        font-size: 0.9rem;
+      }
+
+      .department-card {
+        padding: 20px 15px;
+      }
+
+      .department-name {
+        font-size: 1.1rem;
+      }
+
+      .value-card {
+        padding: 25px 20px;
+      }
+
+      .value-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+
+      .stat-card {
+        padding: 20px 15px;
+      }
+
+      .stat-icon {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .floating-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+      }
+
+      .login-btn {
+        padding: 6px 15px;
+        font-size: 0.9rem;
+      }
+
+      .mobile-nav-text {
+        font-size: 0.65rem;
+      }
+
+      .modal-team-img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    /* Fix for AOS overflow issues */
+    [data-aos] {
+      overflow: visible !important;
+    }
+
+    /* Mobile dropdown styling */
+    @media (max-width: 991px) {
+      .dropdown-toggle::after {
+        float: right;
+        margin-top: 8px;
+      }
+    }
+
+    .container {
+      max-width: 1140px;
+      padding: 0 15px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      padding: 10px 34px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: var(--transition);
+      border: none;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">
+        <div class="logo-icon">NG</div>
+        <span class="language-content" data-i18n="nav.brand">Naroda</span>
+        <span class="gold-text"><span class="language-content" data-i18n="nav.group">Group</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="home.html" class="language-content" data-i18n="nav.home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html" class="language-content" data-i18n="nav.about">About</a>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle language-content" href="#" id="projectsDropdown"
+              data-bs-toggle="dropdown" data-i18n="nav.projects">
+              Projects
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+              <li>
+                <a class="dropdown-item language-content" href="projects-landmark.html" data-i18n="nav.landmark">Naroda
+                  Landmark</a>
+              </li>
+              <li>
+                <a class="dropdown-item language-content" href="projects-irish.html" data-i18n="nav.irish">Naroda
+                  Irish</a>
+              </li>
+              <!-- <li>
+                  <hr class="dropdown-divider" />
+                </li> -->
+              <!-- <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="projects.html"
+                    data-i18n="nav.all_projects"
+                    >All Projects</a
+                  >
+                </li> -->
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" class="language-content" data-i18n="nav.contact">Contact</a>
+          </li>
+
+          <!-- Properties Dropdown -->
+          <!-- <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle language-content"
+                href="#"
+                id="propertiesDropdown"
+                data-bs-toggle="dropdown"
+                data-i18n="nav.properties"
+              >
+                Properties
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
+                <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="properties.html?type=buy"
+                    data-i18n="nav.buy"
+                    >Buy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="properties.html?type=rent"
+                    data-i18n="nav.rent"
+                    >Rent</a
+                  >
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="property-detail.html"
+                    data-i18n="nav.property_details"
+                    >Property Details</a
+                  >
+                </li>
+              </ul>
+            </li> -->
+
+          <!-- Gallery -->
+          <!-- <li class="nav-item">
+              <a
+                class="nav-link language-content"
+                href="gallery.html"
+                data-i18n="nav.gallery"
+                >Gallery</a
+              >
+            </li> -->
+
+          <!-- More Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle language-content" href="#" id="moreDropdown" data-bs-toggle="dropdown"
+              data-i18n="nav.more">
+              More
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+              <li>
+                <a class="dropdown-item language-content" href="main_blog.html" data-i18n="nav.blog"><i
+                    class="fas fa-blog me-2"></i>Blog</a>
+              </li>
+              <!-- <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="news.html"
+                    data-i18n="nav.news"
+                    ><i class="fas fa-newspaper me-2"></i>News</a
+                  >
+                </li> -->
+              <li>
+                <a class="dropdown-item language-content" href="main_career.html" data-i18n="nav.careers"><i
+                    class="fas fa-briefcase me-2"></i>Careers</a>
+              </li>
+              <li>
+                <a class="dropdown-item language-content" href="main_team.html" data-i18n="nav.team"><i
+                    class="fas fa-users me-2"></i>Our Team</a>
+              </li>
+              <li>
+                <a class="dropdown-item language-content" href="main_faq.html" data-i18n="nav.faq"><i
+                    class="fas fa-question-circle me-2"></i>FAQ</a>
+              </li>
+              <!-- <li>
+                  <hr class="dropdown-divider" />
+                </li> -->
+            </ul>
+          </li>
+
+          <!-- Language Switcher -->
+          <li class="nav-item language-switcher">
+            <div class="language-dropdown" id="languageToggle">
+              <i class="fas fa-globe"></i>
+              <span class="language-content" data-i18n="nav.language">EN</span>
+              <i class="fas fa-chevron-down ms-1"></i>
+            </div>
+            <div class="language-options" id="languageOptions">
+              <div class="language-option active" data-lang="en">English</div>
+              <div class="language-option" data-lang="hi">हिन्दी</div>
+              <div class="language-option" data-lang="gu">ગુજરાતી</div>
+            </div>
+          </li>
+
+          <!-- Login Button -->
+          <li class="nav-item ms-2">
+            <button class="btn login-btn language-content" data-i18n="nav.login"
+              onclick="window.location.href='login.html'">
+              <i class="fas fa-user me-2"></i> Login
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="language-content" id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center min-vh-60">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1 class="hero-title" data-aos="fade-up">
+              <span data-i18n="team.hero.title.part1">Our</span>
+              <span class="gold-text" data-i18n="team.hero.title.part2">Leadership Team</span>
+            </h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="team.hero.subtitle">
+              Meet the experienced professionals who guide our vision and
+              drive our success
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Introduction -->
+    <section class="team-hero-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <span class="badge bg-gradient-secondary text-white px-4 py-2 rounded-pill mb-3" data-aos="fade-up"
+              data-i18n="team.intro.badge">
+              Our Team
+            </span>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+              <span data-i18n="team.intro.title.part1">Expertise That</span>
+              <span class="gold-text" data-i18n="team.intro.title.part2">Builds Excellence</span>
+            </h2>
+            <p class="text-muted mb-5" data-aos="fade-up" data-aos-delay="200" data-i18n="team.intro.description">
+              At Naroda Group, our strength lies in our people. We bring
+              together industry veterans, creative thinkers, and dedicated
+              professionals who share a common vision of transforming
+              Ahmedabad's skyline while setting new benchmarks in quality and
+              customer satisfaction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="leadership-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <h3 class="section-title left mb-4" data-aos="fade-up">
+              <span data-i18n="team.leadership.title.part1">Executive</span>
+              <span class="gold-text" data-i18n="team.leadership.title.part2">Leadership</span>
+            </h3>
+            <p class="text-muted" data-aos="fade-up" data-aos-delay="100" data-i18n="team.leadership.subtitle">
+              Our leadership team combines decades of experience with
+              innovative thinking
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4" id="teamMembersContainer">
+          <!-- Team members will be loaded dynamically -->
+          <div class="col-12 text-center py-5">
+            <div class="spinner-border text-gold" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="text-muted mt-3">Loading team members...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Department Teams -->
+    <section class="department-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <h3 class="section-title left mb-4" data-aos="fade-up">
+              <span data-i18n="team.departments.title.part1">Department</span>
+              <span class="gold-text" data-i18n="team.departments.title.part2">Heads</span>
+            </h3>
+            <p class="text-muted" data-aos="fade-up" data-aos-delay="100" data-i18n="team.departments.subtitle">
+              Specialized teams driving excellence in every aspect of our
+              operations
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="department-card">
+              <div class="department-icon">
+                <i class="fas fa-hard-hat"></i>
+              </div>
+              <h4 class="department-name" data-i18n="team.department1.name">
+                Construction
+              </h4>
+              <div class="department-head" data-i18n="team.department1.head">
+                Vikram Singh
+              </div>
+              <span class="team-size" data-i18n="team.department1.size">45+ Members</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="department-card">
+              <div class="department-icon">
+                <i class="fas fa-drafting-compass"></i>
+              </div>
+              <h4 class="department-name" data-i18n="team.department2.name">
+                Design & Architecture
+              </h4>
+              <div class="department-head" data-i18n="team.department2.head">
+                Arjun Mehta
+              </div>
+              <span class="team-size" data-i18n="team.department2.size">18+ Members</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="department-card">
+              <div class="department-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h4 class="department-name" data-i18n="team.department3.name">
+                Sales & Marketing
+              </h4>
+              <div class="department-head" data-i18n="team.department3.head">
+                Neha Gupta
+              </div>
+              <span class="team-size" data-i18n="team.department3.size">32+ Members</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="department-card">
+              <div class="department-icon">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <h4 class="department-name" data-i18n="team.department4.name">
+                Legal & Compliance
+              </h4>
+              <div class="department-head" data-i18n="team.department4.head">
+                Anjali Desai
+              </div>
+              <span class="team-size" data-i18n="team.department4.size">12+ Members</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="department-card">
+              <div class="department-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h4 class="department-name" data-i18n="team.department5.name">
+                Customer Relations
+              </h4>
+              <div class="department-head" data-i18n="team.department5.head">
+                Rohan Kapoor
+              </div>
+              <span class="team-size" data-i18n="team.department5.size">22+ Members</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="department-card">
+              <div class="department-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h4 class="department-name" data-i18n="team.department6.name">
+                Project Management
+              </h4>
+              <div class="department-head" data-i18n="team.department6.head">
+                Sanjay Verma
+              </div>
+              <span class="team-size" data-i18n="team.department6.size">28+ Members</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="department-card">
+              <div class="department-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h4 class="department-name" data-i18n="team.department7.name">
+                Sustainability
+              </h4>
+              <div class="department-head" data-i18n="team.department7.head">
+                Priya Nair
+              </div>
+              <span class="team-size" data-i18n="team.department7.size">8+ Members</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="department-card">
+              <div class="department-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <h4 class="department-name" data-i18n="team.department8.name">
+                Operations
+              </h4>
+              <div class="department-head" data-i18n="team.department8.head">
+                Rahul Sharma
+              </div>
+              <span class="team-size" data-i18n="team.department8.size">35+ Members</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Stats -->
+    <section class="team-stats-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <h3 class="text-white mb-4" data-aos="fade-up">
+              <span data-i18n="team.stats.title.part1">Team</span>
+              <span class="gold-text" data-i18n="team.stats.title.part2">Statistics</span>
+            </h3>
+            <p class="text-white-50" data-aos="fade-up" data-aos-delay="100" data-i18n="team.stats.subtitle">
+              Our strength in numbers
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-number">200+</div>
+              <p class="mb-0" data-i18n="team.stats.stat1">
+                Total Team Members
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="stat-number">85%</div>
+              <p class="mb-0" data-i18n="team.stats.stat2">
+                Graduate & Above
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <div class="stat-number">15+</div>
+              <p class="mb-0" data-i18n="team.stats.stat3">
+                Avg. Years Experience
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-number">98%</div>
+              <p class="mb-0" data-i18n="team.stats.stat4">
+                Employee Retention
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Values -->
+    <section class="team-values-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-8 mx-auto text-center">
+            <h3 class="section-title left mb-4" data-aos="fade-up">
+              <span data-i18n="team.values.title.part1">Our Team</span>
+              <span class="gold-text" data-i18n="team.values.title.part2">Culture</span>
+            </h3>
+            <p class="text-muted" data-aos="fade-up" data-aos-delay="100" data-i18n="team.values.subtitle">
+              The principles that guide our team dynamics and workplace
+              environment
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h4 class="mb-3" data-i18n="team.values.value1.title">
+                Collaboration
+              </h4>
+              <p class="text-muted mb-0" data-i18n="team.values.value1.description">
+                We believe in working together across departments to achieve
+                common goals.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <h4 class="mb-3" data-i18n="team.values.value2.title">
+                Innovation
+              </h4>
+              <p class="text-muted mb-0" data-i18n="team.values.value2.description">
+                Encouraging creative thinking and embracing new ideas and
+                technologies.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h4 class="mb-3" data-i18n="team.values.value3.title">
+                Employee Growth
+              </h4>
+              <p class="text-muted mb-0" data-i18n="team.values.value3.description">
+                Investing in continuous learning and career development
+                opportunities.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="value-card">
+              <div class="value-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <h4 class="mb-3" data-i18n="team.values.value4.title">
+                Excellence
+              </h4>
+              <p class="text-muted mb-0" data-i18n="team.values.value4.description">
+                Striving for the highest standards in everything we do, every
+                day.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="text-white mb-4" data-aos="fade-up">
+              <span data-i18n="team.cta.title.part1">Join Our</span>
+              <span class="gold-text" data-i18n="team.cta.title.part2">Winning Team</span>
+            </h2>
+            <p class="text-white-50 mb-5" data-aos="fade-up" data-aos-delay="100" data-i18n="team.cta.subtitle">
+              We're always looking for talented professionals to join our
+              growing team.
+            </p>
+
+            <div class="d-flex flex-column flex-sm-row justify-content-center gap-4" data-aos="fade-up"
+              data-aos-delay="200">
+              <a href="careers.html" class="btn btn-gold">
+                <i class="fas fa-briefcase me-2" aria-hidden="true"></i>
+                <span data-i18n="team.cta.btn1">View Careers</span>
+              </a>
+              <a href="contact.html" class="btn btn-gold">
+                <i class="fas fa-paper-plane me-2" aria-hidden="true"></i>
+                <span data-i18n="team.cta.btn2">Submit CV</span>
+              </a>
+              <a href="contact.html" class="btn btn-gold">
+                <i class="fas fa-phone me-2" aria-hidden="true"></i>
+                <span data-i18n="team.cta.btn3">Contact HR</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-about">
+            <a href="home.html" class="navbar-brand mb-4">
+              <div class="logo-icon">NG</div>
+              <span class="language-content" data-i18n="nav.brand">Naroda</span>
+              <span class="gold-text"><span class="language-content" data-i18n="nav.group">Group</span></span>
+            </a>
+            <p class="mb-4 language-content" data-i18n="footer.description">
+              Creating landmark properties that redefine excellence. From
+              premium commercial spaces to luxury residential living, we build
+              dreams with quality and commitment.
+            </p>
+            <div class="social-links">
+              <a href="https://facebook.com" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://instagram.com" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://youtube.com" class="social-link" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title language-content" data-i18n="footer.quick_links">
+            Quick Links
+          </h5>
+          <ul class="footer-links">
+            <li>
+              <a href="home.html" class="language-content" data-i18n="nav.home">Home</a>
+            </li>
+            <li>
+              <a href="about.html" class="language-content" data-i18n="nav.about">About Us</a>
+            </li>
+            <li>
+              <a href="projects.html" class="language-content" data-i18n="nav.projects">Projects</a>
+            </li>
+            <!-- <li>
+                <a
+                  href="properties.html"
+                  class="language-content"
+                  data-i18n="nav.properties"
+                  >Properties</a
+                >
+              </li>
+              <li>
+                <a
+                  href="gallery.html"
+                  class="language-content"
+                  data-i18n="nav.gallery"
+                  >Gallery</a
+                >
+              </li> -->
+            <li>
+              <a href="contact.html" class="language-content" data-i18n="nav.contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title language-content" data-i18n="footer.our_projects">
+            Our Projects
+          </h5>
+          <ul class="footer-links">
+            <li>
+              <a href="projects-landmark.html" class="language-content" data-i18n="nav.landmark">Naroda Landmark <span
+                  class="text-gold">→</span></a>
+            </li>
+            <li class="text-muted small mb-2 language-content" data-i18n="footer.landmark_desc">
+              Premium Commercial Spaces
+            </li>
+            <li>
+              <a href="projects-irish.html" class="language-content" data-i18n="nav.irish">Naroda Irish <span
+                  class="text-gold">→</span></a>
+            </li>
+            <li class="text-muted small mb-2 language-content" data-i18n="footer.irish_desc">
+              Luxury Residential Living
+            </li>
+            <li>
+              <a href="projects.html" class="language-content" data-i18n="footer.view_all_projects">View All Projects
+                <span class="text-gold">→</span></a>
+            </li>
+            <li class="text-muted small language-content" data-i18n="footer.explore_portfolio">
+              Explore our portfolio
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title language-content" data-i18n="footer.contact_info">
+            Contact Info
+          </h5>
+          <div class="contact-info">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h6 class="text-white mb-1 language-content" data-i18n="footer.phone">
+                Phone Number
+              </h6>
+              <p class="mb-0">+91 98765 43210</p>
+              <small class="text-muted language-content" data-i18n="footer.phone_hours">Mon - Sat: 10 AM - 7 PM</small>
+            </div>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h6 class="text-white mb-1 language-content" data-i18n="footer.email">
+                Email Address
+              </h6>
+              <p class="mb-0">info@narodagroup.com</p>
+              <small class="text-muted language-content" data-i18n="footer.email_response">We reply within 24
+                hours</small>
+            </div>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h6 class="text-white mb-1 language-content" data-i18n="footer.address">
+                Office Address
+              </h6>
+              <p class="mb-0 language-content" data-i18n="footer.address_line1">
+                Naroda - Bhat Road
+              </p>
+              <small class="text-muted language-content" data-i18n="footer.address_line2">Ahmedabad, Gujarat
+                382330</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="mb-0 language-content" data-i18n="footer.rights">
+                &copy; 2025 Naroda Group. All rights reserved.
+              </p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              <a href="privacy.html" class="text-white-50 me-3 language-content" data-i18n="footer.privacy">Privacy
+                Policy</a>
+              <a href="terms.html" class="text-white-50 me-3 language-content" data-i18n="footer.terms">Terms of
+                Service</a>
+              <a href="rera.html" class="text-white-50 language-content" data-i18n="footer.rera">RERA Registration</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-items">
+      <a href="home.html" class="mobile-nav-item">
+        <i class="fas fa-home mobile-nav-icon"></i>
+        <span class="mobile-nav-text language-content" data-i18n="nav.home">Home</span>
+      </a>
+      <a href="projects.html" class="mobile-nav-item">
+        <i class="fas fa-building mobile-nav-icon"></i>
+        <span class="mobile-nav-text language-content" data-i18n="nav.projects">Projects</span>
+      </a>
+      <!-- <a href="gallery.html" class="mobile-nav-item">
+          <i class="fas fa-images mobile-nav-icon"></i>
+          <span class="mobile-nav-text language-content" data-i18n="nav.gallery"
+            >Gallery</span
+          >
+        </a> -->
+      <a href="more.html" class="mobile-nav-item">
+        <i class="fas fa-ellipsis-h mobile-nav-icon"></i>
+        <span class="mobile-nav-text language-content" data-i18n="nav.more">More</span>
+      </a>
+      <a href="tel:+919876543210" class="mobile-nav-item">
+        <i class="fas fa-phone-alt mobile-nav-icon"></i>
+        <span class="mobile-nav-text language-content" data-i18n="nav.call">Call Now</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Floating Buttons -->
+  <div class="floating-buttons">
+    <button class="floating-btn whatsapp" onclick="window.open('https://wa.me/919876543210', '_blank')"
+      aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </button>
+    <a href="tel:+919876543210" class="floating-btn phone" aria-label="Call Now">
+      <i class="fas fa-phone"></i>
+    </a>
+    <button class="floating-btn chat" onclick="window.open('mailto:info@narodagroup.com')" aria-label="Email Us">
+      <i class="fas fa-envelope"></i>
+    </button>
+  </div>
+
+  <!-- Team Member Modals -->
+  <!-- Modal 1: Rajesh Mehta -->
+  <div class="modal fade" id="leaderModal1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" data-i18n="team.modal1.title">
+            Rajesh Mehta - Founder & CEO
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+              <div class="modal-team-img">
+                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Rajesh Mehta" loading="lazy" />
+              </div>
+              <div class="leader-social justify-content-center mt-3">
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h4 class="mb-3" data-i18n="team.modal.background">
+                Professional Background
+              </h4>
+              <p class="text-muted mb-3" data-i18n="team.modal1.background">
+                Rajesh Mehta founded Naroda Group in 2008 with a vision to
+                transform Ahmedabad's real estate landscape. With over 25
+                years of experience in the industry, he has been instrumental
+                in shaping the company's growth strategy and establishing it
+                as one of Ahmedabad's most trusted real estate developers.
+              </p>
+
+              <h5 class="mb-2" data-i18n="team.modal.achievements">
+                Key Achievements
+              </h5>
+              <ul class="text-muted mb-3">
+                <li data-i18n="team.modal1.achievement1">
+                  Led the development of 50+ successful projects
+                </li>
+                <li data-i18n="team.modal1.achievement2">
+                  Expanded company operations to multiple cities
+                </li>
+                <li data-i18n="team.modal1.achievement3">
+                  Implemented sustainable construction practices
+                </li>
+                <li data-i18n="team.modal1.achievement4">
+                  Built a team of 200+ real estate professionals
+                </li>
+              </ul>
+
+              <h5 class="mb-2" data-i18n="team.modal.education">Education</h5>
+              <p class="text-muted mb-3" data-i18n="team.modal1.education">
+                MBA from Indian Institute of Management, Ahmedabad<br />
+                B.E. in Civil Engineering from Gujarat University
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Priya Shah -->
+  <div class="modal fade" id="leaderModal2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" data-i18n="team.modal2.title">
+            Priya Shah - Director - Projects
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+              <div class="modal-team-img">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Shah" loading="lazy" />
+              </div>
+              <div class="leader-social justify-content-center mt-3">
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h4 class="mb-3" data-i18n="team.modal.background">
+                Professional Background
+              </h4>
+              <p class="text-muted mb-3" data-i18n="team.modal2.background">
+                Priya Shah brings 18+ years of architectural and project
+                management expertise to Naroda Group. She oversees all project
+                execution with a focus on innovative design, quality
+                construction, and timely delivery.
+              </p>
+
+              <h5 class="mb-2" data-i18n="team.modal.achievements">
+                Key Achievements
+              </h5>
+              <ul class="text-muted mb-3">
+                <li data-i18n="team.modal2.achievement1">
+                  Successfully delivered 35+ residential and commercial
+                  projects
+                </li>
+                <li data-i18n="team.modal2.achievement2">
+                  Introduced green building practices across all developments
+                </li>
+                <li data-i18n="team.modal2.achievement3">
+                  Reduced project completion time by 20% through process
+                  optimization
+                </li>
+                <li data-i18n="team.modal2.achievement4">
+                  Implemented advanced project management software
+                </li>
+              </ul>
+
+              <h5 class="mb-2" data-i18n="team.modal.education">Education</h5>
+              <p class="text-muted mb-3" data-i18n="team.modal2.education">
+                Masters in Architecture from CEPT University, Ahmedabad<br />
+                PMP Certified Project Management Professional
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Amit Patel -->
+  <div class="modal fade" id="leaderModal3" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" data-i18n="team.modal3.title">
+            Amit Patel - Chief Financial Officer
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+              <div class="modal-team-img">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Amit Patel" loading="lazy" />
+              </div>
+              <div class="leader-social justify-content-center mt-3">
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h4 class="mb-3" data-i18n="team.modal.background">
+                Professional Background
+              </h4>
+              <p class="text-muted mb-3" data-i18n="team.modal3.background">
+                Amit Patel oversees all financial operations at Naroda Group,
+                bringing 20+ years of experience in real estate finance,
+                investment strategy, and financial planning.
+              </p>
+
+              <h5 class="mb-2" data-i18n="team.modal.achievements">
+                Key Achievements
+              </h5>
+              <ul class="text-muted mb-3">
+                <li data-i18n="team.modal3.achievement1">
+                  Managed financing for 40+ real estate projects
+                </li>
+                <li data-i18n="team.modal3.achievement2">
+                  Optimized investment portfolio yielding 25% ROI
+                </li>
+                <li data-i18n="team.modal3.achievement3">
+                  Implemented financial controls reducing costs by 15%
+                </li>
+                <li data-i18n="team.modal3.achievement4">
+                  Successfully raised capital for major developments
+                </li>
+              </ul>
+
+              <h5 class="mb-2" data-i18n="team.modal.education">Education</h5>
+              <p class="text-muted mb-3" data-i18n="team.modal3.education">
+                Chartered Accountant (CA)<br />
+                MBA in Finance from Gujarat University
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Neha Gupta -->
+  <div class="modal fade" id="leaderModal4" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" data-i18n="team.modal4.title">
+            Neha Gupta - Head of Sales & Marketing
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+              <div class="modal-team-img">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Neha Gupta" loading="lazy" />
+              </div>
+              <div class="leader-social justify-content-center mt-3">
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h4 class="mb-3" data-i18n="team.modal.background">
+                Professional Background
+              </h4>
+              <p class="text-muted mb-3" data-i18n="team.modal4.background">
+                Neha Gupta leads the sales and marketing division with 15+
+                years of experience in brand building, customer relationship
+                management, and sales strategy development.
+              </p>
+
+              <h5 class="mb-2" data-i18n="team.modal.achievements">
+                Key Achievements
+              </h5>
+              <ul class="text-muted mb-3">
+                <li data-i18n="team.modal4.achievement1">
+                  Increased sales revenue by 40% over 3 years
+                </li>
+                <li data-i18n="team.modal4.achievement2">
+                  Built a 32-member high-performing sales team
+                </li>
+                <li data-i18n="team.modal4.achievement3">
+                  Launched 5 successful marketing campaigns
+                </li>
+                <li data-i18n="team.modal4.achievement4">
+                  Improved customer satisfaction scores by 35%
+                </li>
+              </ul>
+
+              <h5 class="mb-2" data-i18n="team.modal.education">Education</h5>
+              <p class="text-muted mb-3" data-i18n="team.modal4.education">
+                MBA in Marketing from MICA, Ahmedabad<br />
+                B.Com from Gujarat University
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Vikram Singh -->
+  <div class="modal fade" id="leaderModal5" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" data-i18n="team.modal5.title">
+            Vikram Singh - Head of Construction
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+              <div class="modal-team-img">
+                <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Vikram Singh" loading="lazy" />
+              </div>
+              <div class="leader-social justify-content-center mt-3">
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h4 class="mb-3" data-i18n="team.modal.background">
+                Professional Background
+              </h4>
+              <p class="text-muted mb-3" data-i18n="team.modal5.background">
+                Vikram Singh manages all construction operations with 22+
+                years of experience in civil engineering, project execution,
+                and quality control.
+              </p>
+
+              <h5 class="mb-2" data-i18n="team.modal.achievements">
+                Key Achievements
+              </h5>
+              <ul class="text-muted mb-3">
+                <li data-i18n="team.modal5.achievement1">
+                  Supervised construction of 30+ major projects
+                </li>
+                <li data-i18n="team.modal5.achievement2">
+                  Reduced construction time by 25% through innovative methods
+                </li>
+                <li data-i18n="team.modal5.achievement3">
+                  Maintained 99% safety record across all sites
+                </li>
+                <li data-i18n="team.modal5.achievement4">
+                  Implemented cost-saving measures reducing expenses by 18%
+                </li>
+              </ul>
+
+              <h5 class="mb-2" data-i18n="team.modal.education">Education</h5>
+              <p class="text-muted mb-3" data-i18n="team.modal5.education">
+                B.E. in Civil Engineering from LD College of Engineering<br />
+                Advanced Diploma in Construction Management
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Anjali Desai -->
+  <div class="modal fade" id="leaderModal6" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" data-i18n="team.modal6.title">
+            Anjali Desai - Legal & Compliance Head
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+              <div class="modal-team-img">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Anjali Desai" loading="lazy" />
+              </div>
+              <div class="leader-social justify-content-center mt-3">
+                <a href="#" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h4 class="mb-3" data-i18n="team.modal.background">
+                Professional Background
+              </h4>
+              <p class="text-muted mb-3" data-i18n="team.modal6.background">
+                Anjali Desai ensures all legal and regulatory compliance for
+                Naroda Group with 16+ years of experience in real estate law,
+                contract management, and regulatory affairs.
+              </p>
+
+              <h5 class="mb-2" data-i18n="team.modal.achievements">
+                Key Achievements
+              </h5>
+              <ul class="text-muted mb-3">
+                <li data-i18n="team.modal6.achievement1">
+                  Successfully handled legal aspects of 50+ property
+                  transactions
+                </li>
+                <li data-i18n="team.modal6.achievement2">
+                  Ensured 100% RERA compliance across all projects
+                </li>
+                <li data-i18n="team.modal6.achievement3">
+                  Reduced legal disputes by 40% through proactive measures
+                </li>
+                <li data-i18n="team.modal6.achievement4">
+                  Streamlined documentation process saving 200+ hours annually
+                </li>
+              </ul>
+
+              <h5 class="mb-2" data-i18n="team.modal.education">Education</h5>
+              <p class="text-muted mb-3" data-i18n="team.modal6.education">
+                LL.B. from Gujarat University<br />
+                Specialized in Real Estate Law
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Team Member Modal -->
+  <div class="modal fade" id="dynamicLeaderModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Team Member Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4 text-center mb-4 mb-md-0">
+              <div class="modal-team-img">
+                <img src="" alt="Team Member" loading="lazy" />
+              </div>
+              <h4 class="modal-member-name mt-3"></h4>
+              <div class="leader-position modal-member-role"></div>
+              <span class="leader-experience modal-member-experience"></span>
+              <div class="leader-social justify-content-center mt-3 modal-social-links"></div>
+              <!-- Contact Details -->
+              <div class="modal-contact-details mt-3 text-start" style="display: none"></div>
+            </div>
+            <div class="col-md-8">
+              <!-- Bio Section -->
+              <div class="bio-section mb-4">
+                <h5 class="mb-2">
+                  <i class="fas fa-user me-2 text-gold"></i>Bio
+                </h5>
+                <p class="text-muted mb-3 modal-member-bio"></p>
+              </div>
+
+              <h4 class="mb-3" data-i18n="team.modal.background">
+                <i class="fas fa-briefcase me-2 text-gold"></i>Professional
+                Background
+              </h4>
+              <p class="text-muted mb-3 modal-member-background"></p>
+
+              <div class="achievements-section">
+                <h5 class="mb-2">
+                  <i class="fas fa-trophy me-2 text-gold"></i><span data-i18n="team.modal.achievements">Key
+                    Achievements</span>
+                </h5>
+                <ul class="text-muted mb-3 modal-member-achievements"></ul>
+              </div>
+
+              <div class="education-section">
+                <h5 class="mb-2">
+                  <i class="fas fa-graduation-cap me-2 text-gold"></i><span data-i18n="team.modal.education">Education &
+                    Qualifications</span>
+                </h5>
+                <p class="text-muted mb-3 modal-member-education"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title language-content" data-i18n="login.title">
+            Login to Your Account
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="email" class="form-label language-content" data-i18n="login.email">Email Address</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label language-content" data-i18n="login.password">Password</label>
+              <input type="password" class="form-control" id="password" required />
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="remember" />
+              <label class="form-check-label language-content" for="remember" data-i18n="login.remember">Remember
+                me</label>
+            </div>
+            <button type="submit" class="btn btn-gold w-100 language-content" data-i18n="login.submit">
+              Login
+            </button>
+          </form>
+          <div class="text-center mt-3">
+            <a href="#" class="text-decoration-none language-content" data-i18n="login.forgot">Forgot Password?</a>
+          </div>
+          <div class="text-center mt-3">
+            <span class="text-muted language-content" data-i18n="login.no_account">Don't have an account?</span>
+            <a href="#" class="text-decoration-none ms-1 language-content" data-i18n="login.register">Register here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+      delay: 100,
+      disable: function () {
+        return window.innerWidth < 768;
+      },
+    });
+
+    // Navbar scroll effect
+    window.addEventListener("scroll", function () {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    // Language Translation Data
+    const translations = {
+      en: {
+        // Navigation
+        "nav.brand": "Naroda",
+        "nav.group": "Group",
+        "nav.home": "Home",
+        "nav.about": "About",
+        "nav.projects": "Projects",
+        "nav.landmark": "Naroda Landmark",
+        "nav.irish": "Naroda Irish",
+        "nav.all_projects": "All Projects",
+        "nav.properties": "Properties",
+        "nav.buy": "Buy",
+        "nav.rent": "Rent",
+        "nav.property_details": "Property Details",
+        "nav.gallery": "Gallery",
+        "nav.blog": "Blog",
+        "nav.news": "News",
+        "nav.careers": "Careers",
+        "nav.team": "Our Team",
+        "nav.faq": "FAQ",
+        "nav.contact": "Contact",
+        "nav.more": "More",
+        "nav.language": "EN",
+        "nav.login": "Login",
+        "nav.call": "Call Now",
+
+        // Team Page
+        "team.hero.title.part1": "Our",
+        "team.hero.title.part2": "Leadership Team",
+        "team.hero.subtitle":
+          "Meet the experienced professionals who guide our vision and drive our success",
+
+        "team.intro.badge": "Our Team",
+        "team.intro.title.part1": "Expertise That",
+        "team.intro.title.part2": "Builds Excellence",
+        "team.intro.description":
+          "At Naroda Group, our strength lies in our people. We bring together industry veterans, creative thinkers, and dedicated professionals who share a common vision of transforming Ahmedabad's skyline while setting new benchmarks in quality and customer satisfaction.",
+
+        "team.leadership.title.part1": "Executive",
+        "team.leadership.title.part2": "Leadership",
+        "team.leadership.subtitle":
+          "Our leadership team combines decades of experience with innovative thinking",
+
+        "team.leader1.name": "Rajesh Mehta",
+        "team.leader1.position": "Founder & CEO",
+        "team.leader1.experience": "25+ Years Experience",
+        "team.leader1.bio":
+          "Visionary leader with expertise in real estate development, strategic planning, and business growth. Founded Naroda Group in 2008.",
+
+        "team.leader2.name": "Priya Shah",
+        "team.leader2.position": "Director - Projects",
+        "team.leader2.experience": "18+ Years Experience",
+        "team.leader2.bio":
+          "Architect and project management expert. Oversees all project execution with focus on quality, innovation, and sustainable design.",
+
+        "team.leader3.name": "Amit Patel",
+        "team.leader3.position": "Chief Financial Officer",
+        "team.leader3.experience": "20+ Years Experience",
+        "team.leader3.bio":
+          "Finance professional with extensive experience in real estate investments, financial planning, and strategic financial management.",
+
+        "team.leader4.name": "Neha Gupta",
+        "team.leader4.position": "Head of Sales & Marketing",
+        "team.leader4.experience": "15+ Years Experience",
+        "team.leader4.bio":
+          "Marketing strategist with expertise in brand building, customer relationship management, and driving sales growth across residential and commercial segments.",
+
+        "team.leader5.name": "Vikram Singh",
+        "team.leader5.position": "Head of Construction",
+        "team.leader5.experience": "22+ Years Experience",
+        "team.leader5.bio":
+          "Civil engineer with expertise in large-scale construction management, quality control, and implementation of advanced construction technologies.",
+
+        "team.leader6.name": "Anjali Desai",
+        "team.leader6.position": "Legal & Compliance Head",
+        "team.leader6.experience": "16+ Years Experience",
+        "team.leader6.bio":
+          "Legal expert specializing in real estate laws, RERA compliance, contracts, and regulatory affairs. Ensures all projects meet legal requirements.",
+
+        "team.view_profile": "View Full Profile",
+
+        "team.departments.title.part1": "Department",
+        "team.departments.title.part2": "Heads",
+        "team.departments.subtitle":
+          "Specialized teams driving excellence in every aspect of our operations",
+
+        "team.department1.name": "Construction",
+        "team.department1.head": "Vikram Singh",
+        "team.department1.size": "45+ Members",
+
+        "team.department2.name": "Design & Architecture",
+        "team.department2.head": "Arjun Mehta",
+        "team.department2.size": "18+ Members",
+
+        "team.department3.name": "Sales & Marketing",
+        "team.department3.head": "Neha Gupta",
+        "team.department3.size": "32+ Members",
+
+        "team.department4.name": "Legal & Compliance",
+        "team.department4.head": "Anjali Desai",
+        "team.department4.size": "12+ Members",
+
+        "team.department5.name": "Customer Relations",
+        "team.department5.head": "Rohan Kapoor",
+        "team.department5.size": "22+ Members",
+
+        "team.department6.name": "Project Management",
+        "team.department6.head": "Sanjay Verma",
+        "team.department6.size": "28+ Members",
+
+        "team.department7.name": "Sustainability",
+        "team.department7.head": "Priya Nair",
+        "team.department7.size": "8+ Members",
+
+        "team.department8.name": "Operations",
+        "team.department8.head": "Rahul Sharma",
+        "team.department8.size": "35+ Members",
+
+        "team.stats.title.part1": "Team",
+        "team.stats.title.part2": "Statistics",
+        "team.stats.subtitle": "Our strength in numbers",
+        "team.stats.stat1": "Total Team Members",
+        "team.stats.stat2": "Graduate & Above",
+        "team.stats.stat3": "Avg. Years Experience",
+        "team.stats.stat4": "Employee Retention",
+
+        "team.values.title.part1": "Our Team",
+        "team.values.title.part2": "Culture",
+        "team.values.subtitle":
+          "The principles that guide our team dynamics and workplace environment",
+
+        "team.values.value1.title": "Collaboration",
+        "team.values.value1.description":
+          "We believe in working together across departments to achieve common goals.",
+
+        "team.values.value2.title": "Innovation",
+        "team.values.value2.description":
+          "Encouraging creative thinking and embracing new ideas and technologies.",
+
+        "team.values.value3.title": "Employee Growth",
+        "team.values.value3.description":
+          "Investing in continuous learning and career development opportunities.",
+
+        "team.values.value4.title": "Excellence",
+        "team.values.value4.description":
+          "Striving for the highest standards in everything we do, every day.",
+
+        "team.cta.title.part1": "Join Our",
+        "team.cta.title.part2": "Winning Team",
+        "team.cta.subtitle":
+          "We're always looking for talented professionals to join our growing team.",
+        "team.cta.btn1": "View Careers",
+        "team.cta.btn2": "Submit CV",
+        "team.cta.btn3": "Contact HR",
+
+        // Modal Translations
+        "team.modal.background": "Professional Background",
+        "team.modal.achievements": "Key Achievements",
+        "team.modal.education": "Education",
+
+        "team.modal1.title": "Rajesh Mehta - Founder & CEO",
+        "team.modal1.background":
+          "Rajesh Mehta founded Naroda Group in 2008 with a vision to transform Ahmedabad's real estate landscape. With over 25 years of experience in the industry, he has been instrumental in shaping the company's growth strategy and establishing it as one of Ahmedabad's most trusted real estate developers.",
+        "team.modal1.achievement1":
+          "Led the development of 50+ successful projects",
+        "team.modal1.achievement2":
+          "Expanded company operations to multiple cities",
+        "team.modal1.achievement3":
+          "Implemented sustainable construction practices",
+        "team.modal1.achievement4":
+          "Built a team of 200+ real estate professionals",
+        "team.modal1.education":
+          "MBA from Indian Institute of Management, Ahmedabad<br>B.E. in Civil Engineering from Gujarat University",
+
+        "team.modal2.title": "Priya Shah - Director - Projects",
+        "team.modal2.background":
+          "Priya Shah brings 18+ years of architectural and project management expertise to Naroda Group. She oversees all project execution with a focus on innovative design, quality construction, and timely delivery.",
+        "team.modal2.achievement1":
+          "Successfully delivered 35+ residential and commercial projects",
+        "team.modal2.achievement2":
+          "Introduced green building practices across all developments",
+        "team.modal2.achievement3":
+          "Reduced project completion time by 20% through process optimization",
+        "team.modal2.achievement4":
+          "Implemented advanced project management software",
+        "team.modal2.education":
+          "Masters in Architecture from CEPT University, Ahmedabad<br>PMP Certified Project Management Professional",
+
+        "team.modal3.title": "Amit Patel - Chief Financial Officer",
+        "team.modal3.background":
+          "Amit Patel oversees all financial operations at Naroda Group, bringing 20+ years of experience in real estate finance, investment strategy, and financial planning.",
+        "team.modal3.achievement1":
+          "Managed financing for 40+ real estate projects",
+        "team.modal3.achievement2":
+          "Optimized investment portfolio yielding 25% ROI",
+        "team.modal3.achievement3":
+          "Implemented financial controls reducing costs by 15%",
+        "team.modal3.achievement4":
+          "Successfully raised capital for major developments",
+        "team.modal3.education":
+          "Chartered Accountant (CA)<br>MBA in Finance from Gujarat University",
+
+        "team.modal4.title": "Neha Gupta - Head of Sales & Marketing",
+        "team.modal4.background":
+          "Neha Gupta leads the sales and marketing division with 15+ years of experience in brand building, customer relationship management, and sales strategy development.",
+        "team.modal4.achievement1":
+          "Increased sales revenue by 40% over 3 years",
+        "team.modal4.achievement2":
+          "Built a 32-member high-performing sales team",
+        "team.modal4.achievement3":
+          "Launched 5 successful marketing campaigns",
+        "team.modal4.achievement4":
+          "Improved customer satisfaction scores by 35%",
+        "team.modal4.education":
+          "MBA in Marketing from MICA, Ahmedabad<br>B.Com from Gujarat University",
+
+        "team.modal5.title": "Vikram Singh - Head of Construction",
+        "team.modal5.background":
+          "Vikram Singh manages all construction operations with 22+ years of experience in civil engineering, project execution, and quality control.",
+        "team.modal5.achievement1":
+          "Supervised construction of 30+ major projects",
+        "team.modal5.achievement2":
+          "Reduced construction time by 25% through innovative methods",
+        "team.modal5.achievement3":
+          "Maintained 99% safety record across all sites",
+        "team.modal5.achievement4":
+          "Implemented cost-saving measures reducing expenses by 18%",
+        "team.modal5.education":
+          "B.E. in Civil Engineering from LD College of Engineering<br>Advanced Diploma in Construction Management",
+
+        "team.modal6.title": "Anjali Desai - Legal & Compliance Head",
+        "team.modal6.background":
+          "Anjali Desai ensures all legal and regulatory compliance for Naroda Group with 16+ years of experience in real estate law, contract management, and regulatory affairs.",
+        "team.modal6.achievement1":
+          "Successfully handled legal aspects of 50+ property transactions",
+        "team.modal6.achievement2":
+          "Ensured 100% RERA compliance across all projects",
+        "team.modal6.achievement3":
+          "Reduced legal disputes by 40% through proactive measures",
+        "team.modal6.achievement4":
+          "Streamlined documentation process saving 200+ hours annually",
+        "team.modal6.education":
+          "LL.B. from Gujarat University<br>Specialized in Real Estate Law",
+
+        // Footer
+        "footer.brand": "Naroda",
+        "footer.group": "Group",
+        "footer.description":
+          "Creating landmark properties that redefine excellence. From premium commercial spaces to luxury residential living, we build dreams with quality and commitment.",
+        "footer.quick_links": "Quick Links",
+        "footer.our_projects": "Our Projects",
+        "footer.landmark_desc": "Premium Commercial Spaces",
+        "footer.irish_desc": "Luxury Residential Living",
+        "footer.view_all_projects": "View All Projects",
+        "footer.explore_portfolio": "Explore our portfolio",
+        "footer.contact_info": "Contact Info",
+        "footer.phone": "Phone Number",
+        "footer.phone_hours": "Mon - Sat: 10 AM - 7 PM",
+        "footer.email": "Email Address",
+        "footer.email_response": "We reply within 24 hours",
+        "footer.address": "Office Address",
+        "footer.address_line1": "Naroda - Bhat Road",
+        "footer.address_line2": "Ahmedabad, Gujarat 382330",
+        "footer.rights": "© 2025 Naroda Group. All rights reserved.",
+        "footer.privacy": "Privacy Policy",
+        "footer.terms": "Terms of Service",
+        "footer.rera": "RERA Registration",
+
+        // Login
+        "login.title": "Login to Your Account",
+        "login.email": "Email Address",
+        "login.password": "Password",
+        "login.remember": "Remember me",
+        "login.submit": "Login",
+        "login.forgot": "Forgot Password?",
+        "login.no_account": "Don't have an account?",
+        "login.register": "Register here",
+      },
+      hi: {
+        // Navigation
+        "nav.brand": "नरोड़ा",
+        "nav.group": "ग्रुप",
+        "nav.home": "होम",
+        "nav.about": "हमारे बारे में",
+        "nav.projects": "प्रोजेक्ट्स",
+        "nav.landmark": "नरोड़ा लैंडमार्क",
+        "nav.irish": "नरोड़ा आयरिश",
+        "nav.all_projects": "सभी प्रोजेक्ट्स",
+        "nav.properties": "संपत्तियाँ",
+        "nav.buy": "खरीदें",
+        "nav.rent": "किराए पर लें",
+        "nav.property_details": "संपत्ति विवरण",
+        "nav.gallery": "गैलरी",
+        "nav.blog": "ब्लॉग",
+        "nav.news": "समाचार",
+        "nav.careers": "करियर",
+        "nav.team": "हमारी टीम",
+        "nav.faq": "सवाल जवाब",
+        "nav.contact": "संपर्क करें",
+        "nav.more": "और",
+        "nav.language": "हिंदी",
+        "nav.login": "लॉगिन",
+        "nav.call": "अभी कॉल करें",
+
+        // Team Page
+        "team.hero.title.part1": "हमारी",
+        "team.hero.title.part2": "लीडरशिप टीम",
+        "team.hero.subtitle":
+          "उन अनुभवी पेशेवरों से मिलें जो हमारी दृष्टि को मार्गदर्शन देते हैं और हमारी सफलता को चलाते हैं",
+
+        "team.intro.badge": "हमारी टीम",
+        "team.intro.title.part1": "विशेषज्ञता जो",
+        "team.intro.title.part2": "उत्कृष्टता का निर्माण करती है",
+        "team.intro.description":
+          "नरोड़ा ग्रुप में, हमारी ताकत हमारे लोगों में है। हम उद्योग के दिग्गजों, रचनात्मक विचारकों और समर्पित पेशेवरों को एक साथ लाते हैं जो अहमदाबाद के आकाश को बदलते हुए गुणवत्ता और ग्राहक संतुष्टि में नए मानक स्थापित करने की एक सामान्य दृष्टि साझा करते हैं।",
+
+        "team.leadership.title.part1": "कार्यकारी",
+        "team.leadership.title.part2": "लीडरशिप",
+        "team.leadership.subtitle":
+          "हमारी नेतृत्व टीम दशकों के अनुभव को अभिनव सोच के साथ जोड़ती है",
+
+        "team.leader1.name": "राजेश मेहता",
+        "team.leader1.position": "संस्थापक और सीईओ",
+        "team.leader1.experience": "25+ वर्षों का अनुभव",
+        "team.leader1.bio":
+          "रियल एस्टेट विकास, रणनीतिक योजना और व्यवसाय विकास में विशेषज्ञता वाले दूरदर्शी नेता। 2008 में नरोड़ा ग्रुप की स्थापना की।",
+
+        "team.leader2.name": "प्रिया शाह",
+        "team.leader2.position": "निदेशक - परियोजनाएं",
+        "team.leader2.experience": "18+ वर्षों का अनुभव",
+        "team.leader2.bio":
+          "वास्तुकार और परियोजना प्रबंधन विशेषज्ञ। गुणवत्ता, नवाचार और टिकाऊ डिजाइन पर ध्यान केंद्रित करते हुए सभी परियोजना निष्पादन की देखरेख करती हैं।",
+
+        "team.leader3.name": "अमित पटेल",
+        "team.leader3.position": "मुख्य वित्तीय अधिकारी",
+        "team.leader3.experience": "20+ वर्षों का अनुभव",
+        "team.leader3.bio":
+          "रियल एस्टेट निवेश, वित्तीय योजना और रणनीतिक वित्तीय प्रबंधन में व्यापक अनुभव वाले वित्त पेशेवर।",
+
+        "team.leader4.name": "नेहा गुप्ता",
+        "team.leader4.position": "बिक्री और विपणन प्रमुख",
+        "team.leader4.experience": "15+ वर्षों का अनुभव",
+        "team.leader4.bio":
+          "ब्रांड बिल्डिंग, ग्राहक संबंध प्रबंधन और आवासीय और व्यावसायिक क्षेत्रों में बिक्री वृद्धि को चलाने में विशेषज्ञता वाली विपणन रणनीतिकार।",
+
+        "team.leader5.name": "विक्रम सिंह",
+        "team.leader5.position": "निर्माण प्रमुख",
+        "team.leader5.experience": "22+ वर्षों का अनुभव",
+        "team.leader5.bio":
+          "बड़े पैमाने के निर्माण प्रबंधन, गुणवत्ता नियंत्रण और उन्नत निर्माण प्रौद्योगिकियों के कार्यान्वयन में विशेषज्ञता वाले सिविल इंजीनियर।",
+
+        "team.leader6.name": "अंजलि देसाई",
+        "team.leader6.position": "कानूनी और अनुपालन प्रमुख",
+        "team.leader6.experience": "16+ वर्षों का अनुभव",
+        "team.leader6.bio":
+          "रियल एस्टेट कानूनों, RERA अनुपालन, अनुबंधों और नियामक मामलों में विशेषज्ञता वाले कानूनी विशेषज्ञ। सुनिश्चित करते हैं कि सभी परियोजनाएं कानूनी आवश्यकताओं को पूरा करती हैं।",
+
+        "team.view_profile": "पूरा प्रोफाइल देखें",
+
+        "team.departments.title.part1": "विभाग",
+        "team.departments.title.part2": "प्रमुख",
+        "team.departments.subtitle":
+          "विशेष टीमें जो हमारे संचालन के हर पहलू में उत्कृष्टता को चलाती हैं",
+
+        "team.department1.name": "निर्माण",
+        "team.department1.head": "विक्रम सिंह",
+        "team.department1.size": "45+ सदस्य",
+
+        "team.department2.name": "डिजाइन और वास्तुकला",
+        "team.department2.head": "अर्जुन मेहता",
+        "team.department2.size": "18+ सदस्य",
+
+        "team.department3.name": "बिक्री और विपणन",
+        "team.department3.head": "नेहा गुप्ता",
+        "team.department3.size": "32+ सदस्य",
+
+        "team.department4.name": "कानूनी और अनुपालन",
+        "team.department4.head": "अंजलि देसाई",
+        "team.department4.size": "12+ सदस्य",
+
+        "team.department5.name": "ग्राहक संबंध",
+        "team.department5.head": "रोहन कपूर",
+        "team.department5.size": "22+ सदस्य",
+
+        "team.department6.name": "परियोजना प्रबंधन",
+        "team.department6.head": "संजय वर्मा",
+        "team.department6.size": "28+ सदस्य",
+
+        "team.department7.name": "सस्टेनेबिलिटी",
+        "team.department7.head": "प्रिया नायर",
+        "team.department7.size": "8+ सदस्य",
+
+        "team.department8.name": "संचालन",
+        "team.department8.head": "राहुल शर्मा",
+        "team.department8.size": "35+ सदस्य",
+
+        "team.stats.title.part1": "टीम",
+        "team.stats.title.part2": "आंकड़े",
+        "team.stats.subtitle": "संख्या में हमारी ताकत",
+        "team.stats.stat1": "कुल टीम सदस्य",
+        "team.stats.stat2": "स्नातक और उससे ऊपर",
+        "team.stats.stat3": "औसत वर्षों का अनुभव",
+        "team.stats.stat4": "कर्मचारी प्रतिधारण",
+
+        "team.values.title.part1": "हमारी टीम",
+        "team.values.title.part2": "संस्कृति",
+        "team.values.subtitle":
+          "वे सिद्धांत जो हमारी टीम गतिशीलता और कार्यस्थल वातावरण को मार्गदर्शित करते हैं",
+
+        "team.values.value1.title": "सहयोग",
+        "team.values.value1.description":
+          "हम सामान्य लक्ष्यों को प्राप्त करने के लिए विभागों में एक साथ काम करने में विश्वास करते हैं।",
+
+        "team.values.value2.title": "नवाचार",
+        "team.values.value2.description":
+          "रचनात्मक सोच को प्रोत्साहित करना और नए विचारों और प्रौद्योगिकियों को अपनाना।",
+
+        "team.values.value3.title": "कर्मचारी विकास",
+        "team.values.value3.description":
+          "निरंतर सीखने और करियर विकास के अवसरों में निवेश करना।",
+
+        "team.values.value4.title": "उत्कृष्टता",
+        "team.values.value4.description":
+          "हर दिन, हर काम में उच्चतम मानकों के लिए प्रयास करना।",
+
+        "team.cta.title.part1": "हमारी",
+        "team.cta.title.part2": "जीतने वाली टीम में शामिल हों",
+        "team.cta.subtitle":
+          "हम हमेशा प्रतिभाशाली पेशेवरों की तलाश में रहते हैं जो हमारी बढ़ती टीम में शामिल हों।",
+        "team.cta.btn1": "करियर देखें",
+        "team.cta.btn2": "सीवी जमा करें",
+        "team.cta.btn3": "एचआर से संपर्क करें",
+
+        // Modal Translations
+        "team.modal.background": "पेशेवर पृष्ठभूमि",
+        "team.modal.achievements": "प्रमुख उपलब्धियां",
+        "team.modal.education": "शिक्षा",
+
+        "team.modal1.title": "राजेश मेहता - संस्थापक और सीईओ",
+        "team.modal1.background":
+          "राजेश मेहता ने 2008 में नरोड़ा ग्रुप की स्थापना अहमदाबाद के रियल एस्टेट परिदृश्य को बदलने के दृष्टिकोण के साथ की। उद्योग में 25 से अधिक वर्षों के अनुभव के साथ, वे कंपनी की विकास रणनीति को आकार देने और इसे अहमदाबाद के सबसे भरोसेमंद रियल एस्टेट डेवलपर्स में से एक के रूप में स्थापित करने में महत्वपूर्ण भूमिका निभा चुके हैं।",
+        "team.modal1.achievement1":
+          "50+ सफल परियोजनाओं के विकास का नेतृत्व किया",
+        "team.modal1.achievement2":
+          "कंपनी के संचालन को कई शहरों में विस्तारित किया",
+        "team.modal1.achievement3": "टिकाऊ निर्माण प्रथाओं को लागू किया",
+        "team.modal1.achievement4": "200+ रियल एस्टेट पेशेवरों की टीम बनाई",
+        "team.modal1.education":
+          "भारतीय प्रबंधन संस्थान, अहमदाबाद से एमबीए<br>गुजरात विश्वविद्यालय से सिविल इंजीनियरिंग में बी.ई.",
+
+        "team.modal2.title": "प्रिया शाह - निदेशक - परियोजनाएं",
+        "team.modal2.background":
+          "प्रिया शाह नरोड़ा ग्रुप में 18+ वर्षों की वास्तुकला और परियोजना प्रबंधन विशेषज्ञता लाती हैं। वह नवीन डिजाइन, गुणवत्ता निर्माण और समय पर वितरण पर ध्यान केंद्रित करते हुए सभी परियोजना निष्पादन की देखरेख करती हैं।",
+        "team.modal2.achievement1":
+          "35+ आवासीय और व्यावसायिक परियोजनाओं को सफलतापूर्वक वितरित किया",
+        "team.modal2.achievement2":
+          "सभी विकासों में हरित भवन प्रथाओं को पेश किया",
+        "team.modal2.achievement3":
+          "प्रक्रिया अनुकूलन के माध्यम से परियोजना पूरा करने का समय 20% कम किया",
+        "team.modal2.achievement4":
+          "उन्नत परियोजना प्रबंधन सॉफ्टवेयर लागू किया",
+        "team.modal2.education":
+          "सीईपीटी विश्वविद्यालय, अहमदाबाद से वास्तुकला में मास्टर्स<br>पीएमपी प्रमाणित परियोजना प्रबंधन पेशेवर",
+
+        "team.modal3.title": "अमित पटेल - मुख्य वित्तीय अधिकारी",
+        "team.modal3.background":
+          "अमित पटेल नरोड़ा ग्रुप में सभी वित्तीय संचालन की देखरेख करते हैं, जो रियल एस्टेट वित्त, निवेश रणनीति और वित्तीय योजना में 20+ वर्षों का अनुभव लाते हैं।",
+        "team.modal3.achievement1":
+          "40+ रियल एस्टेट परियोजनाओं के लिए वित्तपोषण का प्रबंधन किया",
+        "team.modal3.achievement2":
+          "25% आरओआई देने वाले निवेश पोर्टफोलियो को अनुकूलित किया",
+        "team.modal3.achievement3":
+          "वित्तीय नियंत्रण लागू करके लागत में 15% की कमी की",
+        "team.modal3.achievement4":
+          "प्रमुख विकासों के लिए सफलतापूर्वक पूंजी जुटाई",
+        "team.modal3.education":
+          "चार्टर्ड एकाउंटेंट (सीए)<br>गुजरात विश्वविद्यालय से वित्त में एमबीए",
+
+        "team.modal4.title": "नेहा गुप्ता - बिक्री और विपणन प्रमुख",
+        "team.modal4.background":
+          "नेहा गुप्ता बिक्री और विपणन प्रभाग का नेतृत्व करती हैं, जिनके पास ब्रांड बिल्डिंग, ग्राहक संबंध प्रबंधन और बिक्री रणनीति विकास में 15+ वर्षों का अनुभव है।",
+        "team.modal4.achievement1":
+          "3 वर्षों में बिक्री राजस्व में 40% की वृद्धि की",
+        "team.modal4.achievement2":
+          "32 सदस्यीय उच्च प्रदर्शन वाली बिक्री टीम बनाई",
+        "team.modal4.achievement3": "5 सफल विपणन अभियान लॉन्च किए",
+        "team.modal4.achievement4":
+          "ग्राहक संतुष्टि स्कोर में 35% सुधार किया",
+        "team.modal4.education":
+          "एमआईसीए, अहमदाबाद से विपणन में एमबीए<br>गुजरात विश्वविद्यालय से बी.कॉम",
+
+        "team.modal5.title": "विक्रम सिंह - निर्माण प्रमुख",
+        "team.modal5.background":
+          "विक्रम सिंह सिविल इंजीनियरिंग, परियोजना निष्पादन और गुणवत्ता नियंत्रण में 22+ वर्षों के अनुभव के साथ सभी निर्माण संचालन का प्रबंधन करते हैं।",
+        "team.modal5.achievement1":
+          "30+ प्रमुख परियोजनाओं के निर्माण का पर्यवेक्षण किया",
+        "team.modal5.achievement2":
+          "नवीन तरीकों के माध्यम से निर्माण समय में 25% की कमी की",
+        "team.modal5.achievement3":
+          "सभी साइटों पर 99% सुरक्षा रिकॉर्ड बनाए रखा",
+        "team.modal5.achievement4":
+          "लागत बचत उपाय लागू करके व्यय में 18% की कमी की",
+        "team.modal5.education":
+          "एलडी कॉलेज ऑफ इंजीनियरिंग से सिविल इंजीनियरिंग में बी.ई.<br>निर्माण प्रबंधन में उन्नत डिप्लोमा",
+
+        "team.modal6.title": "अंजलि देसाई - कानूनी और अनुपालन प्रमुख",
+        "team.modal6.background":
+          "अंजलि देसाई रियल एस्टेट कानून, अनुबंध प्रबंधन और नियामक मामलों में 16+ वर्षों के अनुभव के साथ नरोड़ा ग्रुप के लिए सभी कानूनी और नियामक अनुपालन सुनिश्चित करती हैं।",
+        "team.modal6.achievement1":
+          "50+ संपत्ति लेनदेन के कानूनी पहलुओं को सफलतापूर्वक संभाला",
+        "team.modal6.achievement2":
+          "सभी परियोजनाओं में 100% RERA अनुपालन सुनिश्चित किया",
+        "team.modal6.achievement3":
+          "सक्रिय उपायों के माध्यम से कानूनी विवादों में 40% की कमी की",
+        "team.modal6.achievement4":
+          "दस्तावेज़ीकरण प्रक्रिया को सुव्यवस्थित करके सालाना 200+ घंटे बचाए",
+        "team.modal6.education":
+          "गुजरात विश्वविद्यालय से एलएल.बी.<br>रियल एस्टेट लॉ में विशेषज्ञता",
+
+        // Footer
+        "footer.brand": "नरोड़ा",
+        "footer.group": "ग्रुप",
+        "footer.description":
+          "लैंडमार्क संपत्तियाँ बनाना जो उत्कृष्टता को फिर से परिभाषित करती हैं। प्रीमियम कमर्शियल स्पेस से लेकर लग्ज़री रेजिडेंशियल लिविंग तक, हम गुणवत्ता और प्रतिबद्धता के साथ सपने बनाते हैं।",
+        "footer.quick_links": "त्वरित लिंक",
+        "footer.our_projects": "हमारे प्रोजेक्ट्स",
+        "footer.landmark_desc": "प्रीमियम कमर्शियल स्पेस",
+        "footer.irish_desc": "लग्ज़री रेजिडेंशियल लिविंग",
+        "footer.view_all_projects": "सभी प्रोजेक्ट्स देखें",
+        "footer.explore_portfolio": "हमारे पोर्टफोलियो का अन्वेषण करें",
+        "footer.contact_info": "संपर्क जानकारी",
+        "footer.phone": "फोन नंबर",
+        "footer.phone_hours": "सोम - शनि: सुबह 10 - शाम 7 बजे",
+        "footer.email": "ईमेल पता",
+        "footer.email_response": "हम 24 घंटे के भीतर जवाब देते हैं",
+        "footer.address": "कार्यालय पता",
+        "footer.address_line1": "नरोड़ा - भाट रोड",
+        "footer.address_line2": "अहमदाबाद, गुजरात 382330",
+        "footer.rights": "© 2025 नरोड़ा ग्रुप। सर्वाधिकार सुरक्षित।",
+        "footer.privacy": "गोपनीयता नीति",
+        "footer.terms": "सेवा की शर्तें",
+        "footer.rera": "RERA पंजीकरण",
+
+        // Login
+        "login.title": "अपने खाते में लॉगिन करें",
+        "login.email": "ईमेल पता",
+        "login.password": "पासवर्ड",
+        "login.remember": "मुझे याद रखें",
+        "login.submit": "लॉगिन",
+        "login.forgot": "पासवर्ड भूल गए?",
+        "login.no_account": "खाता नहीं है?",
+        "login.register": "यहाँ पंजीकरण करें",
+      },
+      gu: {
+        // Navigation
+        "nav.brand": "નરોડા",
+        "nav.group": "ગ્રુપ",
+        "nav.home": "હોમ",
+        "nav.about": "અમારા વિશે",
+        "nav.projects": "પ્રોજેક્ટ્સ",
+        "nav.landmark": "નરોડા લેન્ડમાર્ક",
+        "nav.irish": "નરોડા આયરિશ",
+        "nav.all_projects": "બધા પ્રોજેક્ટ્સ",
+        "nav.properties": "પ્રોપર્ટીઝ",
+        "nav.buy": "ખરીદો",
+        "nav.rent": "ભાડે લો",
+        "nav.property_details": "પ્રોપર્ટી વિગતો",
+        "nav.gallery": "ગેલેરી",
+        "nav.blog": "બ્લોગ",
+        "nav.news": "સમાચાર",
+        "nav.careers": "કેરિયર",
+        "nav.team": "અમારી ટીમ",
+        "nav.faq": "પ્રશ્નો",
+        "nav.contact": "સંપર્ક કરો",
+        "nav.more": "વધુ",
+        "nav.language": "ગુજરાતી",
+        "nav.login": "લોગિન",
+        "nav.call": "હવે કૉલ કરો",
+
+        // Team Page
+        "team.hero.title.part1": "અમારી",
+        "team.hero.title.part2": "લીડરશીપ ટીમ",
+        "team.hero.subtitle":
+          "તે અનુભવી પેશાવરોને મળો જે અમારી દ્રષ્ટિને માર્ગદર્શન આપે છે અને અમારી સફળતાને ચલાવે છે",
+
+        "team.intro.badge": "અમારી ટીમ",
+        "team.intro.title.part1": "વિશેષતા જે",
+        "team.intro.title.part2": "એક્સલન્સ બનાવે છે",
+        "team.intro.description":
+          "નરોડા ગ્રુપમાં, અમારી તાકાત અમારા લોકોમાં રહેલી છે. અમે ઉદ્યોગના વિવિધ નિષ્ણાતો, સર્જનાત્મક વિચારકો અને સમર્પિત પેશાવરોને એક સાથે લાવીએ છીએ જે અમદાવાદના આકાશને રૂપાંતરિત કરતા ગુણવત્તા અને ગ્રાહક સંતુષ્ટિમાં નવા માપદંડો સ્થાપિત કરવાની એક સામાન્ય દ્રષ્ટિ ધરાવે છે.",
+
+        "team.leadership.title.part1": "કાર્યકારી",
+        "team.leadership.title.part2": "લીડરશીપ",
+        "team.leadership.subtitle":
+          "અમારી લીડરશીપ ટીમ દાયકાઓના અનુભવને અભિનવ વિચારસરણી સાથે જોડે છે",
+
+        "team.leader1.name": "રાજેશ મેહતા",
+        "team.leader1.position": "સ્થાપક અને સીઈઓ",
+        "team.leader1.experience": "25+ વર્ષનો અનુભવ",
+        "team.leader1.bio":
+          "રિઅલ એસ્ટેટ વિકાસ, વ્યૂહાત્મક આયોજન અને વ્યવસાય વિકાસમાં વિશેષતા ધરાવતા દૂરદર્શી નેતા. 2008માં નરોડા ગ્રુપની સ્થાપના કરી.",
+
+        "team.leader2.name": "પ્રિયા શાહ",
+        "team.leader2.position": "ડાયરેક્ટર - પ્રોજેક્ટ્સ",
+        "team.leader2.experience": "18+ વર્ષનો અનુભવ",
+        "team.leader2.bio":
+          "આર્કિટેક્ટ અને પ્રોજેક્ટ મેનેજમેન્ટ નિષ્ણાત. ગુણવત્તા, નવીનતા અને ટકાઉ ડિઝાઇન પર ધ્યાન કેન્દ્રિત કરીને તમામ પ્રોજેક્ટ એક્ઝેક્યુશનનું દેખરેખ કરે છે.",
+
+        "team.leader3.name": "અમિત પટેલ",
+        "team.leader3.position": "મુખ્ય વિત્તીય અધિકારી",
+        "team.leader3.experience": "20+ વર્ષનો અનુભવ",
+        "team.leader3.bio":
+          "રિઅલ એસ્ટેટ રોકાણો, વિત્તીય આયોજન અને વ્યૂહાત્મક વિત્તીય વ્યવસ્થાપનમાં વ્યાપક અનુભવ ધરાવતા વિત્ત પેશાવર.",
+
+        "team.leader4.name": "નેહા ગુપ્તા",
+        "team.leader4.position": "વેચાણ અને માર્કેટિંગ હેડ",
+        "team.leader4.experience": "15+ વર્ષનો અનુભવ",
+        "team.leader4.bio":
+          "બ્રેન્ડ બિલ્ડિંગ, ગ્રાહક સંબંધ વ્યવસ્થાપન અને રેસિડેન્શિયલ અને કોમર્શિયલ સેગમેન્ટમાં વેચાણ વૃદ્ધિને ચલાવવામાં વિશેષતા ધરાવતા માર્કેટિંગ સ્ટ્રેટેજિસ્ટ.",
+
+        "team.leader5.name": "વિક્રમ સિંહ",
+        "team.leader5.position": "કન્સ્ટ્રક્શન હેડ",
+        "team.leader5.experience": "22+ વર્ષનો અનુભવ",
+        "team.leader5.bio":
+          "મોટા પાયે કન્સ્ટ્રક્શન મેનેજમેન્ટ, ગુણવત્તા નિયંત્રણ અને અદ્યતન કન્સ્ટ્રક્શન ટેક્નોલોજીઓના અમલીકરણમાં વિશેષતા ધરાવતા સિવિલ ઇજનેર.",
+
+        "team.leader6.name": "અંજલી દેસાઈ",
+        "team.leader6.position": "લીગલ અને કમ્પ્લાયન્સ હેડ",
+        "team.leader6.experience": "16+ વર્ષનો અનુભવ",
+        "team.leader6.bio":
+          "રિઅલ એસ્ટેટ કાયદાઓ, RERA કમ્પ્લાયન્સ, કોન્ટ્રાક્ટ્સ અને નિયમનકારી બાબતોમાં વિશેષતા ધરાવતા કાનૂની નિષ્ણાત. ખાતરી કરે છે કે બધા પ્રોજેક્ટ્સ કાનૂની જરૂરિયાતો પૂરી કરે છે.",
+
+        "team.view_profile": "સંપૂર્ણ પ્રોફાઇલ જુઓ",
+
+        "team.departments.title.part1": "વિભાગ",
+        "team.departments.title.part2": "હેડ્સ",
+        "team.departments.subtitle":
+          "વિશેષ ટીમો જે અમારી કામગીરીના દરેક પાસામાં એક્સલન્સને ચલાવે છે",
+
+        "team.department1.name": "કન્સ્ટ્રક્શન",
+        "team.department1.head": "વિક્રમ સિંહ",
+        "team.department1.size": "45+ સભ્યો",
+
+        "team.department2.name": "ડિઝાઇન અને આર્કિટેક્ચર",
+        "team.department2.head": "અર્જુન મેહતા",
+        "team.department2.size": "18+ સભ્યો",
+
+        "team.department3.name": "વેચાણ અને માર્કેટિંગ",
+        "team.department3.head": "નેહા ગુપ્તા",
+        "team.department3.size": "32+ સભ્યો",
+
+        "team.department4.name": "લીગલ અને કમ્પ્લાયન્સ",
+        "team.department4.head": "અંજલી દેસાઈ",
+        "team.department4.size": "12+ સભ્યો",
+
+        "team.department5.name": "કસ્ટમર રિલેશન્સ",
+        "team.department5.head": "રોહન કપૂર",
+        "team.department5.size": "22+ સભ્યો",
+
+        "team.department6.name": "પ્રોજેક્ટ મેનેજમેન્ટ",
+        "team.department6.head": "સંજય વર્મા",
+        "team.department6.size": "28+ સભ્યો",
+
+        "team.department7.name": "સસ્ટેઇનેબિલિટી",
+        "team.department7.head": "પ્રિયા નાયર",
+        "team.department7.size": "8+ સભ્યો",
+
+        "team.department8.name": "ઓપરેશન્સ",
+        "team.department8.head": "રાહુલ શર્મા",
+        "team.department8.size": "35+ સભ્યો",
+
+        "team.stats.title.part1": "ટીમ",
+        "team.stats.title.part2": "આંકડા",
+        "team.stats.subtitle": "આંકડામાં અમારી તાકાત",
+        "team.stats.stat1": "કુલ ટીમ સભ્યો",
+        "team.stats.stat2": "ગ્રેજ્યુએટ અને ઉપર",
+        "team.stats.stat3": "સરેરાશ વર્ષનો અનુભવ",
+        "team.stats.stat4": "કર્મચારી રીટેન્શન",
+
+        "team.values.title.part1": "અમારી ટીમ",
+        "team.values.title.part2": "સંસ્કૃતિ",
+        "team.values.subtitle":
+          "તે સિદ્ધાંતો જે અમારી ટીમ ગતિશીલતા અને કાર્યસ્થળ વાતાવરણને માર્ગદર્શન આપે છે",
+
+        "team.values.value1.title": "સહયોગ",
+        "team.values.value1.description":
+          "અમે સામાન્ય ધ્યેયો પ્રાપ્ત કરવા માટે વિભાગોમાં મળીને કામ કરવામાં વિશ્વાસ રાખીએ છીએ.",
+
+        "team.values.value2.title": "નવીનતા",
+        "team.values.value2.description":
+          "સર્જનાત્મક વિચારસરણીને પ્રોત્સાહન આપવું અને નવા વિચારો અને ટેક્નોલોજીઓને અપનાવવી.",
+
+        "team.values.value3.title": "કર્મચારી વિકાસ",
+        "team.values.value3.description":
+          "સતત શિક્ષણ અને કારકિર્દી વિકાસ તકોમાં રોકાણ કરવું.",
+
+        "team.values.value4.title": "એક્સલન્સ",
+        "team.values.value4.description":
+          "દરેક દિવસ, દરેક કામમાં ઉચ્ચતમ ધોરણો માટે પ્રયત્ન કરવો.",
+
+        "team.cta.title.part1": "અમારી",
+        "team.cta.title.part2": "જીતતી ટીમમાં જોડાઓ",
+        "team.cta.subtitle":
+          "અમે હંમેશા પ્રતિભાશાળી પેશાવરોની શોધમાં રહીએ છીએ જે અમારી વધતી ટીમમાં જોડાય.",
+        "team.cta.btn1": "કરિયર જુઓ",
+        "team.cta.btn2": "સીવી સબમિટ કરો",
+        "team.cta.btn3": "એચઆરનો સંપર્ક કરો",
+
+        // Modal Translations
+        "team.modal.background": "પેશાવર પૃષ્ઠભૂમિ",
+        "team.modal.achievements": "મુખ્ય સિદ્ધિઓ",
+        "team.modal.education": "શિક્ષણ",
+
+        "team.modal1.title": "રાજેશ મેહતા - સ્થાપક અને સીઈઓ",
+        "team.modal1.background":
+          "રાજેશ મેહતાએ 2008માં નરોડા ગ્રુપની સ્થાપના અમદાવાદના રિઅલ એસ્ટેટ લેન્ડસ્કેપને રૂપાંતરિત કરવાની દ્રષ્ટિ સાથે કરી. ઉદ્યોગમાં 25 થી વધુ વર્ષના અનુભવ સાથે, તેઓ કંપનીની વિકાસ વ્યૂહરચના આકાર આપવામાં અને તેને અમદાવાદના સૌથી વિશ્વસનીય રિઅલ એસ્ટેટ ડેવલપર્સમાંના એક તરીકે સ્થાપિત કરવામાં મહત્વપૂર્ણ ભૂમિકા ભજવી રહ્યા છે.",
+        "team.modal1.achievement1":
+          "50+ સફળ પ્રોજેક્ટ્સના વિકાસનું નેતૃત્વ કર્યું",
+        "team.modal1.achievement2":
+          "કંપનીના ઓપરેશન્સને બહુવિધ શહેરોમાં વિસ્તૃત કર્યા",
+        "team.modal1.achievement3": "ટકાઉ બાંધકામ પ્રથાઓ અમલમાં મૂકી",
+        "team.modal1.achievement4": "200+ રિઅલ એસ્ટેટ પેશાવરોની ટીમ બનાવી",
+        "team.modal1.education":
+          "ઇન્ડિયન ઇન્સ્ટિટ્યૂટ ઓફ મેનેજમેન્ટ, અમદાવાદથી એમબીએ<br>ગુજરાત યુનિવર્સિટીથી સિવિલ એન્જિનિયરિંગમાં બી.ઈ.",
+
+        "team.modal2.title": "પ્રિયા શાહ - ડાયરેક્ટર - પ્રોજેક્ટ્સ",
+        "team.modal2.background":
+          "પ્રિયા શાહ નરોડા ગ્રુપમાં 18+ વર્ષની આર્કિટેક્ચરલ અને પ્રોજેક્ટ મેનેજમેન્ટ નિપુણતા લાવે છે. તે નવીન ડિઝાઇન, ગુણવત્તા બાંધકામ અને સમયસર ડિલિવરી પર ધ્યાન કેન્દ્રિત કરીને તમામ પ્રોજેક્ટ એક્ઝેક્યુશનની દેખરેખ કરે છે.",
+        "team.modal2.achievement1":
+          "35+ રેસિડેન્શિયલ અને કોમર્શિયલ પ્રોજેક્ટ્સ સફળતાપૂર્વક ડિલિવર કર્યા",
+        "team.modal2.achievement2":
+          "બધા ડેવલપમેન્ટ્સમાં ગ્રીન બિલ્ડિંગ પ્રેક્ટિસેસ દાખલ કરી",
+        "team.modal2.achievement3":
+          "પ્રક્રિયા ઑપ્ટિમાઇઝેશન દ્વારા પ્રોજેક્ટ પૂર્ણ કરવાનો સમય 20% ઘટાડ્યો",
+        "team.modal2.achievement4":
+          "અદ્યતન પ્રોજેક્ટ મેનેજમેન્ટ સોફ્ટવેર અમલમાં મૂક્યું",
+        "team.modal2.education":
+          "સી.ઈ.પી.ટી. યુનિવર્સિટી, અમદાવાદથી આર્કિટેક્ચરમાં માસ્ટર્સ<br>પી.એમ.પી. સર્ટિફાઇડ પ્રોજેક્ટ મેનેજમેન્ટ પ્રોફેશનલ",
+
+        "team.modal3.title": "અમિત પટેલ - મુખ્ય વિત્તીય અધિકારી",
+        "team.modal3.background":
+          "અમિત પટેલ નરોડા ગ્રુપમાં બધા વિત્તીય ઓપરેશન્સની દેખરેખ કરે છે, જે રિઅલ એસ્ટેટ ફાઇનાન્સ, ઇન્વેસ્ટમેન્ટ સ્ટ્રેટેજી અને ફાઇનાન્સિયલ પ્લાનિંગમાં 20+ વર્ષનો અનુભવ લાવે છે.",
+        "team.modal3.achievement1":
+          "40+ રિઅલ એસ્ટેટ પ્રોજેક્ટ્સ માટે ફાઇનાન્સિંગનું વ્યવસ્થાપન કર્યું",
+        "team.modal3.achievement2":
+          "25% આરઓઆઈ આપતું ઇન્વેસ્ટમેન્ટ પોર્ટફોલિયો ઑપ્ટિમાઇઝ કર્યું",
+        "team.modal3.achievement3":
+          "ફાઇનાન્સિયલ કન્ટ્રોલ્સ અમલમાં મૂકીને ખર્ચમાં 15% ઘટાડો કર્યો",
+        "team.modal3.achievement4":
+          "મેજર ડેવલપમેન્ટ્સ માટે સફળતાપૂર્વક કેપિટલ રેઇઝ કરી",
+        "team.modal3.education":
+          "ચાર્ટર્ડ એકાઉન્ટન્ટ (સી.એ.)<br>ગુજરાત યુનિવર્સિટીથી ફાઇનાન્સમાં એમબીએ",
+
+        "team.modal4.title": "નેહા ગુપ્તા - વેચાણ અને માર્કેટિંગ હેડ",
+        "team.modal4.background":
+          "નેહા ગુપ્તા વેચાણ અને માર્કેટિંગ ડિવિઝનનું નેતૃત્વ કરે છે, જેમને બ્રેન્ડ બિલ્ડિંગ, કસ્ટમર રિલેશનશીપ મેનેજમેન્ટ અને સેલ્સ સ્ટ્રેટેજી ડેવલપમેન્ટમાં 15+ વર્ષનો અનુભવ છે.",
+        "team.modal4.achievement1":
+          "3 વર્ષમાં સેલ્સ રેવન્યુમાં 40% વૃદ્ધિ કરી",
+        "team.modal4.achievement2": "32-સભ્ય હાઇ-પર્ફોર્મિંગ સેલ્સ ટીમ બનાવી",
+        "team.modal4.achievement3": "5 સફળ માર્કેટિંગ કેમ્પેન લોન્ચ કર્યા",
+        "team.modal4.achievement4":
+          "કસ્ટમર સેટિસફેક્શન સ્કોરમાં 35% સુધારો કર્યો",
+        "team.modal4.education":
+          "એમ.આઈ.સી.એ., અમદાવાદથી માર્કેટિંગમાં એમબીએ<br>ગુજરાત યુનિવર્સિટીથી બી.કોમ",
+
+        "team.modal5.title": "વિક્રમ સિંહ - કન્સ્ટ્રક્શન હેડ",
+        "team.modal5.background":
+          "વિક્રમ સિંહ સિવિલ એન્જિનિયરિંગ, પ્રોજેક્ટ એક્ઝેક્યુશન અને ક્વાલિટી કન્ટ્રોલમાં 22+ વર્ષના અનુભવ સાથે બધા કન્સ્ટ્રક્શન ઓપરેશન્સનું વ્યવસ્થાપન કરે છે.",
+        "team.modal5.achievement1":
+          "30+ મેજર પ્રોજેક્ટ્સના કન્સ્ટ્રક્શનનું સુપરવિઝન કર્યું",
+        "team.modal5.achievement2":
+          "નવીન પદ્ધતિઓ દ્વારા કન્સ્ટ્રક્શન સમયમાં 25% ઘટાડો કર્યો",
+        "team.modal5.achievement3":
+          "બધી સાઇટ્સ પર 99% સલામતી રેકોર્ડ જાળવી રાખ્યો",
+        "team.modal5.achievement4":
+          "ખર્ચ બચતના પગલાં અમલમાં મૂકીને ખર્ચમાં 18% ઘટાડો કર્યો",
+        "team.modal5.education":
+          "એલ.ડી. કોલેજ ઓફ એન્જિનિયરિંગથી સિવિલ એન્જિનિયરિંગમાં બી.ઈ.<br>કન્સ્ટ્રક્શન મેનેજમેન્ટમાં એડવાન્સ ડિપ્લોમા",
+
+        "team.modal6.title": "અંજલી દેસાઈ - લીગલ અને કમ્પ્લાયન્સ હેડ",
+        "team.modal6.background":
+          "અંજલી દેસાઈ રિઅલ એસ્ટેટ લો, કોન્ટ્રાક્ટ મેનેજમેન્ટ અને રેગ્યુલેટરી અફેર્સમાં 16+ વર્ષના અનુભવ સાથે નરોડા ગ્રુપ માટે બધા લીગલ અને રેગ્યુલેટરી કમ્પ્લાયન્સ સુનિશ્ચિત કરે છે.",
+        "team.modal6.achievement1":
+          "50+ પ્રોપર્ટી ટ્રાન્ઝેક્શન્સના લીગલ પાસાઓને સફળતાપૂર્વક હેન્ડલ કર્યા",
+        "team.modal6.achievement2":
+          "બધા પ્રોજેક્ટ્સમાં 100% RERA કમ્પ્લાયન્સ સુનિશ્ચિત કર્યું",
+        "team.modal6.achievement3":
+          "પ્રોઆક્ટિવ માપદંડો દ્વારા લીગલ ડિસપ્યુટ્સમાં 40% ઘટાડો કર્યો",
+        "team.modal6.achievement4":
+          "ડોક્યુમેન્ટેશન પ્રોસેસ સ્ટ્રીમલાઇન કરીને વાર્ષિક 200+ કલાક સાચવ્યા",
+        "team.modal6.education":
+          "ગુજરાત યુનિવર્સિટીથી એલ.એલ.બી.<br>રિઅલ એસ્ટેટ લોમાં વિશેષતા",
+
+        // Footer
+        "footer.brand": "નરોડા",
+        "footer.group": "ગ્રુપ",
+        "footer.description":
+          "લેન્ડમાર્ક પ્રોપર્ટીઝ બનાવવી જે એક્સલન્સને પુનઃવ્યાખ્યાયિત કરે છે. પ્રીમિયમ કોમર્શિયલ સ્પેસથી લગ્ઝરી રેસિડેન્શિયલ લિવિંગ સુધી, અમે ગુણવત્તા અને પ્રતિબદ્ધતા સાથે સપના બનાવીએ છીએ.",
+        "footer.quick_links": "ઝડપી લિંક્સ",
+        "footer.our_projects": "અમારા પ્રોજેક્ટ્સ",
+        "footer.landmark_desc": "પ્રીમિયમ કોમર્શિયલ સ્પેસ",
+        "footer.irish_desc": "લગ્ઝરી રેસિડેન્શિયલ લિવિંગ",
+        "footer.view_all_projects": "બધા પ્રોજેક્ટ્સ જુઓ",
+        "footer.explore_portfolio": "અમારા પોર્ટફોલિયોનું અન્વેષણ કરો",
+        "footer.contact_info": "સંપર્ક માહિતી",
+        "footer.phone": "ફોન નંબર",
+        "footer.phone_hours": "સોમ - શનિ: સવારે 10 - સાંજે 7 વાગ્યા",
+        "footer.email": "ઈમેલ એડ્રેસ",
+        "footer.email_response": "અમે 24 કલાકમાં જવાબ આપીએ છીએ",
+        "footer.address": "ઓફિસ એડ્રેસ",
+        "footer.address_line1": "નરોડા - ભાટ રોડ",
+        "footer.address_line2": "અમદાવાદ, ગુજરાત 382330",
+        "footer.rights": "© 2025 નરોડા ગ્રુપ. બધા હક્કો સુરક્ષિત.",
+        "footer.privacy": "ગોપનીયતા નીતિ",
+        "footer.terms": "સેવાની શરતો",
+        "footer.rera": "RERA રજિસ્ટ્રેશન",
+
+        // Login
+        "login.title": "તમારા ખાતામાં લૉગિન કરો",
+        "login.email": "ઈમેલ એડ્રેસ",
+        "login.password": "પાસવર્ડ",
+        "login.remember": "મને યાદ રાખો",
+        "login.submit": "લૉગિન",
+        "login.forgot": "પાસવર્ડ ભૂલી ગયા છો?",
+        "login.no_account": "ખાતું નથી?",
+        "login.register": "અહીં રજિસ્ટર કરો",
+      },
+    };
+
+    // Language switching functionality
+    let currentLang = localStorage.getItem("preferredLanguage") || "en";
+
+    // Initialize when page loads
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize language switcher
+      initLanguageSwitcher();
+
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        delay: 100,
+        disable: function () {
+          return window.innerWidth < 768;
+        },
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Set active nav item
+      const currentPage =
+        window.location.pathname.split("/").pop() || "home.html";
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+
+      // Mobile nav active item
+      document.querySelectorAll(".mobile-nav-item").forEach((item) => {
+        const href = item.getAttribute("href");
+        if (href === currentPage) {
+          item.classList.add("active");
+        }
+      });
+
+      // Login form submission
+      // document
+      //   .getElementById("loginForm")
+      //   ?.addEventListener("submit", function (e) {
+      //     e.preventDefault();
+      //     // Add your login logic here
+      //     alert("Login functionality would be implemented here");
+      //     const loginModal = bootstrap.Modal.getInstance(
+      //       document.getElementById("loginModal")
+      //     );
+      //     loginModal.hide();
+      //   });
+    });
+
+    function initLanguageSwitcher() {
+      // Apply current language
+      applyLanguage(currentLang);
+
+      // Language switcher toggle
+      document
+        .getElementById("languageToggle")
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+          const options = document.getElementById("languageOptions");
+          options.classList.toggle("show");
+        });
+
+      // Close language dropdown when clicking outside
+      document.addEventListener("click", function () {
+        const options = document.getElementById("languageOptions");
+        options.classList.remove("show");
+      });
+
+      // Language option selection
+      document.querySelectorAll(".language-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const lang = this.getAttribute("data-lang");
+          applyLanguage(lang);
+
+          // Update active state
+          document.querySelectorAll(".language-option").forEach((opt) => {
+            opt.classList.remove("active");
+          });
+          this.classList.add("active");
+
+          // Update language toggle text
+          document.querySelector(
+            "#languageToggle .language-content"
+          ).textContent =
+            lang === "en" ? "EN" : lang === "hi" ? "हिंदी" : "ગુજરાતી";
+
+          // Close dropdown
+          document.getElementById("languageOptions").classList.remove("show");
+        });
+      });
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem("preferredLanguage", lang);
+
+      // Update body class for language-specific styling
+      document.body.classList.remove("hindi", "gujarati");
+      if (lang === "hi") document.body.classList.add("hindi");
+      if (lang === "gu") document.body.classList.add("gujarati");
+
+      // Fade out content
+      const languageContent = document.querySelector(".language-content");
+      if (languageContent) {
+        languageContent.style.opacity = "0.5";
+      }
+
+      // Apply translations after a short delay for smoother transition
+      setTimeout(() => {
+        const elements = document.querySelectorAll("[data-i18n]");
+        elements.forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            // Handle HTML content in modals
+            if (element.hasAttribute("data-i18n-html")) {
+              element.innerHTML = translations[lang][key];
+            } else {
+              element.textContent = translations[lang][key];
+            }
+          }
+        });
+
+        // Fade content back in
+        if (languageContent) {
+          languageContent.style.opacity = "1";
+        }
+      }, 200);
+    }
+
+    // Open login modal
+    // function openLoginModal() {
+    //   const loginModal = new bootstrap.Modal(
+    //     document.getElementById("loginModal")
+    //   );
+    //   loginModal.show();
+    // }
+
+    // ===== FAQ Integration =====
+    let faqData = [];
+
+    async function fetchFAQs() {
+      try {
+        const response = await fetch(
+          `api/team_api.php?action=get_faqs&lang=${currentLang}`
+        );
+        const result = await response.json();
+        if (result.success && result.data) {
+          faqData = result.data;
+          renderFAQs(faqData);
+        } else {
+          console.error("Failed to fetch FAQs:", result.error);
+          document.getElementById("faqAccordion").innerHTML =
+            '<p class="text-muted text-center">No FAQs available.</p>';
+        }
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+        document.getElementById("faqAccordion").innerHTML =
+          '<p class="text-danger text-center">Failed to load FAQs.</p>';
+      }
+    }
+
+    function renderFAQs(faqs) {
+      const accordion = document.getElementById("faqAccordion");
+      if (!accordion) return;
+
+      if (!faqs || faqs.length === 0) {
+        accordion.innerHTML =
+          '<p class="text-muted text-center">No FAQs available at the moment.</p>';
+        return;
+      }
+
+      let html = "";
+      faqs.forEach((faq, index) => {
+        const isFirst = index === 0;
+        html += `
+                    <div class="accordion-item border-0 mb-3 shadow-sm rounded overflow-hidden">
+                        <h2 class="accordion-header" id="faqHeading${faq.id}">
+                            <button class="accordion-button ${isFirst ? "" : "collapsed"
+          }" type="button" 
+                                    data-bs-toggle="collapse" data-bs-target="#faqCollapse${faq.id
+          }" 
+                                    aria-expanded="${isFirst}" aria-controls="faqCollapse${faq.id
+          }">
+                                <i class="fas fa-question-circle text-gold me-2"></i>
+                                ${faq.question || "Question"}
+                            </button>
+                        </h2>
+                        <div id="faqCollapse${faq.id
+          }" class="accordion-collapse collapse ${isFirst ? "show" : ""
+          }" 
+                             aria-labelledby="faqHeading${faq.id
+          }" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body bg-light">
+                                ${faq.answer || "Answer not available."}
+                            </div>
+                        </div>
+                    </div>
+                `;
+      });
+
+      accordion.innerHTML = html;
+    }
+
+    // ===== Team Integration =====
+    let teamData = [];
+
+    async function fetchTeamMembers() {
+      const container = document.getElementById("teamMembersContainer");
+      try {
+        const response = await fetch(
+          "api/team_api.php?action=get_members&perPage=50"
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const text = await response.text();
+        let result;
+        try {
+          result = JSON.parse(text);
+        } catch (parseError) {
+          console.error("JSON Parse Error:", parseError);
+          console.error("Raw response:", text);
+          throw new Error("Invalid JSON response from server");
+        }
+
+        if (result.success && result.members) {
+          teamData = result.members;
+          renderTeamMembers(teamData);
+          console.log("Team members fetched:", teamData.length);
+        } else {
+          console.error("Failed to fetch team members:", result.error);
+          container.innerHTML = `
+                        <div class="col-12 text-center py-5">
+                            <i class="fas fa-exclamation-circle text-warning fa-3x mb-3"></i>
+                            <p class="text-muted">No team members available.</p>
+                        </div>
+                    `;
+        }
+      } catch (error) {
+        console.error("Error fetching team members:", error);
+        container.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-exclamation-triangle text-danger fa-3x mb-3"></i>
+                        <p class="text-danger">Failed to load team members.</p>
+                        <p class="text-muted small">${error.message}</p>
+                        <button class="btn btn-gold btn-sm mt-2" onclick="fetchTeamMembers()">
+                            <i class="fas fa-redo me-2"></i>Retry
+                        </button>
+                    </div>
+                `;
+      }
+    }
+
+    function getLocalizedTeamField(member, field) {
+      const langSuffix =
+        currentLang === "en" ? "_en" : currentLang === "hi" ? "_hi" : "_gu";
+      return member[field + langSuffix] || member[field + "_en"] || "";
+    }
+
+    function renderTeamMembers(members) {
+      const container = document.getElementById("teamMembersContainer");
+      if (!container) return;
+
+      if (!members || members.length === 0) {
+        container.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <i class="fas fa-users text-muted fa-3x mb-3"></i>
+                        <p class="text-muted">No team members available at the moment.</p>
+                    </div>
+                `;
+        return;
+      }
+
+      // Filter members - show all unless explicitly inactive
+      const activeMembers = members.filter(
+        (m) => m.status !== "inactive" && m.status !== 0 && m.status !== "0"
+      );
+
+      let html = "";
+      activeMembers.forEach((member, index) => {
+        const delay = ((index % 3) + 1) * 100;
+        const firstName = getLocalizedTeamField(member, "firstname");
+        const lastName = getLocalizedTeamField(member, "lastname");
+        const fullName = `${firstName} ${lastName}`.trim();
+        const role = getLocalizedTeamField(member, "role");
+        const bio = getLocalizedTeamField(member, "bio");
+        const experience = member.experience || "";
+        const avatar =
+          member.avatar ||
+          "https://via.placeholder.com/180x180?text=" +
+          encodeURIComponent(fullName.charAt(0));
+        const linkedinUrl = member.linkedin_url || "#";
+        const twitterUrl = member.twitter_url || "#";
+        const email = member.email || "";
+        const department = member.department || "";
+        const professionalBackground = getLocalizedTeamField(
+          member,
+          "professional_background"
+        );
+        const achievements = getLocalizedTeamField(member, "achievements");
+        const education = getLocalizedTeamField(member, "education");
+
+        html += `
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="${delay}">
+                        <div class="leader-card">
+                            <div class="leader-img">
+                                <img src="${avatar}" alt="${fullName}" loading="lazy" onerror="this.src='https://via.placeholder.com/180x180?text=${encodeURIComponent(
+          fullName.charAt(0) || "T"
+        )}'">
+                            </div>
+                            <div class="leader-info">
+                                <h3 class="leader-name">${fullName || "Team Member"
+          }</h3>
+                                <div class="leader-position">${role || department || "Team Member"
+          }</div>
+                                ${experience
+            ? `<span class="leader-experience">${experience} Years Experience</span>`
+            : ""
+          }
+                                <p class="leader-bio">${bio ||
+          professionalBackground ||
+          "Professional team member at Naroda Group."
+          }</p>
+                                ${department
+            ? `<div class="small text-muted mb-2"><i class="fas fa-building me-1"></i>${department}</div>`
+            : ""
+          }
+                            </div>
+                            <div class="leader-social">
+                                ${linkedinUrl &&
+            linkedinUrl !== "#" &&
+            linkedinUrl !== "Not provided"
+            ? `<a href="${linkedinUrl}" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>`
+            : ""
+          }
+                                ${twitterUrl &&
+            twitterUrl !== "#" &&
+            twitterUrl !== "Not provided"
+            ? `<a href="${twitterUrl}" class="social-link" aria-label="Twitter" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>`
+            : ""
+          }
+                                ${email
+            ? `<a href="mailto:${email}" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>`
+            : ""
+          }
+                                ${member.phone
+            ? `<a href="tel:${member.phone}" class="social-link" aria-label="Phone"><i class="fas fa-phone"></i></a>`
+            : ""
+          }
+                            </div>
+                            <button class="btn btn-gold btn-sm mt-3" data-bs-toggle="modal" data-bs-target="#dynamicLeaderModal" 
+                                onclick="showMemberModal(${member.id})">
+                                ${translations[currentLang]?.[
+          "team.view_profile"
+          ] || "View Full Profile"
+          }
+                            </button>
+                        </div>
+                    </div>
+                `;
+      });
+
+      container.innerHTML = html;
+
+      // Reinitialize AOS for new elements
+      if (typeof AOS !== "undefined") {
+        AOS.refresh();
+      }
+    }
+
+    function showMemberModal(memberId) {
+      const member = teamData.find((m) => m.id == memberId);
+      if (!member) return;
+
+      const modal = document.getElementById("dynamicLeaderModal");
+      if (!modal) return;
+
+      const firstName = getLocalizedTeamField(member, "firstname");
+      const lastName = getLocalizedTeamField(member, "lastname");
+      const fullName = `${firstName} ${lastName}`.trim();
+      const role = getLocalizedTeamField(member, "role");
+      const bio = getLocalizedTeamField(member, "bio");
+      const professionalBackground = getLocalizedTeamField(
+        member,
+        "professional_background"
+      );
+      const achievements = getLocalizedTeamField(member, "achievements");
+      const education = getLocalizedTeamField(member, "education");
+      const avatar =
+        member.avatar ||
+        "https://via.placeholder.com/150x150?text=" +
+        encodeURIComponent(fullName.charAt(0));
+      const experience = member.experience || "";
+      const linkedinUrl = member.linkedin_url || "";
+      const twitterUrl = member.twitter_url || "";
+
+      // Update modal content
+      modal.querySelector(".modal-title").textContent = `${fullName || "Team Member"
+        } - ${role || member.department || "Team Member"}`;
+      modal.querySelector(".modal-team-img img").src = avatar;
+      modal.querySelector(".modal-team-img img").alt =
+        fullName || "Team Member";
+      modal.querySelector(".modal-member-name").textContent =
+        fullName || "Team Member";
+      modal.querySelector(".modal-member-role").textContent =
+        role || member.department || "Team Member";
+      modal.querySelector(".modal-member-experience").textContent = experience
+        ? `${experience} Years Experience`
+        : "";
+
+      // Handle bio
+      const bioEl = modal.querySelector(".modal-member-bio");
+      if (bioEl) {
+        bioEl.innerHTML = bio || "No bio available.";
+        bioEl.parentElement.style.display = bio ? "block" : "none";
+      }
+
+      // Handle professional background
+      const backgroundEl = modal.querySelector(".modal-member-background");
+      backgroundEl.innerHTML =
+        professionalBackground || "No background information available.";
+      backgroundEl.parentElement.style.display = professionalBackground
+        ? "block"
+        : "none";
+
+      // Handle achievements list
+      const achievementsList = modal.querySelector(
+        ".modal-member-achievements"
+      );
+      if (achievements) {
+        const achievementsArray = achievements
+          .split("\n")
+          .filter((a) => a.trim());
+        achievementsList.innerHTML = achievementsArray
+          .map((a) => `<li>${a.trim()}</li>`)
+          .join("");
+        achievementsList.parentElement.style.display = "block";
+      } else {
+        achievementsList.parentElement.style.display = "none";
+      }
+
+      // Handle education
+      const educationEl = modal.querySelector(".modal-member-education");
+      if (education) {
+        educationEl.innerHTML = education;
+        educationEl.parentElement.style.display = "block";
+      } else {
+        educationEl.parentElement.style.display = "none";
+      }
+
+      // Update social links
+      const socialContainer = modal.querySelector(".modal-social-links");
+      let socialHtml = "";
+      if (linkedinUrl && linkedinUrl !== "Not provided")
+        socialHtml += `<a href="${linkedinUrl}" class="social-link" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>`;
+      if (twitterUrl && twitterUrl !== "Not provided")
+        socialHtml += `<a href="${twitterUrl}" class="social-link" target="_blank" rel="noopener"><i class="fab fa-twitter"></i></a>`;
+      if (member.email)
+        socialHtml += `<a href="mailto:${member.email}" class="social-link"><i class="fas fa-envelope"></i></a>`;
+      if (member.phone)
+        socialHtml += `<a href="tel:${member.phone}" class="social-link"><i class="fas fa-phone"></i></a>`;
+      socialContainer.innerHTML =
+        socialHtml ||
+        '<span class="text-muted">No social links available</span>';
+
+      // Update contact details section
+      const contactDetailsEl = modal.querySelector(".modal-contact-details");
+      if (contactDetailsEl) {
+        let contactHtml = "";
+        if (member.email)
+          contactHtml += `<div class="mb-2"><i class="fas fa-envelope me-2 text-gold"></i>${member.email}</div>`;
+        if (member.phone)
+          contactHtml += `<div class="mb-2"><i class="fas fa-phone me-2 text-gold"></i>${member.phone}</div>`;
+        if (member.department)
+          contactHtml += `<div class="mb-2"><i class="fas fa-building me-2 text-gold"></i>${member.department}</div>`;
+        contactDetailsEl.innerHTML = contactHtml || "";
+        contactDetailsEl.style.display = contactHtml ? "block" : "none";
+      }
+    }
+
+    // Initialize data fetching on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      fetchFAQs();
+      fetchTeamMembers();
+    });
+
+    // Re-fetch data when language changes
+    window.addEventListener("languageChanged", function (e) {
+      currentLang = e.detail.language;
+      fetchFAQs();
+      // Re-render team members with new language
+      if (teamData.length > 0) {
+        renderTeamMembers(teamData);
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+[27-Dec-2025 07:53:49 Europe/Berlin] API Error [400]: No action specified. Available actions: get_gallery_data, save_image, delete_image, save_video, delete_video, save_highlight, delete_highlight, save_category, delete_category, get_statistics
+[27-Dec-2025 12:37:38 Europe/Berlin] API Error [400]: Title and category are required
+[27-Dec-2025 13:17:10 Europe/Berlin] API Error [400]: No action specified. Available actions: get_gallery_data, save_image, delete_image, save_video, delete_video, save_highlight, delete_highlight, save_category, delete_category, get_statistics
+[27-Dec-2025 19:26:03 Europe/Berlin] API Error [400]: File too large. Maximum size: 10MB
+[27-Dec-2025 19:26:09 Europe/Berlin] API Error [400]: File too large. Maximum size: 10MB
+[27-Dec-2025 19:43:19 Europe/Berlin] API Error [400]: File too large. Maximum size: 10MB
+[29-Dec-2025 08:40:25 Europe/Berlin] API Error [400]: File too large. Maximum size: 10MB
+[29-Dec-2025 13:58:02 Europe/Berlin] API Error [400]: Invalid action specified: upload_video
+[29-Dec-2025 13:58:06 Europe/Berlin] API Error [400]: Invalid action specified: upload_video
+[29-Dec-2025 13:58:20 Europe/Berlin] API Error [400]: Invalid action specified: upload_video
+[29-Dec-2025 13:59:23 Europe/Berlin] API Error [400]: Invalid action specified: upload_video
+[29-Dec-2025 14:02:49 Europe/Berlin] API Error [500]: Server error: Unknown column 'tags' in 'field list'
+[29-Dec-2025 19:20:18 Europe/Berlin] API Error [500]: Server error: Unknown column 'tags' in 'field list'
+[29-Dec-2025 19:34:22 Europe/Berlin] API Error [500]: Server error: Unknown column 'tags' in 'field list'
+[30-Dec-2025 07:58:55 Europe/Berlin] API Error [500]: Server error: Unknown column 'tags' in 'field list'
+[30-Dec-2025 07:59:01 Europe/Berlin] API Error [500]: Server error: Unknown column 'tags' in 'field list'

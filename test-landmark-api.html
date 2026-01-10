@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Landmark API Test</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .success {
+            background: #d4edda;
+        }
+
+        .error {
+            background: #f8d7da;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Naroda Landmark API Test</h1>
+    <button onclick="testAPI()">Test All APIs</button>
+    <div id="results"></div>
+
+    <script>
+        async function testAPI() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Testing APIs...</p>';
+
+            const endpoints = [
+                { name: 'Properties', action: 'get_properties' },
+                { name: 'Floor Plans', action: 'get_floor_plans' },
+                { name: 'Pricing', action: 'get_pricing' },
+                { name: 'Gallery', action: 'get_gallery' }
+            ];
+
+            let html = '';
+
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(`api/naroda_landmark_api.php?action=${endpoint.action}`);
+                    const data = await response.json();
+
+                    const count = data.success ?
+                        (data[endpoint.action.replace('get_', '')] || []).length : 0;
+
+                    html += `
+                        <div class="section ${data.success ? 'success' : 'error'}">
+                            <h3>${endpoint.name}</h3>
+                            <p><strong>Status:</strong> ${data.success ? 'Success' : 'Failed'}</p>
+                            <p><strong>Count:</strong> ${count} records</p>
+                            <details>
+                                <summary>View Response</summary>
+                                <pre>${JSON.stringify(data, null, 2)}</pre>
+                            </details>
+                        </div>
+                    `;
+                } catch (error) {
+                    html += `
+                        <div class="section error">
+                            <h3>${endpoint.name}</h3>
+                            <p><strong>Error:</strong> ${error.message}</p>
+                        </div>
+                    `;
+                }
+            }
+
+            results.innerHTML = html;
+        }
+
+        // Auto-run on load
+        window.addEventListener('load', testAPI);
+    </script>
+</body>
+
+</html>

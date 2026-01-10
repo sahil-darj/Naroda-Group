@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Naroda Group</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3a0ca3;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
+      --light-bg: #f8fafc;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --sidebar-width: 260px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Top Navbar */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .top-navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .sidebar-toggle-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-toggle-btn:hover {
+      background-color: var(--light-bg);
+      color: var(--primary-color);
+    }
+
+    .top-navbar-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .top-navbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    /* Language Selector */
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      background-color: white;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .language-selector:hover {
+      border-color: var(--primary-color);
+      box-shadow: 0 2px 8px rgba(67, 97, 238, 0.1);
+    }
+
+    .language-selector select {
+      border: none;
+      background: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.9rem;
+      min-width: 120px;
+    }
+
+    .language-selector select:focus {
+      outline: none;
+    }
+
+    .lang-flag {
+      width: 20px;
+      height: 15px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: 426px) {
+      .navbar-time-display .time {
+        display: none;
+      }
+
+      .language-selector select {
+        min-width: auto;
+        width: 80px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .top-navbar-title {
+        display: none;
+      }
+
+      .language-selector select {
+        min-width: 100px;
+      }
+    }
+
+    /* Time display */
+    .navbar-time-display {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+
+    .navbar-time-display .time {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+
+    .navbar-time-display .date {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-gray);
+    }
+
+    /* User profile */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      border-radius: 10px;
+    }
+
+    .user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-color);
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .user-role {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 70px;
+      height: calc(100vh - 70px);
+      width: var(--sidebar-width);
+      background-color: white;
+      color: var(--text-dark);
+      z-index: 999;
+      transition: all 0.3s ease;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+      border-right: 1px solid #e2e8f0;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+
+    .sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+
+    /* Logo in sidebar */
+    .sidebar-logo {
+      padding: 0 20px 25px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .sidebar-logo .logo {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg,
+          var(--primary-color),
+          var(--secondary-color));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .sidebar-logo h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-dark);
+    }
+
+    /* Navigation menu */
+    .sidebar-menu {
+      padding: 0 15px;
+    }
+
+    .nav-item {
+      margin-bottom: 8px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 14px 15px;
+      color: var(--text-gray);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-radius: 10px;
+      border-left: 4px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.05);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .nav-link.active {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.1);
+      border-left: 4px solid var(--primary-color);
+      font-weight: 600;
+    }
+
+    .nav-link i {
+      width: 24px;
+      font-size: 18px;
+      margin-right: 15px;
+      text-align: center;
+    }
+
+    .nav-link span {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Logout button */
+    .nav-logout {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .nav-logout .nav-link {
+      color: var(--danger-color);
+    }
+
+    .nav-logout .nav-link:hover {
+      color: white;
+      background-color: var(--danger-color);
+    }
+
+    /* Main content area */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      margin-top: 70px;
+      padding: 30px;
+      min-height: calc(100vh - 70px);
+      transition: all 0.3s ease;
+    }
+
+    .main-content.expanded {
+      margin-left: 0;
+    }
+
+    .page-header {
+      margin-bottom: 30px;
+    }
+
+    .page-header h1 {
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 2rem;
+    }
+
+    /* Quick stats */
+    .quick-stats-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-item {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .stat-info {
+      padding-left: 10px;
+    }
+
+    .stat-info h4 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--text-dark);
+    }
+
+    .stat-info p {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    .gallery-details {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .gallery-count {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.85rem;
+      color: var(--text-gray);
+    }
+
+    .gallery-count i {
+      font-size: 0.9rem;
+    }
+
+    /* Recent activity table */
+    .recent-activity {
+      background-color: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      margin-top: 30px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .recent-activity h3 {
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+
+    .table {
+      margin-bottom: 0;
+    }
+
+    .table th {
+      border-top: none;
+      color: var(--text-gray);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      background-color: #f8fafc;
+    }
+
+    .table td {
+      vertical-align: middle;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      font-weight: 600;
+      border-radius: 6px;
+    }
+
+    .badge-success {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .badge-warning {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+    }
+
+    .badge-primary {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    /* Overlay for mobile */
+    .overlay {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 70px);
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Responsive Design */
+
+    /* 1. Mobile Only (0px - 767px) */
+    @media (max-width: 767px) {
+      .quick-stats-container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .stat-item {
+        padding: 20px;
+      }
+
+      .top-navbar {
+        padding: 0 15px;
+      }
+
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+
+      /* Phone time display - show only on mobile */
+      .phone-time-display {
+        display: flex;
+        margin-right: 10px;
+      }
+
+      .user-info {
+        display: none;
+      }
+
+      .top-navbar-right {
+        gap: 10px;
+      }
+
+      .language-selector {
+        padding: 6px 10px;
+      }
+    }
+
+    /* 2. Tablet Only (768px - 991px) */
+    @media (min-width: 768px) and (max-width: 991px) {
+      .quick-stats-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+
+      .top-navbar {
+        padding: 0 20px;
+      }
+
+      /* Hide phone time display on tablet */
+      .phone-time-display {
+        display: none !important;
+      }
+
+      .user-info {
+        display: flex;
+      }
+    }
+
+    /* 3. Larger than Tablet (992px and above) */
+    @media (min-width: 992px) {
+      .quick-stats-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .sidebar {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: var(--sidebar-width);
+      }
+
+      /* Hide phone time display on desktop */
+      .phone-time-display {
+        display: none !important;
+      }
+
+      .user-info {
+        display: flex;
+      }
+    }
+
+    /* Optional: For extra large screens (1200px and above) */
+    @media (min-width: 1200px) {
+      .quick-stats-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+      }
+
+      .stat-item {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navbar -->
+  <nav class="top-navbar">
+    <div class="top-navbar-left">
+      <button class="sidebar-toggle-btn" id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 class="top-navbar-title" id="page-title">Dashboard</h1>
+    </div>
+
+    <div class="top-navbar-right">
+      <!-- Language Selector - UPDATED -->
+      <div class="language-selector">
+        <img src="https://flagcdn.com/w20/gb.png" alt="English" class="lang-flag" id="current-flag" />
+        <select id="global-language-selector">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+        </select>
+      </div>
+
+      <!-- Real-time Date and Time Display -->
+      <div class="navbar-time-display">
+        <div class="date" id="navbar-current-date">Loading...</div>
+      </div>
+      <div class="navbar-time-display">
+        <div class="time" id="navbar-current-time">Loading...</div>
+      </div>
+
+      <!-- User Profile -->
+      <div class="user-profile">
+        <img src="https://ui-avatars.com/api/?name=Admin+User&background=4361ee&color=fff&size=128" alt="Admin User" />
+        <div class="user-info">
+          <div class="user-name" data-translate-key="admin_name">
+            Admin User
+          </div>
+          <div class="user-role" data-translate-key="admin_role">
+            System Administrator
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <!-- Logo in sidebar -->
+    <div class="sidebar-logo">
+      <div class="logo">NG</div>
+      <h2 data-translate-key="company_name">Naroda Group</h2>
+    </div>
+
+    <!-- Navigation menu in sidebar -->
+    <div class="sidebar-menu">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link active">
+            <i class="fas fa-tachometer-alt"></i>
+            <span data-translate-key="dashboard">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="users.html" class="nav-link">
+            <i class="fas fa-users"></i>
+            <span data-translate-key="users">Users</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="projects.html" class="nav-link">
+            <i class="fas fa-project-diagram"></i>
+            <span data-translate-key="projects">Projects</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="blogs.html" class="nav-link">
+            <i class="fas fa-blog"></i>
+            <span data-translate-key="blogs">Blogs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="faq.html" class="nav-link">
+            <i class="fas fa-question-circle"></i>
+            <span data-translate-key="faq">FAQ</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="team.html" class="nav-link">
+            <i class="fas fa-user-friends"></i>
+            <span data-translate-key="team">Team</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link">
+            <i class="fas fa-images"></i>
+            <span data-translate-key="gallery">Gallery</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="career.html" class="nav-link">
+            <i class="fas fa-briefcase"></i>
+            <span data-translate-key="career">Career</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="news.html" class="nav-link">
+            <i class="fas fa-newspaper"></i>
+            <span data-translate-key="news">News</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Logout button at the bottom -->
+      <div class="nav-logout">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="#" class="nav-link" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              <span data-translate-key="logout">Log Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay for mobile sidebar -->
+  <div class="overlay" id="sidebar-overlay"></div>
+
+  <!-- Main Content Area -->
+  <main class="main-content" id="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 data-translate-key="dashboard">Dashboard</h1>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="quick-stats-container">
+      <div class="stat-item">
+        <div class="stat-icon" style="
+              background-color: rgba(67, 97, 238, 0.1);
+              color: var(--primary-color);
+            ">
+          <i class="fas fa-user-check"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-users"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="total_users">Total Users</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="
+              background-color: rgba(16, 185, 129, 0.1);
+              color: var(--success-color);
+            ">
+          <i class="fas fa-project-diagram"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-projects"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="active_projects">Active Projects</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="
+              background-color: rgba(245, 158, 11, 0.1);
+              color: var(--warning-color);
+            ">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-inquiries"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="inquiries">Inquiries</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="
+              background-color: rgba(239, 68, 68, 0.1);
+              color: var(--danger-color);
+            ">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-team"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="team_members">Team Members</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="background-color: rgba(147, 51, 234, 0.1); color: #9333ea">
+          <i class="fas fa-newspaper"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-news"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="news">News</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="background-color: rgba(6, 182, 212, 0.1); color: #06b6d4">
+          <i class="fas fa-file-contract"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-applications"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="careers_applied">Applications</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="background-color: rgba(34, 197, 94, 0.1); color: #22c55e">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-jobs"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="openings">Job Openings</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="background-color: rgba(249, 115, 22, 0.1); color: #f97316">
+          <i class="fas fa-question"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-faq"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="faq">FAQ</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="background-color: rgba(59, 130, 246, 0.1); color: #3b82f6">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="stat-info">
+          <h4>1,245</h4>
+          <p data-translate-key="total_buyers">Total Buyers</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="background-color: rgba(168, 85, 247, 0.1); color: #a855f7">
+          <i class="fas fa-home"></i>
+        </div>
+        <div class="stat-info">
+          <h4>342</h4>
+          <p data-translate-key="rent_properties">Rent Properties</p>
+        </div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-icon" style="background-color: rgba(236, 72, 153, 0.1); color: #ec4899">
+          <i class="fas fa-blog"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-blogs"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="blog_posts">Blog Posts</p>
+        </div>
+      </div>
+
+      <!-- Gallery Items with Image/Video breakdown -->
+      <div class="stat-item">
+        <div class="stat-icon" style="background-color: rgba(14, 165, 233, 0.1); color: #0ea5e9">
+          <i class="fas fa-photo-video"></i>
+        </div>
+        <div class="stat-info">
+          <h4 id="stat-gallery"><i class="fas fa-spinner fa-spin"></i></h4>
+          <p data-translate-key="gallery_items">Gallery Items</p>
+          <div class="gallery-details">
+            <div class="gallery-count">
+              <i class="fas fa-image"></i>
+              <span id="stat-images">0 Images</span>
+            </div>
+            <div class="gallery-count">
+              <i class="fas fa-video"></i>
+              <span id="stat-videos">0 Videos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity Table -->
+    <div class="recent-activity">
+      <h3 data-translate-key="recent_activity">Recent Activity</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th data-translate-key="user">User</th>
+              <th data-translate-key="activity">Activity</th>
+              <th data-translate-key="time">Time</th>
+              <th data-translate-key="status">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img src="https://ui-avatars.com/api/?name=John+Doe&background=3a0ca3&color=fff" alt="John Doe"
+                    class="rounded-circle me-2" width="30" height="30" />
+                  <span data-translate-key="john_doe">John Doe</span>
+                </div>
+              </td>
+              <td data-translate-key="activity_1">
+                Created new project "Backend API"
+              </td>
+              <td data-translate-key="time_1">10:24 AM</td>
+              <td>
+                <span class="badge badge-success" data-translate-key="completed">Completed</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=4361ee&color=fff" alt="Jane Smith"
+                    class="rounded-circle me-2" width="30" height="30" />
+                  <span data-translate-key="jane_smith">Jane Smith</span>
+                </div>
+              </td>
+              <td data-translate-key="activity_2">
+                Updated user permissions
+              </td>
+              <td data-translate-key="time_2">09:42 AM</td>
+              <td>
+                <span class="badge badge-success" data-translate-key="completed">Completed</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=10b981&color=fff"
+                    alt="Mike Johnson" class="rounded-circle me-2" width="30" height="30" />
+                  <span data-translate-key="mike_johnson">Mike Johnson</span>
+                </div>
+              </td>
+              <td data-translate-key="activity_3">Published new blog post</td>
+              <td data-translate-key="yesterday">Yesterday</td>
+              <td>
+                <span class="badge badge-primary" data-translate-key="pending">Pending</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img src="https://ui-avatars.com/api/?name=Sarah+Williams&background=f59e0b&color=fff"
+                    alt="Sarah Williams" class="rounded-circle me-2" width="30" height="30" />
+                  <span data-translate-key="sarah_williams">Sarah Williams</span>
+                </div>
+              </td>
+              <td data-translate-key="activity_4">
+                Uploaded 15 images to gallery
+              </td>
+              <td data-translate-key="yesterday">Yesterday</td>
+              <td>
+                <span class="badge badge-success" data-translate-key="completed">Completed</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Translation data
+    const translations = {
+      en: {
+        // Navigation
+        dashboard: "Dashboard",
+        users: "Users",
+        projects: "Projects",
+        blogs: "Blogs",
+        faq: "FAQ",
+        team: "Team",
+        gallery: "Gallery",
+        career: "Career",
+        news: "News",
+        logout: "Log Out",
+        company_name: "Naroda Group",
+
+        // User info
+        admin_name: "Admin User",
+        admin_role: "System Administrator",
+
+        // Dashboard stats
+        total_users: "Total Users",
+        active_projects: "Active Projects",
+        inquiries: "Inquiries",
+        team_members: "Team Members",
+        total_buyers: "Total Buyers",
+        rent_properties: "Rent Properties",
+        blog_posts: "Blog Posts",
+        gallery_items: "Gallery Items",
+        images_count: "1,045 Images",
+        videos_count: "200 Videos",
+        careers_applied: "Carriers Applied",
+        openings: "Openings",
+
+        // Recent activity
+        recent_activity: "Recent Activity",
+        user: "User",
+        activity: "Activity",
+        time: "Time",
+        status: "Status",
+        john_doe: "John Doe",
+        jane_smith: "Jane Smith",
+        mike_johnson: "Mike Johnson",
+        sarah_williams: "Sarah Williams",
+        activity_1: 'Created new project "Backend API"',
+        activity_2: "Updated user permissions",
+        activity_3: "Published new blog post",
+        activity_4: "Uploaded 15 images to gallery",
+        time_1: "10:24 AM",
+        time_2: "09:42 AM",
+        yesterday: "Yesterday",
+        completed: "Completed",
+        pending: "Pending",
+      },
+      hi: {
+        // Navigation
+        dashboard: "डैशबोर्ड",
+        users: "उपयोगकर्ता",
+        projects: "परियोजनाएँ",
+        blogs: "ब्लॉग",
+        faq: "सामान्य प्रश्न",
+        team: "टीम",
+        gallery: "गैलरी",
+        career: "करियर",
+        news: "समाचार",
+        logout: "लॉग आउट",
+        company_name: "नरोदा ग्रुप",
+
+        // User info
+        admin_name: "व्यवस्थापक उपयोगकर्ता",
+        admin_role: "सिस्टम व्यवस्थापक",
+
+        // Dashboard stats
+        total_users: "कुल उपयोगकर्ता",
+        active_projects: "सक्रिय परियोजनाएँ",
+        inquiries: "पूछताछ",
+        team_members: "टीम के सदस्य",
+        total_buyers: "कुल खरीदार",
+        rent_properties: "किराये की संपत्तियाँ",
+        blog_posts: "ब्लॉग पोस्ट",
+        gallery_items: "गैलरी आइटम",
+        images_count: "1,045 छवियाँ",
+        videos_count: "200 वीडियो",
+        careers_applied: "आवेदित करियर",
+        openings: "रिक्तियाँ",
+
+        // Recent activity
+        recent_activity: "हाल की गतिविधि",
+        user: "उपयोगकर्ता",
+        activity: "गतिविधि",
+        time: "समय",
+        status: "स्थिति",
+        john_doe: "जॉन डो",
+        jane_smith: "जेन स्मिथ",
+        mike_johnson: "माइक जॉनसन",
+        sarah_williams: "सारा विलियम्स",
+        activity_1: 'नई परियोजना "बैकएंड API" बनाई',
+        activity_2: "उपयोगकर्ता अनुमतियाँ अद्यतन कीं",
+        activity_3: "नया ब्लॉग पोस्ट प्रकाशित किया",
+        activity_4: "गैलरी में 15 छवियाँ अपलोड कीं",
+        time_1: "10:24 AM",
+        time_2: "09:42 AM",
+        yesterday: "कल",
+        completed: "पूर्ण",
+        pending: "लंबित",
+      },
+      gu: {
+        // Navigation
+        dashboard: "ડેશબોર્ડ",
+        users: "વપરાશકર્તાઓ",
+        projects: "પ્રોજેક્ટ્સ",
+        blogs: "બ્લોગ્સ",
+        faq: "FAQ",
+        team: "ટીમ",
+        gallery: "ગેલેરી",
+        career: "કારકિર્દી",
+        news: "સમાચાર",
+        logout: "લોગ આઉટ",
+        company_name: "નરોડા ગ્રુપ",
+
+        // User info
+        admin_name: "એડમિન વપરાશકર્તા",
+        admin_role: "સિસ્ટમ એડમિનિસ્ટ્રેટર",
+
+        // Dashboard stats
+        total_users: "કુલ વપરાશકર્તાઓ",
+        active_projects: "સક્રિય પ્રોજેક્ટ્સ",
+        inquiries: "પ્રશ્નો",
+        team_members: "ટીમ સભ્યો",
+        total_buyers: "કુલ ખરીદદારો",
+        rent_properties: "ભાડાની મિલકતો",
+        blog_posts: "બ્લોગ પોસ્ટ્સ",
+        gallery_items: "ગેલેરી આઇટમ્સ",
+        images_count: "1,045 છબીઓ",
+        videos_count: "200 વિડીયો",
+        careers_applied: "લાગુ કરાયેલ કારકિર્દી",
+        openings: "રિક્તિઓ",
+
+        // Recent activity
+        recent_activity: "તાજેતરની પ્રવૃત્તિ",
+        user: "વપરાશકર્તા",
+        activity: "પ્રવૃત્તિ",
+        time: "સમય",
+        status: "સ્થિતિ",
+        john_doe: "જ્હોન ડો",
+        jane_smith: "જેન સ્મિથ",
+        mike_johnson: "માઇક જ્હોનસન",
+        sarah_williams: "સારાહ વિલિયમ્સ",
+        activity_1: 'નવી પ્રોજેક્ટ "બેકએન્ડ API" બનાવી',
+        activity_2: "વપરાશકર્તા પરવાનગીઓ અપડેટ કરી",
+        activity_3: "નવો બ્લોગ પોસ્ટ પ્રકાશિત કર્યો",
+        activity_4: "ગેલેરીમાં 15 છબીઓ અપલોડ કરી",
+        time_1: "10:24 AM",
+        time_2: "09:42 AM",
+        yesterday: "ગઈકાલે",
+        completed: "પૂર્ણ",
+        pending: "બાકી",
+      },
+    };
+
+    // Current language
+    let currentLang = "en";
+
+    // Flag images for each language
+    const flagImages = {
+      en: "https://flagcdn.com/w20/gb.png",
+      hi: "https://flagcdn.com/w20/in.png",
+      gu: "https://flagcdn.com/w20/in.png",
+    };
+
+    // Update time and date in real-time for top navbar
+    function updateNavbarDateTime() {
+      const now = new Date();
+
+      // Format time with seconds
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+      const ampm = hours >= 12 ? "PM" : "AM";
+
+      // Convert to 12-hour format
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+
+      // Add leading zeros
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      // Format date
+      const options = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      const dateString = now.toLocaleDateString("en-US", options);
+
+      // Update elements in top navbar
+      document.getElementById(
+        "navbar-current-time"
+      ).textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+      document.getElementById("navbar-current-date").textContent = dateString;
+    }
+
+    // Translate the page
+    function translatePage(lang) {
+      // Update current language
+      currentLang = lang;
+
+      // Update language selector value
+      const languageSelector = document.getElementById(
+        "global-language-selector"
+      );
+      if (languageSelector) {
+        languageSelector.value = lang;
+      }
+
+      // Update flag image
+      const flagElement = document.getElementById("current-flag");
+      if (flagElement && flagImages[lang]) {
+        flagElement.src = flagImages[lang];
+        flagElement.alt =
+          lang === "en" ? "English" : lang === "hi" ? "Hindi" : "Gujarati";
+      }
+
+      // Translate all elements with data-translate-key
+      document.querySelectorAll("[data-translate-key]").forEach((element) => {
+        const key = element.getAttribute("data-translate-key");
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+
+      // Update page title
+      document.title =
+        translations[lang]["dashboard"] +
+        " | " +
+        translations[lang]["company_name"];
+
+      // Update navbar title
+      document.getElementById("page-title").textContent =
+        translations[lang]["dashboard"];
+
+      // Store language preference in localStorage
+      localStorage.setItem("preferred-language", lang);
+    }
+
+    // Update time immediately and then every second
+    updateNavbarDateTime();
+    setInterval(updateNavbarDateTime, 1000);
+
+    // Navigation functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      // Sidebar toggle
+      const sidebarToggle = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebar-overlay");
+      const mainContent = document.getElementById("main-content");
+
+      // Language selector
+      const languageSelector = document.getElementById(
+        "global-language-selector"
+      );
+
+      // Logout button
+      const logoutBtn = document.getElementById("logout-btn");
+
+      // Mobile sidebar toggle functionality
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("active");
+          overlay.classList.toggle("active");
+        });
+      }
+
+      // Close sidebar when clicking on overlay
+      if (overlay) {
+        overlay.addEventListener("click", function () {
+          sidebar.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+      }
+
+      // Language selector functionality
+      if (languageSelector) {
+        languageSelector.addEventListener("change", function () {
+          const lang = this.value;
+          translatePage(lang);
+        });
+      }
+
+      // Logout button functionality
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          alert(
+            currentLang === "en"
+              ? "You have been logged out successfully."
+              : currentLang === "hi"
+                ? "आप सफलतापूर्वक लॉग आउट हो गए हैं।"
+                : "તમે સફળતાપૂર્વક લૉગ આઉટ થઈ ગયા છો."
+          );
+        });
+      }
+
+      // Close sidebar when window is resized to desktop size
+      window.addEventListener("resize", function () {
+        if (window.innerWidth >= 992) {
+          sidebar.classList.remove("active");
+          overlay.classList.remove("active");
+        }
+      });
+
+      // Load saved language preference
+      const savedLang = localStorage.getItem("preferred-language");
+      if (savedLang && translations[savedLang]) {
+        translatePage(savedLang);
+      }
+
+      // =============================================
+      // DASHBOARD STATISTICS - Fetch from all APIs
+      // =============================================
+      fetchDashboardStatistics();
+    });
+
+    // Fetch all dashboard statistics from APIs
+    async function fetchDashboardStatistics() {
+      // Helper function to update stat element
+      const updateStat = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.textContent = typeof value === 'number' ? value.toLocaleString() : value;
+        }
+      };
+
+      // Helper function to handle fetch with error handling
+      const safeFetch = async (url) => {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const text = await response.text();
+          return JSON.parse(text);
+        } catch (error) {
+          console.error(`Error fetching ${url}:`, error);
+          return null;
+        }
+      };
+
+      // Fetch Users count
+      const usersData = await safeFetch('api/users_api.php?action=get_users&perPage=1');
+      if (usersData?.success) {
+        updateStat('stat-users', usersData.total || 0);
+      } else {
+        updateStat('stat-users', '0');
+      }
+
+      // Fetch Team Members count
+      const teamData = await safeFetch('api/team_api.php?action=get_members&perPage=1');
+      if (teamData?.success) {
+        updateStat('stat-team', teamData.total || 0);
+      } else {
+        updateStat('stat-team', '0');
+      }
+
+      // Fetch Gallery statistics (images, videos, highlights)
+      const galleryData = await safeFetch('api/gallery_api.php?action=get_gallery_data');
+      if (galleryData?.success) {
+        const images = galleryData.data?.images?.length || 0;
+        const videos = galleryData.data?.videos?.length || 0;
+        const total = images + videos;
+        updateStat('stat-gallery', total);
+        document.getElementById('stat-images').textContent = `${images} Images`;
+        document.getElementById('stat-videos').textContent = `${videos} Videos`;
+      } else {
+        updateStat('stat-gallery', '0');
+      }
+
+      // Fetch Blogs count
+      const blogsData = await safeFetch('api/blogs_api.php?action=get_blogs');
+      if (blogsData?.success) {
+        updateStat('stat-blogs', blogsData.data?.length || 0);
+      } else {
+        updateStat('stat-blogs', '0');
+      }
+
+      // Fetch News count
+      const newsData = await safeFetch('api/news_api.php?action=get_news');
+      if (newsData?.success) {
+        updateStat('stat-news', newsData.data?.length || 0);
+      } else {
+        updateStat('stat-news', '0');
+      }
+
+      // Fetch Career statistics (jobs and applications)
+      const jobsData = await safeFetch('api/career_api.php?action=get_jobs');
+      if (jobsData?.success) {
+        updateStat('stat-jobs', jobsData.data?.length || 0);
+      } else {
+        updateStat('stat-jobs', '0');
+      }
+
+      // Fetch Applications count
+      const applicationsData = await safeFetch('api/career_api.php?action=get_applications');
+      if (applicationsData?.success) {
+        updateStat('stat-applications', applicationsData.data?.length || 0);
+      } else {
+        updateStat('stat-applications', '0');
+      }
+
+      // Fetch FAQ count
+      const faqData = await safeFetch('api/faq_api.php?action=get_all');
+      if (faqData?.success) {
+        updateStat('stat-faq', faqData.data?.length || 0);
+      } else {
+        updateStat('stat-faq', '0');
+      }
+
+      // For static cards that don't have APIs (projects, inquiries, buyers, rent)
+      // Keep them as placeholders or set to 0
+      updateStat('stat-projects', '0');
+      updateStat('stat-inquiries', '0');
+
+      console.log('Dashboard statistics loaded successfully');
+    }
+  </script>
+</body>
+
+</html>

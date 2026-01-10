@@ -1,0 +1,308 @@
+<!-- Header Component -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top header-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <div class="logo-icon" aria-hidden="true">NG</div>
+            <span>Naroda <span style="color: #c9a96e;">Group</span></span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" data-i18n="nav.home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html" data-i18n="nav.about">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="projectsDropdown" data-bs-toggle="dropdown" data-i18n="nav.projects">
+                        Projects
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+                        <li><a class="dropdown-item" href="projects-landmark.html" data-i18n="nav.landmark">Naroda Landmark</a></li>
+                        <li><a class="dropdown-item" href="projects-irish.html" data-i18n="nav.irish">Naroda Irish</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="projects.html" data-i18n="nav.all_projects">All Projects</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="propertiesDropdown" data-bs-toggle="dropdown" data-i18n="nav.properties">
+                        Properties
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
+                        <li><a class="dropdown-item" href="properties.html" data-i18n="nav.buy">Buy</a></li>
+                        <li><a class="dropdown-item" href="properties-rent.html" data-i18n="nav.rent">Rent</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="property-detail.html" data-i18n="nav.property_details">Property Details</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html" data-i18n="nav.gallery">Gallery</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" data-bs-toggle="dropdown" data-i18n="nav.more">
+                        More
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+                        <li><a class="dropdown-item" href="blog.html" data-i18n="nav.blog">Blog</a></li>
+                        <li><a class="dropdown-item" href="news.html" data-i18n="nav.news">News</a></li>
+                        <li><a class="dropdown-item" href="careers.html" data-i18n="nav.careers">Careers</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="faq.html" data-i18n="nav.faq">FAQ</a></li>
+                        <li><a class="dropdown-item" href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="d-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+                <div class="dropdown">
+                    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe me-1"></i> <span id="currentLanguage">EN</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item language-selector" href="#" data-lang="en">English</a></li>
+                        <li><a class="dropdown-item language-selector" href="#" data-lang="hi">हिंदी (Hindi)</a></li>
+                        <li><a class="dropdown-item language-selector" href="#" data-lang="gu">ગુજરાતી (Gujarati)</a></li>
+                    </ul>
+                </div>
+                <a href="login.html" class="btn btn-outline-light ms-3">
+                    <i class="fas fa-user me-2"></i> <span data-i18n="nav.login">Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<style>
+    /* Header Styles */
+    .header-navbar {
+        padding: 1.2rem 0;
+        background: rgba(10, 42, 74, 0.95);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .header-navbar.scrolled {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        background: rgba(10, 42, 74, 0.98);
+    }
+
+    .navbar-brand {
+        font-family: 'Playfair Display', serif;
+        font-weight: 900;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+    }
+
+    .logo-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #c9a96e, #d4b87a);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        color: #0a2a4a;
+        font-weight: 900;
+        font-size: 1.5rem;
+    }
+
+    .nav-link {
+        font-weight: 500;
+        margin: 0 6px;
+        position: relative;
+        padding: 8px 16px !important;
+        border-radius: 30px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        color: white !important;
+    }
+
+    .nav-link:before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 100%;
+        background: rgba(201, 169, 110, 0.1);
+        border-radius: 30px;
+        top: 0;
+        left: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: -1;
+    }
+
+    .nav-link:hover:before,
+    .nav-link.active:before {
+        width: 100%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: #c9a96e !important;
+    }
+
+    /* Dropdown Styles */
+    .dropdown-menu {
+        background: rgba(10, 42, 74, 0.98);
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        padding: 10px 0;
+        margin-top: 10px;
+        min-width: 220px;
+    }
+
+    .dropdown-item {
+        color: white;
+        padding: 10px 20px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item:focus,
+    .dropdown-item.active {
+        background: rgba(201, 169, 110, 0.15);
+        color: #c9a96e;
+    }
+
+    .btn-outline-light {
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        background: transparent;
+        padding: 8px 20px;
+        border-radius: 50px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+        .header-navbar {
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-size: 1.4rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
+        
+        .dropdown-menu {
+            background: rgba(10, 42, 74, 0.95);
+            padding-left: 20px;
+            margin-top: 0;
+        }
+    }
+</style>
+
+<script>
+    // Header functionality - this will execute when the component loads
+    console.log('Header script executing');
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM ready in header component');
+        
+        const navbar = document.querySelector('.header-navbar');
+        if (!navbar) {
+            console.error('Navbar element not found!');
+            return;
+        }
+        
+        console.log('Navbar found, initializing...');
+        
+        // Scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Set active page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        console.log('Current page:', currentPage);
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.classList.add('active');
+                console.log('Active link set:', href);
+            }
+        });
+        
+        // Language selector
+        document.querySelectorAll('.language-selector').forEach(selector => {
+            selector.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                const langCode = lang === 'en' ? 'EN' : lang === 'hi' ? 'HI' : 'GU';
+                const currentLangElement = document.getElementById('currentLanguage');
+                if (currentLangElement) {
+                    currentLangElement.textContent = langCode;
+                }
+                
+                // Trigger language change event
+                const event = new CustomEvent('languageChange', { detail: { lang } });
+                window.dispatchEvent(event);
+                console.log('Language changed to:', lang);
+            });
+        });
+        
+        // Initialize Bootstrap dropdowns
+        const dropdownElements = document.querySelectorAll('.dropdown-toggle');
+        dropdownElements.forEach(el => {
+            el.addEventListener('click', function(e) {
+                console.log('Dropdown clicked:', this.id);
+            });
+        });
+        
+        console.log('Header initialized successfully');
+    });
+    
+    // Also run when the component is loaded (in case DOMContentLoaded already fired)
+    setTimeout(function() {
+        console.log('Header component timeout check');
+        const navbar = document.querySelector('.header-navbar');
+        if (navbar) {
+            console.log('Navbar exists, running initialization');
+            
+            // Scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Set active page
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    }, 500);
+</script>

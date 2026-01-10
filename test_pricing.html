@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Pricing API</title>
+</head>
+
+<body>
+    <h1>Testing Pricing Data from API</h1>
+    <div id="output"></div>
+
+    <script>
+        fetch('api.php?action=get_project_data')
+            .then(response => response.json())
+            .then(data => {
+                const output = document.getElementById('output');
+                output.innerHTML = '<h2>Pricing Plans Data:</h2>';
+                output.innerHTML += '<pre>' + JSON.stringify(data.pricing_plans, null, 2) + '</pre>';
+
+                // Check each BHK type
+                ['1bhk', '2bhk', '3bhk'].forEach(type => {
+                    if (data.pricing_plans[type]) {
+                        output.innerHTML += `<h3>${type.toUpperCase()} Found:</h3>`;
+                        output.innerHTML += `<p>Price: ${data.pricing_plans[type].starting_price}</p>`;
+                        output.innerHTML += `<p>Sqft: ${data.pricing_plans[type].sqft}</p>`;
+                        output.innerHTML += `<p>Bedrooms: ${data.pricing_plans[type].bedrooms}</p>`;
+                        output.innerHTML += `<p>Bathrooms: ${data.pricing_plans[type].bathrooms}</p>`;
+                    } else {
+                        output.innerHTML += `<h3>${type.toUpperCase()} NOT FOUND</h3>`;
+                    }
+                });
+            })
+            .catch(error => {
+                document.getElementById('output').innerHTML = '<p style="color:red;">Error: ' + error + '</p>';
+            });
+    </script>
+</body>
+
+</html>

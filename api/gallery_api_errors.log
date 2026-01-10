@@ -1,0 +1,28 @@
+[27-Dec-2025 13:08:13 Europe/Berlin] API Request: {"timestamp":"2025-12-27 13:08:13","method":"GET","action":"get_gallery_data","get":{"action":"get_gallery_data"},"post":[],"files":[],"json_input":""}
+[27-Dec-2025 13:08:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function imagecreatetruecolor() in C:\xampp\htdocs\ng\api\gallery_api.php:147
+Stack trace:
+#0 C:\xampp\htdocs\ng\api\gallery_api.php(196): createDefaultPlaceholder()
+#1 C:\xampp\htdocs\ng\api\gallery_api.php(345): formatImageRow(Array)
+#2 {main}
+  thrown in C:\xampp\htdocs\ng\api\gallery_api.php on line 147
+[27-Dec-2025 13:08:46 Europe/Berlin] API Request: {"timestamp":"2025-12-27 13:08:46","method":"POST","action":"upload_image","get":{"action":"upload_image"},"post":[],"files":{"image":{"name":"IMG20251207171838.jpg","full_path":"IMG20251207171838.jpg","type":"image\/jpeg","tmp_name":"C:\\xampp\\tmp\\php5EA5.tmp","error":0,"size":3411090}},"json_input":""}
+[27-Dec-2025 13:08:46 Europe/Berlin] upload_image action started
+[27-Dec-2025 13:08:46 Europe/Berlin] File upload details: name=IMG20251207171838.jpg, size=3411090, type=image/jpeg, tmp_name=C:\xampp\tmp\php5EA5.tmp
+[27-Dec-2025 13:08:46 Europe/Berlin] Upload directory: C:\xampp\htdocs\ng/uploads/gallery/
+[27-Dec-2025 13:08:46 Europe/Berlin] Upload path: C:\xampp\htdocs\ng/uploads/gallery/gallery_1766837326_2deba246b9978b57.jpg
+[27-Dec-2025 13:08:46 Europe/Berlin] File moved successfully to: C:\xampp\htdocs\ng/uploads/gallery/gallery_1766837326_2deba246b9978b57.jpg
+[27-Dec-2025 13:08:46 Europe/Berlin] File verified to exist at: C:\xampp\htdocs\ng/uploads/gallery/gallery_1766837326_2deba246b9978b57.jpg
+[27-Dec-2025 13:08:46 Europe/Berlin] Public URL will be: /uploads/gallery/gallery_1766837326_2deba246b9978b57.jpg
+[27-Dec-2025 13:08:46 Europe/Berlin] API Response: {"success":true,"message":"Image uploaded successfully","timestamp":"2025-12-27 13:08:46","data":{"url":"\/uploads\/gallery\/gallery_1766837326_2deba246b9978b57.jpg","filename":"gallery_1766837326_2deba246b9978b57.jpg","size":"3.25 MB","dimensions":"3120x4160","full_path":"C:\\xampp\\htdocs\\ng\/uploads\/gallery\/gallery_1766837326_2deba246b9978b57.jpg"}}
+[27-Dec-2025 13:08:46 Europe/Berlin] API Request: {"timestamp":"2025-12-27 13:08:46","method":"POST","action":"save_image","get":{"action":"save_image"},"post":[],"files":[],"json_input":"{\"title\":{\"en\":\"naroda landmark\",\"hi\":\"\u0928\u0930\u094b\u0926\u093e \u092e\u0940\u0932 \u0915\u093e \u092a\u0924\u094d\u0925\u0930\",\"gu\":\"\u0aa8\u0ab0\u0acb\u0aa1\u0abe \u0ab8\u0ac0\u0aae\u0abe\u0a9a\u0abf\u0ab9\u0acd\u0aa8\"},\"description\":{\"en\":\"aayush sapra\",\"hi\":\"\u0906\u092f\u0941\u0937 \u0938\u092a\u0930\u093e\",\"gu\":\"\u0a86\u0aaf\u0ac1\u0ab7 \u0ab8\u0aaa\u0ab0\u0abe\"},\"tags\":[\"lobby\"],\"category\":\"landmark\",\"project\":\"landmark\",\"featured\":0,\"image_url\":\"\/uploads\/gallery\/gallery_1766837326_2deba246b9978b57.jpg\",\"size\":\"3.25 MB\",\"dimensions\":\"3120x4160\"}"}
+[27-Dec-2025 13:08:46 Europe/Berlin] save_image received: {"title":{"en":"naroda landmark","hi":"\u0928\u0930\u094b\u0926\u093e \u092e\u0940\u0932 \u0915\u093e \u092a\u0924\u094d\u0925\u0930","gu":"\u0aa8\u0ab0\u0acb\u0aa1\u0abe \u0ab8\u0ac0\u0aae\u0abe\u0a9a\u0abf\u0ab9\u0acd\u0aa8"},"description":{"en":"aayush sapra","hi":"\u0906\u092f\u0941\u0937 \u0938\u092a\u0930\u093e","gu":"\u0a86\u0aaf\u0ac1\u0ab7 \u0ab8\u0aaa\u0ab0\u0abe"},"tags":["lobby"],"category":"landmark","project":"landmark","featured":0,"image_url":"\/uploads\/gallery\/gallery_1766837326_2deba246b9978b57.jpg","size":"3.25 MB","dimensions":"3120x4160"}
+[27-Dec-2025 13:08:46 Europe/Berlin] image_url in input: /uploads/gallery/gallery_1766837326_2deba246b9978b57.jpg
+[27-Dec-2025 13:08:46 Europe/Berlin] Final image_url to save: /uploads/gallery/gallery_1766837326_2deba246b9978b57.jpg
+[27-Dec-2025 13:08:46 Europe/Berlin] API Response: {"success":true,"message":"Image saved successfully","timestamp":"2025-12-27 13:08:46","data":{"id":6,"title":{"en":"naroda landmark","hi":"\u0928\u0930\u094b\u0926\u093e \u092e\u0940\u0932 \u0915\u093e \u092a\u0924\u094d\u0925\u0930","gu":"\u0aa8\u0ab0\u0acb\u0aa1\u0abe \u0ab8\u0ac0\u0aae\u0abe\u0a9a\u0abf\u0ab9\u0acd\u0aa8"},"description":{"en":"aayush sapra","hi":"\u0906\u092f\u0941\u0937 \u0938\u092a\u0930\u093e","gu":"\u0a86\u0aaf\u0ac1\u0ab7 \u0ab8\u0aaa\u0ab0\u0abe"},"category":"landmark","project":"landmark","tags":["lobby"],"featured":false,"image_url":"\/uploads\/gallery\/gallery_1766837326_2deba246b9978b57.jpg","size":"3.25 MB","dimensions":"3120x4160","uploaded_date":"2025-12-27","created_at":"2025-12-27 17:38:46"}}
+[27-Dec-2025 13:14:32 Europe/Berlin] API Request: {"timestamp":"2025-12-27 13:14:32","method":"GET","action":"get_gallery_data","get":{"action":"get_gallery_data"},"post":[],"files":[],"json_input":""}
+[27-Dec-2025 13:14:32 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function imagecreatetruecolor() in C:\xampp\htdocs\ng\api\gallery_api.php:147
+Stack trace:
+#0 C:\xampp\htdocs\ng\api\gallery_api.php(196): createDefaultPlaceholder()
+#1 C:\xampp\htdocs\ng\api\gallery_api.php(345): formatImageRow(Array)
+#2 {main}
+  thrown in C:\xampp\htdocs\ng\api\gallery_api.php on line 147

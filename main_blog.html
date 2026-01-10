@@ -1,0 +1,4006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Naroda Group - Real Estate Insights & News</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Read the latest real estate insights, market trends, investment tips, and news from Naroda Group's expert team." />
+  <meta name="keywords"
+    content="real estate blog, property market trends, investment tips, home buying guide, Ahmedabad real estate news, Naroda Landmark, Naroda Irish" />
+  <meta name="author" content="Naroda Group" />
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Blog | Naroda Group - Real Estate Insights & News" />
+  <meta property="og:description"
+    content="Read the latest real estate insights, market trends, investment tips, and news from Naroda Group's expert team." />
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" />
+  <meta property="og:url" content="https://narodagroup.com/blog.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Naroda Group" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog | Naroda Group - Real Estate Insights & News" />
+  <meta name="twitter:description"
+    content="Read the latest real estate insights, market trends, investment tips, and news from Naroda Group's expert team." />
+  <meta name="twitter:image"
+    content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://narodagroup.com/blog.html" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0a2a4a" />
+  <meta name="msapplication-TileColor" content="#0a2a4a" />
+  <meta name="theme-color" content="#0a2a4a" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ===== CSS Variables ===== */
+    :root {
+      --primary-color: #0a2a4a;
+      --primary-dark: #071a2e;
+      --primary-light: #0e3a64;
+      --secondary-color: #c9a96e;
+      --secondary-light: #d4b87a;
+      --secondary-dark: #b89440;
+      --accent-color: #2e8b57;
+      --accent-light: #3cb371;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --gray-color: #6c757d;
+      --light-gray: #e9ecef;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      --shadow-hover: 0 25px 60px rgba(0, 0, 0, 0.2);
+      --border-radius: 16px;
+      --border-radius-lg: 24px;
+      --gradient-primary: linear-gradient(135deg,
+          var(--primary-color),
+          var(--primary-light));
+      --gradient-secondary: linear-gradient(135deg,
+          var(--secondary-color),
+          var(--secondary-light));
+      --gradient-accent: linear-gradient(135deg,
+          var(--accent-color),
+          var(--accent-light));
+    }
+
+    /* ===== Base Styles ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--dark-color);
+      overflow-x: hidden;
+      line-height: 1.7;
+      font-weight: 400;
+      background-color: #ffffff;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+      padding-bottom: 70px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      max-width: 1140px;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    @media (max-width: 992px) {
+      section {
+        padding: 70px 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      section {
+        padding: 50px 0;
+      }
+    }
+
+    /* ===== Utility Classes ===== */
+    .gold-text {
+      color: var(--secondary-color);
+    }
+
+    .emerald-text {
+      color: var(--accent-color);
+    }
+
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .section-title:after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-secondary);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .badge {
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .bg-gradient-secondary {
+      background: var(--gradient-secondary) !important;
+    }
+
+    /* ===== Preloader ===== */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .loader-inner {
+      width: 100%;
+      height: 100%;
+      border: 4px solid rgba(201, 169, 110, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--secondary-color);
+      animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .preloader-text {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.6;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 42, 74, 0.95);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      padding: 15px 0;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 42, 74, 0.98);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-family: "Playfair Display", serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-secondary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+      color: var(--primary-color);
+      font-weight: 900;
+      font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      padding: 8px 15px;
+      margin: 0 5px;
+      border-radius: 30px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: white;
+      background: rgba(201, 169, 110, 0.2);
+    }
+
+    .dropdown-menu {
+      background: rgba(10, 42, 74, 0.98);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 10px;
+    }
+
+    .dropdown-item {
+      color: rgba(255, 255, 255, 0.9);
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .dropdown-item:hover {
+      background: rgba(201, 169, 110, 0.2);
+      color: white;
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 5px;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* ===== Language Switcher ===== */
+    .language-switcher {
+      position: relative;
+    }
+
+    .language-dropdown {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 8px 15px;
+      border-radius: 30px;
+      transition: var(--transition);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .language-dropdown:hover {
+      color: white;
+      background: rgba(201, 169, 110, 0.2);
+    }
+
+    .language-dropdown i {
+      margin-right: 5px;
+    }
+
+    .language-options {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: rgba(10, 42, 74, 0.98);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      padding: 10px;
+      min-width: 120px;
+      display: none;
+      z-index: 1000;
+    }
+
+    .language-options.show {
+      display: block;
+    }
+
+    .language-option {
+      display: block;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: var(--transition);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .language-option:hover {
+      background: rgba(201, 169, 110, 0.2);
+      color: white;
+    }
+
+    .language-option.active {
+      background: rgba(201, 169, 110, 0.3);
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+
+    /* ===== Login Button ===== */
+    .login-btn {
+      background: var(--gradient-secondary);
+      color: var(--primary-color) !important;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(201, 169, 110, 0.3);
+    }
+
+    /* ===== Mobile Navigation ===== */
+    .mobile-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 10px 0;
+      display: none;
+    }
+
+    .mobile-nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #6c757d;
+      transition: var(--transition);
+      padding: 5px 10px;
+      border-radius: 10px;
+      min-width: 70px;
+      text-align: center;
+    }
+
+    .mobile-nav-item.active,
+    .mobile-nav-item:hover {
+      color: var(--primary-color);
+      background: rgba(10, 42, 74, 0.05);
+    }
+
+    .mobile-nav-icon {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .mobile-nav-text {
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 991px) {
+      .mobile-nav {
+        display: block;
+      }
+
+      body {
+        padding-bottom: 70px;
+      }
+    }
+
+    /* ===== Floating Buttons ===== */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1050;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .floating-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+      border: none;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-btn.whatsapp {
+      background: #25d366;
+    }
+
+    .floating-btn.phone {
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+    }
+
+    .floating-btn.chat {
+      background: var(--primary-color);
+    }
+
+    /* ===== Hero Section ===== */
+    .hero-section {
+      min-height: 50vh;
+      background: linear-gradient(rgba(10, 42, 74, 0.95),
+          rgba(10, 42, 74, 0.85)),
+        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0;
+      margin-top: 83px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        min-height: 40vh;
+        padding: 80px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-section {
+        min-height: 35vh;
+        padding: 60px 0;
+      }
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-subtitle {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ===== Blog Content ===== */
+    .blog-section {
+      padding: 80px 0;
+      background: #f9fafb;
+    }
+
+    @media (max-width: 768px) {
+      .blog-section {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blog-section {
+        padding: 50px 0;
+      }
+    }
+
+    .blog-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 1200px) {
+      .blog-container {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .blog-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-container {
+        gap: 30px;
+      }
+    }
+
+    /* ===== Blog Grid ===== */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 1200px) {
+      .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+
+    @media (max-width: 992px) {
+      .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .blog-card.featured {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 768px) {
+      .blog-card.featured {
+        grid-column: auto;
+      }
+    }
+
+    .blog-image {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @media (max-width: 992px) {
+      .blog-image {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blog-image {
+        height: 180px;
+      }
+    }
+
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .blog-card:hover .blog-image img {
+      transform: scale(1.1);
+    }
+
+    .blog-category {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--gradient-secondary);
+      color: var(--primary-color);
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    @media (max-width: 576px) {
+      .blog-category {
+        top: 12px;
+        left: 12px;
+        padding: 5px 10px;
+        font-size: 10px;
+      }
+    }
+
+    .blog-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (max-width: 992px) {
+      .blog-content {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blog-content {
+        padding: 18px;
+      }
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      color: var(--gray-color);
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-meta {
+        gap: 12px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blog-meta {
+        gap: 10px;
+        font-size: 0.75rem;
+      }
+    }
+
+    .blog-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .blog-meta-item i {
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+    }
+
+    .blog-author {
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    @media (max-width: 768px) {
+      .blog-author {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+
+    .blog-author-img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 576px) {
+      .blog-author-img {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+      }
+    }
+
+    .blog-author-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== Sidebar ===== */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    @media (max-width: 992px) {
+      .sidebar {
+        position: static;
+        margin-top: 30px;
+      }
+    }
+
+    .sidebar-widget {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 992px) {
+      .sidebar-widget {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .sidebar-widget {
+        padding: 18px;
+      }
+    }
+
+    .widget-title {
+      position: relative;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .widget-title {
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+      }
+    }
+
+    .widget-title:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 35px;
+      height: 3px;
+      background: var(--gradient-secondary);
+      border-radius: 2px;
+    }
+
+    .search-widget {
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 20px 12px 45px;
+      border: 2px solid var(--light-gray);
+      border-radius: 50px;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    @media (max-width: 768px) {
+      .search-input {
+        padding: 10px 18px 10px 42px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .search-input:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 0.2rem rgba(201, 169, 110, 0.25);
+      outline: none;
+    }
+
+    .search-btn {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--gray-color);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .categories-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .categories-list li {
+      margin-bottom: 10px;
+    }
+
+    .categories-list a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--dark-color);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--light-gray);
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .categories-list a {
+        font-size: 0.9rem;
+        padding: 7px 0;
+      }
+    }
+
+    .categories-list a:hover {
+      color: var(--secondary-color);
+      padding-left: 8px;
+    }
+
+    .categories-count {
+      background: var(--light-gray);
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .recent-posts {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .recent-post-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .recent-post-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .recent-post-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .recent-post-img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    .recent-post-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .recent-post-item:hover .recent-post-img img {
+      transform: scale(1.1);
+    }
+
+    .recent-post-content h6 {
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .recent-post-content h6 {
+        font-size: 0.85rem;
+      }
+    }
+
+    .recent-post-date {
+      font-size: 0.75rem;
+      color: var(--gray-color);
+    }
+
+    .tags-widget {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .tags-widget {
+        gap: 6px;
+      }
+    }
+
+    .tag {
+      background: var(--light-gray);
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: var(--dark-color);
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .tag {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+      }
+    }
+
+    .tag:hover {
+      background: var(--gradient-secondary);
+      color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    .newsletter-widget {
+      background: var(--gradient-primary);
+      color: white;
+      text-align: center;
+    }
+
+    .newsletter-widget .widget-title {
+      color: white;
+    }
+
+    .newsletter-widget .widget-title:after {
+      background: var(--gradient-secondary);
+    }
+
+    /* ===== Pagination ===== */
+    .pagination {
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .page-link {
+      border: none;
+      color: var(--primary-color);
+      margin: 0 4px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 576px) {
+      .page-link {
+        width: 35px;
+        height: 35px;
+        margin: 0 3px;
+        font-size: 0.85rem;
+      }
+    }
+
+    .page-link:hover,
+    .page-link.active {
+      background: var(--gradient-secondary);
+      color: var(--primary-color);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: var(--primary-dark);
+      color: #b0b7c3;
+      padding-top: 70px;
+    }
+
+    @media (max-width: 992px) {
+      .footer {
+        padding-top: 60px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        padding-top: 50px;
+      }
+    }
+
+    .footer-title {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-title {
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+      }
+    }
+
+    .footer-title:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 35px;
+      height: 3px;
+      background: var(--gradient-secondary);
+      border-radius: 2px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 25px 0;
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .copyright {
+        padding: 20px 0;
+        margin-top: 40px;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* ===== Toast Notifications ===== */
+    .toast-container {
+      position: fixed;
+      top: 90px;
+      right: 20px;
+      z-index: 9999;
+      max-width: 320px;
+    }
+
+    @media (max-width: 768px) {
+      .toast-container {
+        top: 70px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+      }
+    }
+
+    .toast {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: var(--shadow);
+      margin-bottom: 10px;
+      transform: translateX(100%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      max-width: 100%;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .toast {
+        padding: 12px;
+        font-size: 0.85rem;
+        transform: translateX(0) translateY(20px);
+      }
+
+      .toast.show {
+        transform: translateX(0) translateY(0);
+      }
+    }
+
+    .toast.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    /* ===== Loading Overlay ===== */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      display: none;
+    }
+
+    .loading-overlay.active {
+      display: flex;
+    }
+
+    /* ===== Additional Styles ===== */
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .social-links {
+        gap: 10px;
+        margin-top: 15px;
+      }
+    }
+
+    .social-link {
+      width: 35px;
+      height: 35px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .social-link {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+      }
+    }
+
+    .social-link:hover {
+      background: var(--gradient-secondary);
+      transform: translateY(-2px);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-links li {
+        margin-bottom: 8px;
+      }
+    }
+
+    .footer-links a {
+      color: #b0b7c3;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .footer-links a {
+        font-size: 0.9rem;
+      }
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary-color);
+      padding-left: 5px;
+    }
+
+    .project-mini-card {
+      display: block;
+      margin-bottom: 15px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+
+    @media (max-width: 768px) {
+      .project-mini-card {
+        padding: 10px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .project-mini-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-info {
+        margin-bottom: 15px;
+      }
+    }
+
+    .contact-info i {
+      color: var(--secondary-color);
+      font-size: 1.1rem;
+      margin-right: 12px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .contact-info i {
+        font-size: 1rem;
+        margin-right: 10px;
+      }
+    }
+
+    /* ===== Read Time ===== */
+    .read-time {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(46, 139, 87, 0.1);
+      color: var(--accent-color);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      gap: 5px;
+    }
+
+    @media (max-width: 576px) {
+      .read-time {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+      }
+    }
+
+    /* ===== Share Widget ===== */
+    .share-widget {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    @media (max-width: 768px) {
+      .share-widget {
+        gap: 8px;
+        margin-top: 20px;
+        padding-top: 12px;
+      }
+    }
+
+    .share-widget span {
+      font-weight: 600;
+      color: var(--dark-color);
+      font-size: 0.9rem;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .share-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .share-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+      }
+    }
+
+    .share-btn.facebook {
+      background: #3b5998;
+    }
+
+    .share-btn.twitter {
+      background: #1da1f2;
+    }
+
+    .share-btn.linkedin {
+      background: #0077b5;
+    }
+
+    .share-btn.whatsapp {
+      background: #25d366;
+    }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    /* ===== Newsletter Form ===== */
+    .newsletter-form {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .newsletter-form {
+        margin-top: 15px;
+      }
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .newsletter-form input {
+        padding: 9px 14px;
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .newsletter-form input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ===== Blog Filter ===== */
+    .blog-filter {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-filter {
+        gap: 6px;
+        margin-bottom: 25px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blog-filter {
+        gap: 5px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      background: white;
+      border: 2px solid var(--light-gray);
+      border-radius: 50px;
+      font-weight: 600;
+      color: var(--dark-color);
+      transition: var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .filter-btn {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+      }
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--gradient-secondary);
+      color: var(--primary-color);
+      border-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(201, 169, 110, 0.2);
+    }
+
+    .filter-btn.active {
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    /* ===== No Results ===== */
+    .no-results {
+      text-align: center;
+      padding: 50px 20px;
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 768px) {
+      .no-results {
+        padding: 40px 15px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .no-results {
+        padding: 30px 10px;
+      }
+    }
+
+    .no-results-icon {
+      font-size: 3rem;
+      color: var(--light-gray);
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .no-results-icon {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .no-results-icon {
+        font-size: 2rem;
+      }
+    }
+
+    /* ===== Search Reset Button ===== */
+    .search-reset-btn {
+      display: block;
+      margin: 25px auto 0;
+    }
+
+    @media (max-width: 768px) {
+      .search-reset-btn {
+        margin: 20px auto 0;
+      }
+    }
+
+    /* ===== Responsive Spacing Fixes ===== */
+    .min-vh-50 {
+      min-height: 50vh;
+    }
+
+    @media (max-width: 768px) {
+      .min-vh-50 {
+        min-height: 40vh;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .min-vh-50 {
+        min-height: 35vh;
+      }
+    }
+
+    .footer .row {
+      row-gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .footer .row {
+        row-gap: 25px;
+      }
+    }
+
+    /* ===== Language Specific Styles ===== */
+    body.hindi,
+    body.gujarati {
+      font-family: "Noto Sans", "Inter", sans-serif;
+    }
+
+    .language-content {
+      transition: opacity 0.3s ease;
+    }
+
+    /* ===== Dropdown Accessibility ===== */
+    @media (min-width: 992px) {
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+
+    /* ===== Image Loading Fix ===== */
+    img[loading="lazy"] {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    img[loading="lazy"].loaded {
+      opacity: 1;
+    }
+
+    /* ===== Form Control Focus ===== */
+    .form-control:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 0.2rem rgba(201, 169, 110, 0.25);
+    }
+
+    /* ===== Navbar Toggler Fix ===== */
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+
+    /* ===== Container Fluid Adjustment ===== */
+    @media (max-width: 576px) {
+      .container {
+        padding: 0 15px;
+      }
+    }
+
+    /* ===== Typography Fix ===== */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      word-break: break-word;
+    }
+
+    /* ===== Mobile Navigation Active State ===== */
+    .mobile-nav-item.active {
+      color: var(--secondary-color);
+    }
+
+    /* ===== Loading Spinner ===== */
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .spinner-border {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+
+    /* ===== Footer Link Icons ===== */
+    .footer-links a i {
+      width: 16px;
+      margin-right: 8px;
+      font-size: 0.8rem;
+    }
+
+    /* ===== CTA Section ===== */
+    .bg-light.rounded-3 {
+      padding: 30px !important;
+    }
+
+    @media (max-width: 768px) {
+      .bg-light.rounded-3 {
+        padding: 25px !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .bg-light.rounded-3 {
+        padding: 20px !important;
+      }
+    }
+
+    /* ===== Responsive Text Alignment ===== */
+    .text-center-sm {
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .text-start-md {
+        text-align: left !important;
+      }
+
+      .text-center-sm {
+        text-align: center !important;
+      }
+    }
+
+    /* ===== Grid Gap Utilities ===== */
+    .gap-20 {
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .gap-20 {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .gap-20 {
+        gap: 10px;
+      }
+    }
+
+    /* ===== Fix for small screens ===== */
+    @media (max-width: 380px) {
+      .filter-btn {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+      }
+
+      .blog-grid {
+        gap: 15px;
+      }
+
+      .blog-content {
+        padding: 15px;
+      }
+
+      .hero-title {
+        font-size: 1.6rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .mobile-nav-item {
+        min-width: 60px;
+        padding: 5px 5px;
+      }
+
+      .mobile-nav-icon {
+        font-size: 1rem;
+      }
+
+      .mobile-nav-text {
+        font-size: 0.65rem;
+      }
+    }
+
+    /* ===== Improve contrast for accessibility ===== */
+    .text-muted {
+      color: #6c757d !important;
+    }
+
+    /* ===== Fix overflow issues ===== */
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* ===== Fix button width on mobile ===== */
+    .btn-block-mobile {
+      width: 100%;
+    }
+
+    @media (max-width: 576px) {
+      .btn-block-mobile {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    /* ===== Improve form inputs ===== */
+    input,
+    textarea,
+    select {
+      font-size: 16px !important;
+      /* Prevents zoom on mobile */
+    }
+
+    @media (max-width: 768px) {
+
+      input,
+      textarea,
+      select {
+        font-size: 16px !important;
+      }
+    }
+
+    /* ===== Fix dropdown menu on mobile ===== */
+    @media (max-width: 991px) {
+      .dropdown-menu {
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        padding-left: 20px;
+      }
+
+      .dropdown-item {
+        padding: 8px 0;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .dropdown-item:hover {
+        background: transparent;
+        color: var(--secondary-color);
+      }
+
+      .dropdown-divider {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    /* ===== Fix navbar collapse animation ===== */
+    .navbar-collapse {
+      transition: all 0.3s ease;
+    }
+
+    /* ===== Improve mobile touch targets ===== */
+    @media (max-width: 768px) {
+
+      button,
+      a.btn,
+      .nav-link,
+      .dropdown-item,
+      .mobile-nav-item {
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      .search-btn {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mobile-nav-item {
+        min-height: 60px;
+      }
+    }
+
+    /* ===== Prevent horizontal scroll ===== */
+    body,
+    html {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    /* ===== Fix for iOS Safari ===== */
+    @supports (-webkit-touch-callout: none) {
+      .hero-section {
+        background-attachment: scroll;
+      }
+    }
+
+    /* Fix for AOS overflow issues */
+    [data-aos] {
+      overflow: visible !important;
+    }
+
+    /* Responsive Floating Buttons */
+    @media (max-width: 768px) {
+      .floating-buttons {
+        bottom: 80px;
+        right: 15px;
+      }
+
+      .floating-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .floating-buttons {
+        bottom: 85px;
+        right: 10px;
+      }
+
+      .floating-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+      }
+    }
+
+    .btn {
+      padding: 10px 34px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: var(--transition);
+      border: none;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    /* Creative Blog Styles */
+    .btn-creative-read-more {
+      background: linear-gradient(135deg,
+          var(--primary-color),
+          var(--secondary-color));
+      color: #fff !important;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      border: none;
+      margin-top: auto;
+    }
+
+    .btn-creative-read-more:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    .btn-creative-read-more i {
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-creative-read-more:hover i {
+      transform: translateX(4px);
+    }
+
+    /* Creative Modal Styles */
+    .modal-creative-content {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-hero-section {
+      position: relative;
+      height: 400px;
+    }
+
+    .modal-hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 40px;
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, 0.9) 0%,
+          rgba(0, 0, 0, 0.5) 60%,
+          transparent 100%);
+      color: white;
+    }
+
+    .glass-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .glass-close-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: rotate(90deg);
+    }
+
+    .modal-body-creative {
+      padding: 40px;
+      background: #fff;
+    }
+
+    .blog-meta-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      background: rgba(var(--secondary-rgb), 0.1);
+      color: var(--secondary-color);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+
+    .modal-divider {
+      height: 1px;
+      background: linear-gradient(to right,
+          transparent,
+          rgba(0, 0, 0, 0.1),
+          transparent);
+      margin: 30px 0;
+    }
+
+    .share-btn-creative {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      margin: 0 5px;
+    }
+
+    .share-btn-creative:hover {
+      transform: translateY(-5px);
+      color: white;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    @media (max-width: 768px) {
+      .modal-hero-section {
+        height: 250px;
+      }
+
+      .modal-hero-overlay {
+        padding: 20px;
+      }
+
+      .modal-body-creative {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader">
+      <div class="loader-inner"></div>
+    </div>
+    <div class="preloader-text">NARODA GROUP</div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay">
+    <div class="spinner-border" style="color: var(--secondary-color)" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">
+        <div class="logo-icon">NG</div>
+        <span class="language-content" data-i18n="nav.brand">Naroda</span>
+        <span class="gold-text"><span class="language-content" data-i18n="nav.group">Group</span></span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="home.html" class="language-content" data-i18n="nav.home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html" class="language-content" data-i18n="nav.about">About</a>
+          </li>
+
+          <!-- Projects Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle language-content" href="#" id="projectsDropdown"
+              data-bs-toggle="dropdown" data-i18n="nav.projects">
+              Projects
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+              <li>
+                <a class="dropdown-item language-content" href="projects-landmark.html" data-i18n="nav.landmark">Naroda
+                  Landmark</a>
+              </li>
+              <li>
+                <a class="dropdown-item language-content" href="projects-irish.html" data-i18n="nav.irish">Naroda
+                  Irish</a>
+              </li>
+              <!-- <li>
+                    <hr class="dropdown-divider" />
+                  </li> -->
+              <!-- <li>
+                    <a
+                      class="dropdown-item language-content"
+                      href="projects.html"
+                      data-i18n="nav.all_projects"
+                      >All Projects</a
+                    >
+                  </li> -->
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html" class="language-content" data-i18n="nav.contact">Contact</a>
+          </li>
+
+          <!-- Properties Dropdown -->
+          <!-- <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle language-content"
+                  href="#"
+                  id="propertiesDropdown"
+                  data-bs-toggle="dropdown"
+                  data-i18n="nav.properties"
+                >
+                  Properties
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
+                  <li>
+                    <a
+                      class="dropdown-item language-content"
+                      href="properties.html?type=buy"
+                      data-i18n="nav.buy"
+                      >Buy</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item language-content"
+                      href="properties.html?type=rent"
+                      data-i18n="nav.rent"
+                      >Rent</a
+                    >
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item language-content"
+                      href="property-detail.html"
+                      data-i18n="nav.property_details"
+                      >Property Details</a
+                    >
+                  </li>
+                </ul>
+              </li> -->
+
+          <!-- Gallery -->
+          <!-- <li class="nav-item">
+                <a
+                  class="nav-link language-content"
+                  href="gallery.html"
+                  data-i18n="nav.gallery"
+                  >Gallery</a
+                >
+              </li> -->
+
+          <!-- More Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle language-content" href="#" id="moreDropdown" data-bs-toggle="dropdown"
+              data-i18n="nav.more">
+              More
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+              <li>
+                <a class="dropdown-item language-content" href="main_blog.html" data-i18n="nav.blog"><i
+                    class="fas fa-blog me-2"></i>Blog</a>
+              </li>
+              <!-- <li>
+                    <a
+                      class="dropdown-item language-content"
+                      href="news.html"
+                      data-i18n="nav.news"
+                      ><i class="fas fa-newspaper me-2"></i>News</a
+                    >
+                  </li> -->
+              <li>
+                <a class="dropdown-item language-content" href="main_career.html" data-i18n="nav.careers"><i
+                    class="fas fa-briefcase me-2"></i>Careers</a>
+              </li>
+              <li>
+                <a class="dropdown-item language-content" href="main_team.html" data-i18n="nav.team"><i
+                    class="fas fa-users me-2"></i>Our Team</a>
+              </li>
+              <li>
+                <a class="dropdown-item language-content" href="main_faq.html" data-i18n="nav.faq"><i
+                    class="fas fa-question-circle me-2"></i>FAQ</a>
+              </li>
+              <!-- <li>
+                    <hr class="dropdown-divider" />
+                  </li> -->
+            </ul>
+          </li>
+
+          <!-- Language Switcher -->
+          <li class="nav-item language-switcher">
+            <div class="language-dropdown" id="languageToggle">
+              <i class="fas fa-globe"></i>
+              <span class="language-content" data-i18n="nav.language">EN</span>
+              <i class="fas fa-chevron-down ms-1"></i>
+            </div>
+            <div class="language-options" id="languageOptions">
+              <div class="language-option active" data-lang="en">English</div>
+              <div class="language-option" data-lang="hi">हिन्दी</div>
+              <div class="language-option" data-lang="gu">ગુજરાતી</div>
+            </div>
+          </li>
+
+          <!-- Login Button -->
+          <li class="nav-item ms-2">
+            <button class="btn login-btn language-content" data-i18n="nav.login"
+              onclick="window.location.href='login.html'">
+              <i class="fas fa-user me-2"></i> Login
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="language-content" id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center min-vh-60">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1 class="hero-title" data-aos="fade-up">
+              <span data-i18n="hero.title.part1">Real Estate</span>
+              <span class="gold-text" data-i18n="hero.title.part2">Blog</span>
+            </h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100" data-i18n="hero.subtitle">
+              Insights, trends, and expert advice for smart real estate
+              decisions
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Filter -->
+    <section class="blog-section">
+      <div class="container">
+        <div class="blog-filter" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="all" data-i18n="blog.filter.all">
+            All Articles
+          </button>
+          <button class="filter-btn" data-filter="naroda-landmark" data-i18n="blog.filter.naroda_landmark">
+            Naroda Landmark
+          </button>
+          <button class="filter-btn" data-filter="naroda-irish" data-i18n="blog.filter.naroda_irish">
+            Naroda Irish
+          </button>
+          <button class="filter-btn" data-filter="investment" data-i18n="blog.filter.investment">
+            Investment Tips
+          </button>
+          <button class="filter-btn" data-filter="legal" data-i18n="blog.filter.legal">
+            Legal Advice
+          </button>
+          <button class="filter-btn" data-filter="design" data-i18n="blog.filter.design">
+            Design & Decor
+          </button>
+          <button class="filter-btn" data-filter="sustainability" data-i18n="blog.filter.sustainability">
+            Sustainability
+          </button>
+        </div>
+
+        <div class="blog-container">
+          <!-- Main Blog Content -->
+          <div class="main-content">
+            <!-- Featured Blog Post -->
+            <div class="blog-grid">
+              <div class="blog-card featured" data-aos="fade-up">
+                <div class="blog-image">
+                  <img src="https://ravirajrealty.in/wp-content/uploads/2025/05/Raviraj-Blog-Post-8-scaled.jpg"
+                    alt="Real Estate Market Outlook" loading="lazy" />
+                  <span class="blog-category" data-i18n="blog.featured.category">Market Trends</span>
+                </div>
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <div class="blog-meta-item">
+                      <i class="far fa-calendar"></i>
+                      <span data-i18n="blog.featured.date">Jan 15, 2025</span>
+                    </div>
+                    <div class="blog-meta-item">
+                      <i class="far fa-user"></i>
+                      <span data-i18n="blog.featured.author">By Rajesh Mehta</span>
+                    </div>
+                    <span class="read-time">
+                      <i class="far fa-clock"></i>
+                      <span data-i18n="blog.featured.read_time">8 min read</span>
+                    </span>
+                  </div>
+                  <h3 class="mb-3" data-i18n="blog.featured.title">
+                    Real Estate Market Outlook 2025: Trends & Predictions
+                  </h3>
+                  <p class="text-muted mb-4" data-i18n="blog.featured.excerpt">
+                    Analysis of upcoming trends and investment opportunities
+                    in Ahmedabad's real estate market. Discover what experts
+                    are predicting for the coming year.
+                  </p>
+                  <div class="blog-author">
+                    <div class="blog-author-img">
+                      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajesh Mehta" loading="lazy" />
+                    </div>
+                    <div>
+                      <h6 class="mb-1" data-i18n="blog.featured.author_name">
+                        Rajesh Mehta
+                      </h6>
+                      <small class="text-muted" data-i18n="blog.featured.author_role">Market Analyst</small>
+                    </div>
+                    <a href="blog-detail.html?id=featured" class="btn btn-gold ms-auto btn-block-mobile">
+                      <span data-i18n="blog.read_more">Read More</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Regular Blog Posts -->
+            <div class="blog-grid" id="blogGrid">
+              <!-- Blog posts will be loaded here dynamically -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none">
+              <div class="no-results-icon">
+                <i class="fas fa-newspaper"></i>
+              </div>
+              <h3 class="mb-3" data-i18n="blog.no_results.title">
+                No Articles Found
+              </h3>
+              <p class="text-muted mb-4" data-i18n="blog.no_results.text">
+                Try selecting a different category
+              </p>
+            </div>
+
+            <!-- Search Reset Button (hidden by default) -->
+            <button class="btn btn-outline-primary mt-4 search-reset-btn" id="searchResetBtn" style="display: none">
+              <i class="fas fa-redo me-2"></i>
+              <span data-i18n="blog.show_all">Show All Articles</span>
+            </button>
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation" class="mt-5">
+              <ul class="pagination" id="pagination">
+                <!-- Pagination will be generated here -->
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="sidebar">
+            <!-- Search Widget -->
+            <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="100">
+              <h4 class="widget-title" data-i18n="blog.sidebar.search">
+                Search Articles
+              </h4>
+              <div class="search-widget">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search articles..."
+                  data-i18n="blog.sidebar.search_placeholder" />
+                <button class="search-btn" id="searchBtn">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="200">
+              <h4 class="widget-title" data-i18n="blog.sidebar.categories">
+                Categories
+              </h4>
+              <ul class="categories-list" id="categoriesList">
+                <!-- Categories will be loaded dynamically -->
+              </ul>
+            </div>
+
+            <!-- Recent Posts Widget -->
+            <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="300">
+              <h4 class="widget-title" data-i18n="blog.sidebar.recent_posts">
+                Recent Posts
+              </h4>
+              <ul class="recent-posts" id="recentPosts">
+                <!-- Recent posts will be loaded dynamically -->
+              </ul>
+            </div>
+
+            <!-- Tags Widget -->
+            <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="400">
+              <h4 class="widget-title" data-i18n="blog.sidebar.popular_tags">
+                Popular Tags
+              </h4>
+              <div class="tags-widget">
+                <a href="#" class="tag" data-i18n="blog.tags.real_estate">Real Estate</a>
+                <a href="#" class="tag" data-i18n="blog.tags.investment">Investment</a>
+                <a href="#" class="tag" data-i18n="blog.tags.ahmedabad">Ahmedabad</a>
+                <a href="#" class="tag" data-i18n="blog.tags.market_trends">Market Trends</a>
+                <a href="#" class="tag" data-i18n="blog.tags.property">Property</a>
+                <a href="#" class="tag" data-i18n="blog.tags.home_buying">Home Buying</a>
+                <a href="#" class="tag" data-i18n="blog.tags.rera">RERA</a>
+                <a href="#" class="tag" data-i18n="blog.tags.commercial">Commercial</a>
+              </div>
+            </div>
+
+            <!-- Newsletter Widget -->
+            <div class="sidebar-widget newsletter-widget" data-aos="fade-left" data-aos-delay="500">
+              <h4 class="widget-title" data-i18n="blog.sidebar.subscribe">
+                Subscribe
+              </h4>
+              <p class="mb-4" data-i18n="blog.sidebar.subscribe_text">
+                Get the latest real estate insights delivered to your inbox
+              </p>
+              <div class="newsletter-form">
+                <input type="email" id="newsletterEmail" placeholder="Your email address"
+                  data-i18n="blog.sidebar.email_placeholder" />
+                <button class="btn btn-gold w-100" id="newsletterBtn" data-i18n="blog.sidebar.subscribe_btn">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="blog-section" style="background: white; padding-top: 0">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <div class="bg-light rounded-3 p-5" data-aos="fade-up">
+              <h2 class="mb-4" data-i18n="blog.cta.title">
+                Looking for Property Advice?
+              </h2>
+              <p class="text-muted mb-4" data-i18n="blog.cta.text">
+                Our real estate experts are ready to help you make informed
+                decisions about buying, selling, or investing in property.
+              </p>
+              <a href="contact.html" class="btn btn-gold btn-lg btn-block-mobile">
+                <i class="fas fa-phone me-2"></i>
+                <span data-i18n="blog.cta.button">Consult Our Experts</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Creative Blog Detail Modal -->
+  <div class="modal fade" id="blogModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content modal-creative-content">
+        <!-- Close Button -->
+        <div class="glass-close-btn" data-bs-dismiss="modal">
+          <i class="fas fa-times"></i>
+        </div>
+
+        <div class="modal-body p-0">
+          <!-- Hero Section -->
+          <div class="modal-hero-section">
+            <img id="modalImage" src="" class="modal-hero-image" alt="Blog Cover" />
+            <div class="modal-hero-overlay">
+              <span class="badge bg-gold text-dark mb-3 px-3 py-2" id="modalCategory"
+                style="background: var(--gradient-secondary); border: none">Category</span>
+              <h2 id="modalTitle" class="font-playfair fw-bold display-6 mb-2 text-shadow"></h2>
+              <div class="d-flex align-items-center opacity-75 mt-3 gap-3 small text-white">
+                <span><i class="far fa-user me-2"></i><span id="modalAuthor"></span></span>
+                <span><i class="far fa-calendar me-2"></i><span id="modalDate"></span></span>
+                <span><i class="far fa-clock me-2"></i><span id="modalReadTime"></span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Section -->
+          <div class="modal-body-creative">
+            <div id="modalContent" class="blog-text text-dark lh-lg fs-5 opacity-75 animate-in">
+              <!-- Content -->
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 animate-in"
+              style="animation-delay: 0.1s">
+              <div class="d-flex align-items-center">
+                <span class="me-3 fw-bold text-muted" data-i18n="blog.share">Share Article:</span><a href="#"
+                  class="share-btn-creative facebook" style="background: #3b5998"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-btn-creative twitter" style="background: #1da1f2"><i
+                    class="fab fa-twitter"></i></a>
+                <a href="#" class="share-btn-creative linkedin" style="background: #0077b5"><i
+                    class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="share-btn-creative whatsapp" style="background: #25d366"><i
+                    class="fab fa-whatsapp"></i></a>
+              </div>
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">
+                  <span data-i18n="close">Close</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-about">
+            <a href="home.html" class="navbar-brand mb-4">
+              <div class="logo-icon">NG</div>
+              <span class="language-content" data-i18n="nav.brand">Naroda</span>
+              <span class="gold-text"><span class="language-content" data-i18n="nav.group">Group</span></span>
+            </a>
+            <p class="mb-4 language-content" data-i18n="footer.description">
+              Creating landmark properties that redefine excellence. From
+              premium commercial spaces to luxury residential living, we build
+              dreams with quality and commitment.
+            </p>
+            <div class="social-links">
+              <a href="https://facebook.com" class="social-link" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com" class="social-link" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://instagram.com" class="social-link" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://youtube.com" class="social-link" aria-label="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title language-content" data-i18n="footer.quick_links">
+            Quick Links
+          </h5>
+          <ul class="footer-links">
+            <li>
+              <a href="home.html" class="language-content" data-i18n="nav.home">Home</a>
+            </li>
+            <li>
+              <a href="about.html" class="language-content" data-i18n="nav.about">About Us</a>
+            </li>
+            <li>
+              <a href="projects.html" class="language-content" data-i18n="nav.projects">Projects</a>
+            </li>
+            <!-- <li>
+                  <a
+                    href="properties.html"
+                    class="language-content"
+                    data-i18n="nav.properties"
+                    >Properties</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="gallery.html"
+                    class="language-content"
+                    data-i18n="nav.gallery"
+                    >Gallery</a
+                  >
+                </li> -->
+            <li>
+              <a href="contact.html" class="language-content" data-i18n="nav.contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title language-content" data-i18n="footer.our_projects">
+            Our Projects
+          </h5>
+          <ul class="footer-links">
+            <li>
+              <a href="projects-landmark.html" class="language-content" data-i18n="nav.landmark">Naroda Landmark <span
+                  class="text-gold">→</span></a>
+            </li>
+            <li class="text-muted small mb-2 language-content" data-i18n="footer.landmark_desc">
+              Premium Commercial Spaces
+            </li>
+            <li>
+              <a href="projects-irish.html" class="language-content" data-i18n="nav.irish">Naroda Irish <span
+                  class="text-gold">→</span></a>
+            </li>
+            <li class="text-muted small mb-2 language-content" data-i18n="footer.irish_desc">
+              Luxury Residential Living
+            </li>
+            <li>
+              <a href="projects.html" class="language-content" data-i18n="footer.view_all_projects">View All Projects
+                <span class="text-gold">→</span></a>
+            </li>
+            <li class="text-muted small language-content" data-i18n="footer.explore_portfolio">
+              Explore our portfolio
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h5 class="footer-title language-content" data-i18n="footer.contact_info">
+            Contact Info
+          </h5>
+          <div class="contact-info">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h6 class="text-white mb-1 language-content" data-i18n="footer.phone">
+                Phone Number
+              </h6>
+              <p class="mb-0">+91 98765 43210</p>
+              <small class="text-muted language-content" data-i18n="footer.phone_hours">Mon - Sat: 10 AM - 7 PM</small>
+            </div>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h6 class="text-white mb-1 language-content" data-i18n="footer.email">
+                Email Address
+              </h6>
+              <p class="mb-0">info@narodagroup.com</p>
+              <small class="text-muted language-content" data-i18n="footer.email_response">We reply within 24
+                hours</small>
+            </div>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h6 class="text-white mb-1 language-content" data-i18n="footer.address">
+                Office Address
+              </h6>
+              <p class="mb-0 language-content" data-i18n="footer.address_line1">
+                Naroda - Bhat Road
+              </p>
+              <small class="text-muted language-content" data-i18n="footer.address_line2">Ahmedabad, Gujarat
+                382330</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+              <p class="mb-0 language-content" data-i18n="footer.rights">
+                &copy; 2025 Naroda Group. All rights reserved.
+              </p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+              <a href="privacy.html" class="text-white-50 me-3 language-content" data-i18n="footer.privacy">Privacy
+                Policy</a>
+              <a href="terms.html" class="text-white-50 me-3 language-content" data-i18n="footer.terms">Terms of
+                Service</a>
+              <a href="rera.html" class="text-white-50 language-content" data-i18n="footer.rera">RERA Registration</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <div class="mobile-nav-items">
+      <a href="home.html" class="mobile-nav-item">
+        <i class="fas fa-home mobile-nav-icon"></i>
+        <span class="mobile-nav-text language-content" data-i18n="nav.home">Home</span>
+      </a>
+      <a href="projects.html" class="mobile-nav-item">
+        <i class="fas fa-building mobile-nav-icon"></i>
+        <span class="mobile-nav-text language-content" data-i18n="nav.projects">Projects</span>
+      </a>
+      <!-- <a href="gallery.html" class="mobile-nav-item">
+          <i class="fas fa-images mobile-nav-icon"></i>
+          <span class="mobile-nav-text language-content" data-i18n="nav.gallery"
+            >Gallery</span
+          >
+        </a> -->
+      <a href="blog.html" class="mobile-nav-item active">
+        <i class="fas fa-blog mobile-nav-icon"></i>
+        <span class="mobile-nav-text language-content" data-i18n="nav.blog">Blog</span>
+      </a>
+      <a href="tel:+919876543210" class="mobile-nav-item">
+        <i class="fas fa-phone-alt mobile-nav-icon"></i>
+        <span class="mobile-nav-text language-content" data-i18n="nav.call">Call Now</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Floating Buttons -->
+  <div class="floating-buttons">
+    <button class="floating-btn whatsapp" onclick="window.open('https://wa.me/919876543210', '_blank')"
+      aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </button>
+    <a href="tel:+919876543210" class="floating-btn phone" aria-label="Call Now">
+      <i class="fas fa-phone"></i>
+    </a>
+    <button class="floating-btn chat" onclick="window.open('mailto:info@narodagroup.com')" aria-label="Email Us">
+      <i class="fas fa-envelope"></i>
+    </button>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Login Modal -->
+  <!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title language-content" data-i18n="login.title">
+            Login to Your Account
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="email" class="form-label language-content" data-i18n="login.email">Email Address</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label language-content" data-i18n="login.password">Password</label>
+              <input type="password" class="form-control" id="password" required />
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="remember" />
+              <label class="form-check-label language-content" for="remember" data-i18n="login.remember">Remember
+                me</label>
+            </div>
+            <button type="submit" class="btn btn-gold w-100 language-content" data-i18n="login.submit">
+              Login
+            </button>
+          </form>
+          <div class="text-center mt-3">
+            <a href="#" class="text-decoration-none language-content" data-i18n="login.forgot">Forgot Password?</a>
+          </div>
+          <div class="text-center mt-3">
+            <span class="text-muted language-content" data-i18n="login.no_account">Don't have an account?</span>
+            <a href="#" class="text-decoration-none ms-1 language-content" data-i18n="login.register">Register here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+      delay: 100,
+      disable: function () {
+        return window.innerWidth < 768;
+      },
+    });
+
+    // Navbar scroll effect
+    window.addEventListener("scroll", function () {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    // Language Translation Data
+    const translations = {
+      en: {
+        // Navigation
+        "nav.brand": "Naroda",
+        "nav.group": "Group",
+        "nav.home": "Home",
+        "nav.about": "About",
+        "nav.projects": "Projects",
+        "nav.landmark": "Naroda Landmark",
+        "nav.irish": "Naroda Irish",
+        "nav.all_projects": "All Projects",
+        "nav.properties": "Properties",
+        "nav.buy": "Buy",
+        "nav.rent": "Rent",
+        "nav.property_details": "Property Details",
+        "nav.gallery": "Gallery",
+        "nav.blog": "Blog",
+        "nav.news": "News",
+        "nav.careers": "Careers",
+        "nav.team": "Our Team",
+        "nav.faq": "FAQ",
+        "nav.contact": "Contact",
+        "nav.more": "More",
+        "nav.language": "EN",
+        "nav.login": "Login",
+        "nav.call": "Call Now",
+
+        // Hero Section
+        "hero.title.part1": "Real Estate",
+        "hero.title.part2": "Blog",
+        "hero.subtitle":
+          "Insights, trends, and expert advice for smart real estate decisions",
+
+        // Blog Filter
+        "blog.filter.all": "All Articles",
+        "blog.filter.naroda_landmark": "Naroda Landmark",
+        "blog.filter.naroda_irish": "Naroda Irish",
+        "blog.filter.investment": "Investment Tips",
+        "blog.filter.legal": "Legal Advice",
+        "blog.filter.design": "Design & Decor",
+        "blog.filter.sustainability": "Sustainability",
+
+        // Featured Blog Post
+        "blog.featured.category": "Market Trends",
+        "blog.featured.date": "Jan 15, 2025",
+        "blog.featured.author": "By Rajesh Mehta",
+        "blog.featured.read_time": "8 min read",
+        "blog.featured.title":
+          "Real Estate Market Outlook 2025: Trends & Predictions",
+        "blog.featured.excerpt":
+          "Analysis of upcoming trends and investment opportunities in Ahmedabad's real estate market. Discover what experts are predicting for the coming year.",
+        "blog.featured.author_name": "Rajesh Mehta",
+        "blog.featured.author_role": "Market Analyst",
+
+        // Common
+        "blog.read_more": "Read More",
+        "blog.no_results.title": "No Articles Found",
+        "blog.no_results.text": "Try selecting a different category",
+        "blog.show_all": "Show All Articles",
+        "blog.share": "Share Article",
+        "blog.author_label": "Author",
+
+        // Sidebar
+        "blog.sidebar.search": "Search Articles",
+        "blog.sidebar.search_placeholder": "Search articles...",
+        "blog.sidebar.categories": "Categories",
+        "blog.sidebar.recent_posts": "Recent Posts",
+        "blog.sidebar.popular_tags": "Popular Tags",
+        "blog.sidebar.subscribe": "Subscribe",
+        "blog.sidebar.subscribe_text":
+          "Get the latest real estate insights delivered to your inbox",
+        "blog.sidebar.email_placeholder": "Your email address",
+        "blog.sidebar.subscribe_btn": "Subscribe",
+
+        // Tags
+        "blog.tags.real_estate": "Real Estate",
+        "blog.tags.investment": "Investment",
+        "blog.tags.ahmedabad": "Ahmedabad",
+        "blog.tags.market_trends": "Market Trends",
+        "blog.tags.property": "Property",
+        "blog.tags.home_buying": "Home Buying",
+        "blog.tags.rera": "RERA",
+        "blog.tags.commercial": "Commercial",
+
+        // CTA Section
+        "blog.cta.title": "Looking for Property Advice?",
+        "blog.cta.text":
+          "Our real estate experts are ready to help you make informed decisions about buying, selling, or investing in property.",
+        "blog.cta.button": "Consult Our Experts",
+
+        // Footer
+        "footer.brand": "Naroda",
+        "footer.group": "Group",
+        "footer.description":
+          "Creating landmark properties that redefine excellence. From premium commercial spaces to luxury residential living, we build dreams with quality and commitment.",
+        "footer.quick_links": "Quick Links",
+        "footer.our_projects": "Our Projects",
+        "footer.landmark_desc": "Premium Commercial Spaces",
+        "footer.irish_desc": "Luxury Residential Living",
+        "footer.view_all_projects": "View All Projects",
+        "footer.explore_portfolio": "Explore our portfolio",
+        "footer.contact_info": "Contact Info",
+        "footer.phone": "Phone Number",
+        "footer.phone_hours": "Mon - Sat: 10 AM - 7 PM",
+        "footer.email": "Email Address",
+        "footer.email_response": "We reply within 24 hours",
+        "footer.address": "Office Address",
+        "footer.address_line1": "Naroda - Bhat Road",
+        "footer.address_line2": "Ahmedabad, Gujarat 382330",
+        "footer.rights": "© 2025 Naroda Group. All rights reserved.",
+        "footer.privacy": "Privacy Policy",
+        "footer.terms": "Terms of Service",
+        "footer.rera": "RERA Registration",
+
+        // Login
+        "login.title": "Login to Your Account",
+        "login.email": "Email Address",
+        "login.password": "Password",
+        "login.remember": "Remember me",
+        "login.submit": "Login",
+        "login.forgot": "Forgot Password?",
+        "login.no_account": "Don't have an account?",
+        "login.register": "Register here",
+        close: "Close",
+      },
+      hi: {
+        // Navigation
+        "nav.brand": "नरोड़ा",
+        "nav.group": "ग्रुप",
+        "nav.home": "होम",
+        "nav.about": "हमारे बारे में",
+        "nav.projects": "प्रोजेक्ट्स",
+        "nav.landmark": "नरोड़ा लैंडमार्क",
+        "nav.irish": "नरोड़ा आयरिश",
+        "nav.all_projects": "सभी प्रोजेक्ट्स",
+        "nav.properties": "संपत्तियाँ",
+        "nav.buy": "खरीदें",
+        "nav.rent": "किराए पर लें",
+        "nav.property_details": "संपत्ति विवरण",
+        "nav.gallery": "गैलरी",
+        "nav.blog": "ब्लॉग",
+        "nav.news": "समाचार",
+        "nav.careers": "करियर",
+        "nav.team": "हमारी टीम",
+        "nav.faq": "सवाल जवाब",
+        "nav.contact": "संपर्क करें",
+        "nav.more": "और",
+        "nav.language": "हिंदी",
+        "nav.login": "लॉगिन",
+        "nav.call": "अभी कॉल करें",
+
+        // Hero Section
+        "hero.title.part1": "रियल एस्टेट",
+        "hero.title.part2": "ब्लॉग",
+        "hero.subtitle":
+          "स्मार्ट रियल एस्टेट निर्णयों के लिए अंतर्दृष्टि, रुझान और विशेषज्ञ सलाह",
+
+        // Blog Filter
+        "blog.filter.all": "सभी लेख",
+        "blog.filter.naroda_landmark": "नरोड़ा लैंडमार्क",
+        "blog.filter.naroda_irish": "नरोड़ा आयरिश",
+        "blog.filter.investment": "निवेश टिप्स",
+        "blog.filter.legal": "कानूनी सलाह",
+        "blog.filter.design": "डिजाइन और सजावट",
+        "blog.filter.sustainability": "सस्टेनेबिलिटी",
+
+        // Featured Blog Post
+        "blog.featured.category": "बाजार रुझान",
+        "blog.featured.date": "15 जनवरी, 2025",
+        "blog.featured.author": "राजेश मेहता द्वारा",
+        "blog.featured.read_time": "8 मिनट पढ़ें",
+        "blog.featured.title":
+          "2025 के लिए रियल एस्टेट मार्केट आउटलुक: रुझान और भविष्यवाणियां",
+        "blog.featured.excerpt":
+          "अहमदाबाद के रियल एस्टेट बाजार में आगामी रुझानों और निवेश अवसरों का विश्लेषण। पता करें कि विशेषज्ञ आने वाले वर्ष के लिए क्या भविष्यवाणी कर रहे हैं।",
+        "blog.featured.author_name": "राजेश मेहता",
+        "blog.featured.author_role": "मार्केट एनालिस्ट",
+
+        // Common
+        "blog.read_more": "और पढ़ें",
+        "blog.no_results.title": "कोई लेख नहीं मिला",
+        "blog.no_results.text": "एक अलग श्रेणी चुनने का प्रयास करें",
+        "blog.show_all": "सभी लेख दिखाएं",
+        "blog.share": "लेख साझा करें",
+        "blog.author_label": "लेखक",
+
+        // Sidebar
+        "blog.sidebar.search": "लेख खोजें",
+        "blog.sidebar.search_placeholder": "लेख खोजें...",
+        "blog.sidebar.categories": "श्रेणियाँ",
+        "blog.sidebar.recent_posts": "हाल के पोस्ट",
+        "blog.sidebar.popular_tags": "लोकप्रिय टैग",
+        "blog.sidebar.subscribe": "सदस्यता लें",
+        "blog.sidebar.subscribe_text":
+          "अपने इनबॉक्स में नवीनतम रियल एस्टेट अंतर्दृष्टि प्राप्त करें",
+        "blog.sidebar.email_placeholder": "आपका ईमेल पता",
+        "blog.sidebar.subscribe_btn": "सदस्यता लें",
+
+        // Tags
+        "blog.tags.real_estate": "रियल एस्टेट",
+        "blog.tags.investment": "निवेश",
+        "blog.tags.ahmedabad": "अहमदाबाद",
+        "blog.tags.market_trends": "बाजार रुझान",
+        "blog.tags.property": "संपत्ति",
+        "blog.tags.home_buying": "घर खरीदना",
+        "blog.tags.rera": "RERA",
+        "blog.tags.commercial": "वाणिज्यिक",
+
+        // CTA Section
+        "blog.cta.title": "संपत्ति सलाह की तलाश में?",
+        "blog.cta.text":
+          "हमारे रियल एस्टेट विशेषज्ञ संपत्ति खरीदने, बेचने या निवेश करने के बारे में सूचित निर्णय लेने में आपकी मदद करने के लिए तैयार हैं।",
+        "blog.cta.button": "हमारे विशेषज्ञों से सलाह लें",
+
+        // Footer
+        "footer.description":
+          "लैंडमार्क संपत्तियाँ बनाना जो उत्कृष्टता को फिर से परिभाषित करती हैं। प्रीमियम कमर्शियल स्पेस से लेकर लग्ज़री रेजिडेंशियल लिविंग तक, हम गुणवत्ता और प्रतिबद्धता के साथ सपने बनाते हैं।",
+        "footer.quick_links": "त्वरित लिंक",
+        "footer.our_projects": "हमारे प्रोजेक्ट्स",
+        "footer.landmark_desc": "प्रीमियम कमर्शियल स्पेस",
+        "footer.irish_desc": "लग्ज़री रेजिडेंशियल लिविंग",
+        "footer.view_all_projects": "सभी प्रोजेक्ट्स देखें",
+        "footer.explore_portfolio": "हमारे पोर्टफोलियो का अन्वेषण करें",
+        "footer.contact_info": "संपर्क जानकारी",
+        "footer.phone": "फोन नंबर",
+        "footer.phone_hours": "सोम - शनि: सुबह 10 - शाम 7 बजे",
+        "footer.email": "ईमेल पता",
+        "footer.email_response": "हम 24 घंटे के भीतर जवाब देते हैं",
+        "footer.address": "कार्यालय पता",
+        "footer.address_line1": "नरोड़ा - भाट रोड",
+        "footer.address_line2": "अहमदाबाद, गुजरात 382330",
+        "footer.rights": "© 2025 नरोड़ा ग्रुप। सर्वाधिकार सुरक्षित।",
+        "footer.privacy": "गोपनीयता नीति",
+        "footer.terms": "सेवा की शर्तें",
+        "footer.rera": "RERA पंजीकरण",
+
+        // Login
+        "login.title": "अपने खाते में लॉगिन करें",
+        "login.email": "ईमेल पता",
+        "login.password": "पासवर्ड",
+        "login.remember": "मुझे याद रखें",
+        "login.submit": "लॉगिन",
+        "login.forgot": "पासवर्ड भूल गए?",
+        "login.no_account": "खाता नहीं है?",
+        "login.register": "यहाँ पंजीकरण करें",
+        close: "बंद करें",
+      },
+      gu: {
+        // Navigation
+        "nav.brand": "નરોડા",
+        "nav.group": "ગ્રુપ",
+        "nav.home": "હોમ",
+        "nav.about": "અમારા વિશે",
+        "nav.projects": "પ્રોજેક્ટ્સ",
+        "nav.landmark": "નરોડા લેન્ડમાર્ક",
+        "nav.irish": "નરોડા આયરિશ",
+        "nav.all_projects": "બધા પ્રોજેક્ટ્સ",
+        "nav.properties": "પ્રોપર્ટીઝ",
+        "nav.buy": "ખરીદો",
+        "nav.rent": "ભાડે લો",
+        "nav.property_details": "પ્રોપર્ટી વિગતો",
+        "nav.gallery": "ગેલેરી",
+        "nav.blog": "બ્લોગ",
+        "nav.news": "સમાચાર",
+        "nav.careers": "કેરિયર",
+        "nav.team": "અમારી ટીમ",
+        "nav.faq": "પ્રશ્નો",
+        "nav.contact": "સંપર્ક કરો",
+        "nav.more": "વધુ",
+        "nav.language": "ગુજરાતી",
+        "nav.login": "લોગિન",
+        "nav.call": "હવે કૉલ કરો",
+
+        // Hero Section
+        "hero.title.part1": "રિઅલ એસ્ટેટ",
+        "hero.title.part2": "બ્લોગ",
+        "hero.subtitle":
+          "સ્માર્ટ રિઅલ એસ્ટેટ નિર્ણયો માટે ઇનસાઇટ્સ, ટ્રેન્ડ્સ અને એક્સપર્ટ સલાહ",
+
+        // Blog Filter
+        "blog.filter.all": "બધા લેખો",
+        "blog.filter.naroda_landmark": "નરોડા લેન્ડમાર્ક",
+        "blog.filter.naroda_irish": "નરોડા આયરિશ",
+        "blog.filter.investment": "નિવેશ ટીપ્સ",
+        "blog.filter.legal": "કાનૂની સલાહ",
+        "blog.filter.design": "ડિઝાઇન અને સજાવટ",
+        "blog.filter.sustainability": "સસ્ટેનેબિલિટી",
+
+        // Featured Blog Post
+        "blog.featured.category": "માર્કેટ ટ્રેન્ડ્સ",
+        "blog.featured.date": "15 જાન્યુઆરી, 2025",
+        "blog.featured.author": "રાજેશ મેહતા દ્વારા",
+        "blog.featured.read_time": "8 મિનિટ વાંચો",
+        "blog.featured.title":
+          "2025 માટે રિઅલ એસ્ટેટ માર્કેટ આઉટલુક: ટ્રેન્ડ્સ અને પૂર્વાનુમાન",
+        "blog.featured.excerpt":
+          "અમદાવાદના રિઅલ એસ્ટેટ માર્કેટમાં આવતા ટ્રેન્ડ્સ અને નિવેશ તકોનું વિશ્લેષણ. શોધો કે નિષ્ણાતો આવતા વર્ષ માટે શું પૂર્વાનુમાન કરી રહ્યા છે.",
+        "blog.featured.author_name": "રાજેશ મેહતા",
+        "blog.featured.author_role": "માર્કેટ એનાલિસ્ટ",
+
+        // Common
+        "blog.read_more": "વધુ વાંચો",
+        "blog.no_results.title": "કોઈ લેખ મળ્યો નથી",
+        "blog.no_results.text": "વિવિધ શ્રેણી પસંદ કરવાનો પ્રયાસ કરો",
+        "blog.show_all": "બધા લેખો બતાવો",
+        "blog.share": "લેખ શેર કરો",
+        "blog.author_label": "લેખક",
+
+        // Sidebar
+        "blog.sidebar.search": "લેખો શોધો",
+        "blog.sidebar.search_placeholder": "લેખો શોધો...",
+        "blog.sidebar.categories": "શ્રેણીઓ",
+        "blog.sidebar.recent_posts": "તાજેતરના પોસ્ટ્સ",
+        "blog.sidebar.popular_tags": "લોકપ્રિય ટેગ્સ",
+        "blog.sidebar.subscribe": "સબ્સ્ક્રાઇબ કરો",
+        "blog.sidebar.subscribe_text":
+          "તમારા ઇનબોક્સમાં નવીનતમ રિઅલ એસ્ટેટ ઇનસાઇટ્સ મેળવો",
+        "blog.sidebar.email_placeholder": "તમારું ઈમેલ એડ્રેસ",
+        "blog.sidebar.subscribe_btn": "સબ્સ્ક્રાઇબ કરો",
+
+        // Tags
+        "blog.tags.real_estate": "રિઅલ એસ્ટેટ",
+        "blog.tags.investment": "નિવેશ",
+        "blog.tags.ahmedabad": "અમદાવાદ",
+        "blog.tags.market_trends": "માર્કેટ ટ્રેન્ડ્સ",
+        "blog.tags.property": "પ્રોપર્ટી",
+        "blog.tags.home_buying": "ઘર ખરીદવું",
+        "blog.tags.rera": "RERA",
+        "blog.tags.commercial": "કોમર્શિયલ",
+
+        // CTA Section
+        "blog.cta.title": "પ્રોપર્ટી સલાહ શોધી રહ્યાં છો?",
+        "blog.cta.text":
+          "અમારા રિઅલ એસ્ટેટ નિષ્ણાતો પ્રોપર્ટી ખરીદવા, વેચવા અથવા નિવેશ કરવા વિશે સૂચિત નિર્ણયો લેવામાં તમારી મદદ કરવા માટે તૈયાર છે.",
+        "blog.cta.button": "અમારા નિષ્ણાતોની સલાહ લો",
+
+        // Footer
+        "footer.description":
+          "લેન્ડમાર્ક પ્રોપર્ટીઝ બનાવવી જે એક્સલન્સને પુનઃવ્યાખ્યાયિત કરે છે. પ્રીમિયમ કોમર્શિયલ સ્પેસથી લગ્ઝરી રેસિડેન્શિયલ લિવિંગ સુધી, અમે ગુણવત્તા અને પ્રતિબદ્ધતા સાથે સપના બનાવીએ છીએ.",
+        "footer.quick_links": "ઝડપી લિંક્સ",
+        "footer.our_projects": "અમારા પ્રોજેક્ટ્સ",
+        "footer.landmark_desc": "પ્રીમિયમ કોમર્શિયલ સ્પેસ",
+        "footer.irish_desc": "લગ્ઝરી રેસિડેન્શિયલ લિવિંગ",
+        "footer.view_all_projects": "બધા પ્રોજેક્ટ્સ જુઓ",
+        "footer.explore_portfolio": "અમારા પોર્ટફોલિયોનું અન્વેષણ કરો",
+        "footer.contact_info": "સંપર્ક માહિતી",
+        "footer.phone": "ફોન નંબર",
+        "footer.phone_hours": "સોમ - શનિ: સવારે 10 - સાંજે 7 વાગ્યા",
+        "footer.email": "ઈમેલ એડ્રેસ",
+        "footer.email_response": "અમે 24 કલાકમાં જવાબ આપીએ છીએ",
+        "footer.address": "ઓફિસ એડ્રેસ",
+        "footer.address_line1": "નરોડા - ભાટ રોડ",
+        "footer.address_line2": "અમદાવાદ, ગુજરાત 382330",
+        "footer.rights": "© 2025 નરોડા ગ્રુપ. બધા હક્કો સુરક્ષિત.",
+        "footer.privacy": "ગોપનીયતા નીતિ",
+        "footer.terms": "સેવાની શરતો",
+        "footer.rera": "RERA રજિસ્ટ્રેશન",
+
+        // Login
+        "login.title": "તમારા ખાતામાં લૉગિન કરો",
+        "login.email": "ઈમેલ એડ્રેસ",
+        "login.password": "પાસવર્ડ",
+        "login.remember": "મને યાદ રાખો",
+        "login.submit": "લૉગિન",
+        "login.forgot": "પાસવર્ડ ભૂલી ગયા છો?",
+        "login.no_account": "ખાતું નથી?",
+        "login.register": "અહીં રજિસ્ટર કરો",
+        close: "બંધ કરો",
+      },
+    };
+
+    // Language switching functionality
+    let currentLang = localStorage.getItem("preferredLanguage") || "en";
+
+    // Initialize when page loads
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize language switcher
+      initLanguageSwitcher();
+
+      // Remove preloader
+      const preloader = document.getElementById("preloader");
+      setTimeout(() => {
+        if (preloader) {
+          preloader.style.opacity = "0";
+          setTimeout(() => {
+            preloader.style.display = "none";
+          }, 500);
+        }
+      }, 1000);
+
+      // Set active nav item
+      const currentPage =
+        window.location.pathname.split("/").pop() || "home.html";
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+
+      // Mobile nav active item
+      document.querySelectorAll(".mobile-nav-item").forEach((item) => {
+        const href = item.getAttribute("href");
+        if (href === currentPage) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+
+      // Login form submission
+      // document
+      //   .getElementById("loginForm")
+      //   ?.addEventListener("submit", function (e) {
+      //     e.preventDefault();
+      //     // Add your login logic here
+      //     alert("Login functionality would be implemented here");
+      //     const loginModal = bootstrap.Modal.getInstance(
+      //       document.getElementById("loginModal")
+      //     );
+      //     loginModal.hide();
+      //   });
+
+      // Initialize blog
+      initBlog();
+
+      // Initialize toast notifications
+      initToastSystem();
+
+      // Initialize newsletter subscription
+      initNewsletter();
+
+      // Show welcome message
+      setTimeout(() => {
+        const welcomeMessages = {
+          en: "Explore our real estate insights and expert advice!",
+          hi: "हमारी रियल एस्टेट अंतर्दृष्टि और विशेषज्ञ सलाह का अन्वेषण करें!",
+          gu: "અમારી રિઅલ એસ્ટેટ ઇનસાઇટ્સ અને નિષ્ણાત સલાહનું અન્વેષણ કરો!",
+        };
+        showToast(
+          welcomeMessages[currentLang] ||
+          "Explore our real estate insights and expert advice!",
+          "info"
+        );
+      }, 1500);
+
+      // Fix for iOS Safari 100vh issue
+      function setVH() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+      }
+
+      setVH();
+      window.addEventListener("resize", setVH);
+    });
+
+    function initLanguageSwitcher() {
+      // Apply current language
+      applyLanguage(currentLang);
+
+      // Language switcher toggle
+      document
+        .getElementById("languageToggle")
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+          const options = document.getElementById("languageOptions");
+          options.classList.toggle("show");
+        });
+
+      // Close language dropdown when clicking outside
+      document.addEventListener("click", function () {
+        const options = document.getElementById("languageOptions");
+        options.classList.remove("show");
+      });
+
+      // Language option selection
+      document.querySelectorAll(".language-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const lang = this.getAttribute("data-lang");
+          applyLanguage(lang);
+
+          // Update active state
+          document.querySelectorAll(".language-option").forEach((opt) => {
+            opt.classList.remove("active");
+          });
+          this.classList.add("active");
+
+          // Update language toggle text
+          document.querySelector(
+            "#languageToggle .language-content"
+          ).textContent =
+            lang === "en" ? "EN" : lang === "hi" ? "हिंदी" : "ગુજરાતી";
+
+          // Close dropdown
+          document.getElementById("languageOptions").classList.remove("show");
+        });
+      });
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem("preferredLanguage", lang);
+
+      // Update body class for language-specific styling
+      document.body.classList.remove("hindi", "gujarati");
+      if (lang === "hi") document.body.classList.add("hindi");
+      if (lang === "gu") document.body.classList.add("gujarati");
+
+      // Fade out content
+      const languageContent = document.querySelector(".language-content");
+      if (languageContent) {
+        languageContent.style.opacity = "0.5";
+      }
+
+      // Apply translations after a short delay for smoother transition
+      setTimeout(() => {
+        const elements = document.querySelectorAll("[data-i18n]");
+        elements.forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+          }
+        });
+
+        // Fade content back in
+        if (languageContent) {
+          languageContent.style.opacity = "1";
+        }
+
+        // Dispatch global event for dynamic content (like blog grid)
+        window.dispatchEvent(
+          new CustomEvent("languageChanged", { detail: { language: lang } })
+        );
+      }, 200);
+    }
+
+    // Open login modal
+    // function openLoginModal() {
+    //   const loginModal = new bootstrap.Modal(
+    //     document.getElementById("loginModal")
+    //   );
+    //   loginModal.show();
+    // }
+
+    // Blog Data and Categories are now fetched dynamically from API
+
+    // Global variables for blog
+    let blogData = []; // Will be fetched from API
+    let currentFilter = "all";
+    let currentPage = 1;
+    const itemsPerPage = 6;
+    let isSearching = false;
+
+    // Fetch Blogs from API
+    async function fetchBlogs() {
+      try {
+        showLoading();
+        const response = await fetch("api/blogs_api.php?action=get_blogs");
+        const result = await response.json();
+
+        if (result.success) {
+          blogData = result.data;
+          initBlog(); // Initialize after data is loaded
+        } else {
+          console.error("Failed to fetch blogs:", result.message);
+          showToast("Failed to load blogs", "danger");
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        showToast("Error connecting to server", "danger");
+      } finally {
+        hideLoading();
+      }
+    }
+
+    // Initialize Blog System
+    function initBlog() {
+      const blogGrid = document.getElementById("blogGrid");
+      const categoriesList = document.getElementById("categoriesList");
+      const recentPosts = document.getElementById("recentPosts");
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const pagination = document.getElementById("pagination");
+      const noResults = document.getElementById("noResults");
+      const searchResetBtn = document.getElementById("searchResetBtn");
+
+      // Listen for global language changes
+      window.addEventListener("languageChanged", (e) => {
+        loadBlogPosts(); // Re-render posts with new language
+        loadCategories(); // Re-render categories if they have localized names
+        // Note: Featured post might need manual update or re-injection
+      });
+
+      // Initial Load
+      loadBlogPosts();
+      loadCategories();
+      loadRecentPosts();
+      updatePagination();
+
+      // Filter functionality
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          currentFilter = this.getAttribute("data-filter");
+          isSearching = false;
+          currentPage = 1;
+
+          loadBlogPosts();
+          updatePagination();
+          searchResetBtn.style.display = "none";
+
+          const filterName =
+            currentFilter === "all" ? "All Articles" : this.textContent;
+          // showToast(`Showing ${filterName}`, 'info');
+        });
+      });
+
+      // Category click handler (Sidebar)
+      if (categoriesList) {
+        categoriesList.addEventListener("click", function (e) {
+          if (e.target.closest("a")) {
+            e.preventDefault();
+            const link = e.target.closest("a");
+            const categorySlug = link.getAttribute("data-category");
+
+            // Update active filter button
+            filterButtons.forEach((b) => b.classList.remove("active"));
+            const matchingBtn = Array.from(filterButtons).find(
+              (btn) => btn.getAttribute("data-filter") === categorySlug
+            );
+            if (matchingBtn) {
+              matchingBtn.classList.add("active");
+            }
+
+            currentFilter = categorySlug;
+            currentPage = 1;
+            isSearching = false;
+            loadBlogPosts();
+            updatePagination();
+            searchResetBtn.style.display = "none";
+
+            if (blogGrid) {
+              blogGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }
+        });
+      }
+
+      function getLocalizedContent(contentObj) {
+        const lang = currentLang || "en"; // Use currentLang from global scope
+        if (!contentObj) return "";
+        if (typeof contentObj === "string") return contentObj;
+        return contentObj[lang] || contentObj["en"] || "";
+      }
+
+      function loadBlogPosts() {
+        if (!blogGrid) return;
+        blogGrid.innerHTML = "";
+        if (noResults) noResults.style.display = "none";
+
+        let filteredPosts = [];
+
+        if (isSearching) {
+          const searchQuery = document
+            .getElementById("searchInput")
+            .value.toLowerCase();
+          filteredPosts = blogData.filter((post) => {
+            const title = getLocalizedContent(post.title).toLowerCase();
+            const excerpt = getLocalizedContent(post.excerpt).toLowerCase();
+            const author = getLocalizedContent(post.author).toLowerCase();
+            return (
+              title.includes(searchQuery) ||
+              excerpt.includes(searchQuery) ||
+              author.includes(searchQuery)
+            );
+          });
+        } else {
+          filteredPosts =
+            currentFilter === "all"
+              ? blogData
+              : blogData.filter((post) => post.category === currentFilter);
+        }
+
+        if (filteredPosts.length === 0) {
+          if (noResults) noResults.style.display = "block";
+          if (pagination) pagination.style.display = "none";
+          return;
+        }
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const postsToShow = filteredPosts.slice(startIndex, endIndex);
+
+        postsToShow.forEach((post) => {
+          const blogCard = createBlogCard(post);
+          blogGrid.appendChild(blogCard);
+        });
+
+        // Trigger AOS
+        if (window.AOS) AOS.refresh();
+      }
+
+      function createBlogCard(post) {
+        const card = document.createElement("article");
+        card.className = "blog-card";
+        card.setAttribute("data-category", post.category);
+        card.setAttribute("data-aos", "fade-up");
+
+        const title = getLocalizedContent(post.title);
+        const excerpt = getLocalizedContent(post.excerpt);
+        const author = getLocalizedContent(post.author);
+
+        // Strict Translation for Button
+        // const currentLang = window.currentLang || 'en'; // REMOVED: Caused shadowing
+        const readMoreTranslations = {
+          en: "Read More",
+          hi: "और पढ़ें",
+          gu: "વધુ વાંચો",
+        };
+        const readMoreText = readMoreTranslations[currentLang] || "Read More";
+
+        // Image handling (if relative path, ensure it works)
+        let imagePath = post.image;
+        if (
+          imagePath &&
+          !imagePath.startsWith("http") &&
+          !imagePath.startsWith("./")
+        ) {
+          // If it's stored in uploads/blogs, prepend if needed, or assume path is correct from API
+        }
+
+        card.innerHTML = `
+                    <div class="blog-image">
+                        <img src="${imagePath}" alt="${title}" loading="lazy">
+                        <span class="blog-category">${post.category.replace(
+          "-",
+          " "
+        )}</span>
+                    </div>
+                    <div class="blog-content d-flex flex-column h-100">
+                        <div class="blog-meta">
+                            <div class="blog-meta-item">
+                                <i class="far fa-calendar"></i> ${post.date}
+                            </div>
+                            <div class="blog-meta-item">
+                                <i class="far fa-user"></i> ${author}
+                            </div>
+                            <span class="read-time">
+                                <i class="far fa-clock"></i> ${post.read_time || "5 min"
+          }
+                            </span>
+                        </div>
+                        <h3 class="mb-3">${title}</h3>
+                        <p class="text-muted mb-4">${excerpt}</p>
+                        
+                        <div class="blog-author mt-auto d-flex align-items-center">
+                             <div class="blog-author-img">
+                                <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(
+            author
+          )}&background=random" 
+                                     alt="${author}" loading="lazy">
+                            </div>
+                            <div class="me-auto">
+                            <div class="me-auto">
+                                <h6 class="mb-1">${author}</h6>
+                                <small class="text-muted">${translations[currentLang][
+          "blog.author_label"
+          ] || "Author"
+          }</small>
+                            </div>
+                            <button type="button" class="btn-creative-read-more" onclick="openBlogModal(${post.id
+          })">
+                                ${readMoreText} <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+        return card;
+      }
+
+      // Expose function to open modal
+      window.openBlogModal = function (id) {
+        const post = blogData.find((p) => p.id == id);
+        if (!post) return;
+
+        const title = getLocalizedContent(post.title);
+        const content = getLocalizedContent(post.content); // Assuming content field exists
+        const author = getLocalizedContent(post.author);
+        const category = post.category.replace("-", " ");
+
+        document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalCategory").textContent = category;
+        document.getElementById("modalImage").src = post.image;
+        document.getElementById("modalDate").textContent = post.date;
+        document.getElementById("modalAuthor").textContent = author;
+        document.getElementById("modalReadTime").textContent =
+          post.read_time || "5 min";
+        document.getElementById("modalContent").innerHTML = content; // Using innerHTML for rich text
+
+        const modal = bootstrap.Modal.getOrCreateInstance(
+          document.getElementById("blogModal")
+        );
+        modal.show();
+      };
+
+      function loadCategories() {
+        if (!categoriesList) return;
+        categoriesList.innerHTML = "";
+
+        // Calculate categories from data
+        const counts = {};
+        blogData.forEach((p) => {
+          counts[p.category] = (counts[p.category] || 0) + 1;
+        });
+
+        Object.keys(counts).forEach((cat) => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+                        <a href="#" data-category="${cat}">
+                            <span style="text-transform: capitalize;">${cat.replace(
+            "-",
+            " "
+          )}</span>
+                            <span class="categories-count">${counts[cat]}</span>
+                        </a>
+                    `;
+          categoriesList.appendChild(li);
+        });
+      }
+
+      function loadRecentPosts() {
+        if (!recentPosts) return;
+        recentPosts.innerHTML = "";
+        const recent = [...blogData]
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 3);
+
+        recent.forEach((post) => {
+          const li = document.createElement("li");
+          li.className = "recent-post-item";
+          const title = getLocalizedContent(post.title);
+          li.innerHTML = `
+                        <div class="recent-post-img">
+                            <img src="${post.image}" alt="${title}" loading="lazy">
+                        </div>
+                        <div class="recent-post-content">
+                            <h6><a href="#" onclick="openBlogModal(${post.id}); return false;">${title}</a></h6>
+                            <div class="recent-post-date">${post.date}</div>
+                        </div>
+                    `;
+          recentPosts.appendChild(li);
+        });
+      }
+
+      function updatePagination() {
+        if (!pagination) return;
+        // Simplified pagination for brevity, logic remains similar
+        let filteredPosts = [];
+
+        if (isSearching) {
+          const searchQuery = document
+            .getElementById("searchInput")
+            .value.toLowerCase();
+          filteredPosts = blogData.filter((post) => {
+            const title = getLocalizedContent(post.title).toLowerCase();
+            return title.includes(searchQuery);
+          });
+        } else {
+          filteredPosts =
+            currentFilter === "all"
+              ? blogData
+              : blogData.filter((post) => post.category === currentFilter);
+        }
+
+        const totalPages = Math.ceil(filteredPosts.length / itemsPerPage);
+
+        // Rebuild pagination UI... (Same logic as before, just ensuring we use the new fetch data)
+        pagination.innerHTML = "";
+        if (totalPages <= 1) {
+          pagination.style.display = "none";
+          return;
+        }
+        pagination.style.display = "flex";
+
+        // Create logic... (Keeping it simple for this replacement, reusing basic prev/next/numbers)
+        // ... (Previous logic is fine, just ensures it calls loadBlogPosts)
+        // Previous button
+        const prevLi = document.createElement("li");
+        prevLi.className = "page-item";
+        if (currentPage === 1) prevLi.classList.add("disabled");
+
+        prevLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage - 1
+          }); return false;"><i class="fas fa-chevron-left"></i></a>`;
+        pagination.appendChild(prevLi);
+
+        for (let i = 1; i <= totalPages; i++) {
+          const li = document.createElement("li");
+          li.className = `page-item ${i === currentPage ? "active" : ""}`;
+          li.innerHTML = `<a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a>`;
+          pagination.appendChild(li);
+        }
+
+        // Next button
+        const nextLi = document.createElement("li");
+        nextLi.className = "page-item";
+        if (currentPage === totalPages) nextLi.classList.add("disabled");
+        nextLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage + 1
+          }); return false;"><i class="fas fa-chevron-right"></i></a>`;
+        pagination.appendChild(nextLi);
+      }
+
+      window.changePage = function (page) {
+        if (page < 1) return;
+        currentPage = page;
+        loadBlogPosts();
+        updatePagination();
+      };
+
+      window.updatePagination = updatePagination;
+      window.loadBlogPosts = loadBlogPosts;
+    }
+
+    // Trigger fetch on load instead of initBlog directly
+    document.addEventListener("DOMContentLoaded", fetchBlogs);
+
+    function initSearch() {
+      const searchInput = document.getElementById("searchInput");
+      const searchBtn = document.getElementById("searchBtn");
+      const searchResetBtn = document.getElementById("searchResetBtn");
+      const filterButtons = document.querySelectorAll(".filter-btn");
+
+      if (!searchInput || !searchBtn) return;
+
+      searchBtn.addEventListener("click", function () {
+        performSearch();
+      });
+
+      searchInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          performSearch();
+        }
+      });
+
+      searchResetBtn.addEventListener("click", function () {
+        resetSearch();
+      });
+
+      function performSearch() {
+        const query = searchInput.value.trim();
+
+        if (!query) {
+          showToast("Please enter a search term", "warning");
+          return;
+        }
+
+        isSearching = true;
+        currentFilter = "all";
+        currentPage = 1;
+
+        // Remove active class from all filter buttons
+        filterButtons.forEach((b) => b.classList.remove("active"));
+
+        // Load search results
+        loadBlogPosts();
+        updatePagination();
+
+        // Show reset button
+        searchResetBtn.style.display = "block";
+
+        // Show toast
+        const filteredPosts = blogData.filter(
+          (post) =>
+            post.title.toLowerCase().includes(query.toLowerCase()) ||
+            post.excerpt.toLowerCase().includes(query.toLowerCase()) ||
+            post.author.toLowerCase().includes(query.toLowerCase()) ||
+            post.category.toLowerCase().includes(query.toLowerCase())
+        );
+
+        showToast(
+          `Found ${filteredPosts.length} articles for "${query}"`,
+          "success"
+        );
+      }
+
+      function resetSearch() {
+        searchInput.value = "";
+        isSearching = false;
+        currentFilter = "all";
+        currentPage = 1;
+
+        // Reset filter buttons
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        if (filterButtons[0]) {
+          filterButtons[0].classList.add("active");
+        }
+
+        // Hide reset button
+        searchResetBtn.style.display = "none";
+
+        // Reload posts
+        loadBlogPosts();
+        updatePagination();
+
+        showToast("Showing all articles", "info");
+      }
+    }
+
+    function initNewsletter() {
+      const newsletterBtn = document.getElementById("newsletterBtn");
+      const newsletterEmail = document.getElementById("newsletterEmail");
+
+      if (!newsletterBtn || !newsletterEmail) return;
+
+      newsletterBtn.addEventListener("click", function () {
+        const email = newsletterEmail.value.trim();
+
+        if (!email) {
+          showToast("Please enter your email address", "warning");
+          return;
+        }
+
+        if (!isValidEmail(email)) {
+          showToast("Please enter a valid email address", "warning");
+          return;
+        }
+
+        // Simulate subscription
+        showLoading();
+
+        setTimeout(() => {
+          hideLoading();
+          showToast("Successfully subscribed to our newsletter!", "success");
+          newsletterEmail.value = "";
+        }, 1500);
+      });
+    }
+
+    function isValidEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    function initToastSystem() {
+      window.showToast = function (message, type = "success") {
+        const toastContainer = document.querySelector(".toast-container");
+        if (!toastContainer) return;
+
+        const toast = document.createElement("div");
+        toast.className = `toast toast-${type}`;
+
+        let icon = "fa-check-circle";
+        let iconColor = "text-success";
+
+        if (type === "warning") {
+          icon = "fa-exclamation-triangle";
+          iconColor = "text-warning";
+        } else if (type === "info") {
+          icon = "fa-info-circle";
+          iconColor = "text-info";
+        } else if (type === "danger") {
+          icon = "fa-exclamation-circle";
+          iconColor = "text-danger";
+        }
+
+        toast.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <i class="fas ${icon} ${iconColor} me-3"></i>
+                        <div>
+                            <p class="mb-0 fw-500">${message}</p>
+                        </div>
+                        <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()"></button>
+                    </div>
+                `;
+
+        toastContainer.appendChild(toast);
+
+        setTimeout(() => toast.classList.add("show"), 10);
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+          setTimeout(() => toast.remove(), 300);
+        }, 5000);
+      };
+    }
+
+    // Loading overlay functions
+    window.showLoading = function () {
+      const loadingOverlay = document.querySelector(".loading-overlay");
+      if (loadingOverlay) {
+        loadingOverlay.classList.add("active");
+      }
+    };
+
+    window.hideLoading = function () {
+      const loadingOverlay = document.querySelector(".loading-overlay");
+      if (loadingOverlay) {
+        loadingOverlay.classList.remove("active");
+      }
+    };
+  </script>
+</body>
+
+</html>

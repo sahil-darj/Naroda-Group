@@ -1,0 +1,3753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multilingual FAQ Management | Naroda Group Admin</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3a0ca3;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
+      --light-bg: #f8fafc;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --sidebar-width: 260px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Top Navbar */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .top-navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .sidebar-toggle-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-toggle-btn:hover {
+      background-color: var(--light-bg);
+      color: var(--primary-color);
+    }
+
+    .top-navbar-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .top-navbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    @media screen and (max-width: 426px) {
+      .navbar-time-display .time {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .top-navbar-title {
+        display: none;
+      }
+    }
+
+    /* Language Selector */
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      background-color: white;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .language-selector select {
+      border: none;
+      background: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    .language-selector select:focus {
+      outline: none;
+    }
+
+    .lang-flag {
+      width: 24px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    /* Time display */
+    .navbar-time-display {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+
+    .navbar-time-display .time {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+
+    .navbar-time-display .date {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-gray);
+    }
+
+    /* User profile */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      border-radius: 10px;
+    }
+
+    .user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-color);
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .user-role {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 70px;
+      height: calc(100vh - 70px);
+      width: var(--sidebar-width);
+      background-color: white;
+      color: var(--text-dark);
+      z-index: 999;
+      transition: all 0.3s ease;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+      border-right: 1px solid #e2e8f0;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+
+    .sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+
+    /* Logo in sidebar */
+    .sidebar-logo {
+      padding: 0 20px 25px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .sidebar-logo .logo {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg,
+          var(--primary-color),
+          var(--secondary-color));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .sidebar-logo h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-dark);
+    }
+
+    /* Navigation menu */
+    .sidebar-menu {
+      padding: 0 15px;
+    }
+
+    .nav-item {
+      margin-bottom: 8px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 14px 15px;
+      color: var(--text-gray);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-radius: 10px;
+      border-left: 4px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.05);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .nav-link.active {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.1);
+      border-left: 4px solid var(--primary-color);
+      font-weight: 600;
+    }
+
+    .nav-link i {
+      width: 24px;
+      font-size: 18px;
+      margin-right: 15px;
+      text-align: center;
+    }
+
+    .nav-link span {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Logout button */
+    .nav-logout {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .nav-logout .nav-link {
+      color: var(--danger-color);
+    }
+
+    .nav-logout .nav-link:hover {
+      color: white;
+      background-color: var(--danger-color);
+    }
+
+    /* Main content area */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      margin-top: 70px;
+      padding: 30px;
+      min-height: calc(100vh - 70px);
+      transition: all 0.3s ease;
+    }
+
+    .main-content.expanded {
+      margin-left: 0;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .page-header h1 {
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    /* Action buttons */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-admin {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-admin-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-admin-primary:hover {
+      background-color: #3a56d4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn-admin-success {
+      background-color: var(--success-color);
+      color: white;
+    }
+
+    .btn-admin-success:hover {
+      background-color: #0da271;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-admin-warning {
+      background-color: var(--warning-color);
+      color: white;
+    }
+
+    .btn-admin-warning:hover {
+      background-color: #dd8e0a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-admin-danger {
+      background-color: var(--danger-color);
+      color: white;
+    }
+
+    .btn-admin-danger:hover {
+      background-color: #dc2626;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+
+    /* FAQ Categories */
+    .categories-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .category-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .category-card.active {
+      border-color: var(--primary-color);
+      box-shadow: 0 8px 15px rgba(67, 97, 238, 0.15);
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .category-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .category-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .category-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .category-count {
+      display: inline-block;
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* FAQ Items Table */
+    .faq-table-container {
+      background-color: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      margin-top: 30px;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .table-header h3 {
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .table-search {
+      position: relative;
+      width: 300px;
+    }
+
+    .table-search input {
+      width: 100%;
+      padding: 10px 15px 10px 40px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .table-search i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-gray);
+    }
+
+    .table {
+      margin-bottom: 0;
+    }
+
+    .table th {
+      border-top: none;
+      color: var(--text-gray);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      background-color: #f8fafc;
+    }
+
+    .table td {
+      vertical-align: middle;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .faq-question {
+      max-width: 400px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .badge-success {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .badge-warning {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+    }
+
+    .badge-primary {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    .badge-danger {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--danger-color);
+    }
+
+    .badge-info {
+      background-color: rgba(6, 182, 212, 0.1);
+      color: #06b6d4;
+    }
+
+    .action-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .action-icon.edit {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    .action-icon.edit:hover {
+      background-color: rgba(67, 97, 238, 0.2);
+    }
+
+    .action-icon.delete {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--danger-color);
+    }
+
+    .action-icon.delete:hover {
+      background-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .action-icon.view {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .action-icon.view:hover {
+      background-color: rgba(16, 185, 129, 0.2);
+    }
+
+    /* Pagination */
+    .pagination-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .pagination-info {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    .pagination {
+      margin-bottom: 0;
+    }
+
+    .page-link {
+      color: var(--primary-color);
+      border: 1px solid #e2e8f0;
+      padding: 8px 15px;
+    }
+
+    .page-link:hover {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    .page-item.active .page-link {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Modal */
+    .modal-content {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 25px 30px;
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .modal-footer {
+      border-top: 1px solid #e2e8f0;
+      padding: 20px 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .form-control,
+    .form-select {
+      padding: 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    .form-control-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Overlay for mobile */
+    .overlay {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 70px);
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Multilingual Styles */
+    .language-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .lang-btn {
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 2px solid #e2e8f0;
+      background: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 100px;
+      height: 40px;
+    }
+
+    .lang-btn.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: #f1f5f9;
+      border-color: var(--primary-color);
+    }
+
+    .translation-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+    }
+
+    .status-completed {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .multilingual-tabs {
+      margin-top: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .nav-tabs {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 10px 15px 0;
+    }
+
+    .nav-tabs .nav-link {
+      border: none;
+      color: var(--text-gray);
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 6px 6px 0 0;
+    }
+
+    .nav-tabs .nav-link.active {
+      color: var(--primary-color);
+      background: white;
+      border-bottom: 3px solid var(--primary-color);
+    }
+
+    .tab-content {
+      padding: 20px;
+      background: white;
+    }
+
+    .lang-content {
+      min-height: 120px;
+    }
+
+    .translate-btn {
+      margin-top: 10px;
+      padding: 6px 15px;
+      font-size: 0.85rem;
+    }
+
+    .language-badges {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .lang-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+
+    .lang-badge.en {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    .lang-badge.hi {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .lang-badge.gu {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+    }
+
+    /* Highlight Box */
+    .highlight-box {
+      background-color: rgba(67, 97, 238, 0.05);
+      border-left: 4px solid var(--primary-color);
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin: 15px 0;
+    }
+
+    /* Rich Text Editor */
+    .rich-text-editor {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .editor-toolbar {
+      background-color: #f8fafc;
+      padding: 10px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .editor-btn {
+      width: 35px;
+      height: 35px;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .editor-btn:hover {
+      background-color: #f1f5f9;
+      border-color: var(--primary-color);
+    }
+
+    .editor-content {
+      min-height: 200px;
+      padding: 15px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .editor-content:empty:before {
+      content: "Start typing answer here...";
+      color: var(--text-gray);
+    }
+
+    /* Custom Dialog Styles (for delete confirmation) */
+    .custom-dialog {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .custom-dialog.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .custom-dialog-content {
+      background-color: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+
+    .custom-dialog.show .custom-dialog-content {
+      transform: translateY(0);
+    }
+
+    .custom-dialog-header {
+      padding: 20px 25px;
+      border-bottom: 1px solid #e2e8f0;
+      background-color: var(--light-bg);
+    }
+
+    .custom-dialog-title {
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .custom-dialog-body {
+      padding: 25px;
+    }
+
+    .custom-dialog-message {
+      color: var(--text-gray);
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    .custom-dialog-footer {
+      padding: 20px 25px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 767px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .top-navbar {
+        padding: 0 15px;
+      }
+
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .categories-container {
+        grid-template-columns: 1fr;
+      }
+
+      .table-search {
+        width: 100%;
+      }
+
+      .user-info {
+        display: none;
+      }
+
+      .top-navbar-right {
+        gap: 10px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-admin {
+        justify-content: center;
+      }
+
+      .language-selector {
+        flex-wrap: wrap;
+      }
+
+      .lang-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        min-width: 80px;
+        height: 36px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      .categories-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+
+      .top-navbar {
+        padding: 0 20px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .sidebar {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: var(--sidebar-width);
+      }
+    }
+
+    .btn-admin-secondary {
+      background-color: white;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+
+    .btn-admin-secondary:hover {
+      background-color: rgba(67, 97, 238, 0.05);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navbar -->
+  <nav class="top-navbar">
+    <div class="top-navbar-left">
+      <button class="sidebar-toggle-btn" id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 class="top-navbar-title" id="page-title" data-i18n="faq_management">
+        FAQ Management
+        <span class="text-muted" style="font-size: 1rem" data-i18n="multilingual">(Multilingual)</span>
+      </h1>
+    </div>
+
+    <div class="top-navbar-right">
+      <!-- Language Selector -->
+      <div class="language-selector">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag" id="current-flag" />
+        <select id="global-language-selector">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+        </select>
+      </div>
+
+      <!-- Real-time Date and Time Display -->
+      <div class="navbar-time-display">
+        <div class="date" id="navbar-current-date">Loading...</div>
+        <div class="time" id="navbar-current-time">Loading...</div>
+      </div>
+
+      <!-- User Profile -->
+      <div class="user-profile">
+        <img src="https://ui-avatars.com/api/?name=Admin+User&background=4361ee&color=fff&size=128" alt="Admin User" />
+        <div class="user-info">
+          <div class="user-name" data-i18n="admin_name">Admin User</div>
+          <div class="user-role" data-i18n="system_administrator">
+            System Administrator
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <!-- Logo in sidebar -->
+    <div class="sidebar-logo">
+      <div class="logo">NG</div>
+      <h2 data-i18n="naroda_group">Naroda Group</h2>
+    </div>
+
+    <!-- Navigation menu in sidebar -->
+    <div class="sidebar-menu">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span data-i18n="dashboard">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="users.html" class="nav-link">
+            <i class="fas fa-users"></i>
+            <span data-i18n="users">Users</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="projects.html" class="nav-link">
+            <i class="fas fa-project-diagram"></i>
+            <span data-i18n="projects">Projects</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="blogs.html" class="nav-link">
+            <i class="fas fa-blog"></i>
+            <span data-i18n="blogs">Blogs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="faq.html" class="nav-link active">
+            <i class="fas fa-question-circle"></i>
+            <span data-i18n="faq">FAQ</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="team.html" class="nav-link">
+            <i class="fas fa-user-friends"></i>
+            <span data-i18n="team">Team</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link">
+            <i class="fas fa-images"></i>
+            <span data-i18n="gallery">Gallery</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="career.html" class="nav-link">
+            <i class="fas fa-briefcase"></i>
+            <span data-i18n="career">Career</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="news.html" class="nav-link">
+            <i class="fas fa-newspaper"></i>
+            <span data-i18n="news">News</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Logout button at the bottom -->
+      <div class="nav-logout">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="#" class="nav-link" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              <span data-i18n="log_out">Log Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay for mobile sidebar -->
+  <div class="overlay" id="sidebar-overlay"></div>
+
+  <!-- Main Content Area -->
+  <main class="main-content" id="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 id="main-page-title" data-i18n="faq_management">
+        FAQ Management
+        <small class="text-muted" style="font-size: 1rem" data-i18n="multilingual_support">(Multilingual
+          Support)</small>
+      </h1>
+      <div class="action-buttons">
+        <button class="btn-admin btn-admin-primary" data-bs-toggle="modal" data-bs-target="#addFAQModal"
+          data-i18n="add_new_faq">
+          <i class="fas fa-plus"></i>
+          <span>Add New FAQ</span>
+        </button>
+        <button class="btn-admin btn-admin-success" id="refreshFAQ" data-i18n="refresh">
+          <i class="fas fa-sync-alt"></i>
+          <span>Refresh</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- FAQ Categories -->
+    <div class="categories-container">
+      <div class="category-card" data-category="projects" onclick="filterByCategory('projects')">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon" style="
+                  background-color: rgba(67, 97, 238, 0.1);
+                  color: var(--primary-color);
+                ">
+              <i class="fas fa-building"></i>
+            </div>
+            <span data-i18n="faq.category1.title">Projects Related Questions</span>
+          </div>
+          <div class="category-actions">
+            <button class="btn-admin btn-admin-primary btn-sm" style="padding: 6px 12px"
+              onclick="viewCategoryQuestions('projects', event)">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        <p data-i18n="faq.category1.description">
+          Questions about residential and commercial projects
+        </p>
+        <span class="category-count">3 Questions</span>
+      </div>
+
+      <div class="category-card" data-category="booking" onclick="filterByCategory('booking')">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon" style="
+                  background-color: rgba(16, 185, 129, 0.1);
+                  color: var(--success-color);
+                ">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <span data-i18n="faq.category2.title">Booking Process Questions</span>
+          </div>
+          <div class="category-actions">
+            <button class="btn-admin btn-admin-primary btn-sm" style="padding: 6px 12px"
+              onclick="viewCategoryQuestions('booking', event)">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        <p data-i18n="faq.category2.description">
+          Information about booking, documentation, and procedures
+        </p>
+        <span class="category-count">2 Questions</span>
+      </div>
+
+      <div class="category-card" data-category="payments" onclick="filterByCategory('payments')">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon" style="
+                  background-color: rgba(245, 158, 11, 0.1);
+                  color: var(--warning-color);
+                ">
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <span data-i18n="faq.category3.title">Payments & Finance Questions</span>
+          </div>
+          <div class="category-actions">
+            <button class="btn-admin btn-admin-primary btn-sm" style="padding: 6px 12px"
+              onclick="viewCategoryQuestions('payments', event)">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        <p data-i18n="faq.category3.description">
+          Payment plans, loans, EMIs, and financial queries
+        </p>
+        <span class="category-count">2 Questions</span>
+      </div>
+
+      <div class="category-card" data-category="legal" onclick="filterByCategory('legal')">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon" style="
+                  background-color: rgba(239, 68, 68, 0.1);
+                  color: var(--danger-color);
+                ">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <span data-i18n="faq.category4.title">Legal & RERA Questions</span>
+          </div>
+          <div class="category-actions">
+            <button class="btn-admin btn-admin-primary btn-sm" style="padding: 6px 12px"
+              onclick="viewCategoryQuestions('legal', event)">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        <p data-i18n="faq.category4.description">
+          Legal documentation, RERA compliance, and approvals
+        </p>
+        <span class="category-count">1 Question</span>
+      </div>
+
+      <div class="category-card" data-category="amenities" onclick="filterByCategory('amenities')">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon" style="
+                  background-color: rgba(147, 51, 234, 0.1);
+                  color: #9333ea;
+                ">
+              <i class="fas fa-concierge-bell"></i>
+            </div>
+            <span data-i18n="faq.category5.title">Amenities & Specifications</span>
+          </div>
+          <div class="category-actions">
+            <button class="btn-admin btn-admin-primary btn-sm" style="padding: 6px 12px"
+              onclick="viewCategoryQuestions('amenities', event)">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        <p data-i18n="faq.category5.description">
+          Facilities, amenities, and project specifications
+        </p>
+        <span class="category-count">1 Question</span>
+      </div>
+
+      <div class="category-card" data-category="location" onclick="filterByCategory('location')">
+        <div class="category-header">
+          <div class="category-title">
+            <div class="category-icon" style="background-color: rgba(6, 182, 212, 0.1); color: #06b6d4">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <span data-i18n="faq.category6.title">Location & Connectivity</span>
+          </div>
+          <div class="category-actions">
+            <button class="btn-admin btn-admin-primary btn-sm" style="padding: 6px 12px"
+              onclick="viewCategoryQuestions('location', event)">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        <p data-i18n="faq.category6.description">
+          Location details, connectivity, and neighborhood
+        </p>
+        <span class="category-count">2 Questions</span>
+      </div>
+    </div>
+
+    <!-- FAQ Items Table -->
+    <div class="faq-table-container">
+      <div class="table-header">
+        <div>
+          <h3 data-i18n="all_faq_items">All FAQ Items</h3>
+        </div>
+        <div class="table-search">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchFAQ" placeholder="Search questions..."
+            data-i18n-placeholder="search_questions_placeholder" />
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th data-i18n="hash">#</th>
+              <th data-i18n="question">Question</th>
+              <th data-i18n="category">Category</th>
+              <th data-i18n="status">Status</th>
+              <th data-i18n="translations">Translations</th>
+              <th data-i18n="last_updated">Last Updated</th>
+              <th data-i18n="actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="faqTableBody">
+            <!-- FAQ items will be populated here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination-container">
+        <div class="pagination-info">
+          <span data-i18n="showing">Showing</span>
+          <span id="startItem">1</span> <span data-i18n="to">to</span>
+          <span id="endItem">10</span> <span data-i18n="of">of</span>
+          <span id="totalItems">11</span>
+          <span data-i18n="faq_items">FAQ items</span>
+        </div>
+        <nav>
+          <ul class="pagination" id="faqPagination">
+            <!-- Pagination will be generated here -->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add/Edit FAQ Modal -->
+  <div class="modal fade" id="addFAQModal" tabindex="-1" aria-labelledby="addFAQModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addFAQModalLabel" data-i18n="add_new_faq">
+            Add New FAQ
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Translation Tabs -->
+          <ul class="nav nav-tabs" id="translation-tabs">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#english-tab">
+                <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-2"
+                  style="width: 16px; height: 12px" />
+                <span data-i18n="english">English</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#hindi-tab">
+                <img src="https://flagcdn.com/w20/in.png" alt="Hindi" class="me-2" style="width: 16px; height: 12px" />
+                <span data-i18n="hindi">हिन्दी</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#gujarati-tab">
+                <img src="https://flagcdn.com/w20/in.png" alt="Gujarati" class="me-2"
+                  style="width: 16px; height: 12px" />
+                <span data-i18n="gujarati">ગુજરાતી</span>
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- English Tab -->
+            <div class="tab-pane fade show active translation-tab-content" id="english-tab">
+              <form id="faqForm">
+                <input type="hidden" id="faq-id" />
+
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <label for="faq-question-en" class="form-label" data-i18n="question">Question *</label>
+                      <input type="text" class="form-control" id="faq-question-en"
+                        placeholder="Enter the question in English" required />
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="faq-category" class="form-label" data-i18n="category">Category *</label>
+                      <select class="form-select" id="faq-category" required>
+                        <option value="" data-i18n="select_category">
+                          Select Category
+                        </option>
+                        <option value="projects" data-i18n="faq.category1.title">
+                          Projects Related Questions
+                        </option>
+                        <option value="booking" data-i18n="faq.category2.title">
+                          Booking Process Questions
+                        </option>
+                        <option value="payments" data-i18n="faq.category3.title">
+                          Payments & Finance Questions
+                        </option>
+                        <option value="legal" data-i18n="faq.category4.title">
+                          Legal & RERA Questions
+                        </option>
+                        <option value="amenities" data-i18n="faq.category5.title">
+                          Amenities & Specifications
+                        </option>
+                        <option value="location" data-i18n="faq.category6.title">
+                          Location & Connectivity
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="faq-answer-en" class="form-label" data-i18n="answer">Answer *</label>
+                  <div class="rich-text-editor">
+                    <div class="editor-toolbar">
+                      <button type="button" class="editor-btn" data-command="bold">
+                        <i class="fas fa-bold"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="italic">
+                        <i class="fas fa-italic"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="underline">
+                        <i class="fas fa-underline"></i>
+                      </button>
+                      <div class="vr mx-1"></div>
+                      <button type="button" class="editor-btn" data-command="insertUnorderedList">
+                        <i class="fas fa-list-ul"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="insertOrderedList">
+                        <i class="fas fa-list-ol"></i>
+                      </button>
+                      <div class="vr mx-1"></div>
+                      <button type="button" class="editor-btn" data-command="createLink">
+                        <i class="fas fa-link"></i>
+                      </button>
+                      <button type="button" class="editor-btn" data-command="unlink">
+                        <i class="fas fa-unlink"></i>
+                      </button>
+                    </div>
+                    <div class="editor-content" id="faq-answer-en" contenteditable="true"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Hindi Tab -->
+            <div class="tab-pane fade translation-tab-content" id="hindi-tab">
+              <div class="form-group">
+                <label for="faq-question-hi" class="form-label" data-i18n="question">प्रश्न *</label>
+                <input type="text" class="form-control" id="faq-question-hi" placeholder="प्रश्न हिंदी में दर्ज करें" />
+                <div class="form-text" data-i18n="auto_translated_hint">
+                  यह स्वचालित रूप से अंग्रेजी से अनुवादित होगा (आप इसे संपादित
+                  कर सकते हैं)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="faq-answer-hi" class="form-label" data-i18n="answer">उत्तर *</label>
+                <div class="rich-text-editor">
+                  <div class="editor-toolbar">
+                    <button type="button" class="editor-btn" data-command="bold" onclick="execHindiCommand('bold')">
+                      <i class="fas fa-bold"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="italic" onclick="execHindiCommand('italic')">
+                      <i class="fas fa-italic"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="underline"
+                      onclick="execHindiCommand('underline')">
+                      <i class="fas fa-underline"></i>
+                    </button>
+                    <div class="vr mx-1"></div>
+                    <button type="button" class="editor-btn" data-command="insertUnorderedList"
+                      onclick="execHindiCommand('insertUnorderedList')">
+                      <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertOrderedList"
+                      onclick="execHindiCommand('insertOrderedList')">
+                      <i class="fas fa-list-ol"></i>
+                    </button>
+                    <div class="vr mx-1"></div>
+                    <button type="button" class="editor-btn" data-command="createLink"
+                      onclick="execHindiCommand('createLink')">
+                      <i class="fas fa-link"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="unlink" onclick="execHindiCommand('unlink')">
+                      <i class="fas fa-unlink"></i>
+                    </button>
+                  </div>
+                  <div class="editor-content" id="faq-answer-hi" contenteditable="true"></div>
+                </div>
+                <div class="form-text" data-i18n="auto_translated_content_hint">
+                  यह स्वचालित रूप से अंग्रेजी सामग्री से अनुवादित होगा (आप इसे
+                  संपादित कर सकते हैं)
+                </div>
+              </div>
+            </div>
+
+            <!-- Gujarati Tab -->
+            <div class="tab-pane fade translation-tab-content" id="gujarati-tab">
+              <div class="form-group">
+                <label for="faq-question-gu" class="form-label" data-i18n="question">પ્રશ્ન *</label>
+                <input type="text" class="form-control" id="faq-question-gu" placeholder="પ્રશ્ન ગુજરાતીમાં દાખલ કરો" />
+                <div class="form-text" data-i18n="auto_translated_hint">
+                  આ આપોઆપ અંગ્રેજીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત કરી
+                  શકો છો)
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="faq-answer-gu" class="form-label" data-i18n="answer">જવાબ *</label>
+                <div class="rich-text-editor">
+                  <div class="editor-toolbar">
+                    <button type="button" class="editor-btn" data-command="bold" onclick="execGujaratiCommand('bold')">
+                      <i class="fas fa-bold"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="italic"
+                      onclick="execGujaratiCommand('italic')">
+                      <i class="fas fa-italic"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="underline"
+                      onclick="execGujaratiCommand('underline')">
+                      <i class="fas fa-underline"></i>
+                    </button>
+                    <div class="vr mx-1"></div>
+                    <button type="button" class="editor-btn" data-command="insertUnorderedList"
+                      onclick="execGujaratiCommand('insertUnorderedList')">
+                      <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="insertOrderedList"
+                      onclick="execGujaratiCommand('insertOrderedList')">
+                      <i class="fas fa-list-ol"></i>
+                    </button>
+                    <div class="vr mx-1"></div>
+                    <button type="button" class="editor-btn" data-command="createLink"
+                      onclick="execGujaratiCommand('createLink')">
+                      <i class="fas fa-link"></i>
+                    </button>
+                    <button type="button" class="editor-btn" data-command="unlink"
+                      onclick="execGujaratiCommand('unlink')">
+                      <i class="fas fa-unlink"></i>
+                    </button>
+                  </div>
+                  <div class="editor-content" id="faq-answer-gu" contenteditable="true"></div>
+                </div>
+                <div class="form-text" data-i18n="auto_translated_content_hint">
+                  આ આપોઆપ અંગ્રેજી સામગ્રીમાંથી ભાષાંતરિત થશે (તમે તેને
+                  સંપાદિત કરી શકો છો)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Common Fields (outside tabs) -->
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="faq-status" class="form-label" data-i18n="status">Status *</label>
+                <select class="form-select" id="faq-status" required>
+                  <option value="active" data-i18n="active">Active</option>
+                  <option value="inactive" data-i18n="inactive">
+                    Inactive
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="faq-order" class="form-label" data-i18n="display_order">Display Order *</label>
+                <input type="number" class="form-control" id="faq-order" value="1" min="1" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="faq-tags" class="form-label" data-i18n="tags">Tags</label>
+            <input type="text" class="form-control" id="faq-tags" placeholder="Enter tags separated by commas" />
+            <div class="form-text" data-i18n="tags_example">
+              Example: rera, payment, booking, project
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <button type="button" class="btn-admin btn-admin-secondary" id="auto-translate-btn">
+                <i class="fas fa-language"></i>
+                <span data-i18n="auto_translate">Auto Translate</span>
+              </button>
+            </div>
+            <div class="d-flex gap-3">
+              <button type="button" class="btn-admin btn-admin-secondary" data-bs-dismiss="modal" data-i18n="cancel">
+                Cancel
+              </button>
+              <button type="button" class="btn-admin btn-admin-primary" id="save-faq-btn" data-i18n="save_faq">
+                Save FAQ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Translations Modal -->
+  <div class="modal fade" id="viewTranslationsModal" tabindex="-1" aria-labelledby="viewTranslationsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewTranslationsModalLabel" data-i18n="view_translations">
+            View Translations
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header bg-primary text-white">
+                  <h6 class="mb-0" data-i18n="english">English</h6>
+                </div>
+                <div class="card-body">
+                  <h5 id="view-question-en"></h5>
+                  <div id="view-answer-en" class="small"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header bg-success text-white">
+                  <h6 class="mb-0" data-i18n="hindi">हिन्दी</h6>
+                </div>
+                <div class="card-body">
+                  <h5 id="view-question-hi"></h5>
+                  <div id="view-answer-hi" class="small"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header bg-warning text-white">
+                  <h6 class="mb-0" data-i18n="gujarati">ગુજરાતી</h6>
+                </div>
+                <div class="card-body">
+                  <h5 id="view-question-gu"></h5>
+                  <div id="view-answer-gu" class="small"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Dialog -->
+  <div class="custom-dialog" id="deleteConfirmationDialog">
+    <div class="custom-dialog-content">
+      <div class="custom-dialog-header">
+        <h5 class="custom-dialog-title" id="deleteDialogTitle">Delete FAQ</h5>
+      </div>
+      <div class="custom-dialog-body">
+        <p class="custom-dialog-message" id="deleteDialogMessage">
+          Are you sure you want to delete this FAQ? This action cannot be
+          undone.
+        </p>
+      </div>
+      <div class="custom-dialog-footer">
+        <button type="button" class="btn-admin btn-admin-secondary" id="cancelDeleteBtn">
+          Cancel
+        </button>
+        <button type="button" class="btn-admin btn-admin-danger" id="confirmDeleteBtn">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Complete translation dictionaries for ALL content
+    const translations = {
+      en: {
+        // UI Elements
+        faq_management: "FAQ Management",
+        multilingual: "(Multilingual)",
+        multilingual_support: "(Multilingual Support)",
+        add_new_faq: "Add New FAQ",
+        refresh: "Refresh",
+        all_faq_items: "All FAQ Items",
+        english: "English",
+        hindi: "Hindi",
+        gujarati: "Gujarati",
+        search_questions_placeholder: "Search questions...",
+        hash: "#",
+        question: "Question",
+        category: "Category",
+        status: "Status",
+        translations: "Translations",
+        last_updated: "Last Updated",
+        actions: "Actions",
+        showing: "Showing",
+        to: "to",
+        of: "of",
+        faq_items: "FAQ items",
+        previous: "Previous",
+        next: "Next",
+        select_category: "Select Category",
+        active: "Active",
+        inactive: "Inactive",
+        pending_review: "Pending Review",
+        answer: "Answer",
+        english_small: "(English)",
+        enter_question_english: "Enter the question in English",
+        enter_answer_english: "Enter the detailed answer in English",
+        display_order: "Display Order",
+        tags: "Tags (comma separated)",
+        tags_placeholder: "e.g., rera, payment, booking",
+        tags_example: "Example: rera, payment, booking, project",
+        automatic_translation: "Automatic Translation:",
+        automatic_translation_description:
+          "This FAQ will be automatically translated into Hindi and Gujarati after submission using Google Translate API.",
+        cancel: "Cancel",
+        save_faq: "Save FAQ",
+        auto_translate: "Auto Translate",
+        auto_translated_hint:
+          "This will be automatically translated from English (you can edit it)",
+        auto_translated_content_hint:
+          "This will be automatically translated from English content (you can edit it)",
+        view_translations: "View Translations",
+        edit_faq: "Edit FAQ",
+        add_faq: "Add FAQ",
+        delete_faq: "Delete FAQ",
+
+        // FAQ Categories
+        "faq.category1.title": "Projects Related Questions",
+        "faq.category1.description":
+          "Questions about residential and commercial projects",
+        "faq.category2.title": "Booking Process Questions",
+        "faq.category2.description":
+          "Information about booking, documentation, and procedures",
+        "faq.category3.title": "Payments & Finance Questions",
+        "faq.category3.description":
+          "Payment plans, loans, EMIs, and financial queries",
+        "faq.category4.title": "Legal & RERA Questions",
+        "faq.category4.description":
+          "Legal documentation, RERA compliance, and approvals",
+        "faq.category5.title": "Amenities & Specifications",
+        "faq.category5.description":
+          "Facilities, amenities, and project specifications",
+        "faq.category6.title": "Location & Connectivity",
+        "faq.category6.description":
+          "Location details, connectivity, and neighborhood",
+
+        // Sidebar Menu
+        dashboard: "Dashboard",
+        users: "Users",
+        blogs: "Blogs",
+        team: "Team",
+        gallery: "Gallery",
+        career: "Career",
+        news: "News",
+        log_out: "Log Out",
+
+        // User Info
+        admin_name: "Admin User",
+        system_administrator: "System Administrator",
+        naroda_group: "Naroda Group",
+
+        // Messages
+        confirm_delete: "Are you sure you want to delete this FAQ?",
+        confirm_logout: "Are you sure you want to log out?",
+        logout_success: "You have been logged out successfully.",
+        translation_complete: "Translation completed successfully!",
+        faq_added: "FAQ added successfully!",
+        faq_updated: "FAQ updated successfully!",
+        faq_deleted: "FAQ deleted successfully!",
+        fill_english_first: "Please fill in English content first",
+        no_faq_found:
+          "No FAQ found. Try adjusting your search or add a new FAQ item.",
+        translation_failed: "Translation failed. Please try again.",
+        loading: "Loading...",
+        saving: "Saving...",
+        deleting: "Deleting...",
+        search_no_results: "No FAQs found matching your search criteria.",
+        translating: "Translating...",
+        translation_in_progress: "Translation in progress...",
+
+        // Days and Months
+        monday: "Monday",
+        tuesday: "Tuesday",
+        wednesday: "Wednesday",
+        thursday: "Thursday",
+        friday: "Friday",
+        saturday: "Saturday",
+        sunday: "Sunday",
+        january: "January",
+        february: "February",
+        march: "March",
+        april: "April",
+        may: "May",
+        june: "June",
+        july: "July",
+        august: "August",
+        september: "September",
+        october: "October",
+        november: "November",
+        december: "December",
+      },
+      hi: {
+        // UI Elements (Hindi translations)
+        faq_management: "अक्सर पूछे जाने वाले प्रश्न",
+        multilingual: "(बहुभाषी)",
+        multilingual_support: "(बहुभाषी समर्थन)",
+        add_new_faq: "नया FAQ जोड़ें",
+        refresh: "ताज़ा करें",
+        all_faq_items: "सभी FAQ आइटम",
+        english: "अंग्रेजी",
+        hindi: "हिन्दी",
+        gujarati: "गुजराती",
+        search_questions_placeholder: "प्रश्न खोजें...",
+        hash: "#",
+        question: "प्रश्न",
+        category: "श्रेणी",
+        status: "स्थिति",
+        translations: "अनुवाद",
+        last_updated: "अंतिम अपडेट",
+        actions: "कार्रवाई",
+        showing: "दिखा रहा है",
+        to: "से",
+        of: "का",
+        faq_items: "FAQ आइटम",
+        previous: "पिछला",
+        next: "अगला",
+        select_category: "श्रेणी चुनें",
+        active: "सक्रिय",
+        inactive: "निष्क्रिय",
+        pending_review: "समीक्षा लंबित",
+        answer: "उत्तर",
+        english_small: "(अंग्रेजी)",
+        enter_question_english: "अंग्रेजी में प्रश्न दर्ज करें",
+        enter_answer_english: "अंग्रेजी में विस्तृत उत्तर दर्ज करें",
+        display_order: "प्रदर्शन क्रम",
+        tags: "टैग (अल्पविराम से अलग)",
+        tags_placeholder: "जैसे, रेरा, भुगतान, बुकिंग",
+        tags_example: "उदाहरण: रेरा, भुगतान, बुकिंग, परियोजना",
+        automatic_translation: "स्वचालित अनुवाद:",
+        automatic_translation_description:
+          "यह FAQ गूगल अनुवाद एपीआई का उपयोग करके जमा करने के बाद हिंदी और गुजराती में स्वचालित रूप से अनुवादित किया जाएगा।",
+        cancel: "रद्द करें",
+        save_faq: "FAQ सहेजें",
+        auto_translate: "स्वचालित अनुवाद",
+        auto_translated_hint:
+          "यह स्वचालित रूप से अंग्रेजी से अनुवादित होगा (आप इसे संपादित कर सकते हैं)",
+        auto_translated_content_hint:
+          "यह स्वचालित रूप से अंग्रेजी सामग्री से अनुवादित होगा (आप इसे संपादित कर सकते हैं)",
+        view_translations: "अनुवाद देखें",
+        edit_faq: "FAQ संपादित करें",
+        add_faq: "FAQ जोड़ें",
+        delete_faq: "FAQ हटाएं",
+
+        // FAQ Categories (Hindi)
+        "faq.category1.title": "परियोजना संबंधित प्रश्न",
+        "faq.category1.description":
+          "आवासीय और वाणिज्यिक परियोजनाओं के बारे में प्रश्न",
+        "faq.category2.title": "बुकिंग प्रक्रिया प्रश्न",
+        "faq.category2.description":
+          "बुकिंग, दस्तावेजीकरण और प्रक्रियाओं के बारे में जानकारी",
+        "faq.category3.title": "भुगतान और वित्त प्रश्न",
+        "faq.category3.description":
+          "भुगतान योजनाएं, ऋण, ईएमआई और वित्तीय प्रश्न",
+        "faq.category4.title": "कानूनी और RERA प्रश्न",
+        "faq.category4.description":
+          "कानूनी दस्तावेजीकरण, RERA अनुपालन और स्वीकृति",
+        "faq.category5.title": "सुविधाएं और विनिर्देश",
+        "faq.category5.description": "सुविधाएं, आराम और परियोजना विनिर्देश",
+        "faq.category6.title": "स्थान और कनेक्टिविटी",
+        "faq.category6.description": "स्थान विवरण, कनेक्टिविटी और पड़ोस",
+
+        // Sidebar Menu (Hindi)
+        dashboard: "डैशबोर्ड",
+        users: "उपयोगकर्ता",
+        blogs: "ब्लॉग",
+        team: "टीम",
+        gallery: "गैलरी",
+        career: "करियर",
+        news: "समाचार",
+        log_out: "लॉग आउट",
+
+        // User Info (Hindi)
+        admin_name: "व्यवस्थापक उपयोगकर्ता",
+        system_administrator: "सिस्टम व्यवस्थापक",
+        naroda_group: "नरोदा ग्रुप",
+
+        // Messages (Hindi)
+        confirm_delete: "क्या आप वाकई इस FAQ को हटाना चाहते हैं?",
+        confirm_logout: "क्या आप वाकई लॉग आउट करना चाहते हैं?",
+        logout_success: "आप सफलतापूर्वक लॉग आउट हो गए हैं।",
+        translation_complete: "अनुवाद सफलतापूर्वक पूरा हुआ!",
+        faq_added: "FAQ सफलतापूर्वक जोड़ा गया!",
+        faq_updated: "FAQ सफलतापूर्वक अपडेट किया गया!",
+        faq_deleted: "FAQ सफलतापूर्वक हटाया गया!",
+        fill_english_first: "कृपया पहले अंग्रेजी सामग्री भरें",
+        no_faq_found:
+          "कोई FAQ नहीं मिला। अपनी खोज समायोजित करें या एक नया FAQ आइटम जोड़ें।",
+        translation_failed: "अनुवाद विफल। कृपया पुनः प्रयास करें।",
+        loading: "लोड हो रहा है...",
+        saving: "सहेजा जा रहा है...",
+        deleting: "हटाया जा रहा है...",
+        search_no_results: "आपकी खोज मानदंड से मेल खाता कोई FAQ नहीं मिला।",
+        translating: "अनुवाद हो रहा है...",
+        translation_in_progress: "अनुवाद प्रगति पर है...",
+
+        // Days and Months (Hindi)
+        monday: "सोमवार",
+        tuesday: "मंगलवार",
+        wednesday: "बुधवार",
+        thursday: "गुरुवार",
+        friday: "शुक्रवार",
+        saturday: "शनिवार",
+        sunday: "रविवार",
+        january: "जनवरी",
+        february: "फरवरी",
+        march: "मार्च",
+        april: "अप्रैल",
+        may: "मई",
+        june: "जून",
+        july: "जुलाई",
+        august: "अगस्त",
+        september: "सितंबर",
+        october: "अक्टूबर",
+        november: "नवंबर",
+        december: "दिसंबर",
+      },
+      gu: {
+        // UI Elements (Gujarati translations)
+        faq_management: "પ્રશ્નોત્તરી",
+        multilingual: "(બહુભાષી)",
+        multilingual_support: "(બહુભાષી સપોર્ટ)",
+        add_new_faq: "નવું FAQ ઉમેરો",
+        refresh: "રીફ્રેશ",
+        all_faq_items: "બધા FAQ આઇટમ્સ",
+        english: "અંગ્રેજી",
+        hindi: "હિન્દી",
+        gujarati: "ગુજરાતી",
+        search_questions_placeholder: "પ્રશ્નો શોધો...",
+        hash: "#",
+        question: "પ્રશ્ન",
+        category: "શ્રેણી",
+        status: "સ્થિતિ",
+        translations: "અનુવાદો",
+        last_updated: "છેલ્લી અપડેટ",
+        actions: "ક્રિયાઓ",
+        showing: "બતાવે છે",
+        to: "થી",
+        of: "ના",
+        faq_items: "FAQ આઇટમ્સ",
+        previous: "પહેલાનું",
+        next: "આગામી",
+        select_category: "શ્રેણી પસંદ કરો",
+        active: "સક્રિય",
+        inactive: "નિષ્ક્રિય",
+        pending_review: "સમીક્ષા બાકી",
+        answer: "જવાબ",
+        english_small: "(અંગ્રેજી)",
+        enter_question_english: "અંગ્રેજીમાં પ્રશ્ન દાખલ કરો",
+        enter_answer_english: "અંગ્રેજીમાં વિગતવાર જવાબ દાખલ કરો",
+        display_order: "ડિસ્પ્લે ઓર્ડર",
+        tags: "ટૅગ્સ (કોમાથી અલગ)",
+        tags_placeholder: "જેમ કે, રેરા, પેમેન્ટ, બુકિંગ",
+        tags_example: "ઉદાહરણ: રેરા, ચુકવણી, બુકિંગ, પ્રોજેક્ટ",
+        automatic_translation: "સ્વચાલિત અનુવાદ:",
+        automatic_translation_description:
+          "આ FAQ Google Translate API નો ઉપયોગ કરીને સબમિટ કર્યા પછી હિંદી અને ગુજરાતીમાં આપમેળે અનુવાદિત થશે.",
+        cancel: "રદ કરો",
+        save_faq: "FAQ સાચવો",
+        auto_translate: "સ્વચાલિત અનુવાદ",
+        auto_translated_hint:
+          "આ આપોઆપ અંગ્રેજીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત કરી શકો છો)",
+        auto_translated_content_hint:
+          "આ આપોઆપ અંગ્રેજી સામગ્રીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત કરી શકો છો)",
+        view_translations: "અનુવાદ જુઓ",
+        edit_faq: "FAQ સંપાદિત કરો",
+        add_faq: "FAQ ઉમેરો",
+        delete_faq: "FAQ કાઢી નાખો",
+
+        // FAQ Categories (Gujarati)
+        "faq.category1.title": "પ્રોજેક્ટ સંબંધિત પ્રશ્નો",
+        "faq.category1.description":
+          "રહેણાંક અને વાણિજ્યિક પ્રોજેક્ટ્સ વિશેના પ્રશ્નો",
+        "faq.category2.title": "બુકિંગ પ્રક્રિયા પ્રશ્નો",
+        "faq.category2.description":
+          "બુકિંગ, દસ્તાવેજીકરણ અને પ્રક્રિયાઓ વિશેની માહિતી",
+        "faq.category3.title": "ચુકવણી અને ફાઇનાન્સ પ્રશ્નો",
+        "faq.category3.description":
+          "ચુકવણી યોજનાઓ, લોન, EMI અને આર્થિક પ્રશ્નો",
+        "faq.category4.title": "લીગલ અને RERA પ્રશ્નો",
+        "faq.category4.description":
+          "કાનૂની દસ્તાવેજીકરણ, RERA અનુકૂલન અને મંજૂરી",
+        "faq.category5.title": "સુવિધાઓ અને સ્પષ્ટીકરણો",
+        "faq.category5.description":
+          "સુવિધાઓ, આરામ અને પ્રોજેક્ટ સ્પષ્ટીકરણો",
+        "faq.category6.title": "સ્થાન અને કનેક્ટિવિટી",
+        "faq.category6.description": "સ્થાન વિગતો, કનેક્ટિવિટી અને પડોશ",
+
+        // Sidebar Menu (Gujarati)
+        dashboard: "ડેશબોર્ડ",
+        users: "વપરાશકર્તાઓ",
+        blogs: "બ્લોગ્સ",
+        team: "ટીમ",
+        gallery: "ગેલેરી",
+        career: "કારકિર્દી",
+        news: "સમાચાર",
+        log_out: "લોગ આઉટ",
+
+        // User Info (Gujarati)
+        admin_name: "એડમિન વપરાશકર્તા",
+        system_administrator: "સિસ્ટમ એડમિનિસ્ટ્રેટર",
+        naroda_group: "નારોદા ગ્રુપ",
+
+        // Messages (Gujarati)
+        confirm_delete: "શું તમે ખરેખર આ FAQ કાઢી નાખવા માંગો છો?",
+        confirm_logout: "શું તમે ખરેખર લોગ આઉટ કરવા માંગો છો?",
+        logout_success: "તમે સફળતાપૂર્વક લોગ આઉટ થયા છો.",
+        translation_complete: "અનુવાદ સફળતાપૂર્વક પૂર્ણ થયો!",
+        faq_added: "FAQ સફળતાપૂર્વક ઉમેર્યા!",
+        faq_updated: "FAQ સફળતાપૂર્વક અપડેટ કર્યા!",
+        faq_deleted: "FAQ સફળતાપૂર્વક કાઢી નાખ્યા!",
+        fill_english_first: "કૃપા કરીને પહેલા અંગ્રેજી સામગ્રી ભરો",
+        no_faq_found:
+          "કોઈ FAQ મળ્યું નથી. તમારી શોધ એડજસ્ટ કરો અથવા નવું FAQ આઇટમ ઉમેરો.",
+        translation_failed: "અનુવાદ નિષ્ફળ. કૃપા કરીને ફરી પ્રયાસ કરો.",
+        loading: "લોડ થાય છે...",
+        saving: "સાચવી રહ્યું છે...",
+        deleting: "કાઢી નાખી રહ્યું છે...",
+        search_no_results: "તમારા શોધ માપદંડને મેળ ખાતું કોઈ FAQ મળ્યું નથી.",
+        translating: "અનુવાદ થઈ રહ્યો છે...",
+        translation_in_progress: "અનુવાદ પ્રગતિ પર છે...",
+
+        // Days and Months (Gujarati)
+        monday: "સોમવાર",
+        tuesday: "મંગળવાર",
+        wednesday: "બુધવાર",
+        thursday: "ગુરુવાર",
+        friday: "શુક્રવાર",
+        saturday: "શનિવાર",
+        sunday: "રવિવાર",
+        january: "જાન્યુઆરી",
+        february: "ફેબ્રુઆરી",
+        march: "માર્ચ",
+        april: "એપ્રિલ",
+        may: "મે",
+        june: "જૂન",
+        july: "જુલાઈ",
+        august: "ઑગસ્ટ",
+        september: "સપ્ટેમ્બર",
+        october: "ઓક્ટોબર",
+        november: "નવેમ્બર",
+        december: "ડિસેમ્બર",
+      },
+    };
+
+    // ==================== GLOBAL VARIABLES ====================
+    let currentLanguage = "en"; // Default language
+    let currentFAQId = null;
+    let selectedCategory = "all";
+    let currentPage = 1;
+    const itemsPerPage = 10;
+    let filteredFAQs = [];
+    let faqToDelete = null;
+    let faqData = []; // Will be loaded from database
+    let searchTimer = null;
+    let isTranslating = false;
+
+    // ==================== HELPER FUNCTIONS ====================
+    function formatDate(dateString) {
+      if (!dateString) return "N/A";
+      const date = new Date(dateString);
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+    }
+
+    function getCategoryName(category) {
+      const categories = {
+        projects: translations[currentLanguage]["faq.category1.title"],
+        booking: translations[currentLanguage]["faq.category2.title"],
+        payments: translations[currentLanguage]["faq.category3.title"],
+        legal: translations[currentLanguage]["faq.category4.title"],
+        amenities: translations[currentLanguage]["faq.category5.title"],
+        location: translations[currentLanguage]["faq.category6.title"],
+      };
+      return categories[category] || category;
+    }
+
+    function getCategoryClass(category) {
+      const categoryClasses = {
+        projects: "badge-primary",
+        booking: "badge-success",
+        payments: "badge-warning",
+        legal: "badge-danger",
+        amenities: "badge-info",
+        location: "badge-primary",
+      };
+      return categoryClasses[category] || "badge-primary";
+    }
+
+    function getStatusName(status) {
+      return translations[currentLanguage][status] || status;
+    }
+
+    function getStatusClass(status) {
+      return status === "active" ? "badge-success" : "badge-warning";
+    }
+
+    function getTranslationStatus(faq) {
+      const hasHi = faq.question_hi && faq.question_hi.trim() !== "";
+      const hasGu = faq.question_gu && faq.question_gu.trim() !== "";
+
+      if (hasHi && hasGu) {
+        return (
+          '<span class="translation-status status-completed"><i class="fas fa-check-circle"></i> ' +
+          translations[currentLanguage].translation_complete +
+          "</span>"
+        );
+      } else if (hasHi || hasGu) {
+        return (
+          '<span class="translation-status status-pending"><i class="fas fa-clock"></i> ' +
+          translations[currentLanguage].pending_review +
+          "</span>"
+        );
+      } else {
+        return (
+          '<span class="translation-status status-pending"><i class="fas fa-exclamation-triangle"></i> ' +
+          translations[currentLanguage].fill_english_first +
+          "</span>"
+        );
+      }
+    }
+
+    function updatePaginationInfo(count) {
+      const startIndex = (currentPage - 1) * itemsPerPage + 1;
+      const endIndex = Math.min(startIndex + itemsPerPage - 1, count);
+
+      document.getElementById("startItem").textContent = startIndex;
+      document.getElementById("endItem").textContent = endIndex;
+      document.getElementById("totalItems").textContent = count;
+    }
+
+    // Translate EVERYTHING on the page
+    function translateEverything() {
+      // Update page title based on language
+      const pageTitleElement = document.getElementById("main-page-title");
+      if (currentLanguage === "gu") {
+        pageTitleElement.innerHTML =
+          'પ્રશ્નોત્તરી <small class="text-muted" style="font-size: 1rem;">(બહુભાષી સપોર્ટ)</small>';
+      } else if (currentLanguage === "hi") {
+        pageTitleElement.innerHTML =
+          'अक्सर पूछे जाने वाले प्रश्न <small class="text-muted" style="font-size: 1rem;">(बहुभाषी समर्थन)</small>';
+      } else {
+        pageTitleElement.innerHTML =
+          'FAQ Management <small class="text-muted" style="font-size: 1rem;">(Multilingual Support)</small>';
+      }
+
+      // Translate all elements with data-i18n attribute
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          element.textContent = translations[currentLanguage][key];
+        }
+      });
+
+      // Translate all placeholder elements
+      document
+        .querySelectorAll("[data-i18n-placeholder]")
+        .forEach((element) => {
+          const key = element.getAttribute("data-i18n-placeholder");
+          if (
+            translations[currentLanguage] &&
+            translations[currentLanguage][key]
+          ) {
+            element.placeholder = translations[currentLanguage][key];
+          }
+        });
+
+      // Update select options
+      const selectOptions = document.querySelectorAll("option[data-i18n]");
+      selectOptions.forEach((option) => {
+        const key = option.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          option.textContent = translations[currentLanguage][key];
+        }
+      });
+
+      // Update button texts
+      const buttons = document.querySelectorAll("button[data-i18n]");
+      buttons.forEach((button) => {
+        const key = button.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          const span = button.querySelector("span");
+          if (span) {
+            span.textContent = translations[currentLanguage][key];
+          } else {
+            button.textContent = translations[currentLanguage][key];
+          }
+        }
+      });
+
+      // Update category cards
+      document
+        .querySelectorAll(".category-card [data-i18n]")
+        .forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (
+            translations[currentLanguage] &&
+            translations[currentLanguage][key]
+          ) {
+            element.textContent = translations[currentLanguage][key];
+          }
+        });
+
+      // Update navbar time and date
+      updateNavbarDateTime();
+
+      // Update modal titles and content
+      updateModalTranslations();
+
+      // Re-render table
+      if (faqData.length > 0) {
+        renderFAQTable();
+        setupPagination();
+      }
+    }
+
+    // Update modal translations
+    function updateModalTranslations() {
+      // Add FAQ Modal
+      const addFAQModalLabel = document.getElementById("addFAQModalLabel");
+      if (addFAQModalLabel) {
+        if (currentFAQId) {
+          addFAQModalLabel.textContent =
+            translations[currentLanguage].edit_faq;
+        } else {
+          addFAQModalLabel.textContent =
+            translations[currentLanguage].add_new_faq;
+        }
+      }
+
+      // Delete Dialog
+      const deleteDialogMessage = document.getElementById(
+        "deleteDialogMessage"
+      );
+      if (
+        deleteDialogMessage &&
+        translations[currentLanguage].confirm_delete
+      ) {
+        deleteDialogMessage.textContent =
+          translations[currentLanguage].confirm_delete;
+      }
+
+      const deleteDialogTitle = document.getElementById("deleteDialogTitle");
+      if (deleteDialogTitle) {
+        deleteDialogTitle.textContent =
+          translations[currentLanguage].delete_faq;
+      }
+
+      const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+      if (cancelDeleteBtn && translations[currentLanguage].cancel) {
+        cancelDeleteBtn.textContent = translations[currentLanguage].cancel;
+      }
+
+      const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+      if (confirmDeleteBtn) {
+        confirmDeleteBtn.textContent =
+          translations[currentLanguage].delete_faq;
+      }
+
+      // Save button text
+      const saveBtn = document.getElementById("save-faq-btn");
+      if (saveBtn) {
+        const btnText = currentFAQId
+          ? translations[currentLanguage].edit_faq
+          : translations[currentLanguage].add_faq;
+
+        // Update with spinner if loading
+        if (saveBtn.innerHTML.includes("fa-spinner")) {
+          const spinnerHtml = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentLanguage].saving}`;
+          saveBtn.innerHTML = spinnerHtml;
+        } else {
+          saveBtn.textContent = btnText;
+        }
+      }
+
+      // Auto translate button
+      const autoTranslateBtn = document.getElementById("auto-translate-btn");
+      if (autoTranslateBtn && translations[currentLanguage].auto_translate) {
+        autoTranslateBtn.textContent =
+          translations[currentLanguage].auto_translate;
+      }
+    }
+
+    // Translate dates in real-time
+    function updateNavbarDateTime() {
+      const now = new Date();
+
+      // Get day and month names in current language
+      const dayNames = {
+        en: [
+          translations.en.sunday,
+          translations.en.monday,
+          translations.en.tuesday,
+          translations.en.wednesday,
+          translations.en.thursday,
+          translations.en.friday,
+          translations.en.saturday,
+        ],
+        hi: [
+          translations.hi.sunday,
+          translations.hi.monday,
+          translations.hi.tuesday,
+          translations.hi.wednesday,
+          translations.hi.thursday,
+          translations.hi.friday,
+          translations.hi.saturday,
+        ],
+        gu: [
+          translations.gu.sunday,
+          translations.gu.monday,
+          translations.gu.tuesday,
+          translations.gu.wednesday,
+          translations.gu.thursday,
+          translations.gu.friday,
+          translations.gu.saturday,
+        ],
+      };
+
+      const monthNames = {
+        en: [
+          translations.en.january,
+          translations.en.february,
+          translations.en.march,
+          translations.en.april,
+          translations.en.may,
+          translations.en.june,
+          translations.en.july,
+          translations.en.august,
+          translations.en.september,
+          translations.en.october,
+          translations.en.november,
+          translations.en.december,
+        ],
+        hi: [
+          translations.hi.january,
+          translations.hi.february,
+          translations.hi.march,
+          translations.hi.april,
+          translations.hi.may,
+          translations.hi.june,
+          translations.hi.july,
+          translations.hi.august,
+          translations.hi.september,
+          translations.hi.october,
+          translations.hi.november,
+          translations.hi.december,
+        ],
+        gu: [
+          translations.gu.january,
+          translations.gu.february,
+          translations.gu.march,
+          translations.gu.april,
+          translations.gu.may,
+          translations.gu.june,
+          translations.gu.july,
+          translations.gu.august,
+          translations.gu.september,
+          translations.gu.october,
+          translations.gu.november,
+          translations.gu.december,
+        ],
+      };
+
+      const dayName = dayNames[currentLanguage][now.getDay()];
+      const monthName = monthNames[currentLanguage][now.getMonth()];
+      const date = now.getDate();
+      const year = now.getFullYear();
+
+      // Format time
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+
+      // For Hindi and Gujarati, we can show time in 12-hour format
+      if (currentLanguage === "en") {
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById(
+          "navbar-current-time"
+        ).textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+        document.getElementById(
+          "navbar-current-date"
+        ).textContent = `${dayName}, ${monthName} ${date}, ${year}`;
+      } else {
+        // Hindi and Gujarati use 24-hour format
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById(
+          "navbar-current-time"
+        ).textContent = `${hours}:${minutes}:${seconds}`;
+        document.getElementById(
+          "navbar-current-date"
+        ).textContent = `${dayName}, ${date} ${monthName}, ${year}`;
+      }
+    }
+
+    // Show loading indicator
+    function showLoading(show) {
+      const tbody = document.getElementById("faqTableBody");
+      if (show) {
+        tbody.innerHTML = `
+            <tr>
+              <td colspan="7" class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">${translations[currentLanguage].loading}</span>
+                </div>
+                <p class="mt-2">${translations[currentLanguage].loading}</p>
+              </td>
+            </tr>
+          `;
+      }
+    }
+
+    // Show notification
+    function showNotification(message, type = "success") {
+      // Remove existing notifications
+      document.querySelectorAll(".notification").forEach((el) => el.remove());
+
+      // Create notification element
+      const notification = document.createElement("div");
+      notification.className = `notification notification-${type}`;
+      notification.style.cssText = `
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: ${type === "success"
+          ? "#10b981"
+          : type === "warning"
+            ? "#f59e0b"
+            : type === "info"
+              ? "#3b82f6"
+              : "#ef4444"
+        };
+          color: white;
+          padding: 15px 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          z-index: 10000;
+          animation: slideIn 0.3s ease;
+          display: flex;
+          align-items: center;
+          max-width: 400px;
+        `;
+
+      notification.innerHTML = `
+          <i class="fas fa-${type === "success"
+          ? "check-circle"
+          : type === "warning"
+            ? "exclamation-triangle"
+            : type === "info"
+              ? "info-circle"
+              : "exclamation-circle"
+        }"></i>
+          <span class="ms-2">${message}</span>
+        `;
+
+      document.body.appendChild(notification);
+
+      // Remove after 3 seconds
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.style.animation = "slideOut 0.3s ease";
+          setTimeout(() => {
+            if (notification.parentNode) {
+              document.body.removeChild(notification);
+            }
+          }, 300);
+        }
+      }, 3000);
+
+      // Add CSS for animations
+      if (!document.querySelector("#notification-styles")) {
+        const style = document.createElement("style");
+        style.id = "notification-styles";
+        style.textContent = `
+            @keyframes slideIn {
+              from { transform: translateX(100%); opacity: 0; }
+              to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+              from { transform: translateX(0); opacity: 1; }
+              to { transform: translateX(100%); opacity: 0; }
+            }
+          `;
+        document.head.appendChild(style);
+      }
+    }
+
+    // ==================== API FUNCTIONS ====================
+
+    // Load FAQs from database
+    async function loadFAQs() {
+      try {
+        showLoading(true);
+
+        // Reset search input
+        document.getElementById("searchFAQ").value = "";
+
+        let url = "api/faq_api.php";
+        if (selectedCategory !== "all") {
+          url += `?category=${selectedCategory}`;
+        }
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.success) {
+          faqData = data.data;
+          filteredFAQs = [...faqData];
+          currentPage = 1; // Reset to first page
+          renderFAQTable();
+          setupPagination();
+          updateCategoryCounts();
+
+          if (filteredFAQs.length === 0) {
+            showNotification(
+              translations[currentLanguage].no_faq_found,
+              "info"
+            );
+          }
+        } else {
+          showNotification(data.error || "Failed to load FAQs", "danger");
+        }
+      } catch (error) {
+        console.error("Error loading FAQs:", error);
+        showNotification(
+          "Network error. Please check your connection.",
+          "danger"
+        );
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    // Save FAQ to database
+    async function saveFAQ(formData) {
+      try {
+        const url = "api/faq_api.php";
+        const method = currentFAQId ? "PUT" : "POST";
+
+        // Get the save button and save original text
+        const saveBtn = document.getElementById("save-faq-btn");
+        const originalText = saveBtn.innerHTML;
+        const originalDisabled = saveBtn.disabled;
+
+        // Show loading state
+        saveBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentLanguage].saving}`;
+        saveBtn.disabled = true;
+
+        // Make API call
+        const response = await fetch(url, {
+          method: method,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          showNotification(
+            currentFAQId
+              ? translations[currentLanguage].faq_updated
+              : translations[currentLanguage].faq_added,
+            "success"
+          );
+
+          // Close modal
+          const modalElement = document.getElementById("addFAQModal");
+          const modal = bootstrap.Modal.getInstance(modalElement);
+          if (modal) {
+            modal.hide();
+          }
+
+          // Reset form
+          document.getElementById("faq-id").value = "";
+          document.getElementById("faq-question-en").value = "";
+          document.getElementById("faq-answer-en").innerHTML = "";
+          document.getElementById("faq-question-hi").value = "";
+          document.getElementById("faq-answer-hi").innerHTML = "";
+          document.getElementById("faq-question-gu").value = "";
+          document.getElementById("faq-answer-gu").innerHTML = "";
+          document.getElementById("faq-category").value = "";
+          document.getElementById("faq-status").value = "active";
+          document.getElementById("faq-order").value = "1";
+          document.getElementById("faq-tags").value = "";
+          currentFAQId = null;
+
+          // Reload FAQs
+          await loadFAQs();
+          return true;
+        } else {
+          showNotification(data.error || "Failed to save FAQ", "danger");
+          return false;
+        }
+      } catch (error) {
+        console.error("Error saving FAQ:", error);
+        showNotification(
+          "Network error. Please check your connection.",
+          "danger"
+        );
+        return false;
+      } finally {
+        // Restore button state
+        const saveBtn = document.getElementById("save-faq-btn");
+        if (saveBtn) {
+          // Restore original text based on current state
+          const btnText = currentFAQId
+            ? translations[currentLanguage].edit_faq
+            : translations[currentLanguage].add_faq;
+          saveBtn.innerHTML = btnText;
+          saveBtn.disabled = false;
+        }
+      }
+    }
+
+    // Delete FAQ from database
+    async function deleteFAQ(id) {
+      try {
+        const response = await fetch(`api/faq_api.php?id=${id}`, {
+          method: "DELETE",
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          showNotification(
+            translations[currentLanguage].faq_deleted,
+            "success"
+          );
+          hideDeleteConfirmation();
+          await loadFAQs();
+        } else {
+          showNotification(data.error || "Failed to delete FAQ", "danger");
+        }
+      } catch (error) {
+        console.error("Error deleting FAQ:", error);
+        showNotification(
+          "Network error. Please check your connection.",
+          "danger"
+        );
+      }
+    }
+
+    // Search FAQs
+    async function searchFAQ() {
+      const searchTerm = document.getElementById("searchFAQ").value.trim();
+
+      if (!searchTerm) {
+        filterByCategory(selectedCategory);
+        return;
+      }
+
+      try {
+        showLoading(true);
+        let url = `api/faq_api.php?search=${encodeURIComponent(searchTerm)}`;
+        if (selectedCategory !== "all") {
+          url += `&category=${selectedCategory}`;
+        }
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.success) {
+          filteredFAQs = data.data;
+          currentPage = 1;
+
+          if (filteredFAQs.length === 0) {
+            showNotification(
+              translations[currentLanguage].search_no_results,
+              "info"
+            );
+          }
+
+          renderFAQTable();
+          setupPagination();
+        }
+      } catch (error) {
+        console.error("Search error:", error);
+        showNotification("Search failed. Please try again.", "danger");
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    // ==================== CORE FUNCTIONS ====================
+
+    // Update category counts
+    function updateCategoryCounts() {
+      const categories = [
+        "projects",
+        "booking",
+        "payments",
+        "legal",
+        "amenities",
+        "location",
+      ];
+
+      categories.forEach((category) => {
+        const count = faqData.filter(
+          (faq) => faq.category === category
+        ).length;
+        const card = document.querySelector(
+          `.category-card[data-category="${category}"] .category-count`
+        );
+        if (card) {
+          card.textContent = `${count} Question${count !== 1 ? "s" : ""}`;
+        }
+      });
+    }
+
+    // Render FAQ table based on current language
+    function renderFAQTable() {
+      const tbody = document.getElementById("faqTableBody");
+      tbody.innerHTML = "";
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const faqsToShow = filteredFAQs.slice(startIndex, endIndex);
+
+      if (faqsToShow.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+              <td colspan="7" class="text-center py-5">
+                <i class="fas fa-question-circle fa-3x text-muted mb-3"></i>
+                <p class="text-muted">${translations[currentLanguage].no_faq_found}</p>
+              </td>
+            </tr>
+          `;
+        updatePaginationInfo(0);
+        return;
+      }
+
+      faqsToShow.forEach((faq, index) => {
+        // Get text in current language
+        let question, answer;
+        if (currentLanguage === "en") {
+          question = faq.question;
+          answer = faq.answer;
+        } else if (currentLanguage === "hi") {
+          question = faq.question_hi || faq.question;
+          answer = faq.answer_hi || faq.answer;
+        } else if (currentLanguage === "gu") {
+          question = faq.question_gu || faq.question;
+          answer = faq.answer_gu || faq.answer;
+        }
+
+        // Get category and status names in current language
+        const categoryName = getCategoryName(faq.category);
+        const statusName = getStatusName(faq.status);
+
+        const categoryClass = getCategoryClass(faq.category);
+        const statusClass = getStatusClass(faq.status);
+
+        // Determine translation status
+        const translationStatus = getTranslationStatus(faq);
+
+        // Create language badges
+        const langBadges = `
+            <div class="language-badges">
+              <div class="lang-badge en" title="${translations[currentLanguage].english
+          }">EN</div>
+              ${faq.question_hi && faq.question_hi.trim() !== ""
+            ? '<div class="lang-badge hi" title="' +
+            translations[currentLanguage].hindi +
+            '">HI</div>'
+            : '<div class="lang-badge hi" style="opacity:0.5" title="' +
+            translations[currentLanguage].hindi +
+            ' translation pending">HI</div>'
+          }
+              ${faq.question_gu && faq.question_gu.trim() !== ""
+            ? '<div class="lang-badge gu" title="' +
+            translations[currentLanguage].gujarati +
+            '">GU</div>'
+            : '<div class="lang-badge gu" style="opacity:0.5" title="' +
+            translations[currentLanguage].gujarati +
+            ' translation pending">GU</div>'
+          }
+            </div>
+          `;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${startIndex + index + 1}</td>
+            <td class="faq-question" title="${question}">
+              ${question}
+              ${currentLanguage === "en" ? translationStatus : ""}
+            </td>
+            <td><span class="badge ${categoryClass}">${categoryName}</span></td>
+            <td><span class="badge ${statusClass}">${statusName}</span></td>
+            <td>${langBadges}</td>
+            <td>${formatDate(faq.updated_at || faq.updated)}</td>
+            <td>
+              <div class="action-icons">
+                <div class="action-icon view" title="${translations[currentLanguage].view_translations
+          }" onclick="viewTranslations(${faq.id})">
+                  <i class="fas fa-language"></i>
+                </div>
+                <div class="action-icon edit" title="${translations[currentLanguage].edit_faq
+          }" onclick="editFAQ(${faq.id})">
+                  <i class="fas fa-edit"></i>
+                </div>
+                <div class="action-icon delete" title="${translations[currentLanguage].delete_faq
+          }" onclick="showDeleteConfirmation(${faq.id})">
+                  <i class="fas fa-trash"></i>
+                </div>
+              </div>
+            </td>
+          `;
+        tbody.appendChild(row);
+      });
+
+      updatePaginationInfo(filteredFAQs.length);
+    }
+
+    // Setup pagination
+    function setupPagination() {
+      const pagination = document.getElementById("faqPagination");
+      pagination.innerHTML = "";
+
+      const totalPages = Math.ceil(filteredFAQs.length / itemsPerPage);
+
+      if (totalPages <= 1) return;
+
+      // Previous button
+      const prevLi = document.createElement("li");
+      prevLi.className = "page-item" + (currentPage === 1 ? " disabled" : "");
+      prevLi.innerHTML = `
+          <a class="page-link" href="#" aria-label="Previous" onclick="event.preventDefault(); if(${currentPage} > 1) { currentPage--; renderFAQTable(); setupPagination(); }">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        `;
+      pagination.appendChild(prevLi);
+
+      // Page numbers
+      const maxVisiblePages = 5;
+      let startPage = Math.max(
+        1,
+        currentPage - Math.floor(maxVisiblePages / 2)
+      );
+      let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+      if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        const pageLi = document.createElement("li");
+        pageLi.className = "page-item" + (i === currentPage ? " active" : "");
+        pageLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); currentPage = ${i}; renderFAQTable(); setupPagination();">${i}</a>`;
+        pagination.appendChild(pageLi);
+      }
+
+      // Next button
+      const nextLi = document.createElement("li");
+      nextLi.className =
+        "page-item" + (currentPage === totalPages ? " disabled" : "");
+      nextLi.innerHTML = `
+          <a class="page-link" href="#" aria-label="Next" onclick="event.preventDefault(); if(${currentPage} < ${totalPages}) { currentPage++; renderFAQTable(); setupPagination(); }">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        `;
+      pagination.appendChild(nextLi);
+    }
+
+    // Filter by category
+    function filterByCategory(category) {
+      selectedCategory = category;
+
+      // Reset search input
+      document.getElementById("searchFAQ").value = "";
+
+      // Update active category card
+      document.querySelectorAll(".category-card").forEach((card) => {
+        card.classList.remove("active");
+        if (card.dataset.category === category) {
+          card.classList.add("active");
+        }
+      });
+
+      // Load FAQs for this category
+      loadFAQs();
+    }
+
+    // Reset filters and show all FAQs
+    function resetFilters() {
+      selectedCategory = "all";
+      document.getElementById("searchFAQ").value = "";
+
+      // Update active category card
+      document.querySelectorAll(".category-card").forEach((card) => {
+        card.classList.remove("active");
+        if (card.dataset.category === "all") {
+          card.classList.add("active");
+        }
+      });
+
+      loadFAQs();
+    }
+
+    // View category questions
+    function viewCategoryQuestions(category, event) {
+      event.stopPropagation();
+      filterByCategory(category);
+    }
+
+    // Switch language
+    function switchLanguage(lang) {
+      currentLanguage = lang;
+
+      // Update flag
+      const flagImg = document.getElementById("current-flag");
+      switch (currentLanguage) {
+        case "hi":
+          flagImg.src = "https://flagcdn.com/w40/in.png";
+          break;
+        case "gu":
+          flagImg.src = "https://flagcdn.com/w40/in.png";
+          break;
+        default:
+          flagImg.src = "https://flagcdn.com/w40/gb.png";
+      }
+
+      // Update global language selector
+      document.getElementById("global-language-selector").value = lang;
+
+      // Translate everything
+      translateEverything();
+    }
+
+    // View Translations
+    function viewTranslations(id) {
+      const faq = faqData.find((item) => item.id == id);
+      if (!faq) return;
+
+      // Populate English content
+      document.getElementById("view-question-en").textContent =
+        faq.question || "Not available";
+      document.getElementById("view-answer-en").innerHTML =
+        faq.answer || "Not available";
+
+      // Populate Hindi content
+      document.getElementById("view-question-hi").textContent =
+        faq.question_hi || "Not translated yet";
+      document.getElementById("view-answer-hi").innerHTML =
+        faq.answer_hi || "Not translated yet";
+
+      // Populate Gujarati content
+      document.getElementById("view-question-gu").textContent =
+        faq.question_gu || "Not translated yet";
+      document.getElementById("view-answer-gu").innerHTML =
+        faq.answer_gu || "Not translated yet";
+
+      // Show modal
+      const viewTranslationsModal = new bootstrap.Modal(
+        document.getElementById("viewTranslationsModal")
+      );
+      viewTranslationsModal.show();
+    }
+
+    // Edit FAQ
+    function editFAQ(id) {
+      const faq = faqData.find((item) => item.id == id);
+      if (!faq) {
+        showNotification("FAQ not found", "danger");
+        return;
+      }
+
+      currentFAQId = id;
+
+      // Populate form with FAQ data
+      document.getElementById("faq-id").value = faq.id;
+      document.getElementById("faq-category").value = faq.category;
+      document.getElementById("faq-status").value = faq.status;
+      document.getElementById("faq-order").value = faq.display_order || 1;
+      document.getElementById("faq-tags").value = faq.tags || "";
+
+      // Populate English content
+      document.getElementById("faq-question-en").value = faq.question;
+      document.getElementById("faq-answer-en").innerHTML = faq.answer || "";
+
+      // Populate Hindi content
+      document.getElementById("faq-question-hi").value =
+        faq.question_hi || "";
+      document.getElementById("faq-answer-hi").innerHTML =
+        faq.answer_hi || "";
+
+      // Populate Gujarati content
+      document.getElementById("faq-question-gu").value =
+        faq.question_gu || "";
+      document.getElementById("faq-answer-gu").innerHTML =
+        faq.answer_gu || "";
+
+      // Update modal title
+      updateModalTranslations();
+
+      // Switch to English tab
+      const englishTab = document.querySelector(
+        '#translation-tabs button[data-bs-target="#english-tab"]'
+      );
+      if (englishTab) {
+        const tab = new bootstrap.Tab(englishTab);
+        tab.show();
+      }
+
+      const addModal = new bootstrap.Modal(
+        document.getElementById("addFAQModal")
+      );
+      addModal.show();
+    }
+
+    // Show delete confirmation dialog
+    function showDeleteConfirmation(id) {
+      faqToDelete = id;
+      const dialog = document.getElementById("deleteConfirmationDialog");
+      dialog.classList.add("show");
+    }
+
+    // Hide delete confirmation dialog
+    function hideDeleteConfirmation() {
+      const dialog = document.getElementById("deleteConfirmationDialog");
+      dialog.classList.remove("show");
+      faqToDelete = null;
+    }
+
+    // IMPROVED Translation function with multiple fallback methods
+    async function translateText(text, sourceLang, targetLang) {
+      if (!text || text.trim() === "") {
+        return "";
+      }
+
+      // Prevent multiple simultaneous translations
+      if (isTranslating) {
+        showNotification(
+          translations[currentLanguage].translation_in_progress,
+          "info"
+        );
+        return text;
+      }
+
+      isTranslating = true;
+
+      // Enhanced fallback translations for both Hindi and Gujarati
+      const fallbackTranslations = {
+        "en-hi": {
+          "What types of projects does Naroda Group develop?":
+            "नरोदा ग्रुप किस प्रकार के प्रोजेक्ट विकसित करता है?",
+          "Naroda Group specializes in both residential and commercial real estate development.":
+            "नरोदा ग्रुप आवासीय और वाणिज्यिक दोनों प्रकार की रियल एस्टेट डेवलपमेंट में माहिर है।",
+          "Where are Naroda Group projects located?":
+            "नरोदा ग्रुप परियोजनाएं कहां स्थित हैं?",
+          "Our projects are strategically located in Ahmedabad's fastest-growing corridors":
+            "हमारी परियोजनाएं अहमदाबाद के सबसे तेजी से बढ़ते गलियारों में रणनीतिक रूप से स्थित हैं",
+          "What amenities are provided in Naroda Group projects?":
+            "नरोदा ग्रुप परियोजनाओं में कौन सी सुविधाएं प्रदान की जाती हैं?",
+          "We provide world-class amenities in all our projects":
+            "हम अपनी सभी परियोजनाओं में विश्व स्तरीय सुविधाएं प्रदान करते हैं",
+          "What is the booking process for a Naroda Group property?":
+            "नरोदा ग्रुप की संपत्ति के लिए बुकिंग प्रक्रिया क्या है?",
+          "The booking process is simple and transparent":
+            "बुकिंग प्रक्रिया सरल और पारदर्शी है",
+          "What documents are required for booking?":
+            "बुकिंग के लिए कौन से दस्तावेज आवश्यक हैं?",
+          "What payment plans are available?":
+            "कौन सी भुगतान योजनाएं उपलब्ध हैं?",
+          "We offer flexible payment plans":
+            "हम लचीली भुगतान योजनाएं प्रदान करते हैं",
+          "Do you offer home loan assistance?":
+            "क्या आप होम लोन सहायता प्रदान करते हैं?",
+          "Yes, we provide comprehensive home loan assistance":
+            "हां, हम व्यापक होम लोन सहायता प्रदान करते हैं",
+          "Are all Naroda Group projects RERA registered?":
+            "क्या सभी नरोदा ग्रुप प्रोजेक्ट RERA पंजीकृत हैं?",
+          "Yes, all our ongoing and upcoming projects are registered under RERA":
+            "हां, हमारे सभी चल रहे और आगामी प्रोजेक्ट RERA के तहत पंजीकृत हैं",
+          "What are the specifications for Naroda Landmark?":
+            "नरोदा लैंडमार्क के लिए विनिर्देश क्या हैं?",
+          "Naroda Landmark offers premium specifications":
+            "नरोदा लैंडमार्क प्रीमियम विनिर्देश प्रदान करता है",
+          "What is the exact location of Naroda Landmark?":
+            "नरोदा लैंडमार्क का सटीक स्थान क्या है?",
+          "Naroda Landmark is strategically located at":
+            "नरोदा लैंडमार्क रणनीतिक रूप से स्थित है",
+          "What are the size options available?":
+            "कौन से आकार विकल्प उपलब्ध हैं?",
+          "We offer a variety of size options to suit different business needs":
+            "हम विभिन्न व्यावसायिक आवश्यकताओं के अनुरूप विभिन्न आकार विकल्प प्रदान करते हैं",
+        },
+        "en-gu": {
+          "What types of projects does Naroda Group develop?":
+            "નરોડા ગ્રુપ કેવા પ્રકારના પ્રોજેક્ટ્સ વિકસાવે છે?",
+          "Naroda Group specializes in both residential and commercial real estate development.":
+            "નરોડા ગ્રુપ રહેણાંક અને વાણિજ્યિક બંને પ્રકારના રીઅલ એસ્ટેટ વિકાસમાં માહિર છે.",
+          "Where are Naroda Group projects located?":
+            "નરોડા ગ્રુપ પ્રોજેક્ટ્સ ક્યાં સ્થિત છે?",
+          "Our projects are strategically located in Ahmedabad's fastest-growing corridors":
+            "અમારા પ્રોજેક્ટ્સ અમદાવાદના સૌથી ઝડપથી વિકસિત થતા કોરિડોરમાં વ્યૂહાત્મક રીતે સ્થિત છે",
+          "What amenities are provided in Naroda Group projects?":
+            "નરોડા ગ્રુપ પ્રોજેક્ટ્સમાં કઈ સુવિધાઓ પ્રદાન કરવામાં આવે છે?",
+          "We provide world-class amenities in all our projects":
+            "અમે અમારા તમામ પ્રોજેક્ટ્સમાં વર્લ્ડ ક્લાસ સુવિધાઓ પ્રદાન કરીએ છીએ",
+          "What is the booking process for a Naroda Group property?":
+            "નરોડા ગ્રુપની મિલકત માટે બુકિંગ પ્રક્રિયા શું છે?",
+          "The booking process is simple and transparent":
+            "બુકિંગ પ્રક્રિયા સરળ અને પારદર્શક છે",
+          "What documents are required for booking?":
+            "બુકિંગ માટે કયા દસ્તાવેજો જરૂરી છે?",
+          "What payment plans are available?": "કઈ ચુકવણી યોજનાઓ ઉપલબ્ધ છે?",
+          "We offer flexible payment plans":
+            "અમે લવચીક ચુકવણી યોજનાઓ ઓફર કરીએ છીએ",
+          "Do you offer home loan assistance?":
+            "શું તમે હોમ લોન સહાયતા પ્રદાન કરો છો?",
+          "Yes, we provide comprehensive home loan assistance":
+            "હા, અમે વ્યાપક હોમ લોન સહાયતા પ્રદાન કરીએ છીએ",
+          "Are all Naroda Group projects RERA registered?":
+            "શું તમામ નરોડા ગ્રુપ પ્રોજેક્ટ્સ RERA નોંધાયેલ છે?",
+          "Yes, all our ongoing and upcoming projects are registered under RERA":
+            "હા, અમારા બધા ચાલુ અને આગામી પ્રોજેક્ટ્સ RERA હેઠળ નોંધાયેલ છે",
+          "What are the specifications for Naroda Landmark?":
+            "નરોડા લેન્ડમાર્ક માટે સ્પષ્ટીકરણો શું છે?",
+          "Naroda Landmark offers premium specifications":
+            "નરોડા લેન્ડમાર્ક પ્રીમિયમ સ્પષ્ટીકરણો ઓફર કરે છે",
+          "What is the exact location of Naroda Landmark?":
+            "નરોડા લેન્ડમાર્કનું ચોક્કસ સ્થાન શું છે?",
+          "Naroda Landmark is strategically located at":
+            "નરોડા લેન્ડમાર્ક વ્યૂહાત્મક રીતે સ્થિત છે",
+          "What are the size options available?":
+            "કયા કદના વિકલ્પો ઉપલબ્ધ છે?",
+          "We offer a variety of size options to suit different business needs":
+            "અમે વિવિધ વ્યવસાયિક જરૂરિયાતોને અનુરૂપ વિવિધ કદના વિકલ્પો ઓફર કરીએ છીએ",
+        },
+      };
+
+      const key = `${sourceLang}-${targetLang}`;
+
+      // Check if we have a fallback translation for the exact text
+      if (fallbackTranslations[key] && fallbackTranslations[key][text]) {
+        isTranslating = false;
+        return fallbackTranslations[key][text];
+      }
+
+      // If text is too long, split it into smaller chunks
+      const MAX_CHUNK_LENGTH = 500;
+      if (text.length > MAX_CHUNK_LENGTH) {
+        // Split text into sentences or chunks
+        const chunks = [];
+        let currentChunk = "";
+
+        // Simple sentence splitting
+        const sentences = text.split(/[.!?]+/);
+        for (const sentence of sentences) {
+          if (sentence.trim().length === 0) continue;
+
+          if (currentChunk.length + sentence.length + 1 <= MAX_CHUNK_LENGTH) {
+            currentChunk += (currentChunk ? " " : "") + sentence + ".";
+          } else {
+            if (currentChunk) chunks.push(currentChunk);
+            currentChunk = sentence + ".";
+          }
+        }
+
+        if (currentChunk) chunks.push(currentChunk);
+
+        // Translate each chunk
+        let translatedText = "";
+        for (const chunk of chunks) {
+          try {
+            const translatedChunk = await translateChunk(
+              chunk,
+              sourceLang,
+              targetLang
+            );
+            translatedText += " " + translatedChunk;
+          } catch (error) {
+            console.warn("Failed to translate chunk:", error);
+            translatedText += " " + chunk; // Add original text if translation fails
+          }
+        }
+
+        isTranslating = false;
+        return translatedText.trim();
+      } else {
+        // Translate small text directly
+        try {
+          const result = await translateChunk(text, sourceLang, targetLang);
+          isTranslating = false;
+          return result;
+        } catch (error) {
+          console.warn("Translation failed:", error);
+          isTranslating = false;
+
+          // Return a generic fallback
+          if (targetLang === "gu") {
+            return text + " (ગુજરાતી)";
+          } else if (targetLang === "hi") {
+            return text + " (हिन्दी)";
+          }
+          return text;
+        }
+      }
+    }
+
+    // Helper function to translate a chunk of text
+    async function translateChunk(text, sourceLang, targetLang) {
+      // Try multiple translation APIs in sequence
+
+      // Try LibreTranslate (free and reliable)
+      try {
+        const libreResponse = await fetch(
+          "https://libretranslate.de/translate",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              q: text,
+              source: sourceLang,
+              target: targetLang,
+              format: "text",
+            }),
+          }
+        );
+
+        if (libreResponse.ok) {
+          const data = await libreResponse.json();
+          if (data.translatedText) {
+            return data.translatedText;
+          }
+        }
+      } catch (error) {
+        console.log("LibreTranslate failed, trying next option");
+      }
+
+      // Try MyMemory API
+      try {
+        const myMemoryResponse = await fetch(
+          `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+            text
+          )}&langpair=${sourceLang}|${targetLang}`
+        );
+
+        if (myMemoryResponse.ok) {
+          const data = await myMemoryResponse.json();
+          if (data.responseData && data.responseData.translatedText) {
+            let translated = data.responseData.translatedText;
+            // Clean up common issues
+            translated = translated.replace(/�/g, "");
+            translated = translated.replace(/&#39;/g, "'");
+            translated = translated.replace(/&quot;/g, '"');
+            return translated;
+          }
+        }
+      } catch (error) {
+        console.log("MyMemory failed, trying Google Translate fallback");
+      }
+
+      // Try Google Translate via rapidapi (requires API key - this is just a template)
+      // Note: You would need to sign up for RapidAPI and get an API key
+      /*
+      try {
+        const rapidApiResponse = await fetch('https://google-translate1.p.rapidapi.com/language/translate/v2', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'X-RapidAPI-Key': 'YOUR_RAPIDAPI_KEY',
+            'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
+          },
+          body: new URLSearchParams({
+            q: text,
+            target: targetLang,
+            source: sourceLang
+          })
+        });
+        
+        if (rapidApiResponse.ok) {
+          const data = await rapidApiResponse.json();
+          if (data.data && data.data.translations && data.data.translations[0]) {
+            return data.data.translations[0].translatedText;
+          }
+        }
+      } catch (error) {
+        console.log("RapidAPI Google Translate failed");
+      }
+      */
+
+      // If all APIs fail, return original text with language marker
+      throw new Error("All translation methods failed");
+    }
+
+    // Auto translate all languages
+    async function autoTranslateAll() {
+      const questionEn = document.getElementById("faq-question-en").value;
+      const answerEn = document.getElementById("faq-answer-en").innerHTML;
+
+      if (!questionEn || !answerEn) {
+        showNotification(
+          translations[currentLanguage].fill_english_first,
+          "warning"
+        );
+        return;
+      }
+
+      if (isTranslating) {
+        showNotification(
+          translations[currentLanguage].translation_in_progress,
+          "info"
+        );
+        return;
+      }
+
+      // Show loading state on auto translate button
+      const autoTranslateBtn = document.getElementById("auto-translate-btn");
+      const originalText = autoTranslateBtn.innerHTML;
+      const originalDisabled = autoTranslateBtn.disabled;
+
+      autoTranslateBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations[currentLanguage].translating}`;
+      autoTranslateBtn.disabled = true;
+
+      try {
+        showNotification(
+          translations[currentLanguage].translation_in_progress,
+          "info"
+        );
+
+        // Translate to Hindi
+        const questionHi = await translateText(questionEn, "en", "hi");
+        const answerHi = await translateText(answerEn, "en", "hi");
+
+        if (questionHi && answerHi) {
+          document.getElementById("faq-question-hi").value = questionHi;
+          document.getElementById("faq-answer-hi").innerHTML = answerHi;
+        }
+
+        // Translate to Gujarati
+        const questionGu = await translateText(questionEn, "en", "gu");
+        const answerGu = await translateText(answerEn, "en", "gu");
+
+        if (questionGu && answerGu) {
+          document.getElementById("faq-question-gu").value = questionGu;
+          document.getElementById("faq-answer-gu").innerHTML = answerGu;
+        }
+
+        showNotification(
+          translations[currentLanguage].translation_complete,
+          "success"
+        );
+      } catch (error) {
+        console.error("Translation error:", error);
+        showNotification(
+          translations[currentLanguage].translation_failed,
+          "danger"
+        );
+      } finally {
+        // Restore button state
+        autoTranslateBtn.innerHTML = originalText;
+        autoTranslateBtn.disabled = originalDisabled;
+        isTranslating = false;
+      }
+    }
+
+    // Functions for Hindi and Gujarati editor commands
+    window.execHindiCommand = function (command) {
+      const editor = document.getElementById("faq-answer-hi");
+      editor.focus();
+      document.execCommand(command, false, null);
+    };
+
+    window.execGujaratiCommand = function (command) {
+      const editor = document.getElementById("faq-answer-gu");
+      editor.focus();
+      document.execCommand(command, false, null);
+    };
+
+    // ==================== INITIALIZATION ====================
+    document.addEventListener("DOMContentLoaded", function () {
+      // Sidebar toggle
+      const sidebarToggle = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebar-overlay");
+
+      // Logout button
+      const logoutBtn = document.getElementById("logout-btn");
+
+      // Language selector
+      const languageSelector = document.getElementById(
+        "global-language-selector"
+      );
+
+      // Auto translate button
+      const autoTranslateBtn = document.getElementById("auto-translate-btn");
+
+      // Refresh FAQ button
+      const refreshFAQBtn = document.getElementById("refreshFAQ");
+
+      // Search FAQ input
+      const searchFAQInput = document.getElementById("searchFAQ");
+
+      // Delete confirmation dialog buttons
+      const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+      const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+
+      // Add FAQ modal button click
+      const addFAQModalBtn = document.querySelector(
+        '[data-bs-target="#addFAQModal"]'
+      );
+
+      // Mobile sidebar toggle functionality
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("active");
+          overlay.classList.toggle("active");
+        });
+      }
+
+      // Close sidebar when clicking on overlay
+      if (overlay) {
+        overlay.addEventListener("click", function () {
+          sidebar.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+      }
+
+      // Logout button functionality
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          const confirmMsg = translations[currentLanguage].confirm_logout;
+          const successMsg = translations[currentLanguage].logout_success;
+
+          if (confirm(confirmMsg)) {
+            alert(successMsg);
+            window.location.href = "login.html";
+          }
+        });
+      }
+
+      // Language selector functionality
+      if (languageSelector) {
+        languageSelector.addEventListener("change", function (e) {
+          currentLanguage = e.target.value;
+          switchLanguage(currentLanguage);
+        });
+      }
+
+      // Close sidebar when window is resized to desktop size
+      window.addEventListener("resize", function () {
+        if (window.innerWidth >= 992) {
+          sidebar.classList.remove("active");
+          overlay.classList.remove("active");
+        }
+      });
+
+      // Initial translation
+      translateEverything();
+
+      // Load initial FAQs
+      loadFAQs();
+
+      // Update time immediately and then every second
+      updateNavbarDateTime();
+      setInterval(updateNavbarDateTime, 1000);
+
+      // Add FAQ modal button click
+      if (addFAQModalBtn) {
+        addFAQModalBtn.addEventListener("click", function () {
+          currentFAQId = null;
+          document.getElementById("faq-id").value = "";
+          document.getElementById("faq-question-en").value = "";
+          document.getElementById("faq-answer-en").innerHTML = "";
+          document.getElementById("faq-question-hi").value = "";
+          document.getElementById("faq-answer-hi").innerHTML = "";
+          document.getElementById("faq-question-gu").value = "";
+          document.getElementById("faq-answer-gu").innerHTML = "";
+          document.getElementById("faq-category").value = "";
+          document.getElementById("faq-status").value = "active";
+          document.getElementById("faq-order").value = "1";
+          document.getElementById("faq-tags").value = "";
+
+          // Update modal title
+          updateModalTranslations();
+
+          // Switch to English tab
+          const englishTab = document.querySelector(
+            '#translation-tabs button[data-bs-target="#english-tab"]'
+          );
+          if (englishTab) {
+            const tab = new bootstrap.Tab(englishTab);
+            tab.show();
+          }
+        });
+      }
+
+      // Auto translate button
+      if (autoTranslateBtn) {
+        autoTranslateBtn.addEventListener("click", autoTranslateAll);
+      }
+
+      // Save FAQ button
+      const saveFAQBtn = document.getElementById("save-faq-btn");
+      if (saveFAQBtn) {
+        saveFAQBtn.addEventListener("click", async function () {
+          // Get form data
+          const questionEn = document.getElementById("faq-question-en").value;
+          const answerEn = document.getElementById("faq-answer-en").innerHTML;
+          const questionHi = document.getElementById("faq-question-hi").value;
+          const answerHi = document.getElementById("faq-answer-hi").innerHTML;
+          const questionGu = document.getElementById("faq-question-gu").value;
+          const answerGu = document.getElementById("faq-answer-gu").innerHTML;
+
+          if (!questionEn || !answerEn) {
+            showNotification(
+              translations[currentLanguage].fill_english_first,
+              "warning"
+            );
+            return;
+          }
+
+          const formData = {
+            id: currentFAQId,
+            question: questionEn,
+            question_hi: questionHi,
+            question_gu: questionGu,
+            answer: answerEn,
+            answer_hi: answerHi,
+            answer_gu: answerGu,
+            category: document.getElementById("faq-category").value,
+            status: document.getElementById("faq-status").value,
+            order: parseInt(document.getElementById("faq-order").value) || 1,
+            tags: document.getElementById("faq-tags").value,
+          };
+
+          // Save to database
+          await saveFAQ(formData);
+        });
+      }
+
+      // Refresh FAQ button - resets filters and loads all FAQs
+      if (refreshFAQBtn) {
+        refreshFAQBtn.addEventListener("click", function () {
+          resetFilters();
+          showNotification(
+            translations[currentLanguage].refresh +
+            " " +
+            translations[currentLanguage].faq_items.toLowerCase(),
+            "success"
+          );
+        });
+      }
+
+      // Search FAQ functionality with debouncing
+      if (searchFAQInput) {
+        searchFAQInput.addEventListener("input", function () {
+          clearTimeout(searchTimer);
+          searchTimer = setTimeout(() => {
+            searchFAQ();
+          }, 500);
+        });
+      }
+
+      // Rich text editor functionality for all languages
+      document
+        .querySelectorAll(".editor-btn[data-command]")
+        .forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const command = this.getAttribute("data-command");
+            const targetEditor =
+              this.closest(".editor-toolbar").nextElementSibling;
+            if (targetEditor) {
+              targetEditor.focus();
+              document.execCommand(command, false, null);
+            }
+          });
+        });
+
+      // Delete confirmation dialog handlers
+      if (cancelDeleteBtn) {
+        cancelDeleteBtn.addEventListener("click", hideDeleteConfirmation);
+      }
+
+      if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener("click", function () {
+          if (faqToDelete) {
+            deleteFAQ(faqToDelete);
+          }
+        });
+      }
+
+      // Close delete dialog when clicking outside
+      const deleteDialog = document.getElementById(
+        "deleteConfirmationDialog"
+      );
+      if (deleteDialog) {
+        deleteDialog.addEventListener("click", function (e) {
+          if (e.target === deleteDialog) {
+            hideDeleteConfirmation();
+          }
+        });
+      }
+
+      // Handle modal hidden event to reset form
+      const addFAQModal = document.getElementById("addFAQModal");
+      if (addFAQModal) {
+        addFAQModal.addEventListener("hidden.bs.modal", function () {
+          document.getElementById("faq-id").value = "";
+          document.getElementById("faq-question-en").value = "";
+          document.getElementById("faq-answer-en").innerHTML = "";
+          document.getElementById("faq-question-hi").value = "";
+          document.getElementById("faq-answer-hi").innerHTML = "";
+          document.getElementById("faq-question-gu").value = "";
+          document.getElementById("faq-answer-gu").innerHTML = "";
+          document.getElementById("faq-category").value = "";
+          document.getElementById("faq-status").value = "active";
+          document.getElementById("faq-order").value = "1";
+          document.getElementById("faq-tags").value = "";
+          currentFAQId = null;
+          isTranslating = false;
+
+          // Reset modal title
+          updateModalTranslations();
+        });
+      }
+    });
+  </script>
+
+  <!-- FAQ Manager API Integration -->
+  <script src="js/faq-manager.js"></script>
+</body>
+
+</html>

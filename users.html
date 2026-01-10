@@ -1,0 +1,3110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Management | Naroda Group Admin</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3a0ca3;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
+      --light-bg: #f8fafc;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --sidebar-width: 260px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Top Navbar */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 30px;
+    }
+
+    .top-navbar-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .sidebar-toggle-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar-toggle-btn:hover {
+      background-color: var(--light-bg);
+      color: var(--primary-color);
+    }
+
+    .top-navbar-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .top-navbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    @media screen and (max-width: 426px) {
+      .navbar-time-display .time {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .top-navbar-title {
+        display: none;
+      }
+    }
+
+    /* Language Selector */
+    .language-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      background-color: white;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .language-selector select {
+      border: none;
+      background: none;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+    }
+
+    .language-selector select:focus {
+      outline: none;
+    }
+
+    .lang-flag {
+      width: 24px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    /* Time display */
+    .navbar-time-display {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+
+    .navbar-time-display .time {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+
+    .navbar-time-display .date {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-gray);
+    }
+
+    /* User profile */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      border-radius: 10px;
+    }
+
+    .user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-color);
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .user-role {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 70px;
+      height: calc(100vh - 70px);
+      width: var(--sidebar-width);
+      background-color: white;
+      color: var(--text-dark);
+      z-index: 999;
+      transition: all 0.3s ease;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+      border-right: 1px solid #e2e8f0;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+
+    .sidebar.collapsed {
+      transform: translateX(-100%);
+    }
+
+    /* Logo in sidebar */
+    .sidebar-logo {
+      padding: 0 20px 25px 20px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .sidebar-logo .logo {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg,
+          var(--primary-color),
+          var(--secondary-color));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .sidebar-logo h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-dark);
+    }
+
+    /* Navigation menu */
+    .sidebar-menu {
+      padding: 0 15px;
+    }
+
+    .nav-item {
+      margin-bottom: 8px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 14px 15px;
+      color: var(--text-gray);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-radius: 10px;
+      border-left: 4px solid transparent;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.05);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .nav-link.active {
+      color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.1);
+      border-left: 4px solid var(--primary-color);
+      font-weight: 600;
+    }
+
+    .nav-link i {
+      width: 24px;
+      font-size: 18px;
+      margin-right: 15px;
+      text-align: center;
+    }
+
+    .nav-link span {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Logout button */
+    .nav-logout {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .nav-logout .nav-link {
+      color: var(--danger-color);
+    }
+
+    .nav-logout .nav-link:hover {
+      color: white;
+      background-color: var(--danger-color);
+    }
+
+    /* Main content area */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      margin-top: 70px;
+      padding: 30px;
+      min-height: calc(100vh - 70px);
+      transition: all 0.3s ease;
+    }
+
+    .main-content.expanded {
+      margin-left: 0;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .page-header h1 {
+      font-weight: 700;
+      color: var(--text-dark);
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    /* Action buttons */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-admin {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-admin-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-admin-primary:hover {
+      background-color: #3a56d4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn-admin-success {
+      background-color: var(--success-color);
+      color: white;
+    }
+
+    .btn-admin-success:hover {
+      background-color: #0da271;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-admin-warning {
+      background-color: var(--warning-color);
+      color: white;
+    }
+
+    .btn-admin-warning:hover {
+      background-color: #dd8e0a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-admin-danger {
+      background-color: var(--danger-color);
+      color: white;
+    }
+
+    .btn-admin-danger:hover {
+      background-color: #dc2626;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+
+    /* Users Table */
+    .users-table-container {
+      background-color: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      margin-top: 30px;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .table-header h3 {
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .table-search {
+      position: relative;
+      width: 300px;
+    }
+
+    .table-search input {
+      width: 100%;
+      padding: 10px 15px 10px 40px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .table-search i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-gray);
+    }
+
+    .table {
+      margin-bottom: 0;
+    }
+
+    .table th {
+      border-top: none;
+      color: var(--text-gray);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      background-color: #f8fafc;
+    }
+
+    .table td {
+      vertical-align: middle;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .badge-success {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .badge-warning {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+    }
+
+    .badge-primary {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    .badge-danger {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--danger-color);
+    }
+
+    .badge-info {
+      background-color: rgba(6, 182, 212, 0.1);
+      color: #06b6d4;
+    }
+
+    .action-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .action-icon.edit {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    .action-icon.edit:hover {
+      background-color: rgba(67, 97, 238, 0.2);
+    }
+
+    .action-icon.delete {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--danger-color);
+    }
+
+    .action-icon.delete:hover {
+      background-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .action-icon.view {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .action-icon.view:hover {
+      background-color: rgba(16, 185, 129, 0.2);
+    }
+
+    /* Pagination */
+    .pagination-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .pagination-info {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    .pagination {
+      margin-bottom: 0;
+    }
+
+    .page-link {
+      color: var(--primary-color);
+      border: 1px solid #e2e8f0;
+      padding: 8px 15px;
+    }
+
+    .page-link:hover {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+    }
+
+    .page-item.active .page-link {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Modal */
+    .modal-content {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 25px 30px;
+    }
+
+    .modal-body {
+      padding: 30px;
+    }
+
+    .modal-footer {
+      border-top: 1px solid #e2e8f0;
+      padding: 20px 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .form-control,
+    .form-select {
+      padding: 12px 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+    }
+
+    /* Multilingual Styles */
+    .language-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .lang-btn {
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 2px solid #e2e8f0;
+      background: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 100px;
+      height: 40px;
+    }
+
+    .lang-btn.active {
+      background: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: #f1f5f9;
+      border-color: var(--primary-color);
+    }
+
+    .translation-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning-color);
+    }
+
+    .status-completed {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success-color);
+    }
+
+    .multilingual-tabs {
+      margin-top: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .nav-tabs {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 10px 15px 0;
+    }
+
+    .nav-tabs .nav-link {
+      border: none;
+      color: var(--text-gray);
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 6px 6px 0 0;
+    }
+
+    .nav-tabs .nav-link.active {
+      color: var(--primary-color);
+      background: white;
+      border-bottom: 3px solid var(--primary-color);
+    }
+
+    .tab-content {
+      padding: 20px;
+      background: white;
+    }
+
+    .lang-content {
+      min-height: 120px;
+    }
+
+    .translate-btn {
+      margin-top: 10px;
+      padding: 6px 15px;
+      font-size: 0.85rem;
+    }
+
+    /* User Avatar */
+    .user-avatar-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .user-avatar-preview {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary-color);
+    }
+
+    .avatar-upload-btn {
+      background-color: #f8fafc;
+      border: 2px dashed #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .avatar-upload-btn:hover {
+      border-color: var(--primary-color);
+      background-color: rgba(67, 97, 238, 0.05);
+    }
+
+    /* Overlay for mobile */
+    .overlay {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 70px);
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Custom Dialog Styles */
+    .custom-dialog {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .custom-dialog.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .custom-dialog-content {
+      background-color: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transform: translateY(-20px);
+      transition: transform 0.3s ease;
+    }
+
+    .custom-dialog.show .custom-dialog-content {
+      transform: translateY(0);
+    }
+
+    .custom-dialog-header {
+      padding: 20px 25px;
+      border-bottom: 1px solid #e2e8f0;
+      background-color: var(--light-bg);
+    }
+
+    .custom-dialog-title {
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .custom-dialog-body {
+      padding: 25px;
+    }
+
+    .custom-dialog-message {
+      color: var(--text-gray);
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    .custom-dialog-footer {
+      padding: 20px 25px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 767px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+
+      .top-navbar {
+        padding: 0 15px;
+      }
+
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .table-search {
+        width: 100%;
+      }
+
+      .user-info {
+        display: none;
+      }
+
+      .top-navbar-right {
+        gap: 10px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-admin {
+        justify-content: center;
+      }
+
+      .language-selector {
+        flex-wrap: wrap;
+      }
+
+      .lang-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        min-width: 80px;
+        height: 36px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+
+      .top-navbar {
+        padding: 0 20px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .sidebar {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: var(--sidebar-width);
+      }
+    }
+
+    .btn-admin-secondary {
+      background-color: white;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+
+    .btn-admin-secondary:hover {
+      background-color: rgba(67, 97, 238, 0.05);
+      transform: translateY(-2px);
+    }
+
+    /* User Status Badge */
+    .user-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .status-dot.active {
+      background-color: var(--success-color);
+    }
+
+    .status-dot.inactive {
+      background-color: var(--danger-color);
+    }
+
+    .status-dot.pending {
+      background-color: var(--warning-color);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navbar -->
+  <nav class="top-navbar">
+    <div class="top-navbar-left">
+      <button class="sidebar-toggle-btn" id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 class="top-navbar-title" id="page-title" data-i18n="user_management">
+        User Management
+        <span class="text-muted" style="font-size: 1rem" data-i18n="multilingual">(Multilingual)</span>
+      </h1>
+    </div>
+
+    <div class="top-navbar-right">
+      <!-- Language Selector -->
+      <div class="language-selector">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag" id="current-flag" />
+        <select id="global-language-selector">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+        </select>
+      </div>
+
+      <!-- Real-time Date and Time Display -->
+      <div class="navbar-time-display">
+        <div class="date" id="navbar-current-date">Loading...</div>
+        <div class="time" id="navbar-current-time">Loading...</div>
+      </div>
+
+      <!-- User Profile -->
+      <div class="user-profile">
+        <img src="https://ui-avatars.com/api/?name=Admin+User&background=4361ee&color=fff&size=128" alt="Admin User" />
+        <div class="user-info">
+          <div class="user-name" data-i18n="admin_name">Admin User</div>
+          <div class="user-role" data-i18n="system_administrator">
+            System Administrator
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <!-- Logo in sidebar -->
+    <div class="sidebar-logo">
+      <div class="logo">NG</div>
+      <h2 data-i18n="naroda_group">Naroda Group</h2>
+    </div>
+
+    <!-- Navigation menu in sidebar -->
+    <div class="sidebar-menu">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">
+            <i class="fas fa-tachometer-alt"></i>
+            <span data-i18n="dashboard">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="users.html" class="nav-link active">
+            <i class="fas fa-users"></i>
+            <span data-i18n="users">Users</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="projects.html" class="nav-link">
+            <i class="fas fa-project-diagram"></i>
+            <span data-i18n="projects">Projects</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="blogs.html" class="nav-link">
+            <i class="fas fa-blog"></i>
+            <span data-i18n="blogs">Blogs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="faq.html" class="nav-link">
+            <i class="fas fa-question-circle"></i>
+            <span data-i18n="faq">FAQ</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="team.html" class="nav-link">
+            <i class="fas fa-user-friends"></i>
+            <span data-i18n="team">Team</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link">
+            <i class="fas fa-images"></i>
+            <span data-i18n="gallery">Gallery</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="career.html" class="nav-link">
+            <i class="fas fa-briefcase"></i>
+            <span data-i18n="career">Career</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="news.html" class="nav-link">
+            <i class="fas fa-newspaper"></i>
+            <span data-i18n="news">News</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Logout button at the bottom -->
+      <div class="nav-logout">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="#" class="nav-link" id="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              <span data-i18n="log_out">Log Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Overlay for mobile sidebar -->
+  <div class="overlay" id="sidebar-overlay"></div>
+
+  <!-- Main Content Area -->
+  <main class="main-content" id="main-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 id="main-page-title" data-i18n="user_management">
+        User Management
+        <small class="text-muted" style="font-size: 1rem" data-i18n="multilingual_support">(Multilingual
+          Support)</small>
+      </h1>
+      <div class="action-buttons">
+        <button class="btn-admin btn-admin-primary" data-bs-toggle="modal" data-bs-target="#addUserModal"
+          data-i18n="add_new_user">
+          <i class="fas fa-plus"></i>
+          <span>Add New User</span>
+        </button>
+        <button class="btn-admin btn-admin-success" id="refreshUsers" data-i18n="refresh">
+          <i class="fas fa-sync-alt"></i>
+          <span>Refresh</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="users-table-container">
+      <div class="table-header">
+        <div>
+          <h3 data-i18n="all_users">All Users</h3>
+        </div>
+        <div class="table-search">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchUsers" placeholder="Search users..."
+            data-i18n-placeholder="search_users_placeholder" />
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th data-i18n="hash">#</th>
+              <th data-i18n="user">User</th>
+              <th data-i18n="email">Email</th>
+              <th data-i18n="phone">Phone</th>
+              <th data-i18n="gender">Gender</th>
+              <th data-i18n="role">Role</th>
+              <th data-i18n="status">Status</th>
+              <th data-i18n="last_login">Last Login</th>
+              <th data-i18n="actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody">
+            <!-- Users will be populated here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination-container">
+        <div class="pagination-info">
+          <span data-i18n="showing">Showing</span>
+          <span id="startItem">1</span> <span data-i18n="to">to</span>
+          <span id="endItem">10</span> <span data-i18n="of">of</span>
+          <span id="totalItems">11</span>
+          <span data-i18n="users">users</span>
+        </div>
+        <nav>
+          <ul class="pagination" id="usersPagination">
+            <!-- Pagination will be generated here -->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add/Edit User Modal -->
+  <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addUserModalLabel" data-i18n="add_new_user">
+            Add New User
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Translation Tabs -->
+          <ul class="nav nav-tabs" id="translation-tabs">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#english-tab">
+                <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-2"
+                  style="width: 16px; height: 12px" />
+                <span data-i18n="english">English</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#hindi-tab">
+                <img src="https://flagcdn.com/w20/in.png" alt="Hindi" class="me-2" style="width: 16px; height: 12px" />
+                <span data-i18n="hindi">हिन्दी</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#gujarati-tab">
+                <img src="https://flagcdn.com/w20/in.png" alt="Gujarati" class="me-2"
+                  style="width: 16px; height: 12px" />
+                <span data-i18n="gujarati">ગુજરાતી</span>
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- English Tab -->
+            <div class="tab-pane fade show active translation-tab-content" id="english-tab">
+              <form id="userForm">
+                <input type="hidden" id="user-id" />
+
+                <div class="user-avatar-container">
+                  <div>
+                    <img id="user-avatar-preview"
+                      src="https://ui-avatars.com/api/?name=New+User&background=4361ee&color=fff&size=200"
+                      alt="Avatar Preview" class="user-avatar-preview" />
+                  </div>
+                  <div class="flex-grow-1">
+                    <label class="form-label" data-i18n="profile_picture">Profile Picture</label>
+                    <div class="avatar-upload-btn" onclick="document.getElementById('avatar-upload').click()">
+                      <i class="fas fa-cloud-upload-alt fa-2x mb-2 text-muted"></i>
+                      <p class="mb-0" data-i18n="upload_avatar">
+                        Click to upload avatar
+                      </p>
+                      <p class="small text-muted mt-1" data-i18n="avatar_hint">
+                        JPG, PNG up to 5MB
+                      </p>
+                    </div>
+                    <input type="file" id="avatar-upload" accept="image/*" style="display: none"
+                      onchange="previewAvatar(event)" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="user-firstname-en" class="form-label" data-i18n="first_name">First Name *</label>
+                      <input type="text" class="form-control" id="user-firstname-en"
+                        placeholder="Enter first name in English" required />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="user-lastname-en" class="form-label" data-i18n="last_name">Last Name *</label>
+                      <input type="text" class="form-control" id="user-lastname-en"
+                        placeholder="Enter last name in English" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="user-email" class="form-label" data-i18n="email">Email *</label>
+                      <input type="email" class="form-control" id="user-email" placeholder="Enter email address"
+                        required />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="user-phone" class="form-label" data-i18n="phone">Phone *</label>
+                      <input type="tel" class="form-control" id="user-phone" placeholder="Enter phone number"
+                        required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="user-gender" class="form-label" data-i18n="gender">Gender *</label>
+                      <select class="form-select" id="user-gender" required>
+                        <option value="" data-i18n="select_gender">
+                          Select Gender
+                        </option>
+                        <option value="male" data-i18n="male">Male</option>
+                        <option value="female" data-i18n="female">
+                          Female
+                        </option>
+                        <option value="other" data-i18n="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="user-role" class="form-label" data-i18n="role">Role *</label>
+                      <select class="form-select" id="user-role" required>
+                        <option value="" data-i18n="select_role">
+                          Select Role
+                        </option>
+                        <option value="admin" data-i18n="administrator">
+                          Administrator
+                        </option>
+                        <option value="manager" data-i18n="manager">
+                          Manager
+                        </option>
+                        <option value="editor" data-i18n="editor">
+                          Editor
+                        </option>
+                        <option value="viewer" data-i18n="viewer">
+                          Viewer
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Hindi Tab -->
+            <div class="tab-pane fade translation-tab-content" id="hindi-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="user-firstname-hi" class="form-label" data-i18n="first_name">पहला नाम *</label>
+                    <input type="text" class="form-control" id="user-firstname-hi"
+                      placeholder="पहला नाम हिंदी में दर्ज करें" />
+                    <div class="form-text" data-i18n="auto_translated_hint">
+                      यह स्वचालित रूप से अंग्रेजी से अनुवादित होगा (आप इसे
+                      संपादित कर सकते हैं)
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="user-lastname-hi" class="form-label" data-i18n="last_name">अंतिम नाम *</label>
+                    <input type="text" class="form-control" id="user-lastname-hi"
+                      placeholder="अंतिम नाम हिंदी में दर्ज करें" />
+                    <div class="form-text" data-i18n="auto_translated_hint">
+                      यह स्वचालित रूप से अंग्रेजी से अनुवादित होगा (आप इसे
+                      संपादित कर सकते हैं)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gujarati Tab -->
+            <div class="tab-pane fade translation-tab-content" id="gujarati-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="user-firstname-gu" class="form-label" data-i18n="first_name">પ્રથમ નામ *</label>
+                    <input type="text" class="form-control" id="user-firstname-gu"
+                      placeholder="પ્રથમ નામ ગુજરાતીમાં દાખલ કરો" />
+                    <div class="form-text" data-i18n="auto_translated_hint">
+                      આ આપોઆપ અંગ્રેજીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત
+                      કરી શકો છો)
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="user-lastname-gu" class="form-label" data-i18n="last_name">છેલ્લું નામ *</label>
+                    <input type="text" class="form-control" id="user-lastname-gu"
+                      placeholder="છેલ્લું નામ ગુજરાતીમાં દાખલ કરો" />
+                    <div class="form-text" data-i18n="auto_translated_hint">
+                      આ આપોઆપ અંગ્રેજીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત
+                      કરી શકો છો)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Address field (currently commented out) -->
+          <!-- <div class="form-group">
+          <label for="user-address" class="form-label" data-i18n="address">Address</label>
+          <textarea class="form-control" id="user-address" rows="2" placeholder="Enter address"
+            data-i18n-placeholder="address_placeholder"></textarea>
+        </div> -->
+
+          <!-- Status and Password fields -->
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="user-status" class="form-label" data-i18n="status">Status *</label>
+                <select class="form-select" id="user-status" required>
+                  <option value="active" data-i18n="active">Active</option>
+                  <option value="inactive" data-i18n="inactive">
+                    Inactive
+                  </option>
+                  <option value="pending" data-i18n="pending">Pending</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="user-password" class="form-label" data-i18n="password">Password *</label>
+                <input type="password" class="form-control" id="user-password" placeholder="Enter password" />
+                <div class="form-text" data-i18n="password_hint">
+                  Minimum 8 characters with letters and numbers (Leave blank to keep current if editing)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="form-group">
+          <label for="user-address" class="form-label" data-i18n="address">Address</label>
+          <textarea class="form-control" id="user-address" rows="2" placeholder="Enter address"
+            data-i18n-placeholder="address_placeholder"></textarea>
+        </div> -->
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <button type="button" class="btn-admin btn-admin-secondary" id="auto-translate-btn">
+                <i class="fas fa-language"></i>
+                <span data-i18n="auto_translate">Auto Translate</span>
+              </button>
+            </div>
+            <div class="d-flex gap-3">
+              <button type="button" class="btn-admin btn-admin-secondary" data-bs-dismiss="modal" data-i18n="cancel">
+                Cancel
+              </button>
+              <button type="button" class="btn-admin btn-admin-primary" id="save-user-btn" data-i18n="save_user">
+                Save User
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View User Details Modal -->
+  <div class="modal fade" id="viewUserModal" tabindex="-1" aria-labelledby="viewUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewUserModalLabel" data-i18n="user_details">
+            User Details
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-3 text-center">
+              <img id="view-user-avatar" src="" alt="User Avatar" class="user-avatar-preview mb-3" />
+              <div id="view-user-status" class="user-status">
+                <span class="status-dot" id="view-status-dot"></span>
+                <span id="view-status-text"></span>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="name">Name</label>
+                    <p class="h5" id="view-user-name"></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="email">Email</label>
+                    <p class="h5" id="view-user-email"></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="phone">Phone</label>
+                    <p class="h5" id="view-user-phone"></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="gender">Gender</label>
+                    <p class="h5" id="view-user-gender"></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="role">Role</label>
+                    <p class="h5" id="view-user-role"></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="last_login">Last Login</label>
+                    <p class="h5" id="view-user-lastlogin"></p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Translation Tabs for View -->
+          <ul class="nav nav-tabs mt-4" id="view-translation-tabs">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#view-english-tab">
+                <img src="https://flagcdn.com/w20/gb.png" alt="English" class="me-2"
+                  style="width: 16px; height: 12px" />
+                <span data-i18n="english">English</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#view-hindi-tab">
+                <img src="https://flagcdn.com/w20/in.png" alt="Hindi" class="me-2" style="width: 16px; height: 12px" />
+                <span data-i18n="hindi">हिन्दी</span>
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#view-gujarati-tab">
+                <img src="https://flagcdn.com/w20/in.png" alt="Gujarati" class="me-2"
+                  style="width: 16px; height: 12px" />
+                <span data-i18n="gujarati">ગુજરાતી</span>
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+            <div class="tab-pane fade show active" id="view-english-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="name_english">Name (English)</label>
+                    <p class="h5" id="view-user-name-en"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="view-hindi-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="name_hindi">Name (Hindi)</label>
+                    <p class="h5" id="view-user-name-hi"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="view-gujarati-tab">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label class="form-label text-muted" data-i18n="name_gujarati">Name (Gujarati)</label>
+                    <p class="h5" id="view-user-name-gu"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Dialog -->
+  <div class="custom-dialog" id="deleteConfirmationDialog">
+    <div class="custom-dialog-content">
+      <div class="custom-dialog-header">
+        <h5 class="custom-dialog-title" id="deleteDialogTitle" data-i18n="delete_user">
+          Delete User
+        </h5>
+      </div>
+      <div class="custom-dialog-body">
+        <p class="custom-dialog-message" id="deleteDialogMessage">
+          Are you sure you want to delete this user? This action cannot be
+          undone.
+        </p>
+      </div>
+      <div class="custom-dialog-footer">
+        <button type="button" class="btn-admin btn-admin-secondary" id="cancelDeleteBtn" data-i18n="cancel">
+          Cancel
+        </button>
+        <button type="button" class="btn-admin btn-admin-danger" id="confirmDeleteBtn" data-i18n="delete">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Complete translation dictionaries
+    const translations = {
+      en: {
+        // UI Elements
+        user_management: "User Management",
+        multilingual: "(Multilingual)",
+        multilingual_support: "(Multilingual Support)",
+        add_new_user: "Add New User",
+        refresh: "Refresh",
+        all_users: "All Users",
+        english: "English",
+        hindi: "Hindi",
+        gujarati: "Gujarati",
+        search_users_placeholder: "Search users...",
+        hash: "#",
+        user: "User",
+        email: "Email",
+        phone: "Phone",
+        gender: "Gender",
+        role: "Role",
+        status: "Status",
+        last_login: "Last Login",
+        actions: "Actions",
+        showing: "Showing",
+        to: "to",
+        of: "of",
+        users: "users",
+        previous: "Previous",
+        next: "Next",
+        select_gender: "Select Gender",
+        male: "Male",
+        female: "Female",
+        other: "Other",
+        select_role: "Select Role",
+        administrator: "Administrator",
+        manager: "Manager",
+        editor: "Editor",
+        viewer: "Viewer",
+        active: "Active",
+        inactive: "Inactive",
+        pending: "Pending",
+        first_name: "First Name",
+        last_name: "Last Name",
+        password: "Password",
+        address: "Address",
+        address_placeholder: "Enter address",
+        profile_picture: "Profile Picture",
+        upload_avatar: "Click to upload avatar",
+        avatar_hint: "JPG, PNG up to 5MB",
+        password_hint: "Minimum 8 characters with letters and numbers",
+        cancel: "Cancel",
+        save_user: "Save User",
+        auto_translate: "Auto Translate",
+        auto_translated_hint:
+          "This will be automatically translated from English (you can edit it)",
+        user_details: "User Details",
+        name: "Name",
+        name_english: "Name (English)",
+        name_hindi: "Name (Hindi)",
+        name_gujarati: "Name (Gujarati)",
+        edit_user: "Edit User",
+        delete_user: "Delete User",
+
+        // Sidebar Menu
+        dashboard: "Dashboard",
+        users: "Users",
+        projects: "Projects",
+        blogs: "Blogs",
+        faq: "FAQ",
+        team: "Team",
+        gallery: "Gallery",
+        career: "Career",
+        news: "News",
+        log_out: "Log Out",
+
+        // User Info
+        admin_name: "Admin User",
+        system_administrator: "System Administrator",
+        naroda_group: "Naroda Group",
+
+        // Messages
+        confirm_delete: "Are you sure you want to delete this user?",
+        confirm_logout: "Are you sure you want to log out?",
+        logout_success: "You have been logged out successfully.",
+        translation_complete: "Translation completed successfully!",
+        user_added: "User added successfully!",
+        user_updated: "User updated successfully!",
+        user_deleted: "User deleted successfully!",
+        fill_english_first: "Please fill in English content first",
+        no_user_found:
+          "No users found. Try adjusting your search or add a new user.",
+        translation_failed: "Translation failed. Please try again.",
+        password_reset_sent: "Password reset email sent!",
+
+        // Days and Months
+        monday: "Monday",
+        tuesday: "Tuesday",
+        wednesday: "Wednesday",
+        thursday: "Thursday",
+        friday: "Friday",
+        saturday: "Saturday",
+        sunday: "Sunday",
+        january: "January",
+        february: "February",
+        march: "March",
+        april: "April",
+        may: "May",
+        june: "June",
+        july: "July",
+        august: "August",
+        september: "September",
+        october: "October",
+        november: "November",
+        december: "December",
+      },
+      hi: {
+        // UI Elements (Hindi translations)
+        user_management: "उपयोगकर्ता प्रबंधन",
+        multilingual: "(बहुभाषी)",
+        multilingual_support: "(बहुभाषी समर्थन)",
+        add_new_user: "नया उपयोगकर्ता जोड़ें",
+        refresh: "ताज़ा करें",
+        all_users: "सभी उपयोगकर्ता",
+        english: "अंग्रेजी",
+        hindi: "हिन्दी",
+        gujarati: "गुजराती",
+        search_users_placeholder: "उपयोगकर्ताओं को खोजें...",
+        hash: "#",
+        user: "उपयोगकर्ता",
+        email: "ईमेल",
+        phone: "फोन",
+        gender: "लिंग",
+        role: "भूमिका",
+        status: "स्थिति",
+        last_login: "अंतिम लॉगिन",
+        actions: "कार्रवाई",
+        showing: "दिखा रहा है",
+        to: "से",
+        of: "का",
+        users: "उपयोगकर्ता",
+        previous: "पिछला",
+        next: "अगला",
+        select_gender: "लिंग चुनें",
+        male: "पुरुष",
+        female: "महिला",
+        other: "अन्य",
+        select_role: "भूमिका चुनें",
+        administrator: "व्यवस्थापक",
+        manager: "प्रबंधक",
+        editor: "संपादक",
+        viewer: "दर्शक",
+        active: "सक्रिय",
+        inactive: "निष्क्रिय",
+        pending: "लंबित",
+        first_name: "पहला नाम",
+        last_name: "अंतिम नाम",
+        password: "पासवर्ड",
+        address: "पता",
+        address_placeholder: "पता दर्ज करें",
+        profile_picture: "प्रोफाइल चित्र",
+        upload_avatar: "अवतर अपलोड करने के लिए क्लिक करें",
+        avatar_hint: "JPG, PNG 5MB तक",
+        password_hint: "न्यूनतम 8 वर्ण जिनमें अक्षर और संख्याएँ हों",
+        cancel: "रद्द करें",
+        save_user: "उपयोगकर्ता सहेजें",
+        auto_translate: "स्वचालित अनुवाद",
+        auto_translated_hint:
+          "यह स्वचालित रूप से अंग्रेजी से अनुवादित होगा (आप इसे संपादित कर सकते हैं)",
+        user_details: "उपयोगकर्ता विवरण",
+        name: "नाम",
+        name_english: "नाम (अंग्रेजी)",
+        name_hindi: "नाम (हिन्दी)",
+        name_gujarati: "नाम (गुजराती)",
+        edit_user: "उपयोगकर्ता संपादित करें",
+        delete_user: "उपयोगकर्ता हटाएं",
+
+        // Sidebar Menu (Hindi)
+        dashboard: "डैशबोर्ड",
+        users: "उपयोगकर्ता",
+        projects: "परियोजनाएं",
+        blogs: "ब्लॉग",
+        faq: "पूछे जाने वाले प्रश्न",
+        team: "टीम",
+        gallery: "गैलरी",
+        career: "करियर",
+        news: "समाचार",
+        log_out: "लॉग आउट",
+
+        // User Info (Hindi)
+        admin_name: "व्यवस्थापक उपयोगकर्ता",
+        system_administrator: "सिस्टम व्यवस्थापक",
+        naroda_group: "नरोदा ग्रुप",
+
+        // Messages (Hindi)
+        confirm_delete: "क्या आप वाकई इस उपयोगकर्ता को हटाना चाहते हैं?",
+        confirm_logout: "क्या आप वाकई लॉग आउट करना चाहते हैं?",
+        logout_success: "आप सफलतापूर्वक लॉग आउट हो गए हैं।",
+        translation_complete: "अनुवाद सफलतापूर्वक पूरा हुआ!",
+        user_added: "उपयोगकर्ता सफलतापूर्वक जोड़ा गया!",
+        user_updated: "उपयोगकर्ता सफलतापूर्वक अपडेट किया गया!",
+        user_deleted: "उपयोगकर्ता सफलतापूर्वक हटाया गया!",
+        fill_english_first: "कृपया पहले अंग्रेजी सामग्री भरें",
+        no_user_found:
+          "कोई उपयोगकर्ता नहीं मिला। अपनी खोज समायोजित करें या एक नया उपयोगकर्ता जोड़ें।",
+        translation_failed: "अनुवाद विफल। कृपया पुनः प्रयास करें।",
+        password_reset_sent: "पासवर्ड रीसेट ईमेल भेजा गया!",
+
+        // Days and Months (Hindi)
+        monday: "सोमवार",
+        tuesday: "मंगलवार",
+        wednesday: "बुधवार",
+        thursday: "गुरुवार",
+        friday: "शुक्रवार",
+        saturday: "शनिवार",
+        sunday: "रविवार",
+        january: "जनवरी",
+        february: "फरवरी",
+        march: "मार्च",
+        april: "अप्रैल",
+        may: "मई",
+        june: "जून",
+        july: "जुलाई",
+        august: "अगस्त",
+        september: "सितंबर",
+        october: "अक्टूबर",
+        november: "नवंबर",
+        december: "दिसंबर",
+      },
+      gu: {
+        // UI Elements (Gujarati translations)
+        user_management: "વપરાશકર્તા સંચાલન",
+        multilingual: "(બહુભાષી)",
+        multilingual_support: "(બહુભાષી સપોર્ટ)",
+        add_new_user: "નવો વપરાશકર્તા ઉમેરો",
+        refresh: "રીફ્રેશ",
+        all_users: "બધા વપરાશકર્તાઓ",
+        english: "અંગ્રેજી",
+        hindi: "હિન્દી",
+        gujarati: "ગુજરાતી",
+        search_users_placeholder: "વપરાશકર્તાઓ શોધો...",
+        hash: "#",
+        user: "વપરાશકર્તા",
+        email: "ઇમેલ",
+        phone: "ફોન",
+        gender: "લિંગ",
+        role: "ભૂમિકા",
+        status: "સ્થિતિ",
+        last_login: "છેલ્લો લૉગિન",
+        actions: "ક્રિયાઓ",
+        showing: "બતાવે છે",
+        to: "થી",
+        of: "ના",
+        users: "વપરાશકર્તાઓ",
+        previous: "પહેલાનું",
+        next: "આગામી",
+        select_gender: "લિંગ પસંદ કરો",
+        male: "પુરુષ",
+        female: "સ્ત્રી",
+        other: "અન્ય",
+        select_role: "ભૂમિકા પસંદ કરો",
+        administrator: "વહીવટકર્તા",
+        manager: "મેનેજર",
+        editor: "સંપાદક",
+        viewer: "દર્શક",
+        active: "સક્રિય",
+        inactive: "નિષ્ક્રિય",
+        pending: "બાકી",
+        first_name: "પ્રથમ નામ",
+        last_name: "છેલ્લું નામ",
+        password: "પાસવર્ડ",
+        address: "સરનામું",
+        address_placeholder: "સરનામું દાખલ કરો",
+        profile_picture: "પ્રોફાઇલ ચિત્ર",
+        upload_avatar: "અવતાર અપલોડ કરવા ક્લિક કરો",
+        avatar_hint: "JPG, PNG 5MB સુધી",
+        password_hint: "ન્યૂનતમ 8 અક્ષરો અને નંબરો સાથે",
+        cancel: "રદ કરો",
+        save_user: "વપરાશકર્તા સાચવો",
+        auto_translate: "સ્વચાલિત અનુવાદ",
+        auto_translated_hint:
+          "આ આપોઆપ અંગ્રેજીમાંથી ભાષાંતરિત થશે (તમે તેને સંપાદિત કરી શકો છો)",
+        user_details: "વપરાશકર્તા વિગતો",
+        name: "નામ",
+        name_english: "નામ (અંગ્રેજી)",
+        name_hindi: "નામ (હિન્દી)",
+        name_gujarati: "નામ (ગુજરાતી)",
+        edit_user: "વપરાશકર્તા સંપાદિત કરો",
+        delete_user: "વપરાશકર્તા કાઢી નાખો",
+
+        // Sidebar Menu (Gujarati)
+        dashboard: "ડેશબોર્ડ",
+        users: "વપરાશકર્તાઓ",
+        projects: "પ્રોજેક્ટ્સ",
+        blogs: "બ્લોગ્સ",
+        faq: "પ્રશ્નોત્તરી",
+        team: "ટીમ",
+        gallery: "ગેલેરી",
+        career: "કારકિર્દી",
+        news: "સમાચાર",
+        log_out: "લોગ આઉટ",
+
+        // User Info (Gujarati)
+        admin_name: "એડમિન વપરાશકર્તા",
+        system_administrator: "સિસ્ટમ એડમિનિસ્ટ્રેટર",
+        naroda_group: "નારોદા ગ્રુપ",
+
+        // Messages (Gujarati)
+        confirm_delete: "શું તમે ખરેખર આ વપરાશકર્તાને કાઢી નાખવા માંગો છો?",
+        confirm_logout: "શું તમે ખરેખર લોગ આઉટ કરવા માંગો છો?",
+        logout_success: "તમે સફળતાપૂર્વક લોગ આઉટ થયા છો.",
+        translation_complete: "અનુવાદ સફળતાપૂર્વક પૂર્ણ થયો!",
+        user_added: "વપરાશકર્તા સફળતાપૂર્વક ઉમેર્યા!",
+        user_updated: "વપરાશકર્તા સફળતાપૂર્વક અપડેટ કર્યા!",
+        user_deleted: "વપરાશકર્તા સફળતાપૂર્વક કાઢી નાખ્યા!",
+        fill_english_first: "કૃપા કરીને પહેલા અંગ્રેજી સામગ્રી ભરો",
+        no_user_found:
+          "કોઈ વપરાશકર્તા મળ્યું નથી. તમારી શોધ એડજસ્ટ કરો અથવા નવો વપરાશકર્તા ઉમેરો.",
+        translation_failed: "અનુવાદ નિષ્ફળ. કૃપા કરીને ફરી પ્રયાસ કરો.",
+        password_reset_sent: "પાસવર્ડ રીસેટ ઇમેલ મોકલ્યો!",
+
+        // Days and Months (Gujarati)
+        monday: "સોમવાર",
+        tuesday: "મંગળવાર",
+        wednesday: "બુધવાર",
+        thursday: "ગુરુવાર",
+        friday: "શુક્રવાર",
+        saturday: "શનિવાર",
+        sunday: "રવિવાર",
+        january: "જાન્યુઆરી",
+        february: "ફેબ્રુઆરી",
+        march: "માર્ચ",
+        april: "એપ્રિલ",
+        may: "મે",
+        june: "જૂન",
+        july: "જુલાઈ",
+        august: "ઑગસ્ટ",
+        september: "સપ્ટેમ્બર",
+        october: "ઓક્ટોબર",
+        november: "નવેમ્બર",
+        december: "ડિસેમ્બર",
+      },
+    };
+
+    // ==================== GLOBAL VARIABLES ====================
+    let currentLanguage = "en"; // Default language
+    let currentUserId = null;
+    let currentPage = 1;
+    const itemsPerPage = 10;
+    let filteredUsers = [];
+    let totalItems = 0;
+    let totalPages = 0;
+    let userToDelete = null;
+    const API_URL = 'api/users_api.php';
+
+    // ==================== USER DATA ====================
+    // Initialize empty, will be fetched from API
+    let userData = [];
+
+    // ==================== HELPER FUNCTIONS ====================
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+
+      if (currentLanguage === "en") {
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
+      } else if (currentLanguage === "hi") {
+        const day = date.getDate();
+        const month = date.getMonth();
+        const year = date.getFullYear();
+        const monthNames = [
+          translations.hi.january,
+          translations.hi.february,
+          translations.hi.march,
+          translations.hi.april,
+          translations.hi.may,
+          translations.hi.june,
+          translations.hi.july,
+          translations.hi.august,
+          translations.hi.september,
+          translations.hi.october,
+          translations.hi.november,
+          translations.hi.december,
+        ];
+        return `${day} ${monthNames[month]}, ${year}`;
+      } else if (currentLanguage === "gu") {
+        const day = date.getDate();
+        const month = date.getMonth();
+        const year = date.getFullYear();
+        const monthNames = [
+          translations.gu.january,
+          translations.gu.february,
+          translations.gu.march,
+          translations.gu.april,
+          translations.gu.may,
+          translations.gu.june,
+          translations.gu.july,
+          translations.gu.august,
+          translations.gu.september,
+          translations.gu.october,
+          translations.gu.november,
+          translations.gu.december,
+        ];
+        return `${day} ${monthNames[month]}, ${year}`;
+      }
+    }
+
+    function formatDateTime(dateString) {
+      const date = new Date(dateString);
+
+      if (currentLanguage === "en") {
+        return date.toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+      } else {
+        return formatDate(dateString);
+      }
+    }
+
+    function getGenderName(gender) {
+      return translations[currentLanguage][gender] || gender;
+    }
+
+    function getRoleName(role) {
+      return translations[currentLanguage][role] || role;
+    }
+
+    function getStatusName(status) {
+      return translations[currentLanguage][status] || status;
+    }
+
+    function getStatusClass(status) {
+      switch (status) {
+        case "active":
+          return "badge-success";
+        case "inactive":
+          return "badge-danger";
+        case "pending":
+          return "badge-warning";
+        default:
+          return "badge-secondary";
+      }
+    }
+
+    function getRoleClass(role) {
+      switch (role) {
+        case "admin":
+          return "badge-primary";
+        case "manager":
+          return "badge-success";
+        case "editor":
+          return "badge-info";
+        case "viewer":
+          return "badge-secondary";
+        default:
+          return "badge-secondary";
+      }
+    }
+
+    function updatePaginationInfo(count) {
+      const startIndex = (currentPage - 1) * itemsPerPage + 1;
+      const endIndex = Math.min(startIndex + itemsPerPage - 1, count);
+
+      document.getElementById("startItem").textContent = startIndex;
+      document.getElementById("endItem").textContent = endIndex;
+      document.getElementById("totalItems").textContent = count;
+    }
+
+    // Translate EVERYTHING on the page
+    function translateEverything() {
+      // Update page title based on language
+      const pageTitleElement = document.getElementById("main-page-title");
+      if (currentLanguage === "gu") {
+        pageTitleElement.innerHTML =
+          'વપરાશકર્તા સંચાલન <small class="text-muted" style="font-size: 1rem;">(બહુભાષી સપોર્ટ)</small>';
+      } else if (currentLanguage === "hi") {
+        pageTitleElement.innerHTML =
+          'उपयोगकर्ता प्रबंधन <small class="text-muted" style="font-size: 1rem;">(बहुभाषी समर्थन)</small>';
+      } else {
+        pageTitleElement.innerHTML =
+          'User Management <small class="text-muted" style="font-size: 1rem;">(Multilingual Support)</small>';
+      }
+
+      // Translate all elements with data-i18n attribute
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          element.textContent = translations[currentLanguage][key];
+        }
+      });
+
+      // Translate all placeholder elements
+      document
+        .querySelectorAll("[data-i18n-placeholder]")
+        .forEach((element) => {
+          const key = element.getAttribute("data-i18n-placeholder");
+          if (
+            translations[currentLanguage] &&
+            translations[currentLanguage][key]
+          ) {
+            element.placeholder = translations[currentLanguage][key];
+          }
+        });
+
+      // Update table headers
+      const tableHeaders = document.querySelectorAll("th[data-i18n]");
+      tableHeaders.forEach((header) => {
+        const key = header.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          header.textContent = translations[currentLanguage][key];
+        }
+      });
+
+      // Update select options
+      const selectOptions = document.querySelectorAll("option[data-i18n]");
+      selectOptions.forEach((option) => {
+        const key = option.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          option.textContent = translations[currentLanguage][key];
+        }
+      });
+
+      // Update button texts
+      const buttons = document.querySelectorAll("button[data-i18n]");
+      buttons.forEach((button) => {
+        const key = button.getAttribute("data-i18n");
+        if (
+          translations[currentLanguage] &&
+          translations[currentLanguage][key]
+        ) {
+          const span = button.querySelector("span");
+          if (span) {
+            span.textContent = translations[currentLanguage][key];
+          } else {
+            button.textContent = translations[currentLanguage][key];
+          }
+        }
+      });
+
+      // Update navbar time and date
+      updateNavbarDateTime();
+
+      // Update delete dialog text
+      const deleteDialogMessage = document.getElementById(
+        "deleteDialogMessage"
+      );
+      if (
+        deleteDialogMessage &&
+        translations[currentLanguage].confirm_delete
+      ) {
+        deleteDialogMessage.textContent =
+          translations[currentLanguage].confirm_delete;
+      }
+
+      const deleteDialogTitle = document.getElementById("deleteDialogTitle");
+      if (deleteDialogTitle && translations[currentLanguage].delete_user) {
+        deleteDialogTitle.textContent =
+          translations[currentLanguage].delete_user;
+      }
+
+      const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+      if (cancelDeleteBtn && translations[currentLanguage].cancel) {
+        cancelDeleteBtn.textContent = translations[currentLanguage].cancel;
+      }
+
+      const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+      if (confirmDeleteBtn && translations[currentLanguage].delete) {
+        confirmDeleteBtn.textContent = translations[currentLanguage].delete;
+      }
+
+      // Re-render table
+      renderUsersTable();
+      setupPagination();
+    }
+
+    // Translate dates in real-time
+    function updateNavbarDateTime() {
+      const now = new Date();
+
+      // Get day and month names in current language
+      const dayNames = {
+        en: [
+          translations.en.sunday,
+          translations.en.monday,
+          translations.en.tuesday,
+          translations.en.wednesday,
+          translations.en.thursday,
+          translations.en.friday,
+          translations.en.saturday,
+        ],
+        hi: [
+          translations.hi.sunday,
+          translations.hi.monday,
+          translations.hi.tuesday,
+          translations.hi.wednesday,
+          translations.hi.thursday,
+          translations.hi.friday,
+          translations.hi.saturday,
+        ],
+        gu: [
+          translations.gu.sunday,
+          translations.gu.monday,
+          translations.gu.tuesday,
+          translations.gu.wednesday,
+          translations.gu.thursday,
+          translations.gu.friday,
+          translations.gu.saturday,
+        ],
+      };
+
+      const monthNames = {
+        en: [
+          translations.en.january,
+          translations.en.february,
+          translations.en.march,
+          translations.en.april,
+          translations.en.may,
+          translations.en.june,
+          translations.en.july,
+          translations.en.august,
+          translations.en.september,
+          translations.en.october,
+          translations.en.november,
+          translations.en.december,
+        ],
+        hi: [
+          translations.hi.january,
+          translations.hi.february,
+          translations.hi.march,
+          translations.hi.april,
+          translations.hi.may,
+          translations.hi.june,
+          translations.hi.july,
+          translations.hi.august,
+          translations.hi.september,
+          translations.hi.october,
+          translations.hi.november,
+          translations.hi.december,
+        ],
+        gu: [
+          translations.gu.january,
+          translations.gu.february,
+          translations.gu.march,
+          translations.gu.april,
+          translations.gu.may,
+          translations.gu.june,
+          translations.gu.july,
+          translations.gu.august,
+          translations.gu.september,
+          translations.gu.october,
+          translations.gu.november,
+          translations.gu.december,
+        ],
+      };
+
+      const dayName = dayNames[currentLanguage][now.getDay()];
+      const monthName = monthNames[currentLanguage][now.getMonth()];
+      const date = now.getDate();
+      const year = now.getFullYear();
+
+      // Format time
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+
+      if (currentLanguage === "en") {
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById(
+          "navbar-current-time"
+        ).textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+        document.getElementById(
+          "navbar-current-date"
+        ).textContent = `${dayName}, ${monthName} ${date}, ${year}`;
+      } else if (currentLanguage === "hi") {
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById(
+          "navbar-current-time"
+        ).textContent = `${hours}:${minutes}:${seconds}`;
+        document.getElementById(
+          "navbar-current-date"
+        ).textContent = `${dayName}, ${date} ${monthName}, ${year}`;
+      } else if (currentLanguage === "gu") {
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        document.getElementById(
+          "navbar-current-time"
+        ).textContent = `${hours}:${minutes}:${seconds}`;
+        document.getElementById(
+          "navbar-current-date"
+        ).textContent = `${dayName}, ${date} ${monthName}, ${year}`;
+      }
+    }
+
+    // ==================== CORE FUNCTIONS ====================
+    // ==================== CORE FUNCTIONS ====================
+    // Fetch users from API
+    async function fetchUsers(page = 1, search = '') {
+      try {
+        const response = await fetch(`${API_URL}?action=get_users&page=${page}&perPage=${itemsPerPage}&search=${encodeURIComponent(search)}`);
+        const data = await response.json();
+
+        if (data.success) {
+          userData = data.users;
+          filteredUsers = data.users; // In this case they are the same because of server-side filtering
+          totalItems = data.total;
+          totalPages = data.totalPages;
+          currentPage = parseInt(data.page);
+
+          renderUsersTable();
+          setupPagination();
+          updatePaginationInfo(totalItems);
+        } else {
+          console.error('Error fetching users:', data.error);
+          showNotification('Failed to load users', 'danger');
+        }
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        showNotification('Network error while loading users', 'danger');
+      }
+    }
+
+    // Render Users table based on current language
+    function renderUsersTable() {
+      const tbody = document.getElementById("usersTableBody");
+      tbody.innerHTML = "";
+
+      // Logic changed: filteredUsers is already the slice for the current page from API
+      const usersToShow = filteredUsers;
+
+      if (usersToShow.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+              <td colspan="9" class="text-center py-5">
+                <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                <p class="text-muted">${translations[currentLanguage].no_user_found}</p>
+              </td>
+            </tr>
+          `;
+        updatePaginationInfo(0);
+        return;
+      }
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+
+      usersToShow.forEach((user, index) => {
+        // Get text in current language
+        let firstname, lastname;
+        if (currentLanguage === "en") {
+          firstname = user.firstname;
+          lastname = user.lastname;
+        } else {
+          firstname = user[`firstname_${currentLanguage}`] || user.firstname;
+          lastname = user[`lastname_${currentLanguage}`] || user.lastname;
+        }
+
+        const fullName = `${firstname} ${lastname}`;
+        const email = user.email;
+        const phone = user.phone;
+        const gender = getGenderName(user.gender);
+        const role = getRoleName(user.role);
+        const roleClass = getRoleClass(user.role);
+        const status = getStatusName(user.status);
+        const statusClass = getStatusClass(user.status);
+        const lastLogin = user.last_login
+          ? formatDateTime(user.last_login)
+          : "Never";
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${startIndex + index + 1}</td>
+            <td>
+              <div class="d-flex align-items-center">
+                <img src="${user.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(fullName) + '&background=random'
+          }" alt="${fullName}" class="rounded-circle me-2" style="width: 40px; height: 40px; object-fit: cover;">
+                <div>
+                  <div class="fw-semibold">${fullName}</div>
+                  <small class="text-muted">ID: ${user.id}</small>
+                </div>
+              </div>
+            </td>
+            <td>${email}</td>
+            <td>${phone}</td>
+            <td>${gender}</td>
+            <td><span class="badge ${roleClass}">${role}</span></td>
+            <td>
+              <div class="user-status">
+                <span class="status-dot ${user.status}"></span>
+                <span class="badge ${statusClass}">${status}</span>
+              </div>
+            </td>
+            <td>${lastLogin}</td>
+            <td>
+              <div class="action-icons">
+                <div class="action-icon view" title="${translations[currentLanguage].actions
+          }" onclick="viewUser(${user.id})">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="action-icon edit" title="${translations[currentLanguage].actions
+          }" onclick="editUser(${user.id})">
+                  <i class="fas fa-edit"></i>
+                </div>
+                <div class="action-icon delete" title="${translations[currentLanguage].actions
+          }" onclick="showDeleteConfirmation(${user.id})">
+                  <i class="fas fa-trash"></i>
+                </div>
+              </div>
+            </td>
+          `;
+        tbody.appendChild(row);
+      });
+      // updatePaginationInfo called in fetchUsers
+    }
+
+    // Setup pagination
+    function setupPagination() {
+      const pagination = document.getElementById("usersPagination");
+      pagination.innerHTML = "";
+
+
+
+      // totalPages is now global and set by API response logic
+      if (totalPages <= 1) return;
+
+      if (totalPages <= 1) return;
+
+      // Previous button
+      const prevLi = document.createElement("li");
+      prevLi.className = "page-item" + (currentPage === 1 ? " disabled" : "");
+      prevLi.innerHTML = `
+          <a class="page-link" href="#" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        `;
+      prevLi.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+          currentPage--;
+          renderUsersTable();
+          setupPagination();
+        }
+      });
+      pagination.appendChild(prevLi);
+
+      // Page numbers
+      const maxVisiblePages = 5;
+      let startPage = Math.max(
+        1,
+        currentPage - Math.floor(maxVisiblePages / 2)
+      );
+      let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+      if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        const pageLi = document.createElement("li");
+        pageLi.className = "page-item" + (i === currentPage ? " active" : "");
+        pageLi.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+
+        pageLi.addEventListener("click", function (e) {
+          e.preventDefault();
+          currentPage = i;
+          renderUsersTable();
+          setupPagination();
+        });
+
+        pagination.appendChild(pageLi);
+      }
+
+      // Next button
+      const nextLi = document.createElement("li");
+      nextLi.className =
+        "page-item" + (currentPage === totalPages ? " disabled" : "");
+      nextLi.innerHTML = `
+          <a class="page-link" href="#" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        `;
+      nextLi.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+          currentPage++;
+          renderUsersTable();
+          setupPagination();
+        }
+      });
+      pagination.appendChild(nextLi);
+    }
+
+    // Switch language
+    function switchLanguage(lang) {
+      currentLanguage = lang;
+
+      // Update flag
+      const flagImg = document.getElementById("current-flag");
+      switch (currentLanguage) {
+        case "hi":
+          flagImg.src = "https://flagcdn.com/w40/in.png";
+          break;
+        case "gu":
+          flagImg.src = "https://flagcdn.com/w40/in.png";
+          break;
+        default:
+          flagImg.src = "https://flagcdn.com/w40/gb.png";
+      }
+
+      // Update global language selector
+      document.getElementById("global-language-selector").value = lang;
+
+      // Translate everything
+      translateEverything();
+
+      // Update search if there's a search term
+      const searchTerm = document.getElementById("searchUsers").value;
+      if (searchTerm) {
+        searchUsers();
+      }
+    }
+
+    // View User Details
+    function viewUser(id) {
+      const user = userData.find((item) => item.id === id);
+      if (!user) return;
+
+      // Populate basic info
+      const avatar = document.getElementById("view-user-avatar");
+      const name = document.getElementById("view-user-name");
+      const email = document.getElementById("view-user-email");
+      const phone = document.getElementById("view-user-phone");
+      const gender = document.getElementById("view-user-gender");
+      const role = document.getElementById("view-user-role");
+      const lastLogin = document.getElementById("view-user-lastlogin");
+
+      if (avatar) avatar.src = user.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.firstname + ' ' + user.lastname) + '&background=random';
+      if (name) name.textContent = `${user.firstname} ${user.lastname}`;
+      if (email) email.textContent = user.email;
+      if (phone) phone.textContent = user.phone;
+      if (gender) gender.textContent = getGenderName(user.gender);
+      if (role) role.textContent = getRoleName(user.role);
+      if (lastLogin) lastLogin.textContent = user.last_login ? formatDateTime(user.last_login) : "Never";
+
+      // Populate status
+      const statusDot = document.getElementById("view-status-dot");
+      const statusText = document.getElementById("view-status-text");
+      if (statusDot) statusDot.className = "status-dot " + user.status;
+      if (statusText) {
+        statusText.textContent = getStatusName(user.status);
+        statusText.className = "badge " + getStatusClass(user.status);
+      }
+
+      // Populate names in different languages
+      const nameEn = document.getElementById("view-user-name-en");
+      const nameHi = document.getElementById("view-user-name-hi");
+      const nameGu = document.getElementById("view-user-name-gu");
+
+      if (nameEn) nameEn.textContent = `${user.firstname} ${user.lastname}`;
+      if (nameHi) nameHi.textContent = `${user.firstname_hi || user.firstname} ${user.lastname_hi || user.lastname}`;
+      if (nameGu) nameGu.textContent = `${user.firstname_gu || user.firstname} ${user.lastname_gu || user.lastname}`;
+
+      // Show modal
+      const viewUserModal = new bootstrap.Modal(
+        document.getElementById("viewUserModal")
+      );
+      viewUserModal.show();
+    }
+    // Edit User
+    function editUser(id) {
+      const user = userData.find((item) => item.id === id);
+      if (!user) return;
+
+      currentUserId = id;
+
+      // Populate form with user data
+      const modalLabel = document.getElementById("addUserModalLabel");
+      const avatarPreview = document.getElementById("user-avatar-preview");
+      const userIdField = document.getElementById("user-id");
+      const firstNameEn = document.getElementById("user-firstname-en");
+      const lastNameEn = document.getElementById("user-lastname-en");
+      const firstNameHi = document.getElementById("user-firstname-hi");
+      const lastNameHi = document.getElementById("user-lastname-hi");
+      const firstNameGu = document.getElementById("user-firstname-gu");
+      const lastNameGu = document.getElementById("user-lastname-gu");
+      const email = document.getElementById("user-email");
+      const phone = document.getElementById("user-phone");
+      const gender = document.getElementById("user-gender");
+      const role = document.getElementById("user-role");
+      const status = document.getElementById("user-status");
+      const password = document.getElementById("user-password");
+      const address = document.getElementById("user-address");
+
+      if (modalLabel) modalLabel.textContent = translations[currentLanguage].edit_user;
+      if (avatarPreview) avatarPreview.src = user.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.firstname + ' ' + user.lastname) + '&background=random';
+      if (userIdField) userIdField.value = user.id;
+      if (firstNameEn) firstNameEn.value = user.firstname;
+      if (lastNameEn) lastNameEn.value = user.lastname;
+      if (firstNameHi) firstNameHi.value = user.firstname_hi || "";
+      if (lastNameHi) lastNameHi.value = user.lastname_hi || "";
+      if (firstNameGu) firstNameGu.value = user.firstname_gu || "";
+      if (lastNameGu) lastNameGu.value = user.lastname_gu || "";
+      if (email) email.value = user.email;
+      if (phone) phone.value = user.phone;
+      if (gender) gender.value = user.gender;
+      if (role) role.value = user.role;
+      if (status) status.value = user.status;
+      if (password) password.value = ""; // Don't show password
+      if (address) address.value = user.address || "";
+
+      const addModal = new bootstrap.Modal(
+        document.getElementById("addUserModal")
+      );
+      addModal.show();
+    }
+
+    // Show delete confirmation dialog
+    function showDeleteConfirmation(id) {
+      userToDelete = id;
+      const dialog = document.getElementById("deleteConfirmationDialog");
+      dialog.classList.add("show");
+    }
+
+    // Hide delete confirmation dialog
+    function hideDeleteConfirmation() {
+      const dialog = document.getElementById("deleteConfirmationDialog");
+      dialog.classList.remove("show");
+      userToDelete = null;
+    }
+
+    // Delete User
+    async function deleteUser(id) {
+      try {
+        const response = await fetch(`${API_URL}?action=delete_user&id=${id}`, {
+          method: 'DELETE' // Or POST if DELETE not supported by server config
+        });
+        const data = await response.json();
+
+        if (data.success) {
+          showNotification(translations[currentLanguage].user_deleted, "success");
+          // Refresh list keeping current page if possible
+          fetchUsers(currentPage, document.getElementById("searchUsers").value);
+        } else {
+          showNotification(data.error || "Failed to delete user", "danger");
+        }
+      } catch (error) {
+        console.error('Error deleting user:', error);
+        showNotification("Network error deleting user", "danger");
+      }
+    }
+
+    // Search Users
+    function searchUsers() {
+      const searchTerm = document
+        .getElementById("searchUsers")
+        .value; // No lowerCase here, let server handle it
+
+      // Debounce logic could be added here for performance
+      fetchUsers(1, searchTerm);
+    }
+
+    // ==================== TRANSLATION FUNCTION ====================
+    // ==================== TRANSLATION FUNCTION ====================
+    async function translateText(text, sourceLang, targetLang) {
+      if (!text || text.trim() === "") {
+        return "";
+      }
+
+      try {
+        // Use Google Translate API (free version)
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Extract translated text
+        if (data && data[0] && data[0][0] && data[0][0][0]) {
+          return data[0][0][0];
+        }
+
+        return text; // Return original if structure doesn't match
+      } catch (error) {
+        console.error("Translation error:", error);
+        // Fallback to original text if API fails
+        return text;
+      }
+    }
+
+    function getGenderName(gender) {
+      // Map data values to translation keys
+      const keyMap = {
+        'male': 'male',
+        'female': 'female',
+        'other': 'other'
+      };
+      const key = keyMap[gender] || gender;
+      return (translations[currentLanguage] && translations[currentLanguage][key]) ? translations[currentLanguage][key] : gender;
+    }
+
+    function getRoleName(role) {
+      // Map data values to translation keys
+      const keyMap = {
+        'admin': 'administrator',
+        'manager': 'manager',
+        'editor': 'editor',
+        'viewer': 'viewer'
+      };
+      const key = keyMap[role] || role;
+      return (translations[currentLanguage] && translations[currentLanguage][key]) ? translations[currentLanguage][key] : role;
+    }
+
+    function getStatusName(status) {
+      // Map data values to translation keys
+      const keyMap = {
+        'active': 'active',
+        'inactive': 'inactive',
+        'pending': 'pending'
+      };
+      const key = keyMap[status] || status;
+      return (translations[currentLanguage] && translations[currentLanguage][key]) ? translations[currentLanguage][key] : status;
+    }
+
+    // Avatar preview function
+    function previewAvatar(event) {
+      const input = event.target;
+      const preview = document.getElementById("user-avatar-preview");
+
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          preview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // Show notification
+    function showNotification(message, type) {
+      // Create notification element
+      const notification = document.createElement("div");
+      notification.className = `notification notification-${type}`;
+      notification.style.cssText = `
+          position: fixed;
+          top: 100px;
+          right: 20px;
+          background: ${type === "success"
+          ? "#10b981"
+          : type === "warning"
+            ? "#f59e0b"
+            : type === "info"
+              ? "#3b82f6"
+              : "#ef4444"
+        };
+          color: white;
+          padding: 15px 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          z-index: 10000;
+          animation: slideIn 0.3s ease;
+        `;
+
+      notification.innerHTML = `
+          <i class="fas fa-${type === "success"
+          ? "check-circle"
+          : type === "warning"
+            ? "exclamation-triangle"
+            : type === "info"
+              ? "info-circle"
+              : "exclamation-circle"
+        }"></i>
+          <span class="ms-2">${message}</span>
+        `;
+
+      document.body.appendChild(notification);
+
+      // Remove after 3 seconds
+      setTimeout(() => {
+        notification.style.animation = "slideOut 0.3s ease";
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+
+      // Add CSS for animations
+      if (!document.querySelector("#notification-styles")) {
+        const style = document.createElement("style");
+        style.id = "notification-styles";
+        style.textContent = `
+            @keyframes slideIn {
+              from { transform: translateX(100%); opacity: 0; }
+              to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+              from { transform: translateX(0); opacity: 1; }
+              to { transform: translateX(100%); opacity: 0; }
+            }
+          `;
+        document.head.appendChild(style);
+      }
+    }
+
+    // ==================== INITIALIZATION ====================
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize user data
+      filteredUsers = [...userData];
+
+      // Sidebar toggle
+      const sidebarToggle = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("sidebar-overlay");
+
+      // Language selector
+      const languageSelector = document.getElementById(
+        "global-language-selector"
+      );
+
+      // Add User button
+      const addUserBtn = document.getElementById("save-user-btn");
+
+      // Auto translate button
+      const autoTranslateBtn = document.getElementById("auto-translate-btn");
+
+      // Refresh Users button
+      const refreshUsersBtn = document.getElementById("refreshUsers");
+
+      // Search Users input
+      const searchUsersInput = document.getElementById("searchUsers");
+
+      // Delete confirmation dialog buttons
+      const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+      const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+
+      // Mobile sidebar toggle functionality
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("active");
+          overlay.classList.toggle("active");
+        });
+      }
+
+      // Close sidebar when clicking on overlay
+      if (overlay) {
+        overlay.addEventListener("click", function () {
+          sidebar.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+      }
+
+      // Language selector functionality
+      if (languageSelector) {
+        languageSelector.addEventListener("change", function (e) {
+          switchLanguage(e.target.value);
+        });
+      }
+
+      // Close sidebar when window is resized to desktop size
+      window.addEventListener("resize", function () {
+        if (window.innerWidth >= 992) {
+          sidebar.classList.remove("active");
+          overlay.classList.remove("active");
+        }
+      });
+
+      // Initialize users management
+      fetchUsers();
+      // renderUsersTable(); // Called inside fetchUsers
+      // setupPagination(); // Called inside fetchUsers
+
+      // Initial translation
+      translateEverything();
+
+      // Update time immediately and then every second
+      updateNavbarDateTime();
+      setInterval(updateNavbarDateTime, 1000);
+
+      // Add User button click
+      // Add User button click
+      const addUserModalBtn = document.querySelector(
+        '[data-bs-target="#addUserModal"]'
+      );
+      if (addUserModalBtn) {
+        addUserModalBtn.addEventListener("click", function () {
+          currentUserId = null;
+          const modalLabel = document.getElementById("addUserModalLabel");
+          const avatarPreview = document.getElementById("user-avatar-preview");
+          const userIdField = document.getElementById("user-id");
+          const firstNameEn = document.getElementById("user-firstname-en");
+          const lastNameEn = document.getElementById("user-lastname-en");
+          const firstNameHi = document.getElementById("user-firstname-hi");
+          const lastNameHi = document.getElementById("user-lastname-hi");
+          const firstNameGu = document.getElementById("user-firstname-gu");
+          const lastNameGu = document.getElementById("user-lastname-gu");
+          const email = document.getElementById("user-email");
+          const phone = document.getElementById("user-phone");
+          const gender = document.getElementById("user-gender");
+          const role = document.getElementById("user-role");
+          const status = document.getElementById("user-status");
+          const password = document.getElementById("user-password");
+          const address = document.getElementById("user-address");
+
+          if (modalLabel) modalLabel.textContent = translations[currentLanguage].add_new_user;
+          if (avatarPreview) avatarPreview.src = "https://ui-avatars.com/api/?name=New+User&background=4361ee&color=fff&size=200";
+          if (userIdField) userIdField.value = "";
+          if (firstNameEn) firstNameEn.value = "";
+          if (lastNameEn) lastNameEn.value = "";
+          if (firstNameHi) firstNameHi.value = "";
+          if (lastNameHi) lastNameHi.value = "";
+          if (firstNameGu) firstNameGu.value = "";
+          if (lastNameGu) lastNameGu.value = "";
+          if (email) email.value = "";
+          if (phone) phone.value = "";
+          if (gender) gender.value = "";
+          if (role) role.value = "";
+          if (status) status.value = "active";
+          if (password) password.value = "";
+          if (address) address.value = "";
+        });
+      }
+
+      // Auto translate button
+      if (autoTranslateBtn) {
+        autoTranslateBtn.addEventListener("click", async function () {
+          const firstNameEn =
+            document.getElementById("user-firstname-en").value;
+          const lastNameEn =
+            document.getElementById("user-lastname-en").value;
+
+          if (!firstNameEn || !lastNameEn) {
+            showNotification(
+              translations[currentLanguage].fill_english_first,
+              "warning"
+            );
+            return;
+          }
+
+          showNotification("Translating content...", "info");
+
+          try {
+            // Translate to Hindi
+            const firstNameHi = await translateText(firstNameEn, "en", "hi");
+            const lastNameHi = await translateText(lastNameEn, "en", "hi");
+
+            // Translate to Gujarati
+            const firstNameGu = await translateText(firstNameEn, "en", "gu");
+            const lastNameGu = await translateText(lastNameEn, "en", "gu");
+
+            // Update fields
+            document.getElementById("user-firstname-hi").value = firstNameHi;
+            document.getElementById("user-lastname-hi").value = lastNameHi;
+            document.getElementById("user-firstname-gu").value = firstNameGu;
+            document.getElementById("user-lastname-gu").value = lastNameGu;
+
+            showNotification(
+              translations[currentLanguage].translation_complete,
+              "success"
+            );
+          } catch (error) {
+            console.error("Translation error:", error);
+            showNotification(
+              translations[currentLanguage].translation_failed,
+              "danger"
+            );
+          }
+        });
+      }
+
+      // Save User button
+      if (addUserBtn) {
+        addUserBtn.addEventListener("click", async function () {
+          // Get form data
+          const userId = document.getElementById("user-id").value;
+          const firstNameEn = document
+            .getElementById("user-firstname-en")
+            .value.trim();
+          const lastNameEn = document
+            .getElementById("user-lastname-en")
+            .value.trim();
+          const firstNameHi = document
+            .getElementById("user-firstname-hi")
+            .value.trim();
+          const lastNameHi = document
+            .getElementById("user-lastname-hi")
+            .value.trim();
+          const firstNameGu = document
+            .getElementById("user-firstname-gu")
+            .value.trim();
+          const lastNameGu = document
+            .getElementById("user-lastname-gu")
+            .value.trim();
+          const email = document.getElementById("user-email").value.trim();
+          const phone = document.getElementById("user-phone").value.trim();
+          const gender = document.getElementById("user-gender").value;
+          const status = document.getElementById("user-status").value;
+          const role = document.getElementById("user-role").value;
+          const password = document.getElementById("user-password").value;
+          const addressEl = document.getElementById("user-address");
+          const address = addressEl ? addressEl.value.trim() : '';
+          const avatar = document.getElementById("user-avatar-preview").src;
+
+          // Validation
+          if (!firstNameEn || !lastNameEn || !email || !phone) {
+            showNotification("Please fill all required fields", "warning");
+            return;
+          }
+
+          // Email validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showNotification("Please enter a valid email address", "warning");
+            return;
+          }
+
+          try {
+            const userObj = {
+              id: userId || null,
+              firstname: firstNameEn,
+              lastname: lastNameEn,
+              firstname_hi: firstNameHi,
+              lastname_hi: lastNameHi,
+              firstname_gu: firstNameGu,
+              lastname_gu: lastNameGu,
+              email: email,
+              phone: phone,
+              gender: gender,
+              status: status,
+              role: role,
+              password: password,
+              address: address,
+              avatar: avatar
+            };
+
+            const response = await fetch(`${API_URL}?action=save_user`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(userObj)
+            });
+
+            const data = await response.json();
+            if (data.success) {
+              showNotification(userId ? translations[currentLanguage].user_updated : translations[currentLanguage].user_added, "success");
+
+              // Close modal
+              const modalElement = document.getElementById("addUserModal");
+              const modal = bootstrap.Modal.getInstance(modalElement);
+              if (modal) {
+                modal.hide();
+              }
+
+              // Refresh list
+              fetchUsers(currentPage);
+
+              // Reset form
+              document.getElementById("userForm").reset();
+            } else {
+              showNotification(data.error || "Failed to save user", "danger");
+            }
+
+          } catch (error) {
+            console.error("Error saving user:", error);
+            showNotification(
+              "Error saving user. Please try again.",
+              "danger"
+            );
+          }
+        });
+      }
+
+      // Refresh Users button
+      if (refreshUsersBtn) {
+        refreshUsersBtn.addEventListener("click", function () {
+          fetchUsers(1);
+          setupPagination();
+          showNotification(
+            `${translations[currentLanguage].refresh} ${translations[
+              currentLanguage
+            ].users.toLowerCase()}`,
+            "success"
+          );
+        });
+      }
+
+      // Search Users functionality
+      if (searchUsersInput) {
+        searchUsersInput.addEventListener("input", searchUsers);
+      }
+
+      // Delete confirmation dialog handlers
+      if (cancelDeleteBtn) {
+        cancelDeleteBtn.addEventListener("click", hideDeleteConfirmation);
+      }
+
+      if (confirmDeleteBtn) {
+        confirmDeleteBtn.addEventListener("click", function () {
+          if (userToDelete) {
+            deleteUser(userToDelete);
+            hideDeleteConfirmation();
+          }
+        });
+      }
+
+      // Close delete dialog when clicking outside
+      const deleteDialog = document.getElementById(
+        "deleteConfirmationDialog"
+      );
+      if (deleteDialog) {
+        deleteDialog.addEventListener("click", function (e) {
+          if (e.target === deleteDialog) {
+            hideDeleteConfirmation();
+          }
+        });
+      }
+    });
+
+    // Make functions globally available
+    window.previewAvatar = previewAvatar;
+    window.viewUser = viewUser;
+    window.editUser = editUser;
+    window.showDeleteConfirmation = showDeleteConfirmation;
+    window.switchLanguage = switchLanguage;
+  </script>
+</body>
+
+</html>

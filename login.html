@@ -1,0 +1,4466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Login | Naroda Group - Premium Real Estate Developer</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Login to your Naroda Group account to access exclusive features, manage properties, and track your investments.">
+    <meta name="keywords"
+        content="naroda group login, real estate account, property management, investor portal, property login, naroda properties">
+    <meta name="author" content="Naroda Group">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Login | Naroda Group">
+    <meta property="og:description" content="Access your Naroda Group account to manage properties and investments">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80">
+    <meta property="og:url" content="https://narodagroup.com/login">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Naroda Group">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Login | Naroda Group">
+    <meta name="twitter:description" content="Access your Naroda Group account to manage properties and investments">
+    <meta name="twitter:image"
+        content="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://narodagroup.com/login">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0a2a4a">
+    <meta name="msapplication-TileColor" content="#0a2a4a">
+    <meta name="theme-color" content="#0a2a4a">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Noto Sans for Hindi/Gujarati -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --primary-color: #0a2a4a;
+            --primary-dark: #071a2e;
+            --primary-light: #0e3a64;
+            --secondary-color: #c9a96e;
+            --secondary-light: #d4b87a;
+            --secondary-dark: #b89440;
+            --accent-color: #2e8b57;
+            --accent-light: #3cb371;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --shadow-hover: 0 25px 60px rgba(0, 0, 0, 0.2);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+        }
+
+        /* ===== Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+            line-height: 1.7;
+            font-weight: 400;
+            background-color: #f9fafb;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1320px;
+            padding: 12px 15px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* ===== Utility Classes ===== */
+        .gold-text {
+            color: var(--secondary-color) !important;
+        }
+
+        .emerald-text {
+            color: var(--accent-color) !important;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-secondary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .badge {
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            font-size: 18px;
+        }
+
+        .bg-gradient-secondary {
+            background: var(--gradient-secondary) !important;
+            height: 38px;
+        }
+
+        .text-gold {
+            color: var(--secondary-color);
+        }
+
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
+        /* ===== Preloader ===== */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .loader-inner {
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(201, 169, 110, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .preloader-text {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 42, 74, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            padding: 15px 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 42, 74, 0.98);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: var(--primary-color);
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: white;
+            background: rgba(201, 169, 110, 0.2);
+        }
+
+        .dropdown-menu {
+            background: rgba(10, 42, 74, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 10px;
+        }
+
+        .dropdown-item {
+            color: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .dropdown-item:hover {
+            background: rgba(201, 169, 110, 0.2);
+            color: white;
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 5px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ===== Profile Dropdown ===== */
+        .profile-dropdown {
+            position: relative;
+        }
+
+        .profile-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            min-width: 280px;
+            display: none;
+            z-index: 1000;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .profile-menu.show {
+            display: block;
+            animation: fadeInDown 0.3s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .profile-avatar-nav {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .profile-info {
+            padding: 20px;
+        }
+
+        .profile-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .profile-info-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .profile-info-item i {
+            width: 30px;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .profile-actions {
+            padding: 15px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .profile-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background: var(--light-gray);
+            color: var(--dark-color);
+            transition: var(--transition);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .profile-btn:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .profile-btn-nav {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-btn-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== Language Switcher ===== */
+        .language-switcher {
+            position: relative;
+        }
+
+        .language-dropdown {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .language-dropdown:hover {
+            color: white;
+            background: rgba(201, 169, 110, 0.2);
+        }
+
+        .language-dropdown i {
+            margin-right: 5px;
+        }
+
+        .language-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(10, 42, 74, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 10px;
+            min-width: 120px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .language-options.show {
+            display: block;
+        }
+
+        .language-option {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .language-option:hover {
+            background: rgba(201, 169, 110, 0.2);
+            color: white;
+        }
+
+        .language-option.active {
+            background: rgba(201, 169, 110, 0.3);
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Language Specific Styles */
+        body.hindi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+        }
+
+        body.gujarati {
+            font-family: 'Noto Sans Gujarati', 'Inter', sans-serif;
+        }
+
+        .language-content {
+            transition: opacity 0.3s ease;
+        }
+
+        /* ===== Login Button ===== */
+        .login-btn {
+            background: var(--gradient-secondary);
+            color: var(--primary-color) !important;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(201, 169, 110, 0.3);
+        }
+
+        /* ===== Auth Container ===== */
+        .auth-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 80px);
+        }
+
+        @media (max-width: 768px) {
+            .auth-section {
+                padding: 100px 0 60px;
+            }
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            min-height: 650px;
+        }
+
+        @media (max-width: 992px) {
+            .auth-card {
+                flex-direction: column;
+                min-height: auto;
+            }
+        }
+
+        /* ===== Auth Left Side ===== */
+        .auth-left {
+            flex: 1;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-left::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .auth-left::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        @media (max-width: 992px) {
+            .auth-left {
+                padding: 40px 30px;
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-left {
+                padding: 30px 20px;
+            }
+        }
+
+        .auth-brand {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .auth-brand .logo-icon {
+            width: 80px;
+            height: 80px;
+            font-size: 2.5rem;
+            margin-right: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .auth-brand h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .auth-brand {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .auth-brand .logo-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .auth-brand h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-brand h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .auth-features {
+            position: relative;
+            z-index: 2;
+        }
+
+        .auth-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .auth-feature:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .auth-feature i {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            flex-shrink: 0;
+        }
+
+        .auth-feature-content h4 {
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .auth-feature-content p {
+            margin-bottom: 0;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .auth-feature {
+                padding: 12px;
+            }
+
+            .auth-feature i {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin-right: 15px;
+            }
+        }
+
+        .auth-support {
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .auth-support p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        /* ===== Auth Right Side ===== */
+        .auth-right {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 992px) {
+            .auth-right {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-right {
+                padding: 30px 20px;
+            }
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .auth-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+        }
+
+        /* ===== Form Styles ===== */
+        .auth-form {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .form-label i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+            color: var(--dark-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.2);
+            outline: none;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .form-control:focus~.input-icon {
+            color: var(--secondary-color);
+        }
+
+        .password-toggle-container {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .password-toggle {
+            background: none;
+            border: none;
+            color: var(--gray-color);
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .password-toggle:hover {
+            color: var(--secondary-color);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .form-check-input {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .form-check-label {
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: var(--gray-color);
+        }
+
+        .auth-divider:before,
+        .auth-divider:after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--light-gray);
+        }
+
+        .auth-divider span {
+            padding: 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--gray-color);
+        }
+
+        .auth-footer a {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn-gold {
+            background: var(--gradient-secondary);
+            color: var(--primary-color) !important;
+            box-shadow: 0 10px 25px rgba(201, 169, 110, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(201, 169, 110, 0.4);
+            color: var(--primary-color) !important;
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            background: transparent;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary-color) !important;
+            border-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline-gold {
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            background: transparent;
+        }
+
+        .btn-outline-gold:hover {
+            background: var(--gradient-secondary);
+            color: var(--primary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(201, 169, 110, 0.2);
+        }
+
+        .btn-emerald {
+            background: var(--gradient-accent);
+            color: white !important;
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.3);
+        }
+
+        .btn-emerald:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(46, 139, 87, 0.4);
+            color: white !important;
+        }
+
+        .btn-lg {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        .btn-link {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+            transform: translateX(5px);
+        }
+
+        /* ===== Step Navigation ===== */
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        @media (max-width: 576px) {
+            .step-navigation {
+                flex-direction: column;
+            }
+
+            .step-navigation .btn {
+                width: 100%;
+            }
+        }
+
+        /* ===== OTP Input Styles ===== */
+        .otp-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .otp-input {
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .otp-input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.2);
+            outline: none;
+        }
+
+        @media (max-width: 576px) {
+            .otp-container {
+                gap: 10px;
+            }
+
+            .otp-input {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .otp-input {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .otp-input {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== Form Steps ===== */
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        /* ===== Progress Steps ===== */
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .progress-steps:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--light-gray);
+            z-index: 1;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            min-width: 80px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .step-label {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+            transition: var(--transition);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .progress-step.active .step-number {
+            background: var(--gradient-secondary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(201, 169, 110, 0.3);
+        }
+
+        .progress-step.active .step-label {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .progress-step.completed .step-number {
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .progress-step.completed .step-label {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .progress-steps {
+                flex-wrap: wrap;
+                gap: 15px;
+                justify-content: center;
+            }
+
+            .progress-steps:before {
+                display: none;
+            }
+
+            .progress-step {
+                flex: 0 0 calc(50% - 15px);
+                margin-bottom: 15px;
+            }
+
+            .step-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .progress-step {
+                flex: 0 0 100%;
+            }
+        }
+
+        /* ===== OTP Verification Styles ===== */
+        .otp-verification-container {
+            text-align: center;
+        }
+
+        .otp-instruction {
+            margin-bottom: 30px;
+            color: var(--gray-color);
+        }
+
+        .otp-timer {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .otp-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== Password Strength Meter ===== */
+        .password-strength {
+            margin-top: 10px;
+        }
+
+        .strength-meter {
+            height: 6px;
+            background: var(--light-gray);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+
+        .strength-fill.weak {
+            width: 33%;
+            background: #dc3545;
+        }
+
+        .strength-fill.fair {
+            width: 66%;
+            background: #ffc107;
+        }
+
+        .strength-fill.good {
+            width: 100%;
+            background: #28a745;
+        }
+
+        .strength-fill.excellent {
+            width: 100%;
+            background: #28a745;
+        }
+
+        .strength-text {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+        }
+
+        /* ===== Success Message ===== */
+        .success-message {
+            text-align: center;
+            padding: 40px 20px;
+            display: none;
+        }
+
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: white;
+            font-size: 3rem;
+        }
+
+        /* ===== Registration Form Styles ===== */
+        .registration-form {
+            display: none;
+        }
+
+        .registration-form.active {
+            display: block;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: #b0b7c3;
+            padding-top: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-title {
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
+
+        .row.g-4 {
+            overflow-x: hidden;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 0;
+            margin-top: 50px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== Additional Styles ===== */
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-link {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white !important;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-link:hover {
+            background: var(--gradient-secondary);
+            transform: translateY(-3px);
+            z-index: 3;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-links a {
+            color: #b0b7c3;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info i {
+            color: var(--secondary-color);
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 1.1rem;
+            min-width: 20px;
+        }
+
+        /* ===== Floating Buttons ===== */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .floating-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border: none;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-btn.whatsapp {
+            background: #25D366;
+        }
+
+        .floating-btn.phone {
+            background: var(--gradient-secondary);
+        }
+
+        .floating-btn.chat {
+            background: var(--primary-color);
+        }
+
+        .floating-btn.scroll-top {
+            background: var(--accent-color);
+        }
+
+        /* ===== Mobile Navigation ===== */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 0;
+            display: none;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gray-color);
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+
+        .mobile-nav-item.active,
+        .mobile-nav-item:hover {
+            color: var(--primary-color);
+            background: rgba(10, 42, 74, 0.05);
+        }
+
+        .mobile-nav-icon {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .mobile-nav-text {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* ===== Toast Notifications ===== */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 350px;
+        }
+
+        @media (max-width: 576px) {
+            .toast-container {
+                top: 80px;
+                right: 10px;
+                left: 10px;
+            }
+        }
+
+        .toast {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            max-width: 100%;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* ===== Loading Overlay ===== */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            display: none;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        /* ===== Form Validation Styles ===== */
+        .is-invalid {
+            border-color: #dc3545 !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+
+        .is-invalid:focus {
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2) !important;
+        }
+
+        .invalid-feedback {
+            display: none;
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: #dc3545;
+        }
+
+        .is-invalid~.invalid-feedback {
+            display: block;
+        }
+
+        .is-valid {
+            border-color: #28a745 !important;
+        }
+
+        .is-valid:focus {
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2) !important;
+        }
+
+        /* ===== RESPONSIVE MEDIA QUERIES ===== */
+        @media (max-width: 991px) {
+            .auth-section {
+                padding-bottom: 60px !important;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            main {
+                padding-bottom: 60px !important;
+            }
+
+            .floating-buttons {
+                bottom: 80px;
+                right: 15px;
+            }
+
+            .language-switcher {
+                margin-right: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .auth-section {
+                padding: 100px 0 60px;
+            }
+
+            .floating-buttons {
+                bottom: 70px;
+            }
+
+            .language-options {
+                right: auto;
+                left: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            html {
+                font-size: 15px;
+            }
+
+            .container {
+                width: 100%;
+                padding: 0 15px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .auth-section {
+                padding: 100px 0 50px;
+            }
+
+            .auth-brand h1 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+
+            .auth-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title:after {
+                width: 60px;
+                bottom: -12px;
+            }
+
+            .badge {
+                font-size: 16px;
+                letter-spacing: 2px;
+            }
+
+            .bg-gradient-secondary {
+                height: 34px;
+            }
+
+            .btn-lg {
+                padding: 14px 25px;
+                font-size: 0.95rem;
+            }
+
+            .btn {
+                padding: 12px 22px;
+                font-size: 0.9rem;
+            }
+
+            .auth-btn {
+                padding: 14px;
+                font-size: 1rem;
+            }
+
+            .form-control {
+                padding: 14px 16px 14px 45px;
+            }
+
+            .input-icon {
+                left: 16px;
+            }
+
+            .password-toggle-container {
+                right: 16px;
+            }
+
+            .auth-feature i {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                margin-right: 10px;
+            }
+
+            .auth-feature-content h4 {
+                font-size: 1rem;
+            }
+
+            .auth-feature-content p {
+                font-size: 0.85rem;
+            }
+
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .step-navigation {
+                flex-direction: column;
+            }
+
+            .step-navigation .btn {
+                width: 100%;
+            }
+
+            .otp-input {
+                width: 35px;
+                height: 35px;
+                font-size: 0.8rem;
+            }
+
+            .otp-actions {
+                flex-direction: column;
+            }
+
+            .otp-actions .btn {
+                width: 100%;
+            }
+
+            .footer {
+                padding-top: 50px;
+            }
+
+            .footer-title {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+
+            .copyright {
+                padding: 20px 0;
+                margin-top: 40px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+
+            .login-btn {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== Fix for AOS overflow issues ===== */
+        [data-aos] {
+            overflow: visible !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader" aria-label="Loading page">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+        <div class="preloader-text">NARODA GROUP</div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" aria-label="Processing" role="status">
+        <div class="spinner-border" style="color: var(--secondary-color);" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="mt-3 text-white">Processing...</div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <div class="logo-icon">NG</div>
+                <span class="language-content" data-i18n="nav.brand">Naroda</span>
+                <span class="gold-text"><span class="language-content" data-i18n="nav.group">Group</span></span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html" class="language-content"
+                            data-i18n="nav.home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html" class="language-content" data-i18n="nav.about">About</a>
+                    </li>
+
+                    <!-- Projects Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle language-content" href="#" id="projectsDropdown"
+                            data-bs-toggle="dropdown" data-i18n="nav.projects">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+                            <li>
+                                <a class="dropdown-item language-content" href="projects-landmark.html"
+                                    data-i18n="nav.landmark">Naroda Landmark</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item language-content" href="projects-irish.html"
+                                    data-i18n="nav.irish">Naroda Irish</a>
+                            </li>
+                            <!-- <li>
+                  <hr class="dropdown-divider" />
+                </li> -->
+                            <!-- <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="projects.html"
+                    data-i18n="nav.all_projects"
+                    >All Projects</a
+                  >
+                </li> -->
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html" class="language-content"
+                            data-i18n="nav.contact">Contact</a>
+                    </li>
+
+                    <!-- Properties Dropdown -->
+                    <!-- <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle language-content"
+                href="#"
+                id="propertiesDropdown"
+                data-bs-toggle="dropdown"
+                data-i18n="nav.properties"
+              >
+                Properties
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="propertiesDropdown">
+                <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="properties.html?type=buy"
+                    data-i18n="nav.buy"
+                    >Buy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="properties.html?type=rent"
+                    data-i18n="nav.rent"
+                    >Rent</a
+                  >
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="property-detail.html"
+                    data-i18n="nav.property_details"
+                    >Property Details</a
+                  >
+                </li>
+              </ul>
+            </li> -->
+
+                    <!-- Gallery -->
+                    <!-- <li class="nav-item">
+              <a
+                class="nav-link language-content"
+                href="gallery.html"
+                data-i18n="nav.gallery"
+                >Gallery</a
+              >
+            </li> -->
+
+                    <!-- More Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle language-content" href="#" id="moreDropdown"
+                            data-bs-toggle="dropdown" data-i18n="nav.more">
+                            More
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+                            <li>
+                                <a class="dropdown-item language-content" href="main_blog.html" data-i18n="nav.blog"><i
+                                        class="fas fa-blog me-2"></i>Blog</a>
+                            </li>
+                            <!-- <li>
+                  <a
+                    class="dropdown-item language-content"
+                    href="news.html"
+                    data-i18n="nav.news"
+                    ><i class="fas fa-newspaper me-2"></i>News</a
+                  >
+                </li> -->
+                            <li>
+                                <a class="dropdown-item language-content" href="main_career.html"
+                                    data-i18n="nav.careers"><i class="fas fa-briefcase me-2"></i>Careers</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item language-content" href="main_team.html" data-i18n="nav.team"><i
+                                        class="fas fa-users me-2"></i>Our Team</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item language-content" href="main_faq.html" data-i18n="nav.faq"><i
+                                        class="fas fa-question-circle me-2"></i>FAQ</a>
+                            </li>
+                            <!-- <li>
+                  <hr class="dropdown-divider" />
+                </li> -->
+                        </ul>
+                    </li>
+
+                    <!-- Language Switcher -->
+                    <li class="nav-item language-switcher">
+                        <div class="language-dropdown" id="languageToggle">
+                            <i class="fas fa-globe"></i>
+                            <span class="language-content" data-i18n="nav.language">EN</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </div>
+                        <div class="language-options" id="languageOptions">
+                            <div class="language-option active" data-lang="en">English</div>
+                            <div class="language-option" data-lang="hi">हिन्दी</div>
+                            <div class="language-option" data-lang="gu">ગુજરાતી</div>
+                        </div>
+                    </li>
+
+                    <!-- Login Button -->
+                    <li class="nav-item ms-2">
+                        <button class="btn login-btn language-content" data-i18n="nav.login"
+                            onclick="window.location.href='login.html'">
+                            <i class="fas fa-user me-2"></i> Login
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="language-content" id="main-content">
+        <!-- Auth Section -->
+        <section class="auth-section" id="top">
+            <div class="container">
+                <div class="auth-container" data-aos="fade-up">
+                    <div class="auth-card">
+                        <!-- Left Side - Features -->
+                        <div class="auth-left">
+                            <div class="auth-brand">
+                                <div class="logo-icon">NG</div>
+                                <h1 data-i18n="auth.brand_title.part1">Naroda <span class="gold-text"
+                                        data-i18n="auth.brand_title.part2">Group</span></h1>
+                            </div>
+
+                            <h2 class="mb-4" data-i18n="auth.welcome_title">Welcome to Naroda Group</h2>
+                            <p class="mb-4" data-i18n="auth.welcome_text">
+                                Join thousands of satisfied customers who trust us with their real estate dreams.
+                                Manage properties, track investments, and discover exclusive opportunities.
+                            </p>
+
+                            <div class="auth-features">
+                                <div class="auth-feature">
+                                    <i class="fas fa-home"></i>
+                                    <div class="auth-feature-content">
+                                        <h4 data-i18n="auth.feature1_title">Property Management</h4>
+                                        <p data-i18n="auth.feature1_text">View and manage all your properties in one
+                                            dashboard</p>
+                                    </div>
+                                </div>
+
+                                <div class="auth-feature">
+                                    <i class="fas fa-chart-line"></i>
+                                    <div class="auth-feature-content">
+                                        <h4 data-i18n="auth.feature2_title">Investment Tracking</h4>
+                                        <p data-i18n="auth.feature2_text">Monitor ROI and property performance with
+                                            detailed analytics</p>
+                                    </div>
+                                </div>
+
+                                <div class="auth-feature">
+                                    <i class="fas fa-bell"></i>
+                                    <div class="auth-feature-content">
+                                        <h4 data-i18n="auth.feature3_title">Exclusive Updates</h4>
+                                        <p data-i18n="auth.feature3_text">Be the first to know about new projects and
+                                            special offers</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="auth-support">
+                                <p class="mb-2" data-i18n="auth.support_text">Need assistance with your account?</p>
+                                <a href="contact.html" class="btn btn-outline-light">
+                                    <i class="fas fa-headset me-2"></i> <span data-i18n="auth.contact_support">Contact
+                                        Support</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Side - Forms -->
+                        <div class="auth-right">
+                            <!-- Login Form -->
+                            <div class="auth-form" id="loginForm">
+                                <div class="auth-header">
+                                    <h2 data-i18n="login.title.part1">Welcome <span class="gold-text"
+                                            data-i18n="login.title.part2">Back</span></h2>
+                                    <p data-i18n="login.subtitle">Sign in to your account</p>
+                                </div>
+
+                                <form id="loginFormActual" novalidate>
+                                    <div class="form-group">
+                                        <label for="loginEmail" class="form-label">
+                                            <i class="fas fa-envelope"></i> <span data-i18n="login.email_label">Email
+                                                Address</span>
+                                        </label>
+                                        <div class="position-relative">
+                                            <i class="fas fa-envelope input-icon"></i>
+                                            <input type="email" id="loginEmail" class="form-control"
+                                                placeholder="Enter your email" required
+                                                data-i18n-placeholder="login.email_placeholder">
+                                        </div>
+                                        <div class="invalid-feedback" data-i18n="login.email_error">Please enter a valid
+                                            email address</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="loginPassword" class="form-label">
+                                            <i class="fas fa-lock"></i> <span
+                                                data-i18n="login.password_label">Password</span>
+                                        </label>
+                                        <div class="position-relative">
+                                            <i class="fas fa-lock input-icon"></i>
+                                            <input type="password" id="loginPassword" class="form-control"
+                                                placeholder="Enter your password" required minlength="8"
+                                                data-i18n-placeholder="login.password_placeholder">
+                                            <div class="password-toggle-container">
+                                                <button type="button" class="password-toggle"
+                                                    data-target="loginPassword" aria-label="Toggle password visibility">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="invalid-feedback" data-i18n="login.password_error">Password must be
+                                            at least 8 characters</div>
+                                    </div>
+
+                                    <div class="form-options">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rememberLogin">
+                                            <label class="form-check-label" for="rememberLogin"
+                                                data-i18n="login.remember">
+                                                Remember me
+                                            </label>
+                                        </div>
+                                        <button type="button" class="btn-link" id="showForgot">
+                                            <span data-i18n="login.forgot">Forgot Password?</span>
+                                        </button>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-gold auth-btn">
+                                        <i class="fas fa-sign-in-alt me-2"></i> <span
+                                            data-i18n="login.signin_button">Sign In</span>
+                                    </button>
+
+                                    <div class="auth-divider">
+                                        <span data-i18n="login.no_account">Don't have an account?</span>
+                                    </div>
+
+                                    <button type="button" class="btn btn-outline-gold auth-btn" id="showRegister">
+                                        <i class="fas fa-user-plus me-2"></i> <span
+                                            data-i18n="login.create_account">Create New Account</span>
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Registration Form -->
+                            <div class="auth-form registration-form" id="registerForm">
+                                <div class="auth-header">
+                                    <h2 data-i18n="register.title.part1">Create <span class="gold-text"
+                                            data-i18n="register.title.part2">Account</span></h2>
+                                    <p data-i18n="register.subtitle">Sign up to get started with Naroda Group</p>
+                                </div>
+
+                                <form id="registerFormActual" novalidate>
+                                    <div class="form-group">
+                                        <label for="registerFirstName" class="form-label">
+                                            <i class="fas fa-user"></i> <span data-i18n="register.first_name">First
+                                                Name</span>
+                                        </label>
+                                        <div class="position-relative">
+                                            <i class="fas fa-user input-icon"></i>
+                                            <input type="text" id="registerFirstName" class="form-control"
+                                                placeholder="Enter your first name" required
+                                                data-i18n-placeholder="register.first_name_placeholder">
+                                        </div>
+                                        <div class="invalid-feedback" data-i18n="register.first_name_error">Please enter
+                                            your first name</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="registerLastName" class="form-label">
+                                            <i class="fas fa-user"></i> <span data-i18n="register.last_name">Last
+                                                Name</span>
+                                        </label>
+                                        <div class="position-relative">
+                                            <i class="fas fa-user input-icon"></i>
+                                            <input type="text" id="registerLastName" class="form-control"
+                                                placeholder="Enter your last name" required
+                                                data-i18n-placeholder="register.last_name_placeholder">
+                                        </div>
+                                        <div class="invalid-feedback" data-i18n="register.last_name_error">Please enter
+                                            your last name</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="registerEmail" class="form-label">
+                                            <i class="fas fa-envelope"></i> <span data-i18n="register.email_label">Email
+                                                Address</span>
+                                        </label>
+                                        <div class="position-relative">
+                                            <i class="fas fa-envelope input-icon"></i>
+                                            <input type="email" id="registerEmail" class="form-control"
+                                                placeholder="Enter your email" required
+                                                data-i18n-placeholder="register.email_placeholder">
+                                        </div>
+                                        <div class="invalid-feedback" data-i18n="register.email_error">Please enter a
+                                            valid email address</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="registerPhone" class="form-label">
+                                            <i class="fas fa-phone"></i> <span data-i18n="register.phone">Phone
+                                                Number</span>
+                                        </label>
+                                        <div class="position-relative">
+                                            <i class="fas fa-phone input-icon"></i>
+                                            <input type="tel" id="registerPhone" class="form-control"
+                                                placeholder="Enter your phone number" required
+                                                data-i18n-placeholder="register.phone_placeholder">
+                                        </div>
+                                        <div class="invalid-feedback" data-i18n="register.phone_error">Please enter a
+                                            valid phone number</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="registerPassword" class="form-label">
+                                            <i class="fas fa-lock"></i> <span
+                                                data-i18n="register.password_label">Password</span>
+                                        </label>
+                                        <div class="position-relative">
+                                            <i class="fas fa-lock input-icon"></i>
+                                            <input type="password" id="registerPassword" class="form-control"
+                                                placeholder="Create a password" required minlength="8"
+                                                data-i18n-placeholder="register.password_placeholder">
+                                            <div class="password-toggle-container">
+                                                <button type="button" class="password-toggle"
+                                                    data-target="registerPassword"
+                                                    aria-label="Toggle password visibility">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="password-strength">
+                                            <div class="strength-meter">
+                                                <div class="strength-fill" id="registerPasswordStrength"></div>
+                                            </div>
+                                            <div class="strength-text" id="registerPasswordStrengthText"
+                                                data-i18n="register.password_strength">Password strength</div>
+                                        </div>
+                                        <div class="invalid-feedback" data-i18n="register.password_error">Password must
+                                            be at least 8 characters</div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="registerConfirmPassword" class="form-label">
+                                            <i class="fas fa-lock"></i> <span
+                                                data-i18n="register.confirm_password">Confirm Password</span>
+                                        </label>
+                                        <div class="position-relative">
+                                            <i class="fas fa-lock input-icon"></i>
+                                            <input type="password" id="registerConfirmPassword" class="form-control"
+                                                placeholder="Confirm your password" required
+                                                data-i18n-placeholder="register.confirm_password_placeholder">
+                                            <div class="password-toggle-container">
+                                                <button type="button" class="password-toggle"
+                                                    data-target="registerConfirmPassword"
+                                                    aria-label="Toggle password visibility">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div id="registerPasswordMatch" class="mt-2 small"></div>
+                                    </div>
+
+                                    <div class="form-check mb-4">
+                                        <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                        <label class="form-check-label" for="agreeTerms">
+                                            <span data-i18n="register.agree_terms">I agree to the</span>
+                                            <a href="terms.html" class="text-gold" data-i18n="register.terms">Terms &
+                                                Conditions</a>
+                                            <span data-i18n="register.and">and</span>
+                                            <a href="privacy.html" class="text-gold"
+                                                data-i18n="register.privacy">Privacy Policy</a>
+                                        </label>
+                                        <div class="invalid-feedback" data-i18n="register.terms_error">You must agree to
+                                            the terms and conditions</div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-gold auth-btn">
+                                        <i class="fas fa-user-plus me-2"></i> <span
+                                            data-i18n="register.create_account">Create Account</span>
+                                    </button>
+
+                                    <div class="auth-footer">
+                                        <span data-i18n="register.already_have_account">Already have an account?</span>
+                                        <button type="button" class="btn-link" id="showLoginFromRegister">
+                                            <span data-i18n="register.sign_in">Sign In</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Forgot Password Form -->
+                            <div class="auth-form" id="forgotForm" style="display: none;">
+                                <div class="auth-header">
+                                    <h2 data-i18n="forgot.title.part1">Reset <span class="gold-text"
+                                            data-i18n="forgot.title.part2">Password</span></h2>
+                                    <p data-i18n="forgot.subtitle">Enter your email to reset your password</p>
+                                </div>
+
+                                <!-- Progress Steps -->
+                                <div class="progress-steps">
+                                    <div class="progress-step active" data-step="1">
+                                        <div class="step-number">1</div>
+                                        <div class="step-label">Email</div>
+                                    </div>
+                                    <div class="progress-step" data-step="2">
+                                        <div class="step-number">2</div>
+                                        <div class="step-label">New Password</div>
+                                    </div>
+                                    <div class="progress-step" data-step="3">
+                                        <div class="step-number">3</div>
+                                        <div class="step-label">Verify OTP</div>
+                                    </div>
+                                    <div class="progress-step" data-step="4">
+                                        <div class="step-number">4</div>
+                                        <div class="step-label">Complete</div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 1: Email Input -->
+                                <div class="form-step active" data-step="1">
+                                    <form id="forgotStep1Form" novalidate>
+                                        <div class="form-group">
+                                            <label for="forgotEmail" class="form-label">
+                                                <i class="fas fa-envelope"></i> <span
+                                                    data-i18n="forgot.email_label">Email Address</span>
+                                            </label>
+                                            <div class="position-relative">
+                                                <i class="fas fa-envelope input-icon"></i>
+                                                <input type="email" id="forgotEmail" class="form-control"
+                                                    placeholder="Enter your email" required
+                                                    data-i18n-placeholder="forgot.email_placeholder">
+                                            </div>
+                                            <div class="invalid-feedback" data-i18n="forgot.email_error">Please enter a
+                                                valid email address</div>
+                                        </div>
+
+                                        <div class="step-navigation">
+                                            <button type="button" class="btn btn-outline-gold"
+                                                id="backToLoginFromForgot">
+                                                <i class="fas fa-arrow-left me-2"></i> <span
+                                                    data-i18n="forgot.back_signin">Back to Sign In</span>
+                                            </button>
+                                            <button type="submit" class="btn btn-gold" id="nextToStep2">
+                                                <span data-i18n="forgot.continue">Continue</span> <i
+                                                    class="fas fa-arrow-right ms-2"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- Step 2: New Password -->
+                                <div class="form-step" data-step="2">
+                                    <form id="forgotStep2Form" novalidate>
+                                        <div class="form-group">
+                                            <label for="newPassword" class="form-label">
+                                                <i class="fas fa-lock"></i> <span data-i18n="forgot.new_password">New
+                                                    Password</span>
+                                            </label>
+                                            <div class="position-relative">
+                                                <i class="fas fa-lock input-icon"></i>
+                                                <input type="password" id="newPassword" class="form-control"
+                                                    placeholder="Enter new password" required minlength="8"
+                                                    data-i18n-placeholder="forgot.new_password_placeholder">
+                                                <div class="password-toggle-container">
+                                                    <button type="button" class="password-toggle"
+                                                        data-target="newPassword"
+                                                        aria-label="Toggle password visibility">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="password-strength">
+                                                <div class="strength-meter">
+                                                    <div class="strength-fill" id="forgotPasswordStrength"></div>
+                                                </div>
+                                                <div class="strength-text" id="forgotPasswordStrengthText"
+                                                    data-i18n="forgot.password_strength">Password strength</div>
+                                            </div>
+                                            <div class="invalid-feedback" data-i18n="forgot.password_error">Password
+                                                must be at least 8 characters with uppercase, lowercase, number, and
+                                                special character</div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="confirmNewPassword" class="form-label">
+                                                <i class="fas fa-lock"></i> <span
+                                                    data-i18n="forgot.confirm_password">Confirm Password</span>
+                                            </label>
+                                            <div class="position-relative">
+                                                <i class="fas fa-lock input-icon"></i>
+                                                <input type="password" id="confirmNewPassword" class="form-control"
+                                                    placeholder="Confirm new password" required
+                                                    data-i18n-placeholder="forgot.confirm_password_placeholder">
+                                                <div class="password-toggle-container">
+                                                    <button type="button" class="password-toggle"
+                                                        data-target="confirmNewPassword"
+                                                        aria-label="Toggle password visibility">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="forgotPasswordMatch" class="mt-2 small"></div>
+                                        </div>
+
+                                        <div class="step-navigation">
+                                            <button type="button" class="btn btn-outline-gold" id="backToStep1">
+                                                <i class="fas fa-arrow-left me-2"></i> <span
+                                                    data-i18n="forgot.back">Back</span>
+                                            </button>
+                                            <button type="submit" class="btn btn-gold" id="nextToStep3">
+                                                <span data-i18n="forgot.verify">Verify</span> <i
+                                                    class="fas fa-arrow-right ms-2"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- Step 3: OTP Verification -->
+                                <div class="form-step" data-step="3">
+                                    <div class="otp-verification-container">
+                                        <div class="auth-header">
+                                            <h2 data-i18n="verify.email_title.part1">OTP <span class="gold-text"
+                                                    data-i18n="verify.email_title.part2">Verification</span></h2>
+                                            <p data-i18n="verify.email_subtitle">Enter the 6-digit OTP sent to your
+                                                email</p>
+                                        </div>
+
+                                        <p class="otp-instruction">
+                                            <span data-i18n="verify.email_instruction">Enter the 6-digit verification
+                                                code sent to</span>
+                                            <span id="forgotPasswordEmail" class="fw-bold"></span>
+                                        </p>
+
+                                        <div class="otp-container">
+                                            <input type="text" class="otp-input" maxlength="1" data-index="0" autofocus
+                                                inputmode="numeric">
+                                            <input type="text" class="otp-input" maxlength="1" data-index="1"
+                                                inputmode="numeric">
+                                            <input type="text" class="otp-input" maxlength="1" data-index="2"
+                                                inputmode="numeric">
+                                            <input type="text" class="otp-input" maxlength="1" data-index="3"
+                                                inputmode="numeric">
+                                            <input type="text" class="otp-input" maxlength="1" data-index="4"
+                                                inputmode="numeric">
+                                            <input type="text" class="otp-input" maxlength="1" data-index="5"
+                                                inputmode="numeric">
+                                        </div>
+
+                                        <div class="otp-timer" id="forgotOtpTimer">02:00</div>
+
+                                        <div class="otp-actions">
+                                            <button type="button" class="btn btn-outline-gold" id="resendForgotOTP">
+                                                <span data-i18n="verify.resend_code">Resend Code</span>
+                                            </button>
+                                            <button type="button" class="btn btn-gold" id="verifyForgotOTP">
+                                                <span data-i18n="verify.verify">Verify</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="step-navigation mt-4">
+                                            <button type="button" class="btn btn-outline-gold" id="backToStep2">
+                                                <i class="fas fa-arrow-left me-2"></i> <span
+                                                    data-i18n="forgot.back">Back</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 4: Success -->
+                                <div class="form-step" data-step="4">
+                                    <div class="success-message active">
+                                        <div class="success-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <h3 class="mb-3" data-i18n="forgot.success_title">Password Reset Successfully!
+                                        </h3>
+                                        <p class="text-muted mb-4" data-i18n="forgot.success_text">
+                                            Your password has been updated successfully. You can now sign in with your
+                                            new password.
+                                        </p>
+                                        <button type="button" class="btn btn-gold" id="backToLoginFromSuccess">
+                                            <i class="fas fa-sign-in-alt me-2"></i> <span
+                                                data-i18n="forgot.signin_now">Sign In Now</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-about">
+                        <a href="home.html" class="navbar-brand mb-4">
+                            <div class="logo-icon">NG</div>
+                            <span class="language-content" data-i18n="footer.brand">Naroda</span>
+                            <span class="gold-text"><span class="language-content"
+                                    data-i18n="footer.group">Group</span></span>
+                        </a>
+                        <p class="mb-4 language-content" data-i18n="footer.description">
+                            Creating landmark properties that redefine excellence. From
+                            premium commercial spaces to luxury residential living, we build
+                            dreams with quality and commitment.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://facebook.com" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://instagram.com" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://youtube.com" class="social-link" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="footer-title language-content" data-i18n="footer.quick_links">
+                        Quick Links
+                    </h5>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="home.html" class="language-content" data-i18n="nav.home">Home</a>
+                        </li>
+                        <li>
+                            <a href="about.html" class="language-content" data-i18n="nav.about">About Us</a>
+                        </li>
+                        <li>
+                            <a href="projects.html" class="language-content" data-i18n="nav.projects">Projects</a>
+                        </li>
+                        <!-- <li>
+                <a
+                  href="properties.html"
+                  class="language-content"
+                  data-i18n="nav.properties"
+                  >Properties</a
+                >
+              </li> -->
+                        <!-- <li>
+                <a
+                  href="gallery.html"
+                  class="language-content"
+                  data-i18n="nav.gallery"
+                  >Gallery</a
+                >
+              </li> -->
+                        <li>
+                            <a href="contact.html" class="language-content" data-i18n="nav.contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title language-content" data-i18n="footer.our_projects">
+                        Our Projects
+                    </h5>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="projects-landmark.html" class="language-content" data-i18n="nav.landmark">Naroda
+                                Landmark <span class="text-gold">→</span></a>
+                        </li>
+                        <li class="text-white small mb-2 language-content" data-i18n="footer.landmark_desc">
+                            Premium Commercial Spaces
+                        </li>
+                        <li>
+                            <a href="projects-irish.html" class="language-content" data-i18n="nav.irish">Naroda Irish
+                                <span class="text-gold">→</span></a>
+                        </li>
+                        <li class="text-white small mb-2 language-content" data-i18n="footer.irish_desc">
+                            Luxury Residential Living
+                        </li>
+                        <li>
+                            <a href="projects.html" class="language-content" data-i18n="footer.view_all_projects">View
+                                All Projects <span class="text-gold">→</span></a>
+                        </li>
+                        <li class="text-white small language-content" data-i18n="footer.explore_portfolio">
+                            Explore our portfolio
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title language-content" data-i18n="footer.contact_info">
+                        Contact Info
+                    </h5>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h6 class="text-white mb-1 language-content" data-i18n="footer.phone">
+                                Phone Number
+                            </h6>
+                            <p class="mb-0">+91 98765 43210</p>
+                            <small class="text-muted language-content" data-i18n="footer.phone_hours">Mon - Sat: 10 AM -
+                                7 PM</small>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h6 class="text-white mb-1 language-content" data-i18n="footer.email">
+                                Email Address
+                            </h6>
+                            <p class="mb-0">info@narodagroup.com</p>
+                            <small class="text-muted language-content" data-i18n="footer.email_response">We reply within
+                                24 hours</small>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h6 class="text-white mb-1 language-content" data-i18n="footer.address">
+                                Office Address
+                            </h6>
+                            <p class="mb-0 language-content" data-i18n="footer.address_line1">
+                                Naroda - Bhat Road
+                            </p>
+                            <small class="text-muted language-content" data-i18n="footer.address_line2">Ahmedabad,
+                                Gujarat 382330</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start">
+                            <p class="mb-0 language-content" data-i18n="footer.rights">
+                                © 2025 Naroda Group. All rights reserved.
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <a href="privacy.html" class="text-white-50 me-3 language-content"
+                                data-i18n="footer.privacy">Privacy Policy</a>
+                            <a href="terms.html" class="text-white-50 me-3 language-content"
+                                data-i18n="footer.terms">Terms of Service</a>
+                            <a href="rera.html" class="text-white-50 language-content" data-i18n="footer.rera">RERA
+                                Registration</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-items">
+            <a href="home.html" class="mobile-nav-item active">
+                <i class="fas fa-home mobile-nav-icon"></i>
+                <span class="mobile-nav-text language-content" data-i18n="nav.home">Home</span>
+            </a>
+            <a href="projects.html" class="mobile-nav-item">
+                <i class="fas fa-building mobile-nav-icon"></i>
+                <span class="mobile-nav-text language-content" data-i18n="nav.projects">Projects</span>
+            </a>
+            <a href="properties.html" class="mobile-nav-item">
+                <i class="fas fa-search mobile-nav-icon"></i>
+                <span class="mobile-nav-text language-content" data-i18n="nav.properties">Properties</span>
+            </a>
+            <a href="contact.html" class="mobile-nav-item">
+                <i class="fas fa-phone mobile-nav-icon"></i>
+                <span class="mobile-nav-text language-content" data-i18n="nav.contact">Contact</span>
+            </a>
+            <a href="tel:+919876543210" class="mobile-nav-item">
+                <i class="fas fa-phone-alt mobile-nav-icon"></i>
+                <span class="mobile-nav-text language-content" data-i18n="nav.call">Call Now</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <button class="floating-btn whatsapp" onclick="window.open('https://wa.me/919876543210', '_blank')"
+            aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <a href="tel:+919876543210" class="floating-btn phone" aria-label="Call Now">
+            <i class="fas fa-phone"></i>
+        </a>
+        <button class="floating-btn chat" onclick="window.open('mailto:info@narodagroup.com')" aria-label="Email Us">
+            <i class="fas fa-envelope"></i>
+        </button>
+        <button class="floating-btn scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            aria-label="Scroll to Top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" role="alert" aria-live="polite"></div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            delay: 100,
+            disable: function () {
+                return window.innerWidth < 768;
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Language Translation Data
+        const translations = {
+            en: {
+                // Navigation
+                "nav.brand": "Naroda",
+                "nav.group": "Group",
+                "nav.home": "Home",
+                "nav.about": "About",
+                "nav.projects": "Projects",
+                "nav.landmark": "Naroda Landmark",
+                "nav.irish": "Naroda Irish",
+                "nav.all_projects": "All Projects",
+                "nav.properties": "Properties",
+                "nav.buy": "Buy",
+                "nav.rent": "Rent",
+                "nav.property_details": "Property Details",
+                "nav.gallery": "Gallery",
+                "nav.blog": "Blog",
+                "nav.news": "News",
+                "nav.careers": "Careers",
+                "nav.team": "Our Team",
+                "nav.faq": "FAQ",
+                "nav.contact": "Contact",
+                "nav.more": "More",
+                "nav.language": "EN",
+                "nav.login": "Login",
+                "nav.call": "Call Now",
+
+                // Auth Section
+                "auth.brand_title.part1": "Naroda",
+                "auth.brand_title.part2": "Group",
+                "auth.welcome_title": "Welcome to Naroda Group",
+                "auth.welcome_text": "Join thousands of satisfied customers who trust us with their real estate dreams. Manage properties, track investments, and discover exclusive opportunities.",
+                "auth.feature1_title": "Property Management",
+                "auth.feature1_text": "View and manage all your properties in one dashboard",
+                "auth.feature2_title": "Investment Tracking",
+                "auth.feature2_text": "Monitor ROI and property performance with detailed analytics",
+                "auth.feature3_title": "Exclusive Updates",
+                "auth.feature3_text": "Be the first to know about new projects and special offers",
+                "auth.support_text": "Need assistance with your account?",
+                "auth.contact_support": "Contact Support",
+
+                // Login Form
+                "login.title.part1": "Welcome",
+                "login.title.part2": "Back",
+                "login.subtitle": "Sign in to your account",
+                "login.email_label": "Email Address",
+                "login.email_placeholder": "Enter your email",
+                "login.email_error": "Please enter a valid email address",
+                "login.password_label": "Password",
+                "login.password_placeholder": "Enter your password",
+                "login.password_error": "Password must be at least 8 characters",
+                "login.remember": "Remember me",
+                "login.forgot": "Forgot Password?",
+                "login.signin_button": "Sign In",
+                "login.no_account": "Don't have an account?",
+                "login.create_account": "Create New Account",
+
+                // Registration Form
+                "register.title.part1": "Create",
+                "register.title.part2": "Account",
+                "register.subtitle": "Sign up to get started with Naroda Group",
+                "register.first_name": "First Name",
+                "register.first_name_placeholder": "Enter your first name",
+                "register.first_name_error": "Please enter your first name",
+                "register.last_name": "Last Name",
+                "register.last_name_placeholder": "Enter your last name",
+                "register.last_name_error": "Please enter your last name",
+                "register.email_label": "Email Address",
+                "register.email_placeholder": "Enter your email",
+                "register.email_error": "Please enter a valid email address",
+                "register.phone": "Phone Number",
+                "register.phone_placeholder": "Enter your phone number",
+                "register.phone_error": "Please enter a valid phone number",
+                "register.password_label": "Password",
+                "register.password_placeholder": "Create a password",
+                "register.password_strength": "Password strength",
+                "register.password_error": "Password must be at least 8 characters",
+                "register.confirm_password": "Confirm Password",
+                "register.confirm_password_placeholder": "Confirm your password",
+                "register.agree_terms": "I agree to the",
+                "register.terms": "Terms & Conditions",
+                "register.and": "and",
+                "register.privacy": "Privacy Policy",
+                "register.terms_error": "You must agree to the terms and conditions",
+                "register.create_account": "Create Account",
+                "register.already_have_account": "Already have an account?",
+                "register.sign_in": "Sign In",
+
+                // Forgot Password
+                "forgot.title.part1": "Reset",
+                "forgot.title.part2": "Password",
+                "forgot.subtitle": "Enter your email to reset your password",
+                "forgot.email_label": "Email Address",
+                "forgot.email_placeholder": "Enter your email",
+                "forgot.email_error": "Please enter a valid email address",
+                "forgot.continue": "Continue",
+                "forgot.back_signin": "Back to Sign In",
+                "forgot.back": "Back",
+                "forgot.new_password": "New Password",
+                "forgot.new_password_placeholder": "Enter new password",
+                "forgot.password_strength": "Password strength",
+                "forgot.password_error": "Password must be at least 8 characters with uppercase, lowercase, number, and special character",
+                "forgot.confirm_password": "Confirm Password",
+                "forgot.confirm_password_placeholder": "Confirm new password",
+                "forgot.verify": "Verify",
+                "forgot.success_title": "Password Reset Successfully!",
+                "forgot.success_text": "Your password has been updated successfully. You can now sign in with your new password.",
+                "forgot.signin_now": "Sign In Now",
+
+                // Verification
+                "verify.email_title.part1": "OTP",
+                "verify.email_title.part2": "Verification",
+                "verify.email_subtitle": "Enter the 6-digit OTP sent to your email",
+                "verify.email_instruction": "Enter the 6-digit verification code sent to",
+                "verify.resend_code": "Resend Code",
+                "verify.verify": "Verify",
+                "verify.otp_error": "Invalid verification code",
+                "verify.otp_incomplete": "Please enter the complete 6-digit code",
+                "verify.otp_expired": "OTP expired or invalid. Please request a new one.",
+                "verify.otp_invalid": "Invalid OTP. Please try again.",
+                "verify.success": "Email verified successfully!",
+
+                // Footer
+                "footer.brand": "Naroda",
+                "footer.group": "Group",
+                "footer.description": "Creating landmark properties that redefine excellence. From premium commercial spaces to luxury residential living, we build dreams with quality and commitment.",
+                "footer.quick_links": "Quick Links",
+                "footer.our_projects": "Our Projects",
+                "footer.landmark_desc": "Premium Commercial Spaces",
+                "footer.irish_desc": "Luxury Residential Living",
+                "footer.view_all_projects": "View All Projects",
+                "footer.explore_portfolio": "Explore our portfolio",
+                "footer.contact_info": "Contact Info",
+                "footer.phone": "Phone Number",
+                "footer.phone_hours": "Mon - Sat: 10 AM - 7 PM",
+                "footer.email": "Email Address",
+                "footer.email_response": "We reply within 24 hours",
+                "footer.address": "Office Address",
+                "footer.address_line1": "Naroda - Bhat Road",
+                "footer.address_line2": "Ahmedabad, Gujarat 382330",
+                "footer.rights": "© 2025 Naroda Group. All rights reserved.",
+                "footer.privacy": "Privacy Policy",
+                "footer.terms": "Terms of Service",
+                "footer.rera": "RERA Registration"
+            },
+            hi: {
+                // Navigation
+                "nav.brand": "नरोड़ा",
+                "nav.group": "ग्रुप",
+                "nav.home": "होम",
+                "nav.about": "हमारे बारे में",
+                "nav.projects": "प्रोजेक्ट्स",
+                "nav.landmark": "नरोड़ा लैंडमार्क",
+                "nav.irish": "नरोड़ा आयरिश",
+                "nav.all_projects": "सभी प्रोजेक्ट्स",
+                "nav.properties": "संपत्तियाँ",
+                "nav.buy": "खरीदें",
+                "nav.rent": "किराए पर लें",
+                "nav.property_details": "संपत्ति विवरण",
+                "nav.gallery": "गैलरी",
+                "nav.blog": "ब्लॉग",
+                "nav.news": "समाचार",
+                "nav.careers": "करियर",
+                "nav.team": "हमारी टीम",
+                "nav.faq": "सामान्य प्रश्न",
+                "nav.contact": "संपर्क करें",
+                "nav.more": "अधिक",
+                "nav.language": "हिंदी",
+                "nav.login": "लॉगिन",
+                "nav.call": "अभी कॉल करें",
+
+                // Auth Section
+                "auth.brand_title.part1": "नरोड़ा",
+                "auth.brand_title.part2": "ग्रुप",
+                "auth.welcome_title": "नरोड़ा ग्रुप में आपका स्वागत है",
+                "auth.welcome_text": "हजारों संतुष्ट ग्राहकों में शामिल हों जो हम पर अपने रियल एस्टेट के सपनों का भरोसा करते हैं। संपत्तियों का प्रबंधन करें, निवेशों को ट्रैक करें और विशेष अवसरों की खोज करें।",
+                "auth.feature1_title": "प्रॉपर्टी मैनेजमेंट",
+                "auth.feature1_text": "एक डैशबोर्ड में अपनी सभी संपत्तियों को देखें और प्रबंधित करें",
+                "auth.feature2_title": "निवेश ट्रैकिंग",
+                "auth.feature2_text": "विस्तृत एनालिटिक्स के साथ आरओआई और संपत्ति प्रदर्शन की निगरानी करें",
+                "auth.feature3_title": "विशेष अपडेट",
+                "auth.feature3_text": "नए प्रोजेक्ट्स और विशेष ऑफर के बारे में सबसे पहले जानें",
+                "auth.support_text": "क्या आपको अपने खाते में सहायता चाहिए?",
+                "auth.contact_support": "सहायता से संपर्क करें",
+
+                // Login Form
+                "login.title.part1": "स्वागत है",
+                "login.title.part2": "आपका",
+                "login.subtitle": "अपने खाते में साइन इन करें",
+                "login.email_label": "ईमेल पता",
+                "login.email_placeholder": "अपना ईमेल दर्ज करें",
+                "login.email_error": "कृपया एक वैध ईमेल पता दर्ज करें",
+                "login.password_label": "पासवर्ड",
+                "login.password_placeholder": "अपना पासवर्ड दर्ज करें",
+                "login.password_error": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए",
+                "login.remember": "मुझे याद रखें",
+                "login.forgot": "पासवर्ड भूल गए?",
+                "login.signin_button": "साइन इन करें",
+                "login.no_account": "खाता नहीं है?",
+                "login.create_account": "नया खाता बनाएं",
+
+                // Registration Form
+                "register.title.part1": "बनाएं",
+                "register.title.part2": "खाता",
+                "register.subtitle": "नरोड़ा ग्रुप के साथ शुरुआत करने के लिए साइन अप करें",
+                "register.first_name": "पहला नाम",
+                "register.first_name_placeholder": "अपना पहला नाम दर्ज करें",
+                "register.first_name_error": "कृपया अपना पहला नाम दर्ज करें",
+                "register.last_name": "अंतिम नाम",
+                "register.last_name_placeholder": "अपना अंतिम नाम दर्ज करें",
+                "register.last_name_error": "कृपया अपना अंतिम नाम दर्ज करें",
+                "register.email_label": "ईमेल पता",
+                "register.email_placeholder": "अपना ईमेल दर्ज करें",
+                "register.email_error": "कृपया एक वैध ईमेल पता दर्ज करें",
+                "register.phone": "फोन नंबर",
+                "register.phone_placeholder": "अपना फोन नंबर दर्ज करें",
+                "register.phone_error": "कृपया एक वैध फोन नंबर दर्ज करें",
+                "register.password_label": "पासवर्ड",
+                "register.password_placeholder": "पासवर्ड बनाएं",
+                "register.password_strength": "पासवर्ड की ताकत",
+                "register.password_error": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए",
+                "register.confirm_password": "पासवर्ड की पुष्टि करें",
+                "register.confirm_password_placeholder": "अपने पासवर्ड की पुष्टि करें",
+                "register.agree_terms": "मैं सहमत हूं",
+                "register.terms": "नियम और शर्तें",
+                "register.and": "और",
+                "register.privacy": "गोपनीयता नीति",
+                "register.terms_error": "आपको नियम और शर्तों से सहमत होना चाहिए",
+                "register.create_account": "खाता बनाएं",
+                "register.already_have_account": "पहले से ही एक खाता है?",
+                "register.sign_in": "साइन इन करें",
+
+                // Forgot Password
+                "forgot.title.part1": "रीसेट",
+                "forgot.title.part2": "पासवर्ड",
+                "forgot.subtitle": "अपना पासवर्ड रीसेट करने के लिए अपना ईमेल दर्ज करें",
+                "forgot.email_label": "ईमेल पता",
+                "forgot.email_placeholder": "अपना ईमेल दर्ज करें",
+                "forgot.email_error": "कृपया एक वैध ईमेल पता दर्ज करें",
+                "forgot.continue": "जारी रखें",
+                "forgot.back_signin": "साइन इन पर वापस जाएं",
+                "forgot.back": "वापस",
+                "forgot.new_password": "नया पासवर्ड",
+                "forgot.new_password_placeholder": "नया पासवर्ड दर्ज करें",
+                "forgot.password_strength": "पासवर्ड की ताकत",
+                "forgot.password_error": "पासवर्ड कम से कम 8 अक्षरों का होना चाहिए जिसमें अपरकेस, लोअरकेस, नंबर और विशेष वर्ण हों",
+                "forgot.confirm_password": "पासवर्ड की पुष्टि करें",
+                "forgot.confirm_password_placeholder": "नए पासवर्ड की पुष्टि करें",
+                "forgot.verify": "सत्यापित करें",
+                "forgot.success_title": "पासवर्ड सफलतापूर्वक रीसेट!",
+                "forgot.success_text": "आपका पासवर्ड सफलतापूर्वक अपडेट कर दिया गया है। अब आप अपने नए पासवर्ड के साथ साइन इन कर सकते हैं।",
+                "forgot.signin_now": "अभी साइन इन करें",
+
+                // Verification
+                "verify.email_title.part1": "OTP",
+                "verify.email_title.part2": "सत्यापन",
+                "verify.email_subtitle": "अपने ईमेल पर भेजे गए 6-अंकीय OTP दर्ज करें",
+                "verify.email_instruction": "6-अंकीय सत्यापन कोड दर्ज करें जो भेजा गया था",
+                "verify.resend_code": "कोड पुनः भेजें",
+                "verify.verify": "सत्यापित करें",
+                "verify.otp_error": "अमान्य सत्यापन कोड",
+                "verify.otp_incomplete": "कृपया पूरा 6-अंकीय कोड दर्ज करें",
+                "verify.otp_expired": "OTP समाप्त या अमान्य। कृपया एक नया अनुरोध करें।",
+                "verify.otp_invalid": "अमान्य OTP। कृपया पुनः प्रयास करें।",
+                "verify.success": "ईमेल सफलतापूर्वक सत्यापित हो गया!",
+
+                // Footer
+                "footer.brand": "नरोड़ा",
+                "footer.group": "ग्रुप",
+                "footer.description": "लैंडमार्क संपत्तियाँ बनाना जो उत्कृष्टता को फिर से परिभाषित करती हैं। प्रीमियम कमर्शियल स्पेस से लेकर लग्ज़री रेजिडेंशियल लिविंग तक, हम गुणवत्ता और प्रतिबद्धता के साथ सपने बनाते हैं।",
+                "footer.quick_links": "त्वरित लिंक",
+                "footer.our_projects": "हमारे प्रोजेक्ट्स",
+                "footer.landmark_desc": "प्रीमियम कमर्शियल स्पेस",
+                "footer.irish_desc": "लग्ज़री रेजिडेंशियल लिविंग",
+                "footer.view_all_projects": "सभी प्रोजेक्ट्स देखें",
+                "footer.explore_portfolio": "हमारे पोर्टफोलियो का अन्वेषण करें",
+                "footer.contact_info": "संपर्क जानकारी",
+                "footer.phone": "फोन नंबर",
+                "footer.phone_hours": "सोम - शनि: सुबह 10 - शाम 7 बजे",
+                "footer.email": "ईमेल पता",
+                "footer.email_response": "हम 24 घंटे के भीतर जवाब देते हैं",
+                "footer.address": "कार्यालय पता",
+                "footer.address_line1": "नरोड़ा - भाट रोड",
+                "footer.address_line2": "अहमदाबाद, गुजरात 382330",
+                "footer.rights": "© 2025 नरोड़ा ग्रुप। सर्वाधिकार सुरक्षित।",
+                "footer.privacy": "गोपनीयता नीति",
+                "footer.terms": "सेवा की शर्तें",
+                "footer.rera": "RERA पंजीकरण"
+            },
+            gu: {
+                // Navigation
+                "nav.brand": "નરોડા",
+                "nav.group": "ગ્રુપ",
+                "nav.home": "હોમ",
+                "nav.about": "અમારા વિશે",
+                "nav.projects": "પ્રોજેક્ટ્સ",
+                "nav.landmark": "નરોડા લેન્ડમાર્ક",
+                "nav.irish": "નરોડા આયરિશ",
+                "nav.all_projects": "બધા પ્રોજેક્ટ્સ",
+                "nav.properties": "પ્રોપર્ટીઝ",
+                "nav.buy": "ખરીદો",
+                "nav.rent": "ભાડે લો",
+                "nav.property_details": "પ્રોપર્ટી વિગતો",
+                "nav.gallery": "ગેલેરી",
+                "nav.blog": "બ્લોગ",
+                "nav.news": "સમાચાર",
+                "nav.careers": "કારકિર્દી",
+                "nav.team": "અમારી ટીમ",
+                "nav.faq": "સામાન્ય પ્રશ્નો",
+                "nav.contact": "સંપર્ક કરો",
+                "nav.more": "વધુ",
+                "nav.language": "ગુજરાતી",
+                "nav.login": "લોગિન",
+                "nav.call": "હવે કૉલ કરો",
+
+                // Auth Section
+                "auth.brand_title.part1": "નરોડા",
+                "auth.brand_title.part2": "ગ્રુપ",
+                "auth.welcome_title": "નરોડા ગ્રુપમાં આપનું સ્વાગત છે",
+                "auth.welcome_text": "હજારો સંતુષ્ટ ગ્રાહકોમાં જોડાઓ જે આપણ પર તેમના રિઅલ એસ્ટેટના સપના મૂકે છે. પ્રોપર્ટીઝ મેનેજ કરો, ઇન્વેસ્ટમેન્ટ ટ્રૅક કરો અને ખાસ તકો શોધો.",
+                "auth.feature1_title": "પ્રોપર્ટી મેનેજમેન્ટ",
+                "auth.feature1_text": "એક ડૅશબોર્ડમાં તમારી બધી પ્રોપર્ટીઝ જુઓ અને મેનેજ કરો",
+                "auth.feature2_title": "ઇન્વેસ્ટમેન્ટ ટ્રૅકિંગ",
+                "auth.feature2_text": "વિગતવાર એનાલિટિક્સ સાથે આરઓઆઈ અને પ્રોપર્ટી પરફોર્મન્સ મોનિટર કરો",
+                "auth.feature3_title": "ખાસ અપડેટ્સ",
+                "auth.feature3_text": "નવા પ્રોજેક્ટ્સ અને ખાસ ઓફર્સ વિશે પ્રથમ જાણો",
+                "auth.support_text": "શું તમને તમારા એકાઉન્ટમાં સહાયતાની જરૂર છે?",
+                "auth.contact_support": "સપોર્ટ સંપર્ક કરો",
+
+                // Login Form
+                "login.title.part1": "સ્વાગત છે",
+                "login.title.part2": "તમારું",
+                "login.subtitle": "તમારા એકાઉન્ટમાં સાઇન ઇન કરો",
+                "login.email_label": "ઈમેલ એડ્રેસ",
+                "login.email_placeholder": "તમારો ઈમેલ દાખલ કરો",
+                "login.email_error": "કૃપા કરીને માન્ય ઈમેલ એડ્રેસ દાખલ કરો",
+                "login.password_label": "પાસવર્ડ",
+                "login.password_placeholder": "તમારો પાસવર્ડ દાખલ કરો",
+                "login.password_error": "પાસવર્ડ ઓછામાં ઓછા 8 અક્ષરનો હોવો જોઈએ",
+                "login.remember": "મને યાદ રાખો",
+                "login.forgot": "પાસવર્ડ ભૂલી ગયા છો?",
+                "login.signin_button": "સાઇન ઇન કરો",
+                "login.no_account": "એકાઉન્ટ નથી?",
+                "login.create_account": "નવું એકાઉન્ટ બનાવો",
+
+                // Registration Form
+                "register.title.part1": "બનાવો",
+                "register.title.part2": "એકાઉન્ટ",
+                "register.subtitle": "નરોડા ગ્રુપ સાથે શરૂઆત કરવા માટે સાઇન અપ કરો",
+                "register.first_name": "પહેલું નામ",
+                "register.first_name_placeholder": "તમારું પહેલું નામ દાખલ કરો",
+                "register.first_name_error": "કૃપા કરીને તમારું પહેલું નામ દાખલ કરો",
+                "register.last_name": "છેલ્લું નામ",
+                "register.last_name_placeholder": "તમારું છેલ્લું નામ દાખલ કરો",
+                "register.last_name_error": "કૃપા કરીને તમારું છેલ્લું નામ દાખલ કરો",
+                "register.email_label": "ઈમેલ એડ્રેસ",
+                "register.email_placeholder": "તમારો ઈમેલ દાખલ કરો",
+                "register.email_error": "કૃપા કરીને માન્ય ઈમેલ એડ્રેસ દાખલ કરો",
+                "register.phone": "ફોન નંબર",
+                "register.phone_placeholder": "તમારો ફોન નંબર દાખલ કરો",
+                "register.phone_error": "કૃપા કરીને માન્ય ફોન નંબર દાખલ કરો",
+                "register.password_label": "પાસવર્ડ",
+                "register.password_placeholder": "પાસવર્ડ બનાવો",
+                "register.password_strength": "પાસવર્ડની સ્ટ્રેન્થ",
+                "register.password_error": "પાસવર્ડ ઓછામાં ઓછા 8 અક્ષરનો હોવો જોઈએ",
+                "register.confirm_password": "પાસવર્ડ કન્ફર્મ કરો",
+                "register.confirm_password_placeholder": "તમારા પાસવર્ડની પુષ્ટિ કરો",
+                "register.agree_terms": "હું સંમત છું",
+                "register.terms": "નિયમો અને શરતો",
+                "register.and": "અને",
+                "register.privacy": "ગોપનીયતા નીતિ",
+                "register.terms_error": "તમારે નિયમો અને શરતો સાથે સંમત થવું આવશ્યક છે",
+                "register.create_account": "એકાઉન્ટ બનાવો",
+                "register.already_have_account": "પહેલાથી જ એકાઉન્ટ છે?",
+                "register.sign_in": "સાઇન ઇન કરો",
+
+                // Forgot Password
+                "forgot.title.part1": "રીસેટ",
+                "forgot.title.part2": "પાસવર્ડ",
+                "forgot.subtitle": "તમારો પાસવર્ડ રીસેટ કરવા માટે તમારો ઈમેલ દાખલ કરો",
+                "forgot.email_label": "ઈમેલ એડ્રેસ",
+                "forgot.email_placeholder": "તમારો ઈમેલ દાખલ કરો",
+                "forgot.email_error": "કૃપા કરીને માન્ય ઈમેલ એડ્રેસ દાખલ કરો",
+                "forgot.continue": "ચાલુ રાખો",
+                "forgot.back_signin": "સાઇન ઇન પર પાછા જાઓ",
+                "forgot.back": "પાછા",
+                "forgot.new_password": "નવો પાસવર્ડ",
+                "forgot.new_password_placeholder": "નવો પાસવર્ડ દાખલ કરો",
+                "forgot.password_strength": "પાસવર્ડની સ્ટ્રેન્થ",
+                "forgot.password_error": "પાસવર્ડ ઓછામાં ઓછા 8 અક્ષરનો હોવો જોઈએ જેમાં અપરકેસ, લોવરકેસ, નંબર અને સ્પેશિયલ કેરેક્ટર હોય",
+                "forgot.confirm_password": "પાસવર્ડ કન્ફર્મ કરો",
+                "forgot.confirm_password_placeholder": "નવો પાસવર્ડ કન્ફર્મ કરો",
+                "forgot.verify": "ચકાસો",
+                "forgot.success_title": "પાસવર્ડ સફળતાપૂર્વક રીસેટ!",
+                "forgot.success_text": "તમારો પાસવર્ડ સફળતાપૂર્વક અપડેટ કરવામાં આવ્યો છે. હવે તમે તમારા નવા પાસવર્ડ સાથે સાઇન ઇન કરી શકો છો.",
+                "forgot.signin_now": "હમણાં સાઇન ઇન કરો",
+
+                // Verification
+                "verify.email_title.part1": "OTP",
+                "verify.email_title.part2": "વેરિફિકેશન",
+                "verify.email_subtitle": "તમારા ઈમેલ પર મોકલવામાં આવેલ 6-અંકનો OTP દાખલ કરો",
+                "verify.email_instruction": "6-અંકનો વેરિફિકેશન કોડ દાખલ કરો જે મોકલવામાં આવ્યો હતો",
+                "verify.resend_code": "કોડ ફરીથી મોકલો",
+                "verify.verify": "ચકાસો",
+                "verify.otp_error": "અમાન્ય વેરિફિકેશન કોડ",
+                "verify.otp_incomplete": "કૃપા કરીને પૂરો 6-અંકનો કોડ દાખલ કરો",
+                "verify.otp_expired": "OTP સમાપ્ત અથવા અમાન્ય. કૃપા કરીને નવો અનુરોધ કરો.",
+                "verify.otp_invalid": "અમાન્ય OTP. કૃપા કરીને ફરી પ્રયાસ કરો.",
+                "verify.success": "ઈમેલ સફળતાપૂર્વક ચકાસાઈ ગયો!",
+
+                // Footer
+                "footer.brand": "નરોડા",
+                "footer.group": "ગ્રુપ",
+                "footer.description": "લેન્ડમાર્ક પ્રોપર્ટીઝ બનાવવી જે એક્સલન્સને પુનઃવ્યાખ્યાયિત કરે છે. પ્રીમિયમ કોમર્શિયલ સ્પેસથી લગ્ઝરી રેસિડેન્શિયલ લિવિંગ સુધી, અમે ગુણવત્તા અને પ્રતિબદ્ધતા સાથે સપના બનાવીએ છીએ.",
+                "footer.quick_links": "ઝડપી લિંક્સ",
+                "footer.our_projects": "અમારા પ્રોજેક્ટ્સ",
+                "footer.landmark_desc": "પ્રીમિયમ કોમર્શિયલ સ્પેસ",
+                "footer.irish_desc": "લગ્ઝરી રેસિડેન્શિયલ લિવિંગ",
+                "footer.view_all_projects": "બધા પ્રોજેક્ટ્સ જુઓ",
+                "footer.explore_portfolio": "અમારા પોર્ટફોલિયોનું અન્વેષણ કરો",
+                "footer.contact_info": "સંપર્ક માહિતી",
+                "footer.phone": "ફોન નંબર",
+                "footer.phone_hours": "સોમ - શનિ: સવારે 10 - સાંજે 7 વાગ્યા",
+                "footer.email": "ઈમેલ એડ્રેસ",
+                "footer.email_response": "અમે 24 કલાકમાં જવાબ આપીએ છીએ",
+                "footer.address": "ઓફિસ એડ્રેસ",
+                "footer.address_line1": "નરોડા - ભાટ રોડ",
+                "footer.address_line2": "અમદાવાદ, ગુજરાત 382330",
+                "footer.rights": "© 2025 નરોડા ગ્રુપ. બધા હક્કો સુરક્ષિત.",
+                "footer.privacy": "ગોપનીયતા નીતિ",
+                "footer.terms": "સેવાની શરતો",
+                "footer.rera": "RERA રજિસ્ટ્રેશન"
+            }
+        };
+
+        // API Configuration
+        const API_BASE_URL = 'api/users_api.php'; // Update this if your API is in a different location
+
+        // Password Reset Flow Implementation
+        let currentForgotStep = 1;
+        let otpTimerInterval = null;
+        let currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize language switcher
+            initLanguageSwitcher();
+
+            // Initialize Authentication System
+            initAuthenticationSystem();
+
+            // Check if user is already logged in
+            checkLoginStatus();
+
+            // Initialize EmailJS
+            (function () {
+                try {
+                    emailjs.init("KghlO8K9Bz_nwqQ_G");
+                    console.log('✅ EmailJS initialized successfully');
+                } catch (error) {
+                    console.error('❌ EmailJS initialization failed:', error);
+                }
+            })();
+
+            // Remove preloader after everything is loaded
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            }, 1500);
+        });
+
+        function initLanguageSwitcher() {
+            // Apply current language
+            applyLanguage(currentLanguage);
+
+            // Language switcher toggle
+            const languageToggle = document.getElementById('languageToggle');
+            if (languageToggle) {
+                languageToggle.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const options = document.getElementById('languageOptions');
+                    if (options) {
+                        options.classList.toggle('show');
+                    }
+                });
+            }
+
+            // Close language dropdown when clicking outside
+            document.addEventListener('click', function () {
+                const options = document.getElementById('languageOptions');
+                if (options) {
+                    options.classList.remove('show');
+                }
+            });
+
+            // Language option selection
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function () {
+                    const lang = this.getAttribute('data-lang');
+                    applyLanguage(lang);
+
+                    // Update active state
+                    document.querySelectorAll('.language-option').forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    this.classList.add('active');
+
+                    // Update language toggle text
+                    const langToggleText = document.querySelector('#languageToggle .language-content');
+                    if (langToggleText) {
+                        langToggleText.textContent =
+                            lang === 'en' ? 'EN' : lang === 'hi' ? 'हिंदी' : 'ગુજરાતી';
+                    }
+
+                    // Close dropdown
+                    const languageOptions = document.getElementById('languageOptions');
+                    if (languageOptions) {
+                        languageOptions.classList.remove('show');
+                    }
+                });
+            });
+        }
+
+        function applyLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('preferredLanguage', lang);
+
+            // Update body class for language-specific styling
+            document.body.classList.remove('hindi', 'gujarati');
+            if (lang === 'hi') document.body.classList.add('hindi');
+            if (lang === 'gu') document.body.classList.add('gujarati');
+
+            // Fade out content
+            const languageContent = document.querySelector('.language-content');
+            if (languageContent) {
+                languageContent.style.opacity = '0.5';
+            }
+
+            // Apply translations after a short delay for smoother transition
+            setTimeout(() => {
+                const elements = document.querySelectorAll('[data-i18n]');
+                elements.forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+
+                // Translate placeholder attributes
+                const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+                placeholderElements.forEach(element => {
+                    const key = element.getAttribute('data-i18n-placeholder');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.setAttribute('placeholder', translations[lang][key]);
+                    }
+                });
+
+                // Fade content back in
+                if (languageContent) {
+                    languageContent.style.opacity = '1';
+                }
+            }, 200);
+        }
+
+        // API Helper Functions
+        async function callAPI(action, data = {}, method = 'POST') {
+            try {
+                const url = `${API_BASE_URL}?action=${action}`;
+
+                const options = {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin'
+                };
+
+                if (method === 'POST') {
+                    options.body = JSON.stringify(data);
+                }
+
+                console.log(`📡 API Call: ${action}`, data);
+                const response = await fetch(url, options);
+                const result = await response.json();
+                console.log(`📡 API Response: ${action}`, result);
+                return result;
+
+            } catch (error) {
+                console.error('❌ API call error:', error);
+                return {
+                    success: false,
+                    error: 'Network error: ' + error.message,
+                    message: 'Unable to connect to server. Please check your internet connection.'
+                };
+            }
+        }
+
+        // Send OTP via EmailJS
+        async function sendOTPEmail(email, otp, user) {
+            try {
+                const templateParams = {
+                    to_email: email,
+                    to_name: user.firstname || 'User',
+                    from_name: 'Naroda Group',
+                    message: `Your OTP for password reset is: ${otp}. This OTP is valid for 10 minutes.`,
+                    otp_code: otp,
+                    reply_to: 'noreply@narodagroup.com'
+                };
+
+                console.log('📧 Attempting to send OTP email to:', email);
+
+                // Service ID and Template ID from your EmailJS account
+                const serviceID = 'service_witeofl';  // Your service ID
+                const templateID = 'template_uqx6l8j'; // Your template ID
+
+                const response = await emailjs.send(serviceID, templateID, templateParams);
+
+                console.log('✅ EmailJS response:', response);
+
+                if (response.status === 200) {
+                    showToast(`OTP sent to ${email}`, 'success');
+                    return {
+                        success: true,
+                        message: 'OTP sent successfully!'
+                    };
+                } else {
+                    throw new Error(`Email sending failed with status: ${response.status}`);
+                }
+
+            } catch (error) {
+                console.error('❌ Failed to send OTP email:', error);
+
+                // For demo/testing, show OTP in console and toast
+                console.log('🎯 DEMO MODE - OTP would be:', otp);
+
+                // Show demo OTP for testing
+                showToast(`Demo OTP: ${otp} (Email service would work in production)`, 'info');
+
+                return {
+                    success: true, // Return true for demo purposes
+                    message: 'Demo mode - OTP: ' + otp
+                };
+            }
+        }
+
+        // Profile Dropdown Toggle
+        function initProfileDropdown() {
+            const profileToggle = document.getElementById('profileToggle');
+            const profileMenu = document.getElementById('profileMenu');
+
+            if (profileToggle && profileMenu) {
+                console.log('Initializing profile dropdown...');
+
+                // Toggle profile menu on click
+                profileToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Profile toggle clicked');
+
+                    // Toggle the show class
+                    const isVisible = profileMenu.classList.contains('show');
+                    if (isVisible) {
+                        profileMenu.classList.remove('show');
+                    } else {
+                        profileMenu.classList.add('show');
+                    }
+                });
+
+                // Close profile menu when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!profileToggle.contains(e.target) && !profileMenu.contains(e.target)) {
+                        profileMenu.classList.remove('show');
+                    }
+                });
+
+                // Close profile menu when clicking escape key
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') {
+                        profileMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // Logout functionality
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async function () {
+                    const result = await callAPI('logout', {});
+                    if (result.success) {
+                        // Clear local storage
+                        localStorage.removeItem('narodaUserData');
+                        localStorage.removeItem('narodaRememberMe');
+
+                        showToast('Logged out successfully', 'success');
+
+                        // Update UI to show login button
+                        updateUIAfterLogout();
+
+                        // Reload page after logout
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        showToast('Logout failed: ' + (result.message || 'Unknown error'), 'error');
+                    }
+                });
+            }
+        }
+
+        // Update UI after successful login
+        function updateUIAfterLogin(user) {
+            console.log('Updating UI after login for user:', user.email);
+
+            // Store user data in localStorage
+            localStorage.setItem('narodaUserData', JSON.stringify(user));
+
+            // Hide login button, show profile dropdown
+            const loginButton = document.getElementById('loginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+
+            if (loginButton) {
+                loginButton.style.display = 'none';
+                console.log('Login button hidden');
+            }
+            if (profileDropdown) {
+                profileDropdown.style.display = 'block';
+                console.log('Profile dropdown shown');
+            }
+
+            // Update profile information with USER-SPECIFIC DATA
+            const profileName = document.getElementById('profileName');
+            const profileAvatar = document.getElementById('profileAvatar');
+            const profileAvatarLarge = document.getElementById('profileAvatarLarge');
+            const profileFullName = document.getElementById('profileFullName');
+            const profileEmail = document.getElementById('profileEmail');
+            const profileInfoEmail = document.getElementById('profileInfoEmail');
+            const profileInfoName = document.getElementById('profileInfoName');
+            const profileInfoPhone = document.getElementById('profileInfoPhone');
+
+            // Get initials from user data
+            const userInitials = user.avatar ||
+                `${(user.firstname || '').charAt(0)}${(user.lastname || '').charAt(0)}`.toUpperCase() || 'U';
+
+            if (profileName) {
+                profileName.textContent = user.firstname || 'User';
+                console.log('Profile name updated:', user.firstname);
+            }
+            if (profileAvatar) {
+                profileAvatar.textContent = userInitials;
+                console.log('Profile avatar updated:', userInitials);
+            }
+            if (profileAvatarLarge) {
+                profileAvatarLarge.textContent = userInitials;
+            }
+            if (profileFullName) {
+                profileFullName.textContent = `${user.firstname || ''} ${user.lastname || ''}`.trim() || 'User';
+            }
+            if (profileEmail) {
+                profileEmail.textContent = user.email || '';
+            }
+            if (profileInfoEmail) {
+                profileInfoEmail.textContent = user.email || '';
+            }
+            if (profileInfoName) {
+                profileInfoName.textContent = `${user.firstname || ''} ${user.lastname || ''}`.trim() || 'User';
+            }
+            if (profileInfoPhone) {
+                profileInfoPhone.textContent = user.phone || 'Not provided';
+            }
+
+            // Initialize profile dropdown
+            initProfileDropdown();
+
+            hideLoading();
+        }
+
+        function updateUIAfterLogout() {
+            console.log('Updating UI after logout');
+
+            // Show login button, hide profile dropdown
+            const loginButton = document.getElementById('loginButton');
+            const profileDropdown = document.getElementById('profileDropdown');
+
+            if (loginButton) {
+                loginButton.style.display = 'block';
+                console.log('Login button shown');
+            }
+            if (profileDropdown) {
+                profileDropdown.style.display = 'none';
+                console.log('Profile dropdown hidden');
+            }
+
+            // Clear login form
+            const loginEmail = document.getElementById('loginEmail');
+            const loginPassword = document.getElementById('loginPassword');
+            const rememberLogin = document.getElementById('rememberLogin');
+
+            if (loginEmail) loginEmail.value = '';
+            if (loginPassword) loginPassword.value = '';
+            if (rememberLogin) rememberLogin.checked = false;
+        }
+
+        function initAuthenticationSystem() {
+            console.log('Initializing authentication system...');
+
+            // Login button click event
+            const loginButton = document.getElementById('loginButton');
+            if (loginButton) {
+                loginButton.addEventListener('click', function (e) {
+                    // Scroll to login form
+                    document.getElementById('loginForm').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Show/Hide Registration Form
+            const showRegisterBtn = document.getElementById('showRegister');
+            if (showRegisterBtn) {
+                showRegisterBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('loginForm').style.display = 'none';
+                    document.getElementById('forgotForm').style.display = 'none';
+                    document.getElementById('registerForm').style.display = 'block';
+                    document.getElementById('registerForm').classList.add('active');
+                    clearRegistrationForm();
+                });
+            }
+
+            // Show/Hide Login Form from Registration
+            const showLoginFromRegister = document.getElementById('showLoginFromRegister');
+            if (showLoginFromRegister) {
+                showLoginFromRegister.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('registerForm').style.display = 'none';
+                    document.getElementById('registerForm').classList.remove('active');
+                    document.getElementById('forgotForm').style.display = 'none';
+                    document.getElementById('loginForm').style.display = 'block';
+                    clearRegistrationForm();
+                });
+            }
+
+            // Show/Hide Forgot Password Form
+            const showForgotBtn = document.getElementById('showForgot');
+            if (showForgotBtn) {
+                showForgotBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('loginForm').style.display = 'none';
+                    document.getElementById('registerForm').style.display = 'none';
+                    document.getElementById('registerForm').classList.remove('active');
+                    document.getElementById('forgotForm').style.display = 'block';
+                    goToForgotStep(1);
+                    clearForgotForm();
+                });
+            }
+
+            // Back to Login from Forgot Password
+            const backToLoginFromForgot = document.getElementById('backToLoginFromForgot');
+            if (backToLoginFromForgot) {
+                backToLoginFromForgot.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('forgotForm').style.display = 'none';
+                    document.getElementById('registerForm').style.display = 'none';
+                    document.getElementById('registerForm').classList.remove('active');
+                    document.getElementById('loginForm').style.display = 'block';
+                    clearForgotForm();
+                    clearOTPTimer();
+                });
+            }
+
+            // Back to Login from Success
+            const backToLoginFromSuccess = document.getElementById('backToLoginFromSuccess');
+            if (backToLoginFromSuccess) {
+                backToLoginFromSuccess.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('forgotForm').style.display = 'none';
+                    document.getElementById('registerForm').style.display = 'none';
+                    document.getElementById('registerForm').classList.remove('active');
+                    document.getElementById('loginForm').style.display = 'block';
+                    clearForgotForm();
+                    clearOTPTimer();
+                });
+            }
+
+            // Registration Form Submission
+            const registerFormActual = document.getElementById('registerFormActual');
+            if (registerFormActual) {
+                registerFormActual.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const firstName = document.getElementById('registerFirstName').value.trim();
+                    const lastName = document.getElementById('registerLastName').value.trim();
+                    const email = document.getElementById('registerEmail').value.trim();
+                    const phone = document.getElementById('registerPhone').value.trim();
+                    const password = document.getElementById('registerPassword').value;
+                    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+                    const agreeTerms = document.getElementById('agreeTerms').checked;
+
+                    // Validation
+                    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+                        showToast('Please fill in all required fields', 'error');
+                        return;
+                    }
+
+                    if (!validateEmail(email)) {
+                        showToast('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    if (password.length < 8) {
+                        showToast('Password must be at least 8 characters', 'error');
+                        return;
+                    }
+
+                    if (password !== confirmPassword) {
+                        showToast('Passwords do not match', 'error');
+                        return;
+                    }
+
+                    if (!agreeTerms) {
+                        showToast('You must agree to the terms and conditions', 'error');
+                        return;
+                    }
+
+                    showLoading();
+
+                    try {
+                        // Call register API
+                        const result = await callAPI('register', {
+                            firstname: firstName,
+                            lastname: lastName,
+                            email: email,
+                            phone: phone,
+                            password: password
+                        });
+
+                        if (result.success) {
+                            showToast('Account created successfully!', 'success');
+
+                            // Auto-login after successful registration
+                            const loginResult = await callAPI('login', {
+                                email: email,
+                                password: password
+                            });
+
+                            if (loginResult.success) {
+                                // Update UI to show profile dropdown
+                                updateUIAfterLogin(loginResult.user);
+
+                                // Switch to login form after successful registration
+                                setTimeout(() => {
+                                    document.getElementById('registerForm').style.display = 'none';
+                                    document.getElementById('registerForm').classList.remove('active');
+                                    document.getElementById('loginForm').style.display = 'block';
+                                    clearRegistrationForm();
+                                }, 2000);
+                            } else {
+                                showToast('Registration successful! Please login.', 'success');
+                            }
+                        } else {
+                            showToast(result.message || 'Registration failed', 'error');
+                        }
+                    } catch (error) {
+                        showToast('An error occurred during registration', 'error');
+                    } finally {
+                        hideLoading();
+                    }
+                });
+            }
+
+            // Registration password strength and match
+            const registerPassword = document.getElementById('registerPassword');
+            if (registerPassword) {
+                registerPassword.addEventListener('input', function () {
+                    updatePasswordStrength(this.value, 'registerPasswordStrength', 'registerPasswordStrengthText');
+
+                    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+                    if (confirmPassword) {
+                        const match = this.value === confirmPassword;
+                        const confirmInput = document.getElementById('registerConfirmPassword');
+                        if (confirmInput) {
+                            confirmInput.classList.toggle('is-invalid', !match);
+                            confirmInput.classList.toggle('is-valid', match);
+                        }
+                        const matchElement = document.getElementById('registerPasswordMatch');
+                        if (matchElement) {
+                            matchElement.innerHTML = match
+                                ? `<span style="color: #28a745;"><i class="fas fa-check-circle"></i> Passwords match</span>`
+                                : `<span style="color: #dc3545;"><i class="fas fa-times-circle"></i> Passwords do not match</span>`;
+                        }
+                    }
+                });
+            }
+
+            const registerConfirmPassword = document.getElementById('registerConfirmPassword');
+            if (registerConfirmPassword) {
+                registerConfirmPassword.addEventListener('input', function () {
+                    const password = document.getElementById('registerPassword').value;
+                    if (password) {
+                        const match = password === this.value;
+                        this.classList.toggle('is-invalid', !match);
+                        this.classList.toggle('is-valid', match);
+                        const matchElement = document.getElementById('registerPasswordMatch');
+                        if (matchElement) {
+                            matchElement.innerHTML = match
+                                ? `<span style="color: #28a745;"><i class="fas fa-check-circle"></i> Passwords match</span>`
+                                : `<span style="color: #dc3545;"><i class="fas fa-times-circle"></i> Passwords do not match</span>`;
+                        }
+                    }
+                });
+            }
+
+            // Step 1: Email Input (Forgot Password)
+            const forgotStep1Form = document.getElementById('forgotStep1Form');
+            if (forgotStep1Form) {
+                forgotStep1Form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const email = document.getElementById('forgotEmail').value.trim();
+
+                    if (!validateEmail(email)) {
+                        showToast('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    // Store email for later steps
+                    localStorage.setItem('forgotPasswordEmail', email);
+
+                    goToForgotStep(2);
+                });
+            }
+
+            // Step 2: New Password (Forgot Password)
+            const forgotStep2Form = document.getElementById('forgotStep2Form');
+            if (forgotStep2Form) {
+                forgotStep2Form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const newPassword = document.getElementById('newPassword').value;
+                    const confirmPassword = document.getElementById('confirmNewPassword').value;
+
+                    // Validate passwords
+                    if (newPassword.length < 8) {
+                        showToast('Password must be at least 8 characters', 'error');
+                        return;
+                    }
+
+                    if (newPassword !== confirmPassword) {
+                        showToast('Passwords do not match', 'error');
+                        return;
+                    }
+
+                    // Store password for later
+                    localStorage.setItem('forgotPasswordNew', newPassword);
+
+                    // Get email from storage
+                    const email = localStorage.getItem('forgotPasswordEmail');
+
+                    if (!email) {
+                        showToast('Email not found. Please start over.', 'error');
+                        return;
+                    }
+
+                    showLoading();
+
+                    try {
+                        // Generate OTP via API
+                        const result = await callAPI('forgot_password', { email });
+
+                        if (result.success) {
+                            // Show email in OTP step
+                            const forgotPasswordEmailElement = document.getElementById('forgotPasswordEmail');
+                            if (forgotPasswordEmailElement) {
+                                forgotPasswordEmailElement.textContent = email;
+                            }
+
+                            // Send OTP via EmailJS
+                            const sendResult = await sendOTPEmail(email, result.otp, result.user);
+
+                            if (sendResult.success) {
+                                // Store OTP for verification
+                                localStorage.setItem('forgotPasswordOTP', result.otp);
+
+                                // Start OTP timer
+                                startOTPTimer('forgotOtpTimer', 120);
+
+                                goToForgotStep(3);
+
+                                // Focus first OTP input
+                                setTimeout(() => {
+                                    const firstOtpInput = document.querySelector('#forgotForm .otp-input[data-index="0"]');
+                                    if (firstOtpInput) {
+                                        firstOtpInput.focus();
+                                    }
+                                }, 100);
+                            } else {
+                                showToast(sendResult.message || 'Failed to send OTP email', 'error');
+                            }
+                        } else {
+                            showToast(result.message || 'Error generating OTP', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Error in forgot password step 2:', error);
+                        showToast('An error occurred. Please try again.', 'error');
+                    } finally {
+                        hideLoading();
+                    }
+                });
+            }
+
+            // Verify OTP (Forgot Password)
+            const verifyForgotOTPBtn = document.getElementById('verifyForgotOTP');
+            if (verifyForgotOTPBtn) {
+                verifyForgotOTPBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+                    const otpInputs = document.querySelectorAll('#forgotForm .otp-input');
+                    const otp = Array.from(otpInputs).map(input => input.value).join('');
+
+                    if (otp.length !== 6) {
+                        showToast('Please enter complete 6-digit OTP', 'error');
+                        return;
+                    }
+
+                    const email = localStorage.getItem('forgotPasswordEmail');
+                    const storedOTP = localStorage.getItem('forgotPasswordOTP');
+                    const newPassword = localStorage.getItem('forgotPasswordNew');
+
+                    if (!email || !newPassword) {
+                        showToast('Session expired. Please start over.', 'error');
+                        return;
+                    }
+
+                    // Verify OTP (client-side check since we're not storing in DB)
+                    if (otp !== storedOTP) {
+                        showToast('Invalid OTP. Please try again.', 'error');
+                        return;
+                    }
+
+                    showLoading();
+
+                    try {
+                        // Reset password via API
+                        const result = await callAPI('reset_password', {
+                            email: email,
+                            password: newPassword
+                        });
+
+                        if (result.success) {
+                            // Clear stored data
+                            localStorage.removeItem('forgotPasswordEmail');
+                            localStorage.removeItem('forgotPasswordOTP');
+                            localStorage.removeItem('forgotPasswordNew');
+
+                            showToast('Password reset successfully!', 'success');
+                            goToForgotStep(4);
+                            clearOTPTimer();
+                        } else {
+                            showToast(result.message || 'Error resetting password', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Error resetting password:', error);
+                        showToast('An error occurred. Please try again.', 'error');
+                    } finally {
+                        hideLoading();
+                    }
+                });
+            }
+
+            // Resend OTP (Forgot Password)
+            const resendForgotOTPBtn = document.getElementById('resendForgotOTP');
+            if (resendForgotOTPBtn) {
+                resendForgotOTPBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+
+                    const email = localStorage.getItem('forgotPasswordEmail');
+
+                    if (!email) {
+                        showToast('Email not found', 'error');
+                        return;
+                    }
+
+                    showLoading();
+
+                    try {
+                        const result = await callAPI('forgot_password', { email });
+
+                        if (result.success) {
+                            // Update stored OTP
+                            localStorage.setItem('forgotPasswordOTP', result.otp);
+
+                            // Send OTP via EmailJS
+                            const sendResult = await sendOTPEmail(email, result.otp, result.user);
+
+                            if (sendResult.success) {
+                                // Restart OTP timer
+                                clearOTPTimer();
+                                startOTPTimer('forgotOtpTimer', 120);
+
+                                showToast(`New OTP sent to ${email}`, 'success');
+
+                                // Clear OTP inputs
+                                document.querySelectorAll('#forgotForm .otp-input').forEach(input => {
+                                    input.value = '';
+                                });
+
+                                // Focus first OTP input
+                                setTimeout(() => {
+                                    const firstOtpInput = document.querySelector('#forgotForm .otp-input[data-index="0"]');
+                                    if (firstOtpInput) {
+                                        firstOtpInput.focus();
+                                    }
+                                }, 100);
+                            } else {
+                                showToast('Failed to resend OTP email', 'error');
+                            }
+                        } else {
+                            showToast(result.message || 'Error regenerating OTP', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Error resending OTP:', error);
+                        showToast('An error occurred. Please try again.', 'error');
+                    } finally {
+                        hideLoading();
+                    }
+                });
+            }
+
+            // Back to Step 1 (Forgot Password)
+            const backToStep1Btn = document.getElementById('backToStep1');
+            if (backToStep1Btn) {
+                backToStep1Btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    goToForgotStep(1);
+                    clearOTPTimer();
+                });
+            }
+
+            // Back to Step 2 (Forgot Password)
+            const backToStep2Btn = document.getElementById('backToStep2');
+            if (backToStep2Btn) {
+                backToStep2Btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    goToForgotStep(2);
+                    clearOTPTimer();
+                });
+            }
+
+            // OTP input auto-focus and auto-verify
+            document.querySelectorAll('#forgotForm .otp-input').forEach((input, index, inputs) => {
+                input.addEventListener('input', (e) => {
+                    // Allow only numeric input
+                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+
+                    // Auto-focus next input
+                    if (e.target.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+
+                    // Auto-verify if all inputs filled
+                    const allFilled = Array.from(inputs).every(inp => inp.value.length === 1);
+                    if (allFilled) {
+                        setTimeout(() => {
+                            const verifyBtn = document.getElementById('verifyForgotOTP');
+                            if (verifyBtn) verifyBtn.click();
+                        }, 300);
+                    }
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    // Handle backspace
+                    if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                        inputs[index - 1].focus();
+                        inputs[index - 1].value = '';
+                    }
+                });
+            });
+
+            // Password strength indicator (Forgot Password)
+            const newPasswordInput = document.getElementById('newPassword');
+            if (newPasswordInput) {
+                newPasswordInput.addEventListener('input', function () {
+                    updatePasswordStrength(this.value, 'forgotPasswordStrength', 'forgotPasswordStrengthText');
+
+                    const confirmPassword = document.getElementById('confirmNewPassword').value;
+                    if (confirmPassword) {
+                        const match = this.value === confirmPassword;
+                        const confirmInput = document.getElementById('confirmNewPassword');
+                        if (confirmInput) {
+                            confirmInput.classList.toggle('is-invalid', !match);
+                            confirmInput.classList.toggle('is-valid', match);
+                        }
+                        const matchElement = document.getElementById('forgotPasswordMatch');
+                        if (matchElement) {
+                            matchElement.innerHTML = match
+                                ? `<span style="color: #28a745;"><i class="fas fa-check-circle"></i> Passwords match</span>`
+                                : `<span style="color: #dc3545;"><i class="fas fa-times-circle"></i> Passwords do not match</span>`;
+                        }
+                    }
+                });
+            }
+
+            const confirmNewPasswordInput = document.getElementById('confirmNewPassword');
+            if (confirmNewPasswordInput) {
+                confirmNewPasswordInput.addEventListener('input', function () {
+                    const newPassword = document.getElementById('newPassword').value;
+                    if (newPassword) {
+                        const match = newPassword === this.value;
+                        this.classList.toggle('is-invalid', !match);
+                        this.classList.toggle('is-valid', match);
+                        const matchElement = document.getElementById('forgotPasswordMatch');
+                        if (matchElement) {
+                            matchElement.innerHTML = match
+                                ? `<span style="color: #28a745;"><i class="fas fa-check-circle"></i> Passwords match</span>`
+                                : `<span style="color: #dc3545;"><i class="fas fa-times-circle"></i> Passwords do not match</span>`;
+                        }
+                    }
+                });
+            }
+
+            // Password toggle functionality
+            document.querySelectorAll('.password-toggle').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const targetId = e.target.closest('button').getAttribute('data-target');
+                    const passwordInput = document.getElementById(targetId);
+                    const icon = e.target.closest('button').querySelector('i');
+
+                    if (passwordInput && icon) {
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            icon.classList.replace('fa-eye', 'fa-eye-slash');
+                        } else {
+                            passwordInput.type = 'password';
+                            icon.classList.replace('fa-eye-slash', 'fa-eye');
+                        }
+                    }
+                });
+            });
+
+            // Login Form Submission
+            const loginFormActual = document.getElementById('loginFormActual');
+            if (loginFormActual) {
+                loginFormActual.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const email = document.getElementById('loginEmail').value.trim();
+                    const password = document.getElementById('loginPassword').value;
+                    const rememberMe = document.getElementById('rememberLogin').checked;
+
+                    // Validation
+                    if (!email || !password) {
+                        showToast('Please enter email and password', 'error');
+                        return;
+                    }
+
+                    if (!validateEmail(email)) {
+                        showToast('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    showLoading();
+
+                    try {
+                        const result = await callAPI('login', {
+                            email: email,
+                            password: password
+                        });
+
+                        if (result.success && result.user) {
+                            // Store remember me preference
+                            if (rememberMe) {
+                                localStorage.setItem('narodaRememberMe', 'true');
+                            }
+
+                            // Store user data
+                            localStorage.setItem('narodaUserData', JSON.stringify(result.user));
+
+                            showToast('Login successful!', 'success');
+
+                            // Check if user is admin and redirect to dashboard
+                            const userRole = result.user.role || '';
+                            if (userRole.toLowerCase() === 'admin') {
+                                // Redirect admin to Admin Dashboard after short delay
+                                setTimeout(() => {
+                                    window.location.href = 'users1.html';
+                                }, 1000);
+                            } else {
+                                // Regular user
+                                const pendingInquiry = localStorage.getItem('pendingInquiry');
+                                if (pendingInquiry) {
+                                    // If we have a pending inquiry, go back to the project page
+                                    showToast('Login successful! Returning to your inquiry...', 'success');
+                                    setTimeout(() => {
+                                        window.history.back();
+                                    }, 1000);
+                                } else {
+                                    // Default behavior
+                                    updateUIAfterLogin(result.user);
+                                }
+                            }
+
+                        } else {
+                            // Show error message from API or default message
+                            showToast(result.message || 'Invalid email or password', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Login error:', error);
+                        showToast('An error occurred. Please try again.', 'error');
+                    } finally {
+                        hideLoading();
+                    }
+                });
+            }
+        }
+
+        // Helper Functions
+        function clearRegistrationForm() {
+            const registerFirstName = document.getElementById('registerFirstName');
+            const registerLastName = document.getElementById('registerLastName');
+            const registerEmail = document.getElementById('registerEmail');
+            const registerPhone = document.getElementById('registerPhone');
+            const registerPassword = document.getElementById('registerPassword');
+            const registerConfirmPassword = document.getElementById('registerConfirmPassword');
+            const agreeTerms = document.getElementById('agreeTerms');
+
+            if (registerFirstName) registerFirstName.value = '';
+            if (registerLastName) registerLastName.value = '';
+            if (registerEmail) registerEmail.value = '';
+            if (registerPhone) registerPhone.value = '';
+            if (registerPassword) registerPassword.value = '';
+            if (registerConfirmPassword) registerConfirmPassword.value = '';
+            if (agreeTerms) agreeTerms.checked = false;
+
+            // Reset validation states
+            const registerPasswordStrength = document.getElementById('registerPasswordStrength');
+            const registerPasswordStrengthText = document.getElementById('registerPasswordStrengthText');
+            const registerPasswordMatch = document.getElementById('registerPasswordMatch');
+
+            if (registerPasswordStrength) {
+                registerPasswordStrength.style.width = '0%';
+                registerPasswordStrength.className = 'strength-fill';
+            }
+            if (registerPasswordStrengthText) {
+                registerPasswordStrengthText.textContent = 'Password strength';
+            }
+            if (registerPasswordMatch) {
+                registerPasswordMatch.innerHTML = '';
+            }
+        }
+
+        function clearForgotForm() {
+            const forgotEmail = document.getElementById('forgotEmail');
+            const newPassword = document.getElementById('newPassword');
+            const confirmNewPassword = document.getElementById('confirmNewPassword');
+
+            if (forgotEmail) forgotEmail.value = '';
+            if (newPassword) newPassword.value = '';
+            if (confirmNewPassword) confirmNewPassword.value = '';
+
+            document.querySelectorAll('#forgotForm .otp-input').forEach(input => {
+                input.value = '';
+            });
+
+            // Clear localStorage
+            localStorage.removeItem('forgotPasswordEmail');
+            localStorage.removeItem('forgotPasswordOTP');
+            localStorage.removeItem('forgotPasswordNew');
+
+            goToForgotStep(1);
+            clearOTPTimer();
+        }
+
+        function clearOTPTimer() {
+            if (otpTimerInterval) {
+                clearInterval(otpTimerInterval);
+                otpTimerInterval = null;
+            }
+            const timerElement = document.getElementById('forgotOtpTimer');
+            if (timerElement) {
+                timerElement.textContent = '02:00';
+                timerElement.classList.remove('expired');
+            }
+        }
+
+        function goToForgotStep(step) {
+            currentForgotStep = step;
+
+            // Update progress steps
+            document.querySelectorAll('#forgotForm .progress-step').forEach(progressStep => {
+                const stepNumber = parseInt(progressStep.getAttribute('data-step'));
+                progressStep.classList.remove('active', 'completed');
+
+                if (stepNumber < step) {
+                    progressStep.classList.add('completed');
+                } else if (stepNumber === step) {
+                    progressStep.classList.add('active');
+                }
+            });
+
+            // Show/hide form steps
+            document.querySelectorAll('#forgotForm .form-step').forEach(formStep => {
+                const stepNumber = parseInt(formStep.getAttribute('data-step'));
+                formStep.style.display = stepNumber === step ? 'block' : 'none';
+            });
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function updatePasswordStrength(password, strengthFillId, strengthTextId) {
+            const strengthFill = document.getElementById(strengthFillId);
+            const strengthText = document.getElementById(strengthTextId);
+
+            if (!strengthFill || !strengthText) return 0;
+
+            if (!password) {
+                strengthFill.style.width = '0%';
+                strengthFill.className = 'strength-fill';
+                strengthText.textContent = 'Password strength';
+                return 0;
+            }
+
+            let score = 0;
+            const requirements = {
+                length: password.length >= 8,
+                lowercase: /[a-z]/.test(password),
+                uppercase: /[A-Z]/.test(password),
+                number: /[0-9]/.test(password),
+                special: /[^A-Za-z0-9]/.test(password)
+            };
+
+            Object.values(requirements).forEach(req => req && score++);
+
+            const percentage = (score / 5) * 100;
+            strengthFill.style.width = `${percentage}%`;
+
+            if (score <= 1) {
+                strengthFill.className = 'strength-fill weak';
+                strengthText.textContent = 'Weak password';
+            } else if (score <= 3) {
+                strengthFill.className = 'strength-fill fair';
+                strengthText.textContent = 'Fair password';
+            } else if (score === 4) {
+                strengthFill.className = 'strength-fill good';
+                strengthText.textContent = 'Strong password';
+            } else {
+                strengthFill.className = 'strength-fill excellent';
+                strengthText.textContent = 'Very strong password';
+            }
+
+            return score;
+        }
+
+        function startOTPTimer(timerId, seconds) {
+            const timerElement = document.getElementById(timerId);
+            if (!timerElement) return;
+
+            let timeLeft = seconds;
+
+            const updateTimer = () => {
+                const minutes = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(otpTimerInterval);
+                    timerElement.textContent = 'OTP expired';
+                    timerElement.classList.add('expired');
+                } else {
+                    timeLeft--;
+                }
+            };
+
+            clearOTPTimer(); // Clear any existing timer
+            updateTimer(); // Initial call
+            otpTimerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function showLoading() {
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            if (loadingOverlay) {
+                loadingOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function hideLoading() {
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            if (loadingOverlay) {
+                loadingOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const toastContainer = document.querySelector('.toast-container');
+            if (!toastContainer) return;
+
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+
+            let borderColor = 'var(--primary-color)';
+            let icon = 'fas fa-info-circle';
+
+            switch (type) {
+                case 'success':
+                    borderColor = '#28a745';
+                    icon = 'fas fa-check-circle';
+                    break;
+                case 'error':
+                    borderColor = '#dc3545';
+                    icon = 'fas fa-exclamation-circle';
+                    break;
+                case 'warning':
+                    borderColor = '#ffc107';
+                    icon = 'fas fa-exclamation-triangle';
+                    break;
+                case 'info':
+                    borderColor = 'var(--secondary-color)';
+                    icon = 'fas fa-info-circle';
+                    break;
+            }
+
+            toast.style.borderLeft = `4px solid ${borderColor}`;
+            toast.innerHTML = `
+            <div class="d-flex align-items-center">
+                <i class="${icon} me-3" style="color: ${borderColor};"></i>
+                <div>
+                    <strong style="color: ${borderColor};">${type.charAt(0).toUpperCase() + type.slice(1)}</strong>
+                    <p class="mb-0">${message}</p>
+                </div>
+                <button type="button" class="btn-close ms-auto" onclick="this.parentElement.parentElement.remove()" aria-label="Close"></button>
+            </div>
+        `;
+
+            toastContainer.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        function checkLoginStatus() {
+            const userData = localStorage.getItem('narodaUserData');
+            if (userData) {
+                try {
+                    const user = JSON.parse(userData);
+                    updateUIAfterLogin(user);
+                } catch (e) {
+                    console.error('Error parsing user data:', e);
+                    localStorage.removeItem('narodaUserData');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

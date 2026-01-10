@@ -1,0 +1,74 @@
+<!-- Preloader Component -->
+<style>
+    /* Preloader Styles */
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary-color, #0a2a4a);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        transition: opacity 0.5s ease;
+    }
+
+    .loader {
+        width: 80px;
+        height: 80px;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .loader-inner {
+        width: 100%;
+        height: 100%;
+        border: 4px solid rgba(201, 169, 110, 0.2);
+        border-radius: 50%;
+        border-top-color: var(--secondary-color, #c9a96e);
+        animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .preloader-text {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+    }
+</style>
+
+<div id="preloader" class="preloader">
+    <div class="loader">
+        <div class="loader-inner"></div>
+    </div>
+    <div class="preloader-text" data-i18n="preloader.loading">NARODA GROUP</div>
+</div>
+
+<script>
+    // Preloader functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }, 800);
+        }
+    });
+</script>
