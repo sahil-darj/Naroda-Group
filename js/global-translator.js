@@ -136,12 +136,12 @@ const Translator = {
             "lbl_click_to_upload_approvals": "Click to upload multiple approval documents",
 
             // Projects Page
-            "naroda_landmark": "Naroda Landmark",
+            "naroda_landmark": "Naroda Lavish",
             "premium_residential": "Premium Residential Project",
-            "naroda_landmark_desc": "Naroda Landmark is a premium residential project offering luxurious 2 & 3 BHK apartments with modern amenities, located in the heart of the city with excellent connectivity and scenic views.",
-            "naroda_irish": "Naroda Irish",
+            "naroda_landmark_desc": "Naroda Lavish is a premium residential project offering luxurious 2 & 3 BHK apartments with modern amenities, located in the heart of the city with excellent connectivity and scenic views.",
+            "naroda_irish": "Naroda Arise",
             "luxury_township": "Luxury Township Project",
-            "naroda_irish_desc": "Naroda Irish is an expansive township project featuring modern villas and apartments with world-class amenities including clubhouse, swimming pool, parks, and commercial spaces.",
+            "naroda_irish_desc": "Naroda Arise is an expansive township project featuring modern villas and apartments with world-class amenities including clubhouse, swimming pool, parks, and commercial spaces.",
             "view_details": "View Details",
             "admin_user": "Admin User",
             "system_admin": "System Administrator",

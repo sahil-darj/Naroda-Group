@@ -3397,15 +3397,89 @@
             }
         }
 
+        .full-image-preview,
+        #full-image-preview {
+            max-width: 100% !important;
+            max-height: 90vh !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            object-position: center !important;
+            display: block !important;
+            margin: 0 auto !important;
+        }
+
+        /* Fix for uploaded image previews - ensure full image display without cropping */
+        .uploaded-image-item img,
+        .floor-plan-table-image,
+        .featured-property-image,
+        .gallery-image-item img,
+        .floor-plan-image-preview,
+        .property-image-preview,
         .full-image-preview {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            object-position: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1000;
+            object-fit: contain !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            width: auto !important;
+            height: auto !important;
+            background: var(--gray-50) !important;
+        }
+
+        /* Specific fix for gallery images */
+        .gallery-image-item img {
+            height: auto !important;
+            min-height: 150px !important;
+            max-height: 300px !important;
+            object-fit: contain !important;
+            width: 100% !important;
+        }
+
+        /* Fix for property card images */
+        .featured-property-image {
+            height: auto !important;
+            min-height: 180px !important;
+            max-height: 300px !important;
+            object-fit: contain !important;
+            width: 100% !important;
+            background: var(--gray-100) !important;
+            padding: 10px !important;
+        }
+
+        /* Fix for floor plan images in table */
+        .floor-plan-table-image {
+            width: 120px !important;
+            height: 120px !important;
+            object-fit: contain !important;
+            object-position: center !important;
+            padding: 0 !important;
+            display: block !important;
+            background: var(--gray-50) !important;
+            border-radius: 8px !important;
+            border: 2px solid var(--gray-200) !important;
+        }
+
+        /* Fix for uploaded images container */
+        .uploaded-images-container .uploaded-image-item img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+            background: white !important;
+        }
+
+        /* Fix for modal preview images */
+        .modal-body img.img-fluid {
+            max-width: 100% !important;
+            max-height: 80vh !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+        }
+
+        /* Ensure all image containers allow full display */
+        .uploaded-image-item,
+        .gallery-image-item,
+        .featured-property-card {
+            overflow: visible !important;
         }
     </style>
 </head>
@@ -3488,24 +3562,24 @@
                         <span>Team</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="gallery.html" class="nav-link">
                         <i class="fas fa-images"></i>
                         <span>Gallery</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a href="career.html" class="nav-link">
                         <i class="fas fa-briefcase"></i>
                         <span>Career</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="news.html" class="nav-link">
                         <i class="fas fa-newspaper"></i>
                         <span>News</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
 
             <!-- Logout button at the bottom -->
@@ -3699,9 +3773,9 @@
                                 <th>Type</th>
                                 <th>Floor Plan</th>
                                 <th>Super Area</th>
-                                <th>Bedrooms</th>
-                                <th>Bathrooms</th>
-                                <th>Balconies</th>
+                                <th>BR</th>
+                                <th>BA</th>
+                                <th>Description</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -6746,42 +6820,9 @@
             // ===== DATA STORAGE =====
             const projectData = {
                 apartmentPlans: {
-                    '1bhk': [
-                        {
-                            area: '550',
-                            bedrooms: '1',
-                            bathrooms: '1',
-                            balconies: '1',
-                            description: 'Compact and efficient 1 BHK layout',
-                            image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-                            status: 'available',
-                            lastUpdated: '2024-02-01'
-                        }
-                    ],
-                    '2bhk': [
-                        {
-                            area: '850',
-                            bedrooms: '2',
-                            bathrooms: '2',
-                            balconies: '2',
-                            description: 'Spacious 2 BHK with modern amenities',
-                            image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-                            status: 'available',
-                            lastUpdated: '2024-02-01'
-                        }
-                    ],
-                    '3bhk': [
-                        {
-                            area: '1200',
-                            bedrooms: '3',
-                            bathrooms: '2',
-                            balconies: '2',
-                            description: 'Luxurious 3 BHK with premium features',
-                            image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-                            status: 'available',
-                            lastUpdated: '2024-02-01'
-                        }
-                    ]
+                    '1bhk': [],
+                    '2bhk': [],
+                    '3bhk': []
                 },
                 gallery: [
                     {
@@ -6916,7 +6957,10 @@
             async function fetchProjectData() {
                 try {
                     const response = await fetch('api.php?action=get_project_data');
-                    const data = await response.json();
+                    const result = await response.json();
+
+                    // API returns {status: 'success', data: {...}}
+                    const data = result.data || {};
 
                     // Merge database data with local projectData
                     // MAPPING FIX: Map API snake_case to local camelCase
@@ -7210,7 +7254,7 @@
                         </td>
                         <td>${plan.area ? plan.area + ' sq.ft' : '-'}</td>
                         <td>${plan.bedrooms || '-'}</td>
-                        <td class="d-none d-md-table-cell">${plan.bathrooms || '-'}</td>
+                        <td>${plan.bathrooms || '-'}</td>
                         <td><small>${displayDesc}</small></td>
                         <td><span class="status-badge ${plan.status === 'available' ? 'status-completed' : 'status-pending'}">
                             ${plan.status === 'available' ? 'Available' : 'Booked'}
@@ -8536,8 +8580,8 @@
                 setVal('parking', property.parking);
                 setVal('property-status', property.status);
                 setVal('price', property.price);
-                setVal('price-unit', property.priceUnit);
-                setVal('property-id', property.propertyId);
+                setVal('price-unit', property.price_unit || property.priceUnit);
+                setVal('property-id', property.property_id || property.propertyId);
                 setVal('facing', property.facing);
 
                 setVal('property-description-en', getLangVal(property.description, 'en'));
@@ -8600,23 +8644,24 @@
                 });
 
                 // Floor Plans & Dimensions Tab
-                setVal('dimensions-area', property.floorPlansDimensions?.area);
-                setVal('dimensions-floor', property.floorPlansDimensions?.floor);
-                setVal('dimensions-facing', property.floorPlansDimensions?.facing);
+                const fpData = property.floor_plans_dimensions || property.floorPlansDimensions;
+                setVal('dimensions-area', fpData?.area);
+                setVal('dimensions-floor', fpData?.floor);
+                setVal('dimensions-facing', fpData?.facing);
 
-                if (property.floorPlansDimensions?.livingRoom) {
-                    setVal('living-room-width', property.floorPlansDimensions.livingRoom.width);
-                    setVal('living-room-length', property.floorPlansDimensions.livingRoom.length);
+                if (fpData?.livingRoom) {
+                    setVal('living-room-width', fpData.livingRoom.width);
+                    setVal('living-room-length', fpData.livingRoom.length);
                 }
 
-                if (property.floorPlansDimensions?.masterBedroom) {
-                    setVal('master-bedroom-width', property.floorPlansDimensions.masterBedroom.width);
-                    setVal('master-bedroom-length', property.floorPlansDimensions.masterBedroom.length);
+                if (fpData?.masterBedroom) {
+                    setVal('master-bedroom-width', fpData.masterBedroom.width);
+                    setVal('master-bedroom-length', fpData.masterBedroom.length);
                 }
 
-                if (property.floorPlansDimensions?.bedroom2) {
-                    setVal('bedroom2-width', property.floorPlansDimensions.bedroom2.width);
-                    setVal('bedroom2-length', property.floorPlansDimensions.bedroom2.length);
+                if (fpData?.bedroom2) {
+                    setVal('bedroom2-width', fpData.bedroom2.width);
+                    setVal('bedroom2-length', fpData.bedroom2.length);
                 }
 
                 // Load additional rooms
@@ -8690,21 +8735,28 @@
                         break;
 
                     case 'overview':
-                        document.getElementById('overview-description-en').value = property.overview?.description || '';
-
-                        const overviewFeaturesContainer = document.getElementById('overview-features-container-en');
-                        if (overviewFeaturesContainer) {
-                            overviewFeaturesContainer.innerHTML = '';
-                            if (property.overview?.features && Array.isArray(property.overview.features)) {
-                                property.overview.features.forEach(feature => {
-                                    addPropertyFeatureInput(overviewFeaturesContainer, feature, 'overview');
-                                });
-                            } else {
-                                // Add default features
-                                addPropertyFeatureInput(overviewFeaturesContainer, 'Spacious living area with modern design', 'overview');
-                                addPropertyFeatureInput(overviewFeaturesContainer, 'Premium quality construction materials', 'overview');
+                        // Load description for all languages
+                        ['en', 'hi', 'gu'].forEach(lang => {
+                            const descEl = document.getElementById(`overview-description-${lang}`);
+                            if (descEl) {
+                                descEl.value = getLangVal(property.overview?.description, lang);
                             }
-                        }
+
+                            const featuresContainer = document.getElementById(`overview-features-container-${lang}`);
+                            if (featuresContainer) {
+                                featuresContainer.innerHTML = '';
+                                const features = property.overview?.features?.[lang] || (lang === 'en' ? property.overview?.features : []) || [];
+                                if (Array.isArray(features) && features.length > 0) {
+                                    features.forEach(feature => {
+                                        addPropertyFeatureInput(featuresContainer, feature, 'overview');
+                                    });
+                                } else if (lang === 'en') {
+                                    // Add default features only if no data at all
+                                    addPropertyFeatureInput(featuresContainer, 'Spacious living area with modern design', 'overview');
+                                    addPropertyFeatureInput(featuresContainer, 'Premium quality construction materials', 'overview');
+                                }
+                            }
+                        });
                         break;
 
                     case 'amenities':
@@ -8742,24 +8794,25 @@
                         break;
 
                     case 'floor-plans-dimensions':
-                        document.getElementById('dimensions-area').value = property.floorPlansDimensions?.area || '';
-                        document.getElementById('dimensions-floor').value = property.floorPlansDimensions?.floor || '';
-                        document.getElementById('dimensions-facing').value = property.floorPlansDimensions?.facing || '';
+                        const fp = property.floor_plans_dimensions || property.floorPlansDimensions;
+                        document.getElementById('dimensions-area').value = fp?.area || '';
+                        document.getElementById('dimensions-floor').value = fp?.floor || '';
+                        document.getElementById('dimensions-facing').value = fp?.facing || '';
 
                         // Load room dimensions
-                        if (property.floorPlansDimensions?.livingRoom) {
-                            document.getElementById('living-room-width').value = property.floorPlansDimensions.livingRoom.width || '';
-                            document.getElementById('living-room-length').value = property.floorPlansDimensions.livingRoom.length || '';
+                        if (fp?.livingRoom) {
+                            document.getElementById('living-room-width').value = fp.livingRoom.width || '';
+                            document.getElementById('living-room-length').value = fp.livingRoom.length || '';
                         }
 
-                        if (property.floorPlansDimensions?.masterBedroom) {
-                            document.getElementById('master-bedroom-width').value = property.floorPlansDimensions.masterBedroom.width || '';
-                            document.getElementById('master-bedroom-length').value = property.floorPlansDimensions.masterBedroom.length || '';
+                        if (fp?.masterBedroom) {
+                            document.getElementById('master-bedroom-width').value = fp.masterBedroom.width || '';
+                            document.getElementById('master-bedroom-length').value = fp.masterBedroom.length || '';
                         }
 
-                        if (property.floorPlansDimensions?.bedroom2) {
-                            document.getElementById('bedroom2-width').value = property.floorPlansDimensions.bedroom2.width || '';
-                            document.getElementById('bedroom2-length').value = property.floorPlansDimensions.bedroom2.length || '';
+                        if (fp?.bedroom2) {
+                            document.getElementById('bedroom2-width').value = fp.bedroom2.width || '';
+                            document.getElementById('bedroom2-length').value = fp.bedroom2.length || '';
                         }
 
                         // Load additional rooms
@@ -8796,10 +8849,11 @@
                         break;
 
                     case 'location':
-                        document.getElementById('full-address-en').value = property.locationDetails?.fullAddress || '';
+                        const ld = property.location_details || property.locationDetails;
+                        document.getElementById('full-address-en').value = ld?.fullAddress || '';
 
                         // Generate map iframe
-                        if (property.locationDetails?.fullAddress) {
+                        if (ld?.fullAddress) {
                             updateMapPreview();
                         }
                         break;
@@ -8836,14 +8890,16 @@
                 currentPropertyImages.forEach((imageUrl, index) => {
                     const imageItem = document.createElement('div');
                     imageItem.className = 'uploaded-image-item';
+                    imageItem.style.cssText = 'height: 150px; display: flex; align-items: center; justify-content: center; background: var(--gray-50);';
                     imageItem.innerHTML = `
-                        <img src="${imageUrl}" alt="Property Image ${index + 1}">
-                        <div class="uploaded-image-actions">
-                            <button class="uploaded-image-btn delete" data-index="${index}">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
+            <img src="${imageUrl}" alt="Property Image ${index + 1}" 
+                 style="max-width: 100%; max-height: 100%; object-fit: contain; width: auto; height: auto;">
+            <div class="uploaded-image-actions">
+                <button class="uploaded-image-btn delete" data-index="${index}">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
                     container.appendChild(imageItem);
                 });
 
@@ -9762,31 +9818,23 @@
             }
 
             if (apartmentPlanImageInput) {
-                apartmentPlanImageInput.addEventListener('change', async function (e) {
+                apartmentPlanImageInput.addEventListener('change', function (e) {
                     const file = e.target.files[0];
                     if (file) {
-                        try {
-                            // Show loading state
-                            if (apartmentPlanImagePreview) {
-                                apartmentPlanImagePreview.src = '';
-                                apartmentPlanImagePreview.classList.remove('show');
-                            }
+                        // Store the File object directly for upload
+                        currentApartmentPlanImage = file;
 
-                            // Compress image to reduce size (max 1200px width, 80% quality)
-                            currentApartmentPlanImage = await compressImage(file, 1200, 0.8);
-
-                            // Show preview
+                        // Create preview
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
                             if (apartmentPlanImagePreview) {
-                                apartmentPlanImagePreview.src = currentApartmentPlanImage;
+                                apartmentPlanImagePreview.src = e.target.result;
                                 apartmentPlanImagePreview.classList.add('show');
                             }
+                        };
+                        reader.readAsDataURL(file);
 
-                            showToast('Image uploaded and compressed successfully', 'success');
-                        } catch (error) {
-                            console.error('Error processing image:', error);
-                            showToast('Error processing image. Please try a different file.', 'error');
-                            currentApartmentPlanImage = null;
-                        }
+                        showToast('Image selected successfully', 'success');
                     }
                 });
             }
@@ -9794,72 +9842,99 @@
             // Save apartment plan
             if (saveApartmentPlanBtn) {
                 saveApartmentPlanBtn.addEventListener('click', async function () {
-                    const apartmentArea = document.getElementById('apartment-area');
-                    const apartmentBedrooms = document.getElementById('apartment-bedrooms');
-                    const apartmentBathrooms = document.getElementById('apartment-bathrooms');
-                    const apartmentBalconies = document.getElementById('apartment-balconies');
+                    const area = document.getElementById('apartment-area')?.value || '';
+                    const bedrooms = document.getElementById('apartment-bedrooms')?.value || '';
+                    const bathrooms = document.getElementById('apartment-bathrooms')?.value || '';
+                    const balconies = document.getElementById('apartment-balconies')?.value || '';
+                    const status = document.getElementById('apartment-status')?.value || 'available';
 
-                    const apartmentDimensions = document.getElementById('apartment-dimensions')?.value || '';
-                    const apartmentFeatures = getFeaturesFromContainer('apartment-features-container');
+                    // Features and dimensions
+                    const dimensions = document.getElementById('apartment-dimensions')?.value || '';
+                    const features = getFeaturesFromContainer('apartment-features-container');
 
-                    // Collect multi-language descriptions
-                    const apartmentDescription = {
+                    // Multilingual descriptions
+                    const description = {
                         en: document.getElementById('apartment-description-en')?.value || '',
                         hi: document.getElementById('apartment-description-hi')?.value || '',
                         gu: document.getElementById('apartment-description-gu')?.value || '',
-                        dimensions: apartmentDimensions,
-                        features: apartmentFeatures
+                        dimensions: dimensions,
+                        features: features
                     };
 
-                    const editId = saveApartmentPlanBtn.getAttribute('data-edit-id');
+                    if (!area || !bedrooms) {
+                        showToast('Please fill in required fields (Area, Bedrooms)', 'error');
+                        return;
+                    }
 
+                    // Prepare data object
                     const apartmentData = {
-                        id: editId || null,
                         bhk_type: currentApartmentType,
-                        area: apartmentArea ? apartmentArea.value : '',
-                        bedrooms: apartmentBedrooms ? apartmentBedrooms.value : '',
-                        bathrooms: apartmentBathrooms ? apartmentBathrooms.value : '',
-                        balconies: apartmentBalconies ? apartmentBalconies.value : '',
-                        description: apartmentDescription,
-                        image: currentApartmentPlanImage || '',
-                        status: 'available',
-                        lastUpdated: new Date().toISOString().split('T')[0]
+                        area: area,
+                        bedrooms: bedrooms,
+                        bathrooms: bathrooms,
+                        balconies: balconies,
+                        description: description,
+                        status: status
                     };
 
-                    // SYNC WITH DATABASE
+                    // Handle image
+                    const apartmentImageInput = document.getElementById('apartment-plan-image-input');
+                    if (apartmentImageInput && apartmentImageInput.files && apartmentImageInput.files[0]) {
+                        try {
+                            showToast('Compressing image...', 'info');
+                            const compressedImage = await compressImage(apartmentImageInput.files[0], 1200, 0.7);
+                            apartmentData.image = compressedImage;
+                        } catch (error) {
+                            console.error('Image compression failed:', error);
+                            showToast('Image processing failed. Sending original if possible.', 'warning');
+                            const reader = new FileReader();
+                            apartmentData.image = await new Promise((resolve) => {
+                                reader.onload = (e) => resolve(e.target.result);
+                                reader.readAsDataURL(apartmentImageInput.files[0]);
+                            });
+                        }
+                    } else if (currentApartmentPlanImage && typeof currentApartmentPlanImage === 'string') {
+                        apartmentData.image = currentApartmentPlanImage;
+                    }
+
+                    // Check if editing
+                    const isEditing = saveApartmentPlanBtn.hasAttribute('data-edit-index');
+                    if (isEditing) {
+                        apartmentData.id = saveApartmentPlanBtn.getAttribute('data-edit-id');
+                    }
+
                     try {
+                        showToast(isEditing ? 'Updating plan...' : 'Saving plan...', 'info');
+
                         const response = await fetch('api.php?action=save_apartment_plan', {
                             method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
                             body: JSON.stringify(apartmentData)
                         });
 
                         const result = await response.json();
 
                         if (result.status === 'success') {
-                            apartmentData.id = result.id;
+                            // Update local projectData and UI
+                            await fetchProjectData();
 
-                            // Update local data structure
-                            if (!projectData.apartmentPlans[currentApartmentType]) {
-                                projectData.apartmentPlans[currentApartmentType] = [];
-                            }
+                            loadApartmentData(currentApartmentType); // Reset form
 
-                            const existingIndex = saveApartmentPlanBtn.getAttribute('data-edit-index');
-                            if (existingIndex !== null && saveApartmentPlanBtn.getAttribute('data-edit-type') === currentApartmentType) {
-                                projectData.apartmentPlans[currentApartmentType][parseInt(existingIndex)] = apartmentData;
-                            } else {
-                                projectData.apartmentPlans[currentApartmentType].push(apartmentData);
-                            }
+                            // Reset save button state
+                            saveApartmentPlanBtn.innerHTML = '<i class="fas fa-save me-2"></i> Save Apartment Plan';
+                            saveApartmentPlanBtn.removeAttribute('data-edit-index');
+                            saveApartmentPlanBtn.removeAttribute('data-edit-type');
+                            saveApartmentPlanBtn.removeAttribute('data-edit-id');
 
-                            loadApartmentPlans();
-                            showToast('Apartment plan saved to database!', 'success');
-                            loadApartmentData(currentApartmentType);
+                            showToast(result.message || 'Apartment plan saved successfully!', 'success');
                         } else {
                             throw new Error(result.message);
                         }
                     } catch (error) {
                         console.error('Error saving apartment plan:', error);
-                        showToast('Error saving to database', 'error');
+                        showToast('Error: ' + error.message, 'error');
                     }
                 });
             }

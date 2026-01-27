@@ -7037,38 +7037,7 @@
 
             // ===== IMAGE COMPRESSION UTILITY =====
             // Compress images to reduce database size and prevent packet size errors
-            function compressImage(file, maxWidth = 1200, quality = 0.8) {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        const img = new Image();
-                        img.onload = () => {
-                            const canvas = document.createElement('canvas');
-                            let width = img.width;
-                            let height = img.height;
 
-                            // Resize if too large
-                            if (width > maxWidth) {
-                                height = (height * maxWidth) / width;
-                                width = maxWidth;
-                            }
-
-                            canvas.width = width;
-                            canvas.height = height;
-                            const ctx = canvas.getContext('2d');
-                            ctx.drawImage(img, 0, 0, width, height);
-
-                            // Convert to base64 with compression (JPEG format for smaller size)
-                            const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
-                            resolve(compressedBase64);
-                        };
-                        img.onerror = () => reject(new Error('Failed to load image'));
-                        img.src = e.target.result;
-                    };
-                    reader.onerror = () => reject(new Error('Failed to read file'));
-                    reader.readAsDataURL(file);
-                });
-            }
 
             // ===== FEATURE MANAGEMENT FUNCTIONS =====
             function addFeatureInput(containerId) {
@@ -10643,7 +10612,504 @@
 
             // Initialize previews
             updatePreviewBasedOnTab();
+        });// ===== LOCALSTORAGE FUNCTIONS FOR APARTMENT PLANS =====
+
+        // Load apartment plans from localStorage
+        function loadApartmentPlansFromStorage() {
+            try {
+                const savedData = localStorage.getItem('narodaIrishApartmentPlans');
+                if (savedData) {
+                    return JSON.parse(savedData);
+                }
+            } catch (error) {
+                console.error('Error loading from localStorage:', error);
+            }
+            return {
+                '1bhk': [],
+                '2bhk': [],
+                '3bhk': []
+            };
+        }
+
+        // Save apartment plans to localStorage
+        function saveApartmentPlansToStorage(apartmentPlans) {
+            try {
+                localStorage.setItem('narodaIrishApartmentPlans', JSON.stringify(apartmentPlans));
+                console.log('Apartment plans saved to localStorage');
+                return true;
+            } catch (error) {
+                console.error('Error saving to localStorage:', error);
+                // If localStorage is full, show error
+                if (error.name === 'QuotaExceededError') {
+                    alert('Local storage is full! Please clear some data or use less images.');
+                }
+                return false;
+            }
+        }
+
+        // Compress image before storing (reduced quality for localStorage)
+        function compressImageForStorage(file, maxWidth = 800, quality = 0.5) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+
+                        // Resize if too large
+                        if (width > maxWidth) {
+                            height = (height * maxWidth) / width;
+                            width = maxWidth;
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        // Convert to base64 with lower quality for localStorage
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+                        resolve(compressedBase64);
+                    };
+                    img.onerror = () => reject(new Error('Failed to load image'));
+                    img.src = e.target.result;
+                };
+                reader.onerror = () => reject(new Error('Failed to read file'));
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Save a single apartment plan to localStorage
+        async function saveApartmentPlan(apartmentData) {
+            // Load existing data
+            const apartmentPlans = loadApartmentPlansFromStorage();
+            const type = apartmentData.bhk_type || '1bhk';
+
+            if (!apartmentPlans[type]) {
+                apartmentPlans[type] = [];
+            }
+
+            // Generate ID if not exists
+            if (!apartmentData.id) {
+                apartmentData.id = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            }
+
+            // Add timestamp
+            apartmentData.lastUpdated = new Date().toISOString().split('T')[0];
+
+            // Check if editing existing plan
+            const existingIndex = apartmentData.existingIndex;
+            if (existingIndex !== undefined && apartmentPlans[type][existingIndex]) {
+                // Update existing plan
+                apartmentPlans[type][existingIndex] = apartmentData;
+            } else {
+                // Add new plan
+                apartmentPlans[type].push(apartmentData);
+            }
+
+            // Save to localStorage
+            const success = saveApartmentPlansToStorage(apartmentPlans);
+
+            if (success) {
+                console.log('Apartment plan saved successfully:', apartmentData);
+                return {
+                    status: 'success',
+                    id: apartmentData.id,
+                    message: 'Apartment plan saved to localStorage!'
+                };
+            } else {
+                return {
+                    status: 'error',
+                    message: 'Failed to save to localStorage'
+                };
+            }
+        }
+
+        // Delete apartment plan from localStorage
+        function deleteApartmentPlan(type, index) {
+            try {
+                const apartmentPlans = loadApartmentPlansFromStorage();
+
+                if (apartmentPlans[type] && apartmentPlans[type][index]) {
+                    // Remove the plan
+                    apartmentPlans[type].splice(index, 1);
+
+                    // Save updated data
+                    saveApartmentPlansToStorage(apartmentPlans);
+
+                    return {
+                        status: 'success',
+                        message: 'Apartment plan deleted from localStorage!'
+                    };
+                } else {
+                    return {
+                        status: 'error',
+                        message: 'Apartment plan not found'
+                    };
+                }
+            } catch (error) {
+                console.error('Error deleting apartment plan:', error);
+                return {
+                    status: 'error',
+                    message: 'Error deleting from localStorage'
+                };
+            }
+        }
+
+        // Export apartment plans (download as JSON file)
+        function exportApartmentPlans() {
+            try {
+                const apartmentPlans = loadApartmentPlansFromStorage();
+                const dataStr = JSON.stringify(apartmentPlans, null, 2);
+                const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+                const exportFileDefaultName = `naroda-irish-apartment-plans-${new Date().toISOString().split('T')[0]}.json`;
+
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileDefaultName);
+                linkElement.click();
+
+                return {
+                    status: 'success',
+                    message: 'Apartment plans exported successfully!'
+                };
+            } catch (error) {
+                console.error('Error exporting apartment plans:', error);
+                return {
+                    status: 'error',
+                    message: 'Error exporting data'
+                };
+            }
+        }
+
+        // Import apartment plans from JSON file
+        function importApartmentPlans(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+
+                        // Validate the data structure
+                        if (typeof importedData === 'object' &&
+                            (importedData['1bhk'] || importedData['2bhk'] || importedData['3bhk'])) {
+
+                            // Merge with existing data
+                            const existingData = loadApartmentPlansFromStorage();
+                            const mergedData = {
+                                '1bhk': [...(existingData['1bhk'] || []), ...(importedData['1bhk'] || [])],
+                                '2bhk': [...(existingData['2bhk'] || []), ...(importedData['2bhk'] || [])],
+                                '3bhk': [...(existingData['3bhk'] || []), ...(importedData['3bhk'] || [])]
+                            };
+
+                            // Save merged data
+                            saveApartmentPlansToStorage(mergedData);
+
+                            resolve({
+                                status: 'success',
+                                message: 'Apartment plans imported successfully!'
+                            });
+                        } else {
+                            reject(new Error('Invalid data format. Expected apartment plans object.'));
+                        }
+                    } catch (error) {
+                        reject(error);
+                    }
+                };
+                reader.onerror = () => reject(new Error('Failed to read file'));
+                reader.readAsText(file);
+            });
+        }
+
+        // Clear all apartment plans from localStorage
+        function clearAllApartmentPlans() {
+            if (confirm('Are you sure you want to clear ALL apartment plans? This cannot be undone.')) {
+                try {
+                    localStorage.removeItem('narodaIrishApartmentPlans');
+                    return {
+                        status: 'success',
+                        message: 'All apartment plans cleared from localStorage!'
+                    };
+                } catch (error) {
+                    console.error('Error clearing apartment plans:', error);
+                    return {
+                        status: 'error',
+                        message: 'Error clearing localStorage'
+                    };
+                }
+            } else {
+                return {
+                    status: 'cancelled',
+                    message: 'Operation cancelled'
+                };
+            }
+        }
+
+        // Get storage usage information
+        function getStorageUsage() {
+            try {
+                const data = localStorage.getItem('narodaIrishApartmentPlans');
+                if (!data) return { used: 0, total: 5 * 1024 * 1024, percentage: 0 };
+
+                const used = new Blob([data]).size;
+                const total = 5 * 1024 * 1024; // 5MB typical localStorage limit
+                const percentage = (used / total) * 100;
+
+                return {
+                    used: used,
+                    total: total,
+                    percentage: percentage.toFixed(2),
+                    usedMB: (used / 1024 / 1024).toFixed(2),
+                    totalMB: (total / 1024 / 1024).toFixed(2)
+                };
+            } catch (error) {
+                console.error('Error getting storage usage:', error);
+                return null;
+            }
+        }
+
+        // Backup to multiple localStorage keys if data is too large
+        function backupToMultipleKeys(data) {
+            try {
+                const jsonString = JSON.stringify(data);
+                const chunkSize = 1000000; // 1MB chunks
+                const chunks = [];
+
+                for (let i = 0; i < jsonString.length; i += chunkSize) {
+                    chunks.push(jsonString.substring(i, i + chunkSize));
+                }
+
+                // Store chunk count
+                localStorage.setItem('narodaIrishApartmentPlans_chunkCount', chunks.length.toString());
+
+                // Store each chunk
+                chunks.forEach((chunk, index) => {
+                    localStorage.setItem(`narodaIrishApartmentPlans_chunk${index}`, chunk);
+                });
+
+                console.log(`Data backed up in ${chunks.length} chunks`);
+                return true;
+            } catch (error) {
+                console.error('Error in multi-key backup:', error);
+                return false;
+            }
+        }
+
+        // Restore from multiple localStorage keys
+        function restoreFromMultipleKeys() {
+            try {
+                const chunkCount = parseInt(localStorage.getItem('narodaIrishApartmentPlans_chunkCount') || '0');
+                if (chunkCount === 0) return null;
+
+                let jsonString = '';
+                for (let i = 0; i < chunkCount; i++) {
+                    const chunk = localStorage.getItem(`narodaIrishApartmentPlans_chunk${i}`);
+                    if (chunk) {
+                        jsonString += chunk;
+                    }
+                }
+
+                return JSON.parse(jsonString);
+            } catch (error) {
+                console.error('Error in multi-key restore:', error);
+                return null;
+            }
+        }
+
+        // ===== INTEGRATION WITH EXISTING CODE =====
+
+        // Replace your existing saveApartmentPlanBtn click handler with this:
+        if (saveApartmentPlanBtn) {
+            saveApartmentPlanBtn.addEventListener('click', async function () {
+                const apartmentArea = document.getElementById('apartment-area');
+                const apartmentBedrooms = document.getElementById('apartment-bedrooms');
+                const apartmentBathrooms = document.getElementById('apartment-bathrooms');
+                const apartmentBalconies = document.getElementById('apartment-balconies');
+
+                // Collect multi-language descriptions
+                const apartmentDescription = {
+                    en: document.getElementById('apartment-description-en')?.value || '',
+                    hi: document.getElementById('apartment-description-hi')?.value || '',
+                    gu: document.getElementById('apartment-description-gu')?.value || ''
+                };
+
+                // Check if editing
+                const isEditing = saveApartmentPlanBtn.hasAttribute('data-edit-index');
+                const editIndex = isEditing ? parseInt(saveApartmentPlanBtn.getAttribute('data-edit-index')) : null;
+                const editType = saveApartmentPlanBtn.getAttribute('data-edit-type');
+                const editId = saveApartmentPlanBtn.getAttribute('data-edit-id');
+
+                // Create apartment data object
+                const apartmentData = {
+                    id: editId || null,
+                    bhk_type: currentApartmentType,
+                    area: apartmentArea ? apartmentArea.value : '',
+                    bedrooms: apartmentBedrooms ? apartmentBedrooms.value : '',
+                    bathrooms: apartmentBathrooms ? apartmentBathrooms.value : '',
+                    balconies: apartmentBalconies ? apartmentBalconies.value : '',
+                    description: apartmentDescription,
+                    image: currentApartmentPlanImage || '',
+                    status: 'available',
+                    lastUpdated: new Date().toISOString().split('T')[0]
+                };
+
+                // If editing, add the index
+                if (isEditing && editIndex !== null) {
+                    apartmentData.existingIndex = editIndex;
+                }
+
+                // Save to localStorage
+                const result = await saveApartmentPlan(apartmentData);
+
+                if (result.status === 'success') {
+                    // Update local data structure
+                    if (!projectData.apartmentPlans[currentApartmentType]) {
+                        projectData.apartmentPlans[currentApartmentType] = [];
+                    }
+
+                    if (isEditing && editIndex !== null && editType === currentApartmentType) {
+                        projectData.apartmentPlans[currentApartmentType][editIndex] = apartmentData;
+                    } else {
+                        projectData.apartmentPlans[currentApartmentType].push(apartmentData);
+                    }
+
+                    // Refresh UI
+                    loadApartmentPlans();
+                    showToast('Apartment plan saved to localStorage!', 'success');
+                    loadApartmentData(currentApartmentType);
+
+                    // Reset form
+                    if (saveApartmentPlanBtn) {
+                        saveApartmentPlanBtn.removeAttribute('data-edit-type');
+                        saveApartmentPlanBtn.removeAttribute('data-edit-index');
+                        saveApartmentPlanBtn.removeAttribute('data-edit-id');
+                        saveApartmentPlanBtn.innerHTML = '<i class="fas fa-save me-2"></i> Save Apartment Plan';
+                    }
+                } else {
+                    showToast('Error saving to localStorage: ' + result.message, 'error');
+                }
+            });
+        }
+
+        // Replace your delete button event handler with this:
+        // In the delete button event listener:
+        apartmentPlansTableBody.querySelectorAll('.delete-apartment-plan').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const typeKey = this.getAttribute('data-type');
+                const index = parseInt(this.getAttribute('data-index'));
+                const plan = projectData.apartmentPlans[typeKey][index];
+
+                if (confirm(`Are you sure you want to delete this ${getApartmentTypeName(typeKey)} plan?`)) {
+                    // Delete from localStorage
+                    const result = deleteApartmentPlan(typeKey, index);
+
+                    if (result.status === 'success') {
+                        projectData.apartmentPlans[typeKey].splice(index, 1);
+                        loadApartmentPlans();
+                        showToast('Apartment plan deleted from localStorage!', 'success');
+                    } else {
+                        showToast('Error deleting: ' + result.message, 'error');
+                    }
+                }
+            });
         });
+
+        // Add import/export buttons to your UI (add this to your HTML):
+        /*
+        <div class="save-section">
+            <button class="btn btn-secondary" id="clear-apartment-form">Clear Form</button>
+            <button class="btn btn-outline-primary" id="export-apartment-plans">
+                <i class="fas fa-download me-2"></i>Export
+            </button>
+            <button class="btn btn-outline-primary" id="import-apartment-plans">
+                <i class="fas fa-upload me-2"></i>Import
+            </button>
+            <button class="btn btn-save" id="save-apartment-plan">Save Apartment Plan</button>
+        </div>
+        */
+
+        // Add import/export functionality:
+        document.addEventListener('DOMContentLoaded', function () {
+            // Export button
+            const exportBtn = document.getElementById('export-apartment-plans');
+            if (exportBtn) {
+                exportBtn.addEventListener('click', function () {
+                    const result = exportApartmentPlans();
+                    if (result.status === 'success') {
+                        showToast('Apartment plans exported successfully!', 'success');
+                    } else {
+                        showToast('Error exporting: ' + result.message, 'error');
+                    }
+                });
+            }
+
+            // Import button
+            const importBtn = document.getElementById('import-apartment-plans');
+            if (importBtn) {
+                importBtn.addEventListener('click', function () {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = '.json';
+
+                    input.onchange = async function (e) {
+                        const file = e.target.files[0];
+                        if (file) {
+                            try {
+                                const result = await importApartmentPlans(file);
+                                if (result.status === 'success') {
+                                    // Reload data
+                                    projectData.apartmentPlans = loadApartmentPlansFromStorage();
+                                    loadApartmentPlans();
+                                    showToast('Apartment plans imported successfully!', 'success');
+                                }
+                            } catch (error) {
+                                showToast('Error importing: ' + error.message, 'error');
+                            }
+                        }
+                    };
+
+                    input.click();
+                });
+            }
+        });
+
+        // Modify the initial data loading to use localStorage:
+        // Replace fetchProjectData() with:
+        function loadInitialData() {
+            try {
+                // Load apartment plans from localStorage
+                projectData.apartmentPlans = loadApartmentPlansFromStorage();
+
+                // Load other data from localStorage if available
+                const galleryData = localStorage.getItem('narodaIrishGallery');
+                if (galleryData) projectData.gallery = JSON.parse(galleryData);
+
+                const pricingData = localStorage.getItem('narodaIrishPricing');
+                if (pricingData) projectData.pricingPlans = JSON.parse(pricingData);
+
+                const propertiesData = localStorage.getItem('narodaIrishProperties');
+                if (propertiesData) projectData.featuredProperties = JSON.parse(propertiesData);
+
+                console.log('Data loaded from localStorage:', projectData);
+
+                // Refresh UI
+                loadApartmentPlans();
+                loadGallery();
+                loadPricingData(currentPricingType);
+                loadFeaturedProperties(currentPropertyType);
+                loadScheduleVisits();
+
+            } catch (error) {
+                console.error('Error loading data from localStorage:', error);
+                showToast('Failed to load data from localStorage. Starting fresh.', 'warning');
+            }
+        }
+
+        // Call this instead of fetchProjectData():
+        // loadInitialData();
     </script>
 </body>
 

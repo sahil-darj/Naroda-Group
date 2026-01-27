@@ -1,0 +1,207 @@
+Table structure for pricing_plans:
+Array
+(
+    [Field] => id
+    [Type] => int(11)
+    [Null] => NO
+    [Key] => PRI
+    [Default] => 
+    [Extra] => auto_increment
+)
+Array
+(
+    [Field] => bhk_type
+    [Type] => varchar(10)
+    [Null] => NO
+    [Key] => UNI
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => starting_price
+    [Type] => varchar(255)
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => sqft
+    [Type] => varchar(255)
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => bedrooms
+    [Type] => varchar(10)
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => bathrooms
+    [Type] => varchar(10)
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => parking
+    [Type] => varchar(255)
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => available
+    [Type] => varchar(255)
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => availability_status
+    [Type] => varchar(20)
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => features
+    [Type] => longtext
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => last_updated
+    [Type] => date
+    [Null] => YES
+    [Key] => 
+    [Default] => 
+    [Extra] => 
+)
+Array
+(
+    [Field] => status
+    [Type] => varchar(20)
+    [Null] => YES
+    [Key] => 
+    [Default] => active
+    [Extra] => 
+)
+
+Indexes for pricing_plans:
+Array
+(
+    [Table] => pricing_plans
+    [Non_unique] => 0
+    [Key_name] => PRIMARY
+    [Seq_in_index] => 1
+    [Column_name] => id
+    [Collation] => A
+    [Cardinality] => 2
+    [Sub_part] => 
+    [Packed] => 
+    [Null] => 
+    [Index_type] => BTREE
+    [Comment] => 
+    [Index_comment] => 
+)
+Array
+(
+    [Table] => pricing_plans
+    [Non_unique] => 0
+    [Key_name] => bhk_type
+    [Seq_in_index] => 1
+    [Column_name] => bhk_type
+    [Collation] => A
+    [Cardinality] => 2
+    [Sub_part] => 
+    [Packed] => 
+    [Null] => 
+    [Index_type] => BTREE
+    [Comment] => 
+    [Index_comment] => 
+)
+
+BHK coverage details:
+Array
+(
+    [bhk_type] => 1bhk
+    [count] => 1
+)
+Array
+(
+    [bhk_type] => 2bhk
+    [count] => 1
+)
+Array
+(
+    [bhk_type] => 3bhk
+    [count] => 1
+)
+
+All pricing plans:
+Array
+(
+    [id] => 1
+    [bhk_type] => 1bhk
+    [starting_price] => ₹55,00,000
+    [sqft] => 550 sq.ft
+    [bedrooms] => 150
+    [bathrooms] => 120
+    [parking] => 15 Covered
+    [available] => 25
+    [availability_status] => available
+    [features] => {"en":["hello"],"hi":["\u0928\u092e\u0938\u094d\u0924\u0947"],"gu":["\u0ab9\u0ac7\u0ab2\u0acb"]}
+    [last_updated] => 
+    [status] => active
+)
+Array
+(
+    [id] => 8
+    [bhk_type] => 2bhk
+    [starting_price] => TEST_PRICE_99
+    [sqft] => TEST_SQFT_99
+    [bedrooms] => 9
+    [bathrooms] => 9
+    [parking] => 9
+    [available] => 9
+    [availability_status] => sold-out
+    [features] => {"en":["Test Feature 1","Test Feature 2"],"hi":["\u091f\u0947\u0938\u094d\u091f"],"gu":["\u0a9f\u0ac7\u0ab8\u0acd\u0a9f"]}
+    [last_updated] => 
+    [status] => active
+)
+Array
+(
+    [id] => 9
+    [bhk_type] => 3bhk
+    [starting_price] => 1,25,00,000
+    [sqft] => 1200 sq.ft
+    [bedrooms] => 3
+    [bathrooms] => 2
+    [parking] => 2 Covered
+    [available] => 12
+    [availability_status] => available
+    [features] => {"en":["Luxury Fittings","Marble Flooring"],"hi":[],"gu":[]}
+    [last_updated] => 
+    [status] => active
+)

@@ -10,7 +10,7 @@
   <meta name="description"
     content="Read the latest real estate insights, market trends, investment tips, and news from Naroda Group's expert team." />
   <meta name="keywords"
-    content="real estate blog, property market trends, investment tips, home buying guide, Ahmedabad real estate news, Naroda Landmark, Naroda Irish" />
+    content="real estate blog, property market trends, investment tips, home buying guide, Ahmedabad real estate news, Naroda Lavish, Naroda Arise" />
   <meta name="author" content="Naroda Group" />
 
   <!-- Open Graph / Social Media Meta Tags -->
@@ -537,10 +537,10 @@
 
     /* ===== Hero Section ===== */
     .hero-section {
-      min-height: 50vh;
-      background: linear-gradient(rgba(10, 42, 74, 0.95),
-          rgba(10, 42, 74, 0.85)),
-        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80");
+      min-height: 70vh;
+      background: linear-gradient(rgba(10, 42, 74, 0.85),
+          rgba(10, 42, 74, 0.75)),
+        url("naroda_group_assets/1 (24).jpeg");
       background-size: cover;
       background-position: center;
       color: white;
@@ -551,6 +551,7 @@
       padding: 100px 0;
       margin-top: 83px;
     }
+
 
     @media (max-width: 768px) {
       .hero-section {
@@ -2147,6 +2148,67 @@
         padding: 20px;
       }
     }
+
+    .hover-gold:hover {
+      color: var(--secondary-color) !important;
+    }
+
+    .contact-info a:hover {
+      transform: translateX(3px);
+    }
+
+    /* ===== Enquiry Button ===== */
+    .enquiry-btn {
+      background: var(--gradient-accent);
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .enquiry-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(46, 139, 87, 0.3);
+    }
+
+    /* Enquiry Form Styles */
+    #enquiryForm .form-control:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 0.25rem rgba(46, 139, 87, 0.25);
+    }
+
+    #enquiryForm .invalid-feedback {
+      display: none;
+    }
+
+    #enquiryForm .was-validated .form-control:invalid~.invalid-feedback {
+      display: block;
+    }
+
+    #enquiryForm .was-validated .form-control:invalid {
+      border-color: #dc3545;
+    }
+
+    #enquiryForm select {
+      cursor: pointer;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--secondary-color), #d4b87a);
+      color: var(--primary-color) !important;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(201, 169, 110, 0.3);
+    }
   </style>
 </head>
 
@@ -2198,11 +2260,11 @@
             <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
               <li>
                 <a class="dropdown-item language-content" href="projects-landmark.html" data-i18n="nav.landmark">Naroda
-                  Landmark</a>
+                  Lavish</a>
               </li>
               <li>
                 <a class="dropdown-item language-content" href="projects-irish.html" data-i18n="nav.irish">Naroda
-                  Irish</a>
+                  Arise</a>
               </li>
               <!-- <li>
                     <hr class="dropdown-divider" />
@@ -2210,7 +2272,7 @@
               <!-- <li>
                     <a
                       class="dropdown-item language-content"
-                      href="projects.html"
+                      href="projects-landmark.html"
                       data-i18n="nav.all_projects"
                       >All Projects</a
                     >
@@ -2326,10 +2388,16 @@
           </li>
 
           <!-- Login Button -->
-          <li class="nav-item ms-2">
+          <!-- <li class="nav-item ms-2">
             <button class="btn login-btn language-content" data-i18n="nav.login"
               onclick="window.location.href='login.html'">
               <i class="fas fa-user me-2"></i> Login
+            </button>
+          </li> -->
+          <!-- Add this after the Login button in the navbar -->
+          <li class="nav-item ms-2">
+            <button class="btn btn-emerald enquiry-btn language-content" data-i18n="nav.enquire">
+              <i class="fas fa-envelope me-2"></i> Enquire Now
             </button>
           </li>
         </ul>
@@ -2356,7 +2424,66 @@
         </div>
       </div>
     </section>
-
+    <!-- Enquiry Modal -->
+    <div class="modal fade" id="enquiryModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title language-content" data-i18n="enquiry.title">
+              Enquire About Naroda Lavish
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="enquiryForm">
+              <div class="mb-3">
+                <label for="enquiryName" class="form-label language-content" data-i18n="enquiry.name">Full Name
+                  *</label>
+                <input type="text" class="form-control" id="enquiryName" required />
+                <div class="invalid-feedback" data-i18n="enquiry.name_error">Please enter your name.</div>
+              </div>
+              <div class="mb-3">
+                <label for="enquiryPhone" class="form-label language-content" data-i18n="enquiry.phone">Phone Number
+                  *</label>
+                <input type="tel" class="form-control" id="enquiryPhone" required />
+                <div class="invalid-feedback" data-i18n="enquiry.phone_error">Please enter a valid phone number.</div>
+              </div>
+              <div class="mb-3">
+                <label for="enquiryEmail" class="form-label language-content" data-i18n="enquiry.email">Email
+                  Address</label>
+                <input type="email" class="form-control" id="enquiryEmail" />
+              </div>
+              <div class="mb-3">
+                <label for="enquiryProject" class="form-label language-content"
+                  data-i18n="enquiry.project">Project</label>
+                <select class="form-control" id="enquiryProject">
+                  <option value="Naroda Lavish" selected>Naroda Lavish</option>
+                  <option value="Naroda Irish">Naroda Irish</option>
+                  <!-- <option value="Naroda Landmark">Naroda Landmark</option> -->
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label for="enquiryMessage" class="form-label language-content"
+                  data-i18n="enquiry.message">Message</label>
+                <textarea class="form-control" id="enquiryMessage" rows="3"
+                  placeholder="Tell us about your requirements..."></textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-gold language-content" data-i18n="enquiry.submit">
+                  <i class="fab fa-whatsapp me-2"></i> Send via WhatsApp
+                </button>
+              </div>
+              <div class="text-center mt-3">
+                <small class="text-muted language-content" data-i18n="enquiry.privacy">
+                  Your information is secure and will not be shared.
+                </small>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Blog Filter -->
     <section class="blog-section">
       <div class="container">
@@ -2364,11 +2491,17 @@
           <button class="filter-btn active" data-filter="all" data-i18n="blog.filter.all">
             All Articles
           </button>
+          <button class="filter-btn" data-filter="real-estate" data-i18n="blog.filter.real_estate">
+            Real Estate Trends
+          </button>
+          <button class="filter-btn" data-filter="market-analysis" data-i18n="blog.filter.market_analysis">
+            Market Analysis
+          </button>
           <button class="filter-btn" data-filter="naroda-landmark" data-i18n="blog.filter.naroda_landmark">
-            Naroda Landmark
+            Naroda Lavish
           </button>
           <button class="filter-btn" data-filter="naroda-irish" data-i18n="blog.filter.naroda_irish">
-            Naroda Irish
+            Naroda Arise
           </button>
           <button class="filter-btn" data-filter="investment" data-i18n="blog.filter.investment">
             Investment Tips
@@ -2391,8 +2524,7 @@
             <div class="blog-grid">
               <div class="blog-card featured" data-aos="fade-up">
                 <div class="blog-image">
-                  <img src="https://ravirajrealty.in/wp-content/uploads/2025/05/Raviraj-Blog-Post-8-scaled.jpg"
-                    alt="Real Estate Market Outlook" loading="lazy" />
+                  <img src="naroda_group_assets/1 (22).jpeg" alt="Real Estate Market Outlook" loading="lazy" />
                   <span class="blog-category" data-i18n="blog.featured.category">Market Trends</span>
                 </div>
                 <div class="blog-content">
@@ -2522,7 +2654,7 @@
             </div>
 
             <!-- Newsletter Widget -->
-            <div class="sidebar-widget newsletter-widget" data-aos="fade-left" data-aos-delay="500">
+            <!-- <div class="sidebar-widget newsletter-widget" data-aos="fade-left" data-aos-delay="500">
               <h4 class="widget-title" data-i18n="blog.sidebar.subscribe">
                 Subscribe
               </h4>
@@ -2536,7 +2668,7 @@
                   Subscribe
                 </button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -2555,8 +2687,8 @@
                 Our real estate experts are ready to help you make informed
                 decisions about buying, selling, or investing in property.
               </p>
-              <a href="contact.html" class="btn btn-gold btn-lg btn-block-mobile">
-                <i class="fas fa-phone me-2"></i>
+              <a href="contact.html" class="btn btn-gold btn-lg btn-block-mobile btn-creative-read-more">
+                <i class="fas fa-phone me-2 "></i>
                 <span data-i18n="blog.cta.button">Consult Our Experts</span>
               </a>
             </div>
@@ -2635,24 +2767,25 @@
               <span class="gold-text"><span class="language-content" data-i18n="nav.group">Group</span></span>
             </a>
             <p class="mb-4 language-content" data-i18n="footer.description">
-              Creating landmark properties that redefine excellence. From
+              Creating Lavish properties that redefine excellence. From
               premium commercial spaces to luxury residential living, we build
               dreams with quality and commitment.
             </p>
             <div class="social-links">
-              <a href="https://facebook.com" class="social-link" aria-label="Facebook">
+              <a href="https://facebook.com" class="social-link" aria-label="Facebook" data-i18n-aria="aria.facebook">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="https://twitter.com" class="social-link" aria-label="Twitter">
+              <a href="https://twitter.com" class="social-link" aria-label="Twitter" data-i18n-aria="aria.twitter">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a href="https://instagram.com" class="social-link" aria-label="Instagram">
+              <a href="https://instagram.com" class="social-link" aria-label="Instagram"
+                data-i18n-aria="aria.instagram">
                 <i class="fab fa-instagram"></i>
               </a>
-              <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn">
+              <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn" data-i18n-aria="aria.linkedin">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-              <a href="https://youtube.com" class="social-link" aria-label="YouTube">
+              <a href="https://youtube.com" class="social-link" aria-label="YouTube" data-i18n-aria="aria.youtube">
                 <i class="fab fa-youtube"></i>
               </a>
             </div>
@@ -2671,24 +2804,8 @@
               <a href="about.html" class="language-content" data-i18n="nav.about">About Us</a>
             </li>
             <li>
-              <a href="projects.html" class="language-content" data-i18n="nav.projects">Projects</a>
+              <a href="projects-landmark.html" class="language-content" data-i18n="nav.projects">Projects</a>
             </li>
-            <!-- <li>
-                  <a
-                    href="properties.html"
-                    class="language-content"
-                    data-i18n="nav.properties"
-                    >Properties</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="gallery.html"
-                    class="language-content"
-                    data-i18n="nav.gallery"
-                    >Gallery</a
-                  >
-                </li> -->
             <li>
               <a href="contact.html" class="language-content" data-i18n="nav.contact">Contact</a>
             </li>
@@ -2701,25 +2818,23 @@
           </h5>
           <ul class="footer-links">
             <li>
-              <a href="projects-landmark.html" class="language-content" data-i18n="nav.landmark">Naroda Landmark <span
-                  class="text-gold">→</span></a>
+              <a href="projects-landmark.html" class="language-content" data-i18n="nav.landmark">Naroda lavish
+              </a>
             </li>
-            <li class="text-muted small mb-2 language-content" data-i18n="footer.landmark_desc">
+            <li class="text-white small mb-2 language-content" data-i18n="footer.landmark_desc">
               Premium Commercial Spaces
             </li>
             <li>
-              <a href="projects-irish.html" class="language-content" data-i18n="nav.irish">Naroda Irish <span
-                  class="text-gold">→</span></a>
+              <a href="projects-irish.html" class="language-content" data-i18n="nav.irish">Naroda arise
+              </a>
             </li>
-            <li class="text-muted small mb-2 language-content" data-i18n="footer.irish_desc">
+            <li class="text-white small mb-2 language-content" data-i18n="footer.irish_desc">
               Luxury Residential Living
             </li>
             <li>
-              <a href="projects.html" class="language-content" data-i18n="footer.view_all_projects">View All Projects
-                <span class="text-gold">→</span></a>
-            </li>
-            <li class="text-muted small language-content" data-i18n="footer.explore_portfolio">
-              Explore our portfolio
+              <a href="projects-landmark.html" class="language-content" data-i18n="footer.view_all_projects">View All
+                Projects
+              </a>
             </li>
           </ul>
         </div>
@@ -2734,8 +2849,13 @@
               <h6 class="text-white mb-1 language-content" data-i18n="footer.phone">
                 Phone Number
               </h6>
-              <p class="mb-0">+91 98765 43210</p>
-              <small class="text-muted language-content" data-i18n="footer.phone_hours">Mon - Sat: 10 AM - 7 PM</small>
+              <!-- Clickable Phone Number -->
+              <a href="tel:+919876543210" class="text-white text-decoration-none d-block mb-0 hover-gold"
+                style="transition: var(--transition);">
+                +91 98765 43210
+              </a>
+              <small class="language-content" data-i18n="footer.phone_hours" style="color: white;">Mon - Sat:
+                10 AM - 7 PM</small>
             </div>
           </div>
           <div class="contact-info">
@@ -2744,8 +2864,12 @@
               <h6 class="text-white mb-1 language-content" data-i18n="footer.email">
                 Email Address
               </h6>
-              <p class="mb-0">info@narodagroup.com</p>
-              <small class="text-muted language-content" data-i18n="footer.email_response">We reply within 24
+              <!-- Clickable Email Address -->
+              <a href="mailto:info@narodagroup.com" class="text-white text-decoration-none d-block mb-0 hover-gold"
+                style="transition: var(--transition);">
+                info@narodagroup.com
+              </a>
+              <small class="language-content" data-i18n="footer.email_response">We reply within 24
                 hours</small>
             </div>
           </div>
@@ -2755,10 +2879,15 @@
               <h6 class="text-white mb-1 language-content" data-i18n="footer.address">
                 Office Address
               </h6>
-              <p class="mb-0 language-content" data-i18n="footer.address_line1">
-                Naroda - Bhat Road
-              </p>
-              <small class="text-muted language-content" data-i18n="footer.address_line2">Ahmedabad, Gujarat
+              <!-- Clickable Location (opens Google Maps) -->
+              <a href="https://www.google.com/maps/search/?api=1&query=Naroda+Bhat+Road+Ahmedabad+Gujarat+382330"
+                target="_blank" rel="noopener noreferrer"
+                class="text-white text-decoration-none d-block mb-0 hover-gold" style="transition: var(--transition);">
+                <span class="language-content" data-i18n="footer.address_line1">
+                  Naroda - Bhat Road
+                </span>
+              </a>
+              <small class="language-content" data-i18n="footer.address_line2">Ahmedabad, Gujarat
                 382330</small>
             </div>
           </div>
@@ -2770,7 +2899,7 @@
           <div class="row">
             <div class="col-md-6 text-center text-md-start">
               <p class="mb-0 language-content" data-i18n="footer.rights">
-                &copy; 2025 Naroda Group. All rights reserved.
+                © 2025 Naroda Group. All rights reserved.
               </p>
             </div>
             <div class="col-md-6 text-center text-md-end">
@@ -2793,7 +2922,7 @@
         <i class="fas fa-home mobile-nav-icon"></i>
         <span class="mobile-nav-text language-content" data-i18n="nav.home">Home</span>
       </a>
-      <a href="projects.html" class="mobile-nav-item">
+      <a href="projects-landmark.html" class="mobile-nav-item">
         <i class="fas fa-building mobile-nav-icon"></i>
         <span class="mobile-nav-text language-content" data-i18n="nav.projects">Projects</span>
       </a>
@@ -2907,8 +3036,8 @@
         "nav.home": "Home",
         "nav.about": "About",
         "nav.projects": "Projects",
-        "nav.landmark": "Naroda Landmark",
-        "nav.irish": "Naroda Irish",
+        "nav.landmark": "Naroda Lavish",
+        "nav.irish": "Naroda Arise",
         "nav.all_projects": "All Projects",
         "nav.properties": "Properties",
         "nav.buy": "Buy",
@@ -2925,7 +3054,17 @@
         "nav.language": "EN",
         "nav.login": "Login",
         "nav.call": "Call Now",
-
+        "nav.enquire": "Enquire Now",
+        "enquiry.title": "Enquire About Project",
+        "enquiry.name": "Full Name *",
+        "enquiry.name_error": "Please enter your name.",
+        "enquiry.phone": "Phone Number *",
+        "enquiry.phone_error": "Please enter a valid phone number.",
+        "enquiry.email": "Email Address",
+        "enquiry.project": "Project",
+        "enquiry.message": "Message",
+        "enquiry.submit": "Send via WhatsApp",
+        "enquiry.privacy": "Your information is secure and will not be shared.",
         // Hero Section
         "hero.title.part1": "Real Estate",
         "hero.title.part2": "Blog",
@@ -2934,8 +3073,10 @@
 
         // Blog Filter
         "blog.filter.all": "All Articles",
-        "blog.filter.naroda_landmark": "Naroda Landmark",
-        "blog.filter.naroda_irish": "Naroda Irish",
+        "blog.filter.real_estate": "Real Estate Trends",
+        "blog.filter.market_analysis": "Market Analysis",
+        "blog.filter.naroda_landmark": "Naroda Lavish",
+        "blog.filter.naroda_irish": "Naroda Arise",
         "blog.filter.investment": "Investment Tips",
         "blog.filter.legal": "Legal Advice",
         "blog.filter.design": "Design & Decor",
@@ -2993,7 +3134,7 @@
         "footer.brand": "Naroda",
         "footer.group": "Group",
         "footer.description":
-          "Creating landmark properties that redefine excellence. From premium commercial spaces to luxury residential living, we build dreams with quality and commitment.",
+          "Creating Lavish properties that redefine excellence. From premium commercial spaces to luxury residential living, we build dreams with quality and commitment.",
         "footer.quick_links": "Quick Links",
         "footer.our_projects": "Our Projects",
         "footer.landmark_desc": "Premium Commercial Spaces",
@@ -3031,8 +3172,8 @@
         "nav.home": "होम",
         "nav.about": "हमारे बारे में",
         "nav.projects": "प्रोजेक्ट्स",
-        "nav.landmark": "नरोड़ा लैंडमार्क",
-        "nav.irish": "नरोड़ा आयरिश",
+        "nav.landmark": "नरोड़ा लैविश",
+        "nav.irish": "नरोड़ा अराइज़",
         "nav.all_projects": "सभी प्रोजेक्ट्स",
         "nav.properties": "संपत्तियाँ",
         "nav.buy": "खरीदें",
@@ -3049,6 +3190,17 @@
         "nav.language": "हिंदी",
         "nav.login": "लॉगिन",
         "nav.call": "अभी कॉल करें",
+        "nav.enquire": "पूछताछ करें",
+        "enquiry.title": "प्रोजेक्ट के बारे में पूछताछ करें",
+        "enquiry.name": "पूरा नाम *",
+        "enquiry.name_error": "कृपया अपना नाम दर्ज करें।",
+        "enquiry.phone": "फोन नंबर *",
+        "enquiry.phone_error": "कृपया एक मान्य फोन नंबर दर्ज करें।",
+        "enquiry.email": "ईमेल पता",
+        "enquiry.project": "प्रोजेक्ट",
+        "enquiry.message": "संदेश",
+        "enquiry.submit": "व्हाट्सएप के माध्यम से भेजें",
+        "enquiry.privacy": "आपकी जानकारी सुरक्षित है और साझा नहीं की जाएगी।",
 
         // Hero Section
         "hero.title.part1": "रियल एस्टेट",
@@ -3058,8 +3210,10 @@
 
         // Blog Filter
         "blog.filter.all": "सभी लेख",
-        "blog.filter.naroda_landmark": "नरोड़ा लैंडमार्क",
-        "blog.filter.naroda_irish": "नरोड़ा आयरिश",
+        "blog.filter.real_estate": "रियल एस्टेट रुझान",
+        "blog.filter.market_analysis": "बाजार विश्लेषण",
+        "blog.filter.naroda_landmark": "नरोड़ा लैविश",
+        "blog.filter.naroda_irish": "नरोड़ा अराइज़",
         "blog.filter.investment": "निवेश टिप्स",
         "blog.filter.legal": "कानूनी सलाह",
         "blog.filter.design": "डिजाइन और सजावट",
@@ -3115,7 +3269,7 @@
 
         // Footer
         "footer.description":
-          "लैंडमार्क संपत्तियाँ बनाना जो उत्कृष्टता को फिर से परिभाषित करती हैं। प्रीमियम कमर्शियल स्पेस से लेकर लग्ज़री रेजिडेंशियल लिविंग तक, हम गुणवत्ता और प्रतिबद्धता के साथ सपने बनाते हैं।",
+          "लैविश संपत्तियाँ बनाना जो उत्कृष्टता को फिर से परिभाषित करती हैं। प्रीमियम कमर्शियल स्पेस से लेकर लग्ज़री रेजिडेंशियल लिविंग तक, हम गुणवत्ता और प्रतिबद्धता के साथ सपने बनाते हैं।",
         "footer.quick_links": "त्वरित लिंक",
         "footer.our_projects": "हमारे प्रोजेक्ट्स",
         "footer.landmark_desc": "प्रीमियम कमर्शियल स्पेस",
@@ -3153,8 +3307,8 @@
         "nav.home": "હોમ",
         "nav.about": "અમારા વિશે",
         "nav.projects": "પ્રોજેક્ટ્સ",
-        "nav.landmark": "નરોડા લેન્ડમાર્ક",
-        "nav.irish": "નરોડા આયરિશ",
+        "nav.landmark": "નરોડા લેવિશ",
+        "nav.irish": "નરોડા અરાઇઝ",
         "nav.all_projects": "બધા પ્રોજેક્ટ્સ",
         "nav.properties": "પ્રોપર્ટીઝ",
         "nav.buy": "ખરીદો",
@@ -3171,7 +3325,17 @@
         "nav.language": "ગુજરાતી",
         "nav.login": "લોગિન",
         "nav.call": "હવે કૉલ કરો",
-
+        "nav.enquire": "તપાસ કરો",
+        "enquiry.title": "પ્રોજેક્ટ વિશે તપાસ કરો",
+        "enquiry.name": "પૂરું નામ *",
+        "enquiry.name_error": "કૃપા કરીને તમારું નામ દાખલ કરો.",
+        "enquiry.phone": "ફોન નંબર *",
+        "enquiry.phone_error": "કૃપા કરીને માન્ય ફોન નંબર દાખલ કરો.",
+        "enquiry.email": "ઈમેલ એડ્રેસ",
+        "enquiry.project": "પ્રોજેક્ટ",
+        "enquiry.message": "સંદેશ",
+        "enquiry.submit": "વોટ્સએપ દ્વારા મોકલો",
+        "enquiry.privacy": "તમારી માહિતી સુરક્ષિત છે અને શેર કરવામાં આવશે નહીં.",
         // Hero Section
         "hero.title.part1": "રિઅલ એસ્ટેટ",
         "hero.title.part2": "બ્લોગ",
@@ -3180,8 +3344,10 @@
 
         // Blog Filter
         "blog.filter.all": "બધા લેખો",
-        "blog.filter.naroda_landmark": "નરોડા લેન્ડમાર્ક",
-        "blog.filter.naroda_irish": "નરોડા આયરિશ",
+        "blog.filter.real_estate": "રીઅલ એસ્ટેટ ટ્રેન્ડ્સ",
+        "blog.filter.market_analysis": "માર્કેટ એનાલિસિસ",
+        "blog.filter.naroda_landmark": "નરોડા લેવિશ",
+        "blog.filter.naroda_irish": "નરોડા અરાઇઝ",
         "blog.filter.investment": "નિવેશ ટીપ્સ",
         "blog.filter.legal": "કાનૂની સલાહ",
         "blog.filter.design": "ડિઝાઇન અને સજાવટ",
@@ -3237,7 +3403,7 @@
 
         // Footer
         "footer.description":
-          "લેન્ડમાર્ક પ્રોપર્ટીઝ બનાવવી જે એક્સલન્સને પુનઃવ્યાખ્યાયિત કરે છે. પ્રીમિયમ કોમર્શિયલ સ્પેસથી લગ્ઝરી રેસિડેન્શિયલ લિવિંગ સુધી, અમે ગુણવત્તા અને પ્રતિબદ્ધતા સાથે સપના બનાવીએ છીએ.",
+          "લેવિશ પ્રોપર્ટીઝ બનાવવી જે એક્સલન્સને પુનઃવ્યાખ્યાયિત કરે છે. પ્રીમિયમ કોમર્શિયલ સ્પેસથી લગ્ઝરી રેસિડેન્શિયલ લિવિંગ સુધી, અમે ગુણવત્તા અને પ્રતિબદ્ધતા સાથે સપના બનાવીએ છીએ.",
         "footer.quick_links": "ઝડપી લિંક્સ",
         "footer.our_projects": "અમારા પ્રોજેક્ટ્સ",
         "footer.landmark_desc": "પ્રીમિયમ કોમર્શિયલ સ્પેસ",
@@ -3334,18 +3500,18 @@
       initNewsletter();
 
       // Show welcome message
-      setTimeout(() => {
-        const welcomeMessages = {
-          en: "Explore our real estate insights and expert advice!",
-          hi: "हमारी रियल एस्टेट अंतर्दृष्टि और विशेषज्ञ सलाह का अन्वेषण करें!",
-          gu: "અમારી રિઅલ એસ્ટેટ ઇનસાઇટ્સ અને નિષ્ણાત સલાહનું અન્વેષણ કરો!",
-        };
-        showToast(
-          welcomeMessages[currentLang] ||
-          "Explore our real estate insights and expert advice!",
-          "info"
-        );
-      }, 1500);
+      // setTimeout(() => {
+      //   const welcomeMessages = {
+      //     en: "Explore our real estate insights and expert advice!",
+      //     hi: "हमारी रियल एस्टेट अंतर्दृष्टि और विशेषज्ञ सलाह का अन्वेषण करें!",
+      //     gu: "અમારી રિઅલ એસ્ટેટ ઇનસાઇટ્સ અને નિષ્ણાત સલાહનું અન્વેષણ કરો!",
+      //   };
+      //   showToast(
+      //     welcomeMessages[currentLang] ||
+      //     "Explore our real estate insights and expert advice!",
+      //     "info"
+      //   );
+      // }, 1500);
 
       // Fix for iOS Safari 100vh issue
       function setVH() {
@@ -4000,6 +4166,126 @@
         loadingOverlay.classList.remove("active");
       }
     };
+    // Enquiry Modal Functionality
+    function openEnquiryModal() {
+      const enquiryModal = new bootstrap.Modal(
+        document.getElementById("enquiryModal")
+      );
+      enquiryModal.show();
+
+      // Reset form
+      const form = document.getElementById("enquiryForm");
+      form.reset();
+      form.classList.remove('was-validated');
+
+      // Focus on first input
+      setTimeout(() => {
+        document.getElementById("enquiryName").focus();
+      }, 500);
+    }
+
+    // Initialize enquiry form submission
+    document.addEventListener('DOMContentLoaded', function () {
+      const enquiryForm = document.getElementById('enquiryForm');
+
+      if (enquiryForm) {
+        enquiryForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          // Validate form
+          if (!enquiryForm.checkValidity()) {
+            enquiryForm.classList.add('was-validated');
+            return;
+          }
+
+          // Get form values
+          const name = document.getElementById('enquiryName').value.trim();
+          const phone = document.getElementById('enquiryPhone').value.trim();
+          const email = document.getElementById('enquiryEmail').value.trim();
+          const project = document.getElementById('enquiryProject').value;
+          const message = document.getElementById('enquiryMessage').value.trim();
+
+          // Format phone number (remove spaces, dashes, etc.)
+          const formattedPhone = phone.replace(/\D/g, '');
+
+          // Create WhatsApp message
+          const whatsappMessage = `*New Enquiry - ${project}*
+            
+*Name:* ${name}
+*Phone:* ${phone}
+*Email:* ${email || 'Not provided'}
+*Project:* ${project}
+*Message:* ${message || 'No additional message'}
+
+_I'm interested in ${project} and would like to know more details._`;
+
+          // Encode message for URL
+          const encodedMessage = encodeURIComponent(whatsappMessage);
+
+          // WhatsApp number (you can change this)
+          const whatsappNumber = '919904222046'; // Your WhatsApp number
+
+          // Create WhatsApp URL
+          const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+          // Close modal
+          const modal = bootstrap.Modal.getInstance(document.getElementById('enquiryModal'));
+          modal.hide();
+
+          // Open WhatsApp in new tab
+          window.open(whatsappUrl, '_blank');
+
+          // Show success message
+          const successMessages = {
+            en: "Opening WhatsApp to send your enquiry...",
+            hi: "आपकी पूछताछ भेजने के लिए व्हाट्सएप खोला जा रहा है...",
+            gu: "તમારી તપાસ મોકલવા માટે વોટ્સએપ ખોલી રહ્યું છે..."
+          };
+          showToast(successMessages[currentLang] || successMessages.en, 'success');
+        });
+
+        // Add phone number validation
+        const phoneInput = document.getElementById('enquiryPhone');
+        phoneInput.addEventListener('input', function () {
+          // Allow only numbers, spaces, plus, parentheses, and dashes
+          this.value = this.value.replace(/[^\d\s+\-()]/g, '');
+        });
+
+        // Validate on blur
+        phoneInput.addEventListener('blur', function () {
+          const phoneValue = this.value.replace(/\D/g, '');
+          if (phoneValue.length < 10) {
+            this.setCustomValidity('Please enter a valid phone number with at least 10 digits');
+          } else {
+            this.setCustomValidity('');
+          }
+        });
+      }
+
+      // Add click event to enquiry button
+      document.querySelector('.enquiry-btn').addEventListener('click', openEnquiryModal);
+    });
+
+    // Also add the enquiry button to the mobile bottom navigation
+    document.addEventListener('DOMContentLoaded', function () {
+      // Add enquiry option to mobile nav if it exists
+      const mobileNavItems = document.querySelector('.mobile-nav-items');
+      if (mobileNavItems) {
+        const enquiryItem = document.createElement('a');
+        enquiryItem.href = '#';
+        enquiryItem.className = 'mobile-nav-item';
+        enquiryItem.innerHTML = `
+            <i class="fas fa-envelope mobile-nav-icon"></i>
+            <span class="mobile-nav-text language-content" data-i18n="nav.enquire">Enquire</span>
+        `;
+        enquiryItem.addEventListener('click', function (e) {
+          e.preventDefault();
+          openEnquiryModal();
+        });
+        mobileNavItems.appendChild(enquiryItem);
+      }
+    });
   </script>
 </body>
 

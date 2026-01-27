@@ -92,18 +92,28 @@ if ($method === 'GET') {
             }
             $response = ['success' => true, 'data' => $formattedApps];
             break;
+
+        case 'get_inquiries':
+            $inquiries = $career->getAllInquiries();
+            $response = ['success' => true, 'data' => $inquiries];
+            break;
             
         default:
              $response = ['success' => false, 'message' => 'Unknown action'];
              break;
     }
 } elseif ($method === 'POST') {
-    $rawInput = file_get_contents("php://input");
-    $data = json_decode($rawInput, true);
-    
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        echo json_encode(['success' => false, 'message' => 'Invalid JSON input']);
-        exit;
+    $data = [];
+    if (strpos($_SERVER['CONTENT_TYPE'] ?? '', 'multipart/form-data') === false) {
+        $rawInput = file_get_contents("php://input");
+        $data = json_decode($rawInput, true);
+        
+        if (json_last_error() !== JSON_ERROR_NONE && !empty($rawInput)) {
+            echo json_encode(['success' => false, 'message' => 'Invalid JSON input']);
+            exit;
+        }
+    } else {
+        $data = $_POST;
     }
     
     switch ($action) {
@@ -183,6 +193,50 @@ if ($method === 'GET') {
                  $response = $career->saveApplicationAndStatus($data['id'], $data['status']);
             }
             break;
+
+        case 'submit_inquiry':
+             $response = $career->saveInquiry($data);
+             break;
+
+        case 'submit_application':
+            // Since this involves file upload, we use $_POST and $_FILES instead of raw input
+            $data = $_POST;
+            $files = $_FILES;
+            
+            $resumePath = null;
+            if (isset($files['resume']) && $files['resume']['error'] === UPLOAD_ERR_OK) {
+                $uploadDir = '../uploads/resumes/';
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0777, true);
+                }
+                
+                $fileName = time() . '_' . basename($files['resume']['name']);
+                $targetFile = $uploadDir . $fileName;
+                
+                if (move_uploaded_file($files['resume']['tmp_name'], $targetFile)) {
+                    $resumePath = 'uploads/resumes/' . $fileName;
+                }
+            }
+            
+            $dbData = [
+                'job_id' => $data['job_id'] ?? null,
+                'name' => $data['name'] ?? '',
+                'email' => $data['email'] ?? '',
+                'phone' => $data['phone'] ?? '',
+                'experience' => $data['experience'] ?? '',
+                'education' => $data['education'] ?? '',
+                'cover_letter' => $data['cover_letter'] ?? '',
+                'resume_path' => $resumePath,
+                'status' => 'new',
+                'applied_date' => date('Y-m-d H:i:s')
+            ];
+            
+            $response = $career->saveApplication($dbData);
+            break;
+
+        case 'delete_inquiry':
+             $response = $career->deleteInquiry($data['id']);
+             break;
 
         default:
              $response = ['success' => false, 'message' => 'Unknown POST action'];

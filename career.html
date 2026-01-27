@@ -1103,14 +1103,14 @@
 
     <div class="top-navbar-right">
       <!-- Language Selector -->
-      <div class="language-selector">
+      <!-- <div class="language-selector">
         <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag" id="current-flag" />
         <select id="global-language-selector">
           <option value="en">English</option>
           <option value="hi">हिन्दी (Hindi)</option>
           <option value="gu">ગુજરાતી (Gujarati)</option>
         </select>
-      </div>
+      </div> -->
 
       <!-- Real-time Date and Time Display -->
       <div class="navbar-time-display">
@@ -1143,7 +1143,7 @@
     <div class="sidebar-menu">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a href="dashboard.html" class="nav-link">
+          <a href="home.html" class="nav-link">
             <i class="fas fa-tachometer-alt"></i>
             <span data-i18n="dashboard">Dashboard</span>
           </a>
@@ -1178,28 +1178,28 @@
             <span data-i18n="team">Team</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="gallery.html" class="nav-link">
             <i class="fas fa-images"></i>
             <span data-i18n="gallery">Gallery</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a href="career.html" class="nav-link active">
             <i class="fas fa-briefcase"></i>
             <span data-i18n="career">Career</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="news.html" class="nav-link">
             <i class="fas fa-newspaper"></i>
             <span data-i18n="news">News</span>
           </a>
-        </li>
+        </li> -->
       </ul>
 
       <!-- Logout button at the bottom -->
-      <div class="nav-logout">
+      <!-- <div class="nav-logout">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a href="#" class="nav-link" id="logout-btn">
@@ -1208,7 +1208,7 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </aside>
 
@@ -1284,6 +1284,19 @@
           <p data-i18n="new_hires_this_month">New Hires This Month</p>
         </div>
       </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="
+              background-color: rgba(108, 117, 125, 0.1);
+              color: #6c757d;
+            ">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <div class="stat-content">
+          <h3 id="total-inquiries-count">0</h3>
+          <p data-i18n="total_inquiries">Total Inquiries</p>
+        </div>
+      </div>
     </div>
 
     <!-- Career Management Container -->
@@ -1309,6 +1322,13 @@
             role="tab">
             <i class="fas fa-building me-2"></i>
             <span data-i18n="departments">Departments</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="inquiries-tab" data-bs-toggle="tab" data-bs-target="#inquiries" type="button"
+            role="tab">
+            <i class="fas fa-question-circle me-2"></i>
+            <span data-i18n="inquiries">Inquiries</span>
           </button>
         </li>
       </ul>
@@ -1621,6 +1641,35 @@
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Inquiries Tab -->
+        <div class="tab-pane fade" id="inquiries" role="tabpanel">
+          <div class="search-filter-bar">
+            <div class="search-box">
+              <input type="text" id="inquiry-search" data-i18n-placeholder="search_inquiries_placeholder"
+                placeholder="Search inquiries by name, email, or message..." />
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th data-i18n="name">Name</th>
+                  <th data-i18n="email">Email</th>
+                  <th data-i18n="phone">Phone</th>
+                  <th data-i18n="message">Message</th>
+                  <th data-i18n="date">Date</th>
+                  <th data-i18n="actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="inquiries-table-body">
+                <!-- Inquiries will be loaded here dynamically -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -2428,6 +2477,11 @@
         october: "October",
         november: "November",
         december: "December",
+        inquiries: "Inquiries",
+        search_inquiries_placeholder: "Search inquiries by name, email, or message...",
+        date: "Date",
+        total_inquiries: "Total Inquiries",
+        no_inquiries: "No inquiries found",
       },
       hi: {
         // UI Elements
@@ -2646,6 +2700,11 @@
         october: "अक्टूबर",
         november: "नवंबर",
         december: "दिसंबर",
+        inquiries: "पूछताछ",
+        search_inquiries_placeholder: "नाम, ईमेल या संदेश द्वारा पूछताछ खोजें...",
+        date: "तारीख",
+        total_inquiries: "कुल पूछताछ",
+        no_inquiries: "कोई पूछताछ नहीं मिली",
       },
       gu: {
         // UI Elements
@@ -2864,6 +2923,11 @@
         october: "ઓક્ટોબર",
         november: "નવેમ્બર",
         december: "ડિસેમ્બર",
+        inquiries: "પૂછપરછ",
+        search_inquiries_placeholder: "નામ, ઈમેલ અથવા સંદેશ દ્વારા પૂછપરછ શોધો...",
+        date: "તારીખ",
+        total_inquiries: "કુલ પૂછપરછ",
+        no_inquiries: "કોઈ પૂછપરછ મળી નથી",
       },
     };
 
@@ -2884,6 +2948,7 @@
     let jobData = [];
     let applicationsData = [];
     let departmentsData = [];
+    let allInquiries = [];
 
     // Variables for delete confirmation
     let pendingDeleteType = null;
@@ -3783,6 +3848,10 @@
       const hired = applicationsData.filter((a) => a.status === "hired").length;
       const hiredEl = document.getElementById("new-hires-count");
       if (hiredEl) hiredEl.textContent = hired;
+
+      // Inquiries
+      const totalInquiriesEl = document.getElementById("total-inquiries-count");
+      if (totalInquiriesEl) totalInquiriesEl.textContent = allInquiries.length;
     }
 
     // Initialize career management
@@ -3793,6 +3862,7 @@
       await loadDepartments();
       await loadJobPostings();
       await loadApplications();
+      await loadInquiries();
       updateStats();
 
       // Tab switching
@@ -3814,6 +3884,9 @@
           } else if (target === "#departments") {
             currentTab = "departments";
             renderDepartments();
+          } else if (target === "#inquiries") {
+            currentTab = "inquiries";
+            loadInquiries();
           }
         });
       });
@@ -3882,6 +3955,20 @@
       const departmentSearch = document.getElementById("department-search");
       if (departmentSearch) {
         departmentSearch.addEventListener("input", filterDepartments);
+      }
+
+      // Inquiry Search
+      const inquirySearch = document.getElementById("inquiry-search");
+      if (inquirySearch) {
+        inquirySearch.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          const filtered = allInquiries.filter(i =>
+            i.name.toLowerCase().includes(searchTerm) ||
+            i.email.toLowerCase().includes(searchTerm) ||
+            i.message.toLowerCase().includes(searchTerm)
+          );
+          renderInquiries(filtered);
+        });
       }
 
       // Job Bulk Actions
@@ -4947,6 +5034,83 @@
     // Translate everything
     // Translate everything
     // Translate everything
+    // Inquiries logic
+    async function loadInquiries() {
+      try {
+        const tableBody = document.getElementById("inquiries-table-body");
+        if (tableBody) tableBody.innerHTML = '<tr><td colspan="6" class="text-center py-4"><i class="fas fa-spinner fa-spin fa-2x"></i></td></tr>';
+
+        const result = await fetchApi(`${API_URL}?action=get_inquiries`);
+        if (result.success) {
+          allInquiries = result.data;
+          renderInquiries(allInquiries);
+
+          // Update stats
+          const countElem = document.getElementById("total-inquiries-count");
+          if (countElem) countElem.textContent = allInquiries.length;
+        }
+      } catch (error) {
+        console.error("Error loading inquiries:", error);
+      }
+    }
+
+    function renderInquiries(inquiries) {
+      const tableBody = document.getElementById("inquiries-table-body");
+      if (!tableBody) return;
+
+      if (inquiries.length === 0) {
+        tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6" class="text-center py-4">
+                        <div class="no-data">
+                            <i class="fas fa-question-circle fa-3x mb-3 text-muted"></i>
+                            <p class="text-muted" data-i18n="no_inquiries">No inquiries found</p>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        return;
+      }
+
+      tableBody.innerHTML = inquiries.map(inquiry => `
+            <tr>
+                <td><span class="fw-bold">${inquiry.name}</span></td>
+                <td><a href="mailto:${inquiry.email}" class="text-gold">${inquiry.email}</a></td>
+                <td>${inquiry.phone}</td>
+                <td><div class="text-wrap" style="max-width: 300px;">${inquiry.message}</div></td>
+                <td>${new Date(inquiry.created_at).toLocaleDateString()}</td>
+                <td>
+                    <div class="actions-group">
+                        <button class="btn-action btn-action-delete" onclick="deleteInquiry(${inquiry.id})" title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `).join("");
+
+      translateUI();
+    }
+
+    async function deleteInquiry(id) {
+      if (!confirm(translations[currentLanguage].are_you_sure || "Are you sure?")) return;
+
+      try {
+        const result = await postApi(API_URL, {
+          action: 'delete_inquiry',
+          id: id
+        });
+        if (result.success) {
+          showNotification("Inquiry deleted successfully!", "success");
+          loadInquiries();
+        } else {
+          showNotification("Failed to delete inquiry", "error");
+        }
+      } catch (error) {
+        console.error("Error deleting inquiry:", error);
+      }
+    }
+
     async function translateEverything() {
       translateUI();
       translateDates();

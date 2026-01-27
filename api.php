@@ -9,13 +9,11 @@ switch ($action) {
     case 'get_project_data':
         $data = [
             'apartment_plans' => [
-                '1bhk' => [],
                 '2bhk' => [],
                 '3bhk' => []
             ],
             'gallery' => [],
             'pricing_plans' => [
-                '1bhk' => null,
                 '2bhk' => null,
                 '3bhk' => null
             ],
@@ -30,7 +28,7 @@ switch ($action) {
         ];
 
         // Fetch Apartment Plans
-        $res = $conn->query("SELECT * FROM apartment_plans");
+        $res = $conn->query("SELECT * FROM apartment_plans WHERE bhk_type != '1bhk'");
         while ($row = $res->fetch_assoc()) {
             $row['description'] = json_decode($row['description'] ?? '{}', true);
             $data['apartment_plans'][$row['bhk_type']][] = $row;
@@ -43,7 +41,7 @@ switch ($action) {
         }
 
         // Fetch Pricing Plans
-        $res = $conn->query("SELECT * FROM pricing_plans");
+        $res = $conn->query("SELECT * FROM pricing_plans WHERE bhk_type != '1bhk'");
         while ($row = $res->fetch_assoc()) {
             $row['features'] = json_decode($row['features'], true);
             $data['pricing_plans'][$row['bhk_type']] = $row;
@@ -207,6 +205,12 @@ switch ($action) {
             $input = json_decode(file_get_contents('php://input'), true);
             $id = $input['id'] ?? null;
             $bhk_type = $conn->real_escape_string($input['bhk_type']);
+
+            // Safety check: Don't allow saving 1bhk
+            if ($bhk_type === '1bhk') {
+                echo json_encode(["status" => "error", "message" => "1 BHK plans are no longer supported"]);
+                break;
+            }
             $area = $conn->real_escape_string($input['area']);
             $bedrooms = $conn->real_escape_string($input['bedrooms']);
             $bathrooms = $conn->real_escape_string($input['bathrooms']);
@@ -253,6 +257,12 @@ switch ($action) {
         if ($method === 'POST') {
             $input = json_decode(file_get_contents('php://input'), true);
             $bhk_type_val = $conn->real_escape_string($input['type']);
+
+            // Safety check: Don't allow saving 1bhk
+            if ($bhk_type_val === '1bhk') {
+                echo json_encode(["status" => "error", "message" => "1 BHK pricing is no longer supported"]);
+                break;
+            }
             $starting_price = $conn->real_escape_string($input['startingPrice']);
             $sqft = $conn->real_escape_string($input['sqft']);
             $bedrooms = $conn->real_escape_string($input['bedrooms']);

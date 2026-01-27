@@ -6,6 +6,7 @@ class Career {
     private $table_jobs = 'career_jobs';
     private $table_applications = 'career_applications';
     private $table_departments = 'career_departments';
+    private $table_inquiries = 'career_inquiries';
 
     public function __construct() {
         $database = new Database();
@@ -249,6 +250,64 @@ class Career {
          }
     }
 
+    public function saveApplication($data) {
+        try {
+            $fields = [
+                'job_id', 'name', 'email', 'phone', 
+                'experience', 'education', 'cover_letter', 
+                'resume_path', 'status', 'applied_date'
+            ];
+
+            // Filter data to only include valid fields
+            $validData = array_intersect_key($data, array_flip($fields));
+
+            // Handle non-numeric job_id (e.g. static titles from frontend fallback)
+            if (isset($validData['job_id']) && !is_numeric($validData['job_id']) && !empty($validData['job_id'])) {
+                $jobTitle = $validData['job_id'];
+                
+                // Try to find job with matching title (checking en, hi, gu)
+                $stmt = $this->conn->prepare("SELECT id FROM {$this->table_jobs} WHERE title_en = :title OR title_hi = :title OR title_gu = :title LIMIT 1");
+                $stmt->execute(['title' => $jobTitle]);
+                $job = $stmt->fetch();
+                
+                if ($job) {
+                    $validData['job_id'] = $job['id'];
+                } else {
+                    // Title doesn't exist in DB, set job_id to null to avoid constraint error
+                    $validData['job_id'] = null;
+                    // Preserve the job title in cover letter so admin knows which position was applied for
+                    $info = "Applied Position: " . $jobTitle;
+                    if (empty($validData['cover_letter'])) {
+                        $validData['cover_letter'] = $info;
+                    } else {
+                        $validData['cover_letter'] = $info . "\n\n" . $validData['cover_letter'];
+                    }
+                }
+            } elseif (isset($validData['job_id']) && (empty($validData['job_id']) || $validData['job_id'] == 'null')) {
+                $validData['job_id'] = null;
+            }
+
+            // Set defaults
+            if (!isset($validData['status']) || empty($validData['status'])) $validData['status'] = 'new';
+            if (!isset($validData['applied_date']) || empty($validData['applied_date'])) $validData['applied_date'] = date('Y-m-d H:i:s');
+
+            $cols = implode(', ', array_keys($validData));
+            $placeholders = ':' . implode(', :', array_keys($validData));
+            
+            $query = "INSERT INTO {$this->table_applications} ($cols) VALUES ($placeholders)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($validData);
+            
+            return [
+                'success' => true, 
+                'id' => $this->conn->lastInsertId(), 
+                'message' => 'Application submitted successfully'
+            ];
+        } catch(PDOException $e) {
+             return ['success' => false, 'error' => $e->getMessage()];
+        }
+    }
+
     public function deleteApplication($id) {
          try {
              $stmt = $this->conn->prepare("DELETE FROM {$this->table_applications} WHERE id = :id");
@@ -257,6 +316,63 @@ class Career {
          } catch(PDOException $e) {
              return ['success' => false, 'error' => $e->getMessage()];
          }
+    }
+
+    // --- INQUIRIES ---
+
+    public function getAllInquiries() {
+        $query = "SELECT * FROM {$this->table_inquiries} ORDER BY created_at DESC";
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            return [];
+        }
+    }
+
+    public function saveInquiry($data) {
+        try {
+            $query = "INSERT INTO {$this->table_inquiries} (name, email, phone, message) 
+                      VALUES (:name, :email, :phone, :message)";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                'name' => $data['name'] ?? '',
+                'email' => $data['email'] ?? '',
+                'phone' => $data['phone'] ?? '',
+                'message' => $data['message'] ?? ''
+            ]);
+            return ['success' => true, 'id' => $this->conn->lastInsertId(), 'message' => 'Inquiry submitted successfully'];
+        } catch(PDOException $e) {
+            // Check if table exists, if not create it
+            if ($e->getCode() == '42S02') {
+                $this->createInquiryTable();
+                return $this->saveInquiry($data);
+            }
+            return ['success' => false, 'error' => $e->getMessage()];
+        }
+    }
+
+    private function createInquiryTable() {
+        $query = "CREATE TABLE IF NOT EXISTS {$this->table_inquiries} (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            phone VARCHAR(20) NOT NULL,
+            message TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )";
+        $this->conn->exec($query);
+    }
+
+    public function deleteInquiry($id) {
+        try {
+            $stmt = $this->conn->prepare("DELETE FROM {$this->table_inquiries} WHERE id = :id");
+            $stmt->execute(['id' => $id]);
+            return ['success' => true];
+        } catch(PDOException $e) {
+            return ['success' => false, 'error' => $e->getMessage()];
+        }
     }
 }
 ?>

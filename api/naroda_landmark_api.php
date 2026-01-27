@@ -341,6 +341,15 @@ function handlePostRequest($action, $landmark) {
                 }
             }
             $data['images'] = $imageUrls;
+            
+            // 1b. Handle Floor Plan Image
+            if (!empty($data['existing_floor_plan_image'])) {
+                $data['floor_plan_image'] = $data['existing_floor_plan_image'];
+            }
+            if (isset($_FILES['floor_plan_image']) && $_FILES['floor_plan_image']['error'] === UPLOAD_ERR_OK) {
+                $url = handleFileUpload($_FILES['floor_plan_image'], 'floorplans');
+                if ($url) $data['floor_plan_image'] = $url;
+            }
 
             // 2. Handle Brochure
             $brochure = null;

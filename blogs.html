@@ -541,6 +541,7 @@
       font-size: 0.85rem;
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -1076,14 +1077,14 @@
 
     <div class="top-navbar-right">
       <!-- Language Selector -->
-      <div class="language-selector">
+      <!-- <div class="language-selector">
         <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag" id="current-flag" />
         <select id="global-language-selector">
           <option value="en">English</option>
           <option value="hi">हिन्दी (Hindi)</option>
           <option value="gu">ગુજરાતી (Gujarati)</option>
         </select>
-      </div>
+      </div> -->
 
       <!-- Real-time Date and Time Display -->
       <div class="navbar-time-display">
@@ -1116,7 +1117,7 @@
     <div class="sidebar-menu">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a href="dashboard.html" class="nav-link">
+          <a href="home.html" class="nav-link">
             <i class="fas fa-tachometer-alt"></i>
             <span data-i18n="dashboard">Dashboard</span>
           </a>
@@ -1151,28 +1152,28 @@
             <span data-i18n="team">Team</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="gallery.html" class="nav-link">
             <i class="fas fa-images"></i>
             <span data-i18n="gallery">Gallery</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a href="career.html" class="nav-link">
             <i class="fas fa-briefcase"></i>
             <span data-i18n="career">Career</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="news.html" class="nav-link">
             <i class="fas fa-newspaper"></i>
             <span data-i18n="news">News</span>
           </a>
-        </li>
+        </li> -->
       </ul>
 
       <!-- Logout button at the bottom -->
-      <div class="nav-logout">
+      <!-- <div class="nav-logout">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a href="#" class="nav-link" id="logout-btn">
@@ -1181,7 +1182,7 @@
             </a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </aside>
 
@@ -1533,10 +1534,15 @@
                 <div class="form-group mb-3">
                   <label for="category" class="form-label">Category *</label>
                   <select class="form-select" id="category" required>
-                    <option value="">Select Category</option>
-                    <option value="real-estate">Real Estate Trends</option>
-                    <option value="investment">Investment Tips</option>
-                    <!-- More options -->
+                    <option value="" data-i18n="select_category">Select Category</option>
+                    <option value="real-estate" data-i18n="real_estate_trends">Real Estate Trends</option>
+                    <option value="investment" data-i18n="investment_tips">Investment Tips</option>
+                    <option value="legal" data-i18n="legal_advice">Legal Advice</button>
+                    <option value="design" data-i18n="design_decor">Design & Decor</button>
+                    <option value="sustainability" data-i18n="sustainability">Sustainability</button>
+                    <option value="naroda-landmark" data-i18n="naroda_landmark">Naroda Landmark</button>
+                    <option value="naroda-irish" data-i18n="naroda_irish">Naroda Irish</button>
+                    <option value="market-analysis" data-i18n="market_analysis">Market Analysis</button>
                   </select>
                 </div>
               </div>
@@ -1580,13 +1586,15 @@
         </div>
         <div class="modal-footer">
           <!-- Left side: Auto Translate button -->
-          <button type="button" class="btn btn-secondary" id="auto-translate-btn">
+          <button type="button" class="btn btn-secondary" id="auto-translate-btn"
+            style="border-color: #0d6efd; background-color: transparent; color: #0d6efd;  ">
             <i class="fas fa-language"></i> Auto Translate
           </button>
 
           <!-- Right side: Cancel and Add buttons -->
           <div style="margin-left: auto; display: flex; gap: 10px">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+              style="border-color: #0d6efd; background-color: transparent; color: #0d6efd;  ">
               Cancel
             </button>
             <button type="button" class="btn btn-primary" onclick="addBlog()">
@@ -1963,7 +1971,7 @@
         legal_advice: "कानूनी सलाह",
         design_decor: "डिजाइन और सजावट",
         sustainability: "सतत विकास",
-        naroda_landmark: "नारोदा लैंडमार्क",
+        naroda_landmark: "नारोदा लैविश",
         naroda_irish: "नारोदा आयरिश",
         market_analysis: "बाजार विश्लेषण",
         all_status: "सभी स्थिति",
@@ -2068,8 +2076,8 @@
         legal_advice: "લીગલ એડવાઇસ",
         design_decor: "ડિઝાઇન અને ડેકોર",
         sustainability: "સસ્ટેનેબિલિટી",
-        naroda_landmark: "નારોદા લેન્ડમાર્ક",
-        naroda_irish: "નારોદા આયરિશ",
+        naroda_landmark: "નારોદા લેવિશ",
+        naroda_irish: "નારોદા અરાઈઝ ",
         market_analysis: "માર્કેટ એનાલિસિસ",
         all_status: "બધી સ્થિતિ",
         published: "પ્રકાશિત",
@@ -2207,13 +2215,13 @@
       "naroda-landmark": {
         name: {
           en: "Naroda Landmark",
-          hi: "नारोदा लैंडमार्क",
-          gu: "નારોદા લેન્ડમાર્ક",
+          hi: "नारोदा लैविश",
+          gu: "નારોદા લેવિશ",
         },
         color: "primary",
       },
       "naroda-irish": {
-        name: { en: "Naroda Irish", hi: "नारोदा आयरिश", gu: "નારોદા આયરિશ" },
+        name: { en: "Naroda Irish", hi: "नारोदा आयरिश", gu: "નારોદા અરાઈઝ " },
         color: "info",
       },
       "market-analysis": {

@@ -427,7 +427,7 @@ class NarodaLandmark {
                 'area', 'floor', 'parking', 'status',
                 'price', 'price_unit', 'property_id', 'facing', 'images',
                 'brochure', 'property_documents', 'approvals_documents', 'room_dimensions', 
-                'map_iframe', 'amenities'
+                'map_iframe', 'amenities', 'floor_plan_image'
             ];
 
             // Handle JSON fields

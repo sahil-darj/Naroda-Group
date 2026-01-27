@@ -3397,30 +3397,34 @@
 
 <body>
     <!-- Top Navbar -->
-    <nav class="top-navbar" id="top-navbar">
+    <nav class="top-navbar">
         <div class="top-navbar-left">
-            <button class="sidebar-toggle-btn" id="sidebar-toggle">
+            <button class="sidebar-toggle-btn" id="sidebar-toggle-btn">
                 <i class="fas fa-bars"></i>
             </button>
-            <h1 class="top-navbar-title">Naroda <span class="gold-text">Group</span></h1>
+            <h1 class="top-navbar-title" data-i18n="admin_panel">Naroda Irish Admin</h1>
         </div>
-
         <div class="top-navbar-right">
-            <!-- Real-time Date and Time Display -->
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <img src="https://flagcdn.com/w40/gb.png" alt="English" class="lang-flag" id="current-flag" />
+                <select id="global-language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी (Hindi)</option>
+                    <option value="gu">ગુજરાતી (Gujarati)</option>
+                </select>
+            </div>
+
             <div class="navbar-time-display">
                 <div class="date" id="navbar-current-date">Loading...</div>
-            </div>
-            <div class="navbar-time-display">
                 <div class="time" id="navbar-current-time">Loading...</div>
             </div>
-
-            <!-- User Profile -->
             <div class="user-profile">
                 <img src="https://ui-avatars.com/api/?name=Admin+User&background=4361ee&color=fff&size=128"
                     alt="Admin User">
                 <div class="user-info">
-                    <div class="user-name">Admin User</div>
-                    <div class="user-role">System Administrator</div>
+                    <div class="user-name" data-i18n="admin_name">Admin User</div>
+                    <div class="user-role" data-i18n="system_administrator">System Administrator</div>
                 </div>
             </div>
         </div>
@@ -3440,55 +3444,55 @@
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">
                         <i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
+                        <span data-i18n="dashboard">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="users.html" class="nav-link">
                         <i class="fas fa-users"></i>
-                        <span>Users</span>
+                        <span data-i18n="users">Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="projects.html" class="nav-link active">
                         <i class="fas fa-project-diagram"></i>
-                        <span>Projects</span>
+                        <span data-i18n="projects">Projects</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="blogs.html" class="nav-link">
                         <i class="fas fa-blog"></i>
-                        <span>Blogs</span>
+                        <span data-i18n="blogs">Blogs</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="faq.html" class="nav-link">
                         <i class="fas fa-question-circle"></i>
-                        <span>FAQ</span>
+                        <span data-i18n="faq">FAQ</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="team.html" class="nav-link">
                         <i class="fas fa-user-friends"></i>
-                        <span>Team</span>
+                        <span data-i18n="team">Team</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="gallery.html" class="nav-link">
                         <i class="fas fa-images"></i>
-                        <span>Gallery</span>
+                        <span data-i18n="gallery">Gallery</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="career.html" class="nav-link">
                         <i class="fas fa-briefcase"></i>
-                        <span>Career</span>
+                        <span data-i18n="career">Career</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="news.html" class="nav-link">
                         <i class="fas fa-newspaper"></i>
-                        <span>News</span>
+                        <span data-i18n="news">News</span>
                     </a>
                 </li>
             </ul>
@@ -3497,9 +3501,9 @@
             <div class="nav-logout">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" id="logout-btn">
+                        <a href="login.html" class="nav-link" id="logout-btn">
                             <i class="fas fa-sign-out-alt"></i>
-                            <span>Log Out</span>
+                            <span data-i18n="log_out">Log Out</span>
                         </a>
                     </li>
                 </ul>
@@ -3513,35 +3517,44 @@
     <!-- Main Content Area -->
     <main class="main-content" id="main-content">
         <!-- Page Header -->
-        <div class="page-header">
-            <h1>Naroda Irish Project Management</h1>
-            <a href="https://naroda-groups-web.vercel.app/projects-irish.html" target="_blank" class="btn btn-gold">
-                <i class="fas fa-external-link-alt"></i>
-                View Live Project
+        <div class="main-content-header">
+            <h1 class="h3 mb-0 text-white" data-i18n="dashboard_title">Naroda Irish Project Management</h1>
+            <a href="https://naroda-groups-web.vercel.app/projects-irish.html" class="btn btn-primary" target="_blank">
+                <i class="fas fa-external-link-alt me-2"></i>
+                <span data-i18n="view_live_project">View Live Project</span>
             </a>
         </div>
 
-        <!-- Management Tabs Navigation -->
-        <div class="management-tabs-nav" id="management-tabs">
-            <button class="management-tab active" data-tab="floor-plans">
-                <i class="fas fa-drafting-compass me-2"></i>Apartment Plans
-            </button>
-            <button class="management-tab" data-tab="gallery">
-                <i class="fas fa-images me-2"></i>Gallery
-            </button>
-            <button class="management-tab" data-tab="pricing">
-                <i class="fas fa-tag me-2"></i>Pricing & Plans
-            </button>
-            <!-- NEW: Added Featured Properties Tab -->
-            <button class="management-tab" data-tab="featured-properties">
-                <i class="fas fa-star me-2"></i>Featured Properties
-            </button>
+        <!-- Management Tabs -->
+        <div class="management-tabs-container">
+            <div class="management-tabs">
+                <button class="management-tab active" data-tab="apartment-plans">
+                    <i class="fas fa-layer-group"></i>
+                    <span data-i18n="apartment_plans_tab">Apartment Plans</span>
+                </button>
+                <button class="management-tab" data-tab="gallery">
+                    <i class="fas fa-images"></i>
+                    <span data-i18n="gallery_management">Gallery</span>
+                </button>
+                <button class="management-tab" data-tab="pricing">
+                    <i class="fas fa-tag"></i>
+                    <span data-i18n="pricing_plans_tab">Pricing & Plans</span>
+                </button>
+                <button class="management-tab" data-tab="featured">
+                    <i class="fas fa-star"></i>
+                    <span data-i18n="featured_properties_tab">Featured Properties</span>
+                </button>
+                <button class="management-tab" data-tab="visits">
+                    <i class="fas fa-calendar-check"></i>
+                    <span data-i18n="schedule_visit_tab">Schedule Visit & Inquiries</span>
+                </button>
+            </div>
         </div>
 
         <!-- Apartment Plans Management Content -->
         <div class="management-content active" id="floor-plans-content">
             <!-- Section Heading -->
-            <h3 class="section-heading">Apartment Plans Management</h3>
+            <h3 class="section-heading" data-i18n="apartment_plans">Apartment Plans Management</h3>
 
             <!-- Apartment Type Tabs -->
             <div class="apartment-type-tabs" id="apartment-type-tabs-container">
@@ -3557,120 +3570,120 @@
             </div>
 
             <!-- Apartment Plan Form -->
-            <div class="form-section">
-                <h4 class="form-section-title" id="apartment-form-title">1 BHK Apartment Details</h4>
-
-                <!-- Form Fields -->
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="apartment-area">Super Area (Sq. Ft.)</label>
-                        <input type="number" id="apartment-area" placeholder="Enter super area">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="apartment-bedrooms">Bedrooms</label>
-                        <input type="number" id="apartment-bedrooms" value="1">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="apartment-bathrooms">Bathrooms</label>
-                        <input type="number" id="apartment-bathrooms" value="1">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="apartment-balconies">Balconies</label>
-                        <input type="number" id="apartment-balconies" placeholder="Enter number of balconies">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Apartment Description</label>
-                    <!-- Language Tabs for Apartment Description -->
-                    <ul class="nav nav-tabs" id="apartment-desc-lang-tabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="apartment-desc-en-tab" data-bs-toggle="tab"
-                                data-bs-target="#apartment-desc-en-pane" type="button" role="tab">
-                                <i class="fas fa-globe me-1"></i> English
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="apartment-desc-hi-tab" data-bs-toggle="tab"
-                                data-bs-target="#apartment-desc-hi-pane" type="button" role="tab">
-                                हिंदी
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="apartment-desc-gu-tab" data-bs-toggle="tab"
-                                data-bs-target="#apartment-desc-gu-pane" type="button" role="tab">
-                                ગુજરાતી
-                            </button>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="apartment-desc-lang-content">
-                        <div class="tab-pane fade show active" id="apartment-desc-en-pane" role="tabpanel">
-                            <textarea id="apartment-description-en" rows="3" class="form-control mt-2"
-                                placeholder="Enter apartment description in English..."></textarea>
-                            <button type="button" class="btn btn-primary mt-2" id="auto-translate-apartment-desc"
-                                onclick="autoTranslate('en', 'apartment-description-en', [
-                                    { id: 'apartment-description-hi', lang: 'hi' },
-                                    { id: 'apartment-description-gu', lang: 'gu' }
-                                ], event)">
-                                <i class="fas fa-language me-1"></i> Auto-Translate to Hindi & Gujarati
-                            </button>
-                        </div>
-                        <div class="tab-pane fade" id="apartment-desc-hi-pane" role="tabpanel">
-                            <textarea id="apartment-description-hi" rows="3" class="form-control mt-2"
-                                placeholder="हिंदी में विवरण दर्ज करें..."></textarea>
-                        </div>
-                        <div class="tab-pane fade" id="apartment-desc-gu-pane" role="tabpanel">
-                            <textarea id="apartment-description-gu" rows="3" class="form-control mt-2"
-                                placeholder="ગુજરાતીમાં વર્ણન દાખલ કરો..."></textarea>
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="apartment-form">
+                        <h5 id="apartment-form-title" class="mb-4" data-i18n="apartment_details_title">Apartment Details
+                        </h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label" data-i18n="super_area">Super Area (Sq. Ft.)</label>
+                                <input type="number" id="apartment-area" class="form-control"
+                                    data-i18n-placeholder="super_area" placeholder="Enter super area">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" data-i18n="bedrooms">Bedrooms</label>
+                                <select id="apartment-bedrooms" class="form-control">
+                                    <option value="1">1 BHK</option>
+                                    <option value="2">2 BHK</option>
+                                    <option value="3">3 BHK</option>
+                                    <option value="4">4 BHK</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" data-i18n="bathrooms">Bathrooms</label>
+                                <input type="number" id="apartment-bathrooms" class="form-control"
+                                    data-i18n-placeholder="bathrooms" placeholder="Enter no. of bathrooms">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" data-i18n="balconies">Balconies</label>
+                                <input type="number" id="apartment-balconies" class="form-control"
+                                    data-i18n-placeholder="balconies" placeholder="Enter no. of balconies">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" data-i18n="apartment_description">Apartment
+                                    Description</label>
+                                <!-- Language Tabs for Description -->
+                                <div class="language-tabs mb-2">
+                                    <button type="button" class="lang-tab active" data-lang="en"
+                                        data-i18n="english">English</button>
+                                    <button type="button" class="lang-tab" data-lang="hi"
+                                        data-i18n="hindi">हिंदी</button>
+                                    <button type="button" class="lang-tab" data-lang="gu"
+                                        data-i18n="gujarati">ગુજરાતી</button>
+                                </div>
+                                <div class="mb-2">
+                                    <button type="button" class="btn btn-sm btn-outline-primary"
+                                        onclick="autoTranslateApartmentDesc()">
+                                        <i class="fas fa-language me-1"></i> <span
+                                            data-i18n="auto_translate">Auto-Translate to Hindi & Gujarati</span>
+                                    </button>
+                                </div>
+                                <textarea id="apartment-description-en" class="form-control apartment-desc-field"
+                                    data-lang="en" rows="4" data-i18n-placeholder="apartment_description"
+                                    placeholder="Enter apartment description in English..."></textarea>
+                                <textarea id="apartment-description-hi" class="form-control apartment-desc-field d-none"
+                                    data-lang="hi" rows="4" data-i18n-placeholder="apartment_description"
+                                    placeholder="अपार्टमेंट का विवरण हिंदी में दर्ज करें..."></textarea>
+                                <textarea id="apartment-description-gu" class="form-control apartment-desc-field d-none"
+                                    data-lang="gu" rows="4" data-i18n-placeholder="apartment_description"
+                                    placeholder="એપાર્ટમેન્ટનું વર્ણન ગુજરાતીમાં દાખલ કરો..."></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Image Section -->
+                <div class="col-lg-4">
+                    <div class="apartment-form">
+                        <h5 class="mb-4" data-i18n="floor_plan_image">Floor Plan Image</h5>
+                        <div class="upload-area" id="apartment-plan-image-upload">
+                            <input type="file" id="apartment-plan-image-input" accept="image/*" class="d-none">
+                            <div class="text-center" id="upload-placeholder">
+                                <i class="fas fa-cloud-upload-alt fa-3x mb-3 text-primary"></i>
+                                <h6 data-i18n="upload_floor_plan">Upload Floor Plan Image</h6>
+                                <p class="text-muted small" data-i18n="click_upload">Click to upload floor plan image
+                                </p>
+                            </div>
+                            <img id="apartment-plan-image-preview" src="" alt="Preview">
+                        </div>
 
-                <!-- Apartment Plan Image Upload -->
-                <div class="form-group">
-                    <label for="apartment-plan-image">Floor Plan Image</label>
-                    <div class="floor-plan-image-upload" id="apartment-plan-image-upload">
-                        <i class="fas fa-upload"></i>
-                        <h5>Upload Floor Plan Image</h5>
-                        <p>Click to upload floor plan image</p>
-                        <input type="file" id="apartment-plan-image-input" accept="image/*" style="display: none;">
-                        <img id="apartment-plan-image-preview" class="floor-plan-image-preview" src=""
-                            alt="Apartment Plan Preview">
+                        <div class="d-flex gap-2 mt-4">
+                            <button class="btn btn-outline-secondary w-100" id="clear-apartment-form">
+                                <i class="fas fa-sync-alt me-2"></i>
+                                <span data-i18n="clear_form">Clear Form</span>
+                            </button>
+                            <button class="btn btn-primary w-100" id="save-apartment-plan">
+                                <i class="fas fa-save me-2"></i>
+                                <span data-i18n="save_apartment_plan">Save Apartment Plan</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Save Button -->
-                <div class="save-section">
-                    <button class="btn btn-secondary" id="clear-apartment-form">Clear Form</button>
-                    <button class="btn btn-save" id="save-apartment-plan">Save Apartment Plan</button>
                 </div>
             </div>
 
-            <!-- Apartment Plans Table -->
-            <div class="form-section">
-                <h4 class="form-section-title">All Apartment Plans</h4>
+            <div class="management-card mt-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="mb-0" data-i18n="all_apartment_plans">All Apartment Plans</h5>
+                </div>
                 <div class="table-responsive">
-                    <table class="table data-table">
+                    <table class="table custom-table">
                         <thead>
                             <tr>
-                                <th>Type</th>
-                                <th>Floor Plan</th>
-                                <th>Super Area</th>
-                                <th>Bedrooms</th>
-                                <th>Bathrooms</th>
-                                <th>Balconies</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th data-i18n="type">Type</th>
+                                <th data-i18n="floor_plan_image">Floor Plan</th>
+                                <th data-i18n="super_area">Super Area</th>
+                                <th data-i18n="bedrooms">BR</th>
+                                <th class="d-none d-md-table-cell" data-i18n="bathrooms">BA</th>
+                                <th data-i18n="apartment_description">Description</th>
+                                <th data-i18n="status">Status</th>
+                                <th data-i18n="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="apartment-plans-table-body">
                             <tr>
-                                <td colspan="8" class="text-center text-muted py-4">No apartment plans added yet
-                                </td>
+                                <td colspan="8" class="text-center text-muted py-4" data-i18n="no_plans_yet">No
+                                    apartment plans added yet</td>
                             </tr>
                         </tbody>
                     </table>
@@ -3681,7 +3694,7 @@
         <!-- Gallery Management Content -->
         <div class="management-content" id="gallery-content">
             <!-- Section Heading -->
-            <h3 class="section-heading">Gallery Management</h3>
+            <h3 class="section-heading" data-i18n="gallery_management">Gallery Management</h3>
 
             <!-- Gallery Upload Area -->
             <div class="form-section">
@@ -3700,7 +3713,7 @@
 
                 <!-- Save Button -->
                 <div class="save-section">
-                    <button class="btn btn-save" id="save-gallery">Save Gallery Changes</button>
+                    <button class="btn btn-save" id="save-gallery" data-i18n="save">Save Gallery Changes</button>
                 </div>
             </div>
 
@@ -3719,7 +3732,7 @@
         <!-- Pricing & Plans Management Content -->
         <div class="management-content" id="pricing-content">
             <!-- Section Heading -->
-            <h3 class="section-heading">Pricing & Plans Management</h3>
+            <h3 class="section-heading" data-i18n="pricing_management">Pricing & Plans Management</h3>
 
             <!-- Pricing Type Tabs -->
             <div class="pricing-type-tabs" id="pricing-type-tabs-container">
@@ -3861,7 +3874,7 @@
 
                 <!-- Save Button -->
                 <div class="save-section">
-                    <button class="btn btn-save" id="save-1bhk-pricing">Save 1 BHK Pricing</button>
+                    <button class="btn btn-save" id="save-1bhk-pricing" data-i18n="save">Save 1 BHK Pricing</button>
                 </div>
             </div>
 
@@ -3991,7 +4004,7 @@
 
                 <!-- Save Button -->
                 <div class="save-section">
-                    <button class="btn btn-save" id="save-2bhk-pricing">Save 2 BHK Pricing</button>
+                    <button class="btn btn-save" id="save-2bhk-pricing" data-i18n="save">Save 2 BHK Pricing</button>
                 </div>
             </div>
 
@@ -4121,7 +4134,7 @@
 
                 <!-- Save Button -->
                 <div class="save-section">
-                    <button class="btn btn-save" id="save-3bhk-pricing">Save 3 BHK Pricing</button>
+                    <button class="btn btn-save" id="save-3bhk-pricing" data-i18n="save">Save 3 BHK Pricing</button>
                 </div>
             </div>
 
@@ -4274,7 +4287,7 @@
         <!-- NEW: Featured Properties Management Content -->
         <div class="management-content" id="featured-properties-content">
             <!-- Section Heading -->
-            <h3 class="section-heading">Featured Properties Management</h3>
+            <h3 class="section-heading" data-i18n="featured_properties">Featured Properties Management</h3>
 
             <!-- Property Type Sub Tabs -->
             <div class="management-tabs-nav" id="property-type-tabs" style="border-bottom: none; margin-bottom: 20px;">
@@ -5093,7 +5106,7 @@
                             <button class="btn btn-prev" id="prev-to-location">
                                 <i class="fas fa-arrow-left me-2"></i> Previous: Location
                             </button>
-                            <button class="btn btn-save" id="save-complete-property">
+                            <button class="btn btn-save" id="save-complete-property" data-i18n="save">
                                 <i class="fas fa-save me-2"></i> Save Complete Property
                             </button>
                         </div>
@@ -5115,6 +5128,8 @@
 
             <!-- Schedule Visit & Inquiries Content -->
             <div id="schedule-visit-content" style="display: none;">
+                <!-- Section Heading -->
+                <h3 class="section-heading" data-i18n="schedule_visits">Schedule Visits Management</h3>
                 <!-- Schedule Visit Tabs -->
                 <div class="schedule-visit-tabs" id="inquiry-type-tabs">
                     <button class="schedule-visit-tab active" data-inquiry-type="sale">For Sale Inquiries</button>
@@ -5263,24 +5278,49 @@
         // Update time and date in real-time for top navbar
         function updateNavbarDateTime() {
             const now = new Date();
+            const lang = window.currentLanguage || 'en';
+
+            // Day and Month names for localization
+            const dayNames = {
+                en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                hi: ["रविवार", "सोमवार", "मंगलवार", "बुधवार", "गुरुवार", "शुक्रवार", "शनिवार"],
+                gu: ["રવિવાર", "સોમવાર", "મંગળવાર", "બુધવાર", "ગુરુવાર", "શુક્રવાર", "શનિવાર"]
+            };
+
+            const monthNames = {
+                en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                hi: ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"],
+                gu: ["જાન્યુઆરી", "ફેબ્રુઆરી", "માર્ચ", "એપ્રિલ", "મે", "જૂન", "જુલાઈ", "ઑગસ્ટ", "સપ્ટેમ્બર", "ઓક્ટોબર", "નવેમ્બર", "ડિસેમ્બર"]
+            };
+
+            const dayName = dayNames[lang][now.getDay()];
+            const monthName = monthNames[lang][now.getMonth()];
+            const date = now.getDate();
+            const year = now.getFullYear();
+
             let hours = now.getHours();
             let minutes = now.getMinutes();
             let seconds = now.getSeconds();
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-
-            hours = hours % 12;
-            hours = hours ? hours : 12;
             minutes = minutes < 10 ? '0' + minutes : minutes;
             seconds = seconds < 10 ? '0' + seconds : seconds;
-
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const dateString = now.toLocaleDateString('en-US', options);
 
             const timeElement = document.getElementById('navbar-current-time');
             const dateElement = document.getElementById('navbar-current-date');
 
-            if (timeElement) timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
-            if (dateElement) dateElement.textContent = dateString;
+            if (!timeElement || !dateElement) return;
+
+            if (lang === 'en') {
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                hours = hours < 10 ? '0' + hours : hours;
+                timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+                dateElement.textContent = `${dayName}, ${monthName} ${date}, ${year}`;
+            } else {
+                hours = hours < 10 ? '0' + hours : hours;
+                timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+                dateElement.textContent = `${dayName}, ${date} ${monthName}, ${year}`;
+            }
         }
 
         // ===== GLOBAL AUTO-TRANSLATE FUNCTIONS =====
@@ -5303,15 +5343,14 @@
         let currentPropertyDocuments = [];
         let currentApprovalsDocuments = [];
         let currentInquiryType = 'sale';
-        let currentInquiryId = null;
-
-        const projectData = {
+        let projectData = {
             apartmentPlans: { '1bhk': [], '2bhk': [], '3bhk': [] },
             gallery: [],
             pricingPlans: [],
             featuredProperties: { 'for-sale': [], 'for-rent': [] },
             inquiries: []
         };
+
 
         // Google Translate GTX API - translate text from source to target language
         async function translateText(text, sourceLang, targetLang) {
@@ -6781,152 +6820,540 @@
             const addAmenitySectionBtn = document.getElementById('add-amenity-section');
             const addRoomDimensionBtn = document.getElementById('add-room-dimension');
 
-            // Modal Elements
-            const imagePreviewModal = new bootstrap.Modal(document.getElementById('imagePreviewModal'));
-            const propertyDetailsModal = new bootstrap.Modal(document.getElementById('propertyDetailsModal'));
+            // State Management
+            window.currentLanguage = localStorage.getItem('adminLanguage') || 'en';
 
-            // ===== DATA STORAGE =====
-            const projectData = {
-                apartmentPlans: {
-                    '1bhk': [
-                        {
-                            area: '550',
-                            bedrooms: '1',
-                            bathrooms: '1',
-                            balconies: '1',
-                            description: 'Compact and efficient 1 BHK layout',
-                            image: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-                            status: 'available',
-                            lastUpdated: '2024-02-01'
-                        }
-                    ],
-                    '2bhk': [
-                        {
-                            area: '850',
-                            bedrooms: '2',
-                            bathrooms: '2',
-                            balconies: '2',
-                            description: 'Spacious 2 BHK with modern amenities',
-                            image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-                            status: 'available',
-                            lastUpdated: '2024-02-01'
-                        }
-                    ],
-                    '3bhk': [
-                        {
-                            area: '1200',
-                            bedrooms: '3',
-                            bathrooms: '2',
-                            balconies: '2',
-                            description: 'Luxurious 3 BHK with premium features',
-                            image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-                            status: 'available',
-                            lastUpdated: '2024-02-01'
-                        }
-                    ]
+            const translations = {
+                en: {
+                    admin_panel: "Naroda Irish Admin",
+                    admin_name: "Admin User",
+                    system_administrator: "System Administrator",
+                    apartment_plans: "Apartment Plans Management",
+                    gallery_management: "Gallery Management",
+                    pricing_management: "Pricing & Plans Management",
+                    featured_properties: "Featured Properties Management",
+                    schedule_visits: "Schedule Visits Management",
+                    save: "Save Details",
+                    dashboard: "Dashboard",
+                    users: "Users",
+                    projects: "Projects",
+                    blogs: "Blogs",
+                    faq: "FAQ",
+                    team: "Team",
+                    gallery: "Gallery",
+                    career: "Career",
+                    news: "News",
+                    log_out: "Log Out",
+                    loading: "Loading...",
+                    no_data: "No data found",
+                    confirm_delete: "Are you sure you want to delete this?",
+                    delete_success: "Deleted successfully!",
+                    delete_failed: "Failed to delete",
+                    dashboard_title: "Naroda Irish Project Management",
+                    view_live_project: "View Live Project",
+                    apartment_plans_tab: "Apartment Plans",
+                    pricing_plans_tab: "Pricing & Plans",
+                    featured_properties_tab: "Featured Properties",
+                    schedule_visit_tab: "Schedule Visit & Inquiries",
+                    apartment_details_title: "Apartment Details",
+                    super_area: "Super Area (Sq. Ft.)",
+                    bedrooms: "Bedrooms",
+                    bathrooms: "Bathrooms",
+                    balconies: "Balconies",
+                    apartment_description: "Apartment Description",
+                    english: "English",
+                    hindi: "हिंदी",
+                    gujarati: "ગુજરાતી",
+                    auto_translate: "Auto-Translate to Hindi & Gujarati",
+                    floor_plan_image: "Floor Plan Image",
+                    upload_floor_plan: "Upload Floor Plan Image",
+                    click_upload: "Click to upload floor plan image",
+                    clear_form: "Clear Form",
+                    save_apartment_plan: "Save Apartment Plan",
+                    all_apartment_plans: "All Apartment Plans",
+                    type: "Type",
+                    status: "Status",
+                    actions: "Actions",
+                    no_plans_yet: "No apartment plans added yet",
+                    upload_gallery_title: "Upload Gallery Images",
+                    drag_drop_images: "Drag and drop images here or click to browse",
+                    supported_formats_gallery: "Supported formats: JPG, PNG, WebP up to 10MB each",
+                    browse_images: "Browse Images",
+                    save_gallery_changes: "Save Gallery Changes",
+                    gallery_images_title: "Gallery Images",
+                    no_gallery_images: "No gallery images yet. Upload images above.",
+                    pricing_plans_title: "Pricing & Plans Management",
+                    starting_price: "Starting Price (₹)",
+                    sqft: "Sq. Ft.",
+                    parking: "Parking",
+                    available_units: "Available Units",
+                    availability_status: "Availability Status",
+                    available: "Available",
+                    limited: "Limited Availability",
+                    sold_out: "Sold Out",
+                    coming_soon: "Coming Soon",
+                    apartment_features: "Apartment Features",
+                    add_feature: "Add Feature",
+                    save_pricing: "Save Pricing",
+                    pricing_preview: "Pricing Preview",
+                    live_preview: "Live Preview",
+                    edit: "Edit",
+                    features: "Features:",
+                    for_sale: "For Sale",
+                    for_rent: "For Rent",
+                    basic_info: "Basic Info",
+                    overview: "Overview",
+                    amenities: "Amenities",
+                    floor_plans_dimensions: "Floor Plans & Dimensions",
+                    location: "Location",
+                    documents: "Documents",
+                    basic_info_title: "Basic Information",
+                    property_tab_indicator: "This information appears on the property card preview",
+                    primary_image: "Image 1 (Primary Image)",
+                    upload_primary_image: "Upload Primary Image",
+                    click_drag_upload: "Click or drag to upload the main property image",
+                    supported_formats_image: "JPG, PNG, WebP up to 10MB",
+                    browse: "Browse",
+                    image_preview: "Image 1 Preview",
+                    upload_to_see_preview: "Upload to see preview",
+                    property_title_desc: "Property Title & Description (Multilingual)",
+                    property_title: "Property Title",
+                    property_description: "Description",
+                    property_type: "Property Type",
+                    property_category: "Category",
+                    area_sqft: "Area (sq.ft)",
+                    floor: "Floor",
+                    parking_spaces: "Parking Spaces",
+                    select_status: "Select Status",
+                    price: "Price",
+                    price_unit: "Price Unit",
+                    property_id: "Property ID",
+                    facing: "Facing",
+                    property_images: "Property Images",
+                    upload_property_images: "Upload Property Images",
+                    click_upload_multiple: "Click to upload multiple property images",
+                    upload_multiple_hint: "You can upload multiple images at once",
+                    brochure_document: "Brochure Document",
+                    upload_brochure: "Upload Brochure Document",
+                    click_upload_brochure: "Click to upload property brochure",
+                    supported_formats_brochure: "Supported formats: PDF, DOC, DOCX, PPT, PPTX, JPG, PNG",
+                    browse_brochure: "Browse Brochure",
+                    basic_info_preview: "Basic Information Preview",
+                    fill_form_preview: "Fill in the form above to see the preview",
+                    previous: "Previous",
+                    next: "Next",
+                    property_overview_title: "Property Overview",
+                    detailed_description: "Detailed Description",
+                    key_features: "Key Features",
+                    overview_preview: "Overview Preview",
+                    property_amenities: "Property Amenities",
+                    add_amenity_section: "Add New Amenity Section",
+                    amenities_preview: "Amenities Preview",
+                    living_room: "Living Room",
+                    master_bedroom: "Master Bedroom",
+                    bedroom_2: "Bedroom 2",
+                    add_another_room: "Add Another Room",
+                    upload_floor_plan_doc: "Upload Floor Plan Document",
+                    click_upload_pdf_dwg: "Click to upload PDF or DWG file",
+                    floor_plans_preview: "Floor Plans & Dimensions Preview",
+                    location_details: "Location Details",
+                    full_address: "Full Address",
+                    location_preview: "Location Preview",
+                    upload_property_docs: "Upload Property Documents",
+                    upload_multiple_docs: "Click to upload multiple documents",
+                    approvals_certificates: "Approvals & Certificates",
+                    upload_approvals_hint: "Click to upload multiple approval documents",
+                    save_complete_property: "Save Complete Property",
+                    property_cards_title: "Property Cards",
+                    no_properties_added: "No properties added yet",
+                    add_properties_hint: "Add properties using the form above",
+                    sale_inquiries_table_title: "Schedule Visit & Inquiries - For Sale Properties",
+                    rent_inquiries_table_title: "Schedule Visit & Inquiries - For Rent Properties",
+                    date: "Date",
+                    name: "Name",
+                    email: "Email",
+                    phone: "Phone",
+                    message: "Message",
+                    inquiry_details_preview: "Inquiry Details Preview",
+                    select_inquiry_view: "Select an inquiry to view details",
+                    inquiry_instructions: "Click on \"View Details\" button from the table above to see the complete inquiry information.",
+                    full_image_preview_title: "Image Preview",
+                    property_details_modal_title: "Property Details"
                 },
-                gallery: [
-                    {
-                        id: 1,
-                        url: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-                        title: 'Irish Architecture',
-                        description: 'Irish-inspired building exterior',
-                        uploadedDate: '2024-02-01',
-                        isFeatured: true
-                    }
-                ],
-                pricingPlans: {
-                    '1bhk': {
-                        startingPrice: '₹55,00,000',
-                        sqft: '550 sq.ft',
-                        bedrooms: '1',
-                        bathrooms: '1',
-                        parking: '1 Covered',
-                        available: '25',
-                        availabilityStatus: 'available',
-                        features: [
-                            'Modular Kitchen',
-                            'Vitrified Flooring',
-                            'Fully Painted Walls',
-                            'Wi-Fi Enabled'
-                        ],
-                        lastUpdated: new Date().toISOString().split('T')[0],
-                        status: 'active'
-                    },
-                    '2bhk': {
-                        startingPrice: '₹85,00,000',
-                        sqft: '850 sq.ft',
-                        bedrooms: '2',
-                        bathrooms: '2',
-                        parking: '1 Covered',
-                        available: '18',
-                        availabilityStatus: 'available',
-                        features: [
-                            'Premium Fittings',
-                            'Wooden Flooring',
-                            'Smart Home Features',
-                            'Walk-in Closet'
-                        ],
-                        lastUpdated: new Date().toISOString().split('T')[0],
-                        status: 'active'
-                    },
-                    '3bhk': {
-                        startingPrice: '₹1,20,00,000',
-                        sqft: '1200 sq.ft',
-                        bedrooms: '3',
-                        bathrooms: '2',
-                        parking: '2 Covered',
-                        available: '12',
-                        availabilityStatus: 'available',
-                        features: [
-                            'Luxury Fittings',
-                            'Marble Flooring',
-                            'Home Automation',
-                            'Private Terrace'
-                        ],
-                        lastUpdated: new Date().toISOString().split('T')[0],
-                        status: 'active'
-                    }
+                hi: {
+                    admin_panel: "नरोडा आयरिश एडमिन",
+                    admin_name: "एडमिन उपयोगकर्ता",
+                    system_administrator: "सिस्टम व्यवस्थापक",
+                    apartment_plans: "अपार्टमेंट योजना प्रबंधन",
+                    gallery_management: "गैलरी प्रबंधन",
+                    pricing_management: "मूल्य निर्धारण योजना प्रबंधन",
+                    featured_properties: "विशेष रुप से प्रदर्शित संपत्ति प्रबंधन",
+                    schedule_visits: "शेड्यूल विज़िट प्रबंधन",
+                    save: "विवरण सहेजें",
+                    dashboard: "डैशबोर्ड",
+                    users: "उपयोगकर्ता",
+                    projects: "परियोजनाएं",
+                    blogs: "ब्लॉग",
+                    faq: "सामान्य प्रश्न",
+                    team: "टीम",
+                    gallery: "गैलरी",
+                    career: "करियर",
+                    news: "समाचार",
+                    log_out: "लॉग आउट",
+                    loading: "लोड हो रहा है...",
+                    no_data: "कोई डेटा नहीं मिला",
+                    confirm_delete: "क्या आप वाकई इसे हटाना चाहते हैं?",
+                    delete_success: "सफलतापूर्वक हटा दिया गया!",
+                    delete_failed: "हटाने में विफल",
+                    dashboard_title: "नरोडा आयरिश परियोजना प्रबंधन",
+                    view_live_project: "लाइव प्रोजेक्ट देखें",
+                    apartment_plans_tab: "अपार्टमेंट योजनाएं",
+                    pricing_plans_tab: "मूल्य निर्धारण और योजनाएं",
+                    featured_properties_tab: "विशेष रुप से प्रदर्शित गुण",
+                    schedule_visit_tab: "शेड्यूल विज़िट और पूछताछ",
+                    apartment_details_title: "अपार्टमेंट विवरण",
+                    super_area: "सुपर एरिया (वर्ग फुट)",
+                    bedrooms: "बेडरूम",
+                    bathrooms: "बाथरूम",
+                    balconies: "बालकनी",
+                    apartment_description: "अपार्टमेंट विवरण",
+                    english: "अंग्रेजी",
+                    hindi: "हिंदी",
+                    gujarati: "गुजराती",
+                    auto_translate: "हिंदी और गुजराती में ऑटो-अनुवाद",
+                    floor_plan_image: "फ्लोर प्लान इमेज",
+                    upload_floor_plan: "फ्लोर प्लान इमेज अपलोड करें",
+                    click_upload: "फ्लोर प्लान इमेज अपलोड करने के लिए क्लिक करें",
+                    clear_form: "फॉर्म साफ करें",
+                    save_apartment_plan: "अपार्टमेंट प्लान सहेजें",
+                    all_apartment_plans: "सभी अपार्टमेंट योजनाएं",
+                    type: "प्रकार",
+                    status: "स्थिति",
+                    actions: "कार्रवाई",
+                    no_plans_yet: "अभी तक कोई अपार्टमेंट योजना नहीं जोड़ी गई है",
+                    upload_gallery_title: "गैलरी चित्र अपलोड करें",
+                    drag_drop_images: "चित्रों को यहां खींचें और छोड़ें या ब्राउज़ करने के लिए क्लिक करें",
+                    supported_formats_gallery: "समर्थित प्रारूप: JPG, PNG, WebP प्रत्येक 10MB तक",
+                    browse_images: "चित्र ब्राउज़ करें",
+                    save_gallery_changes: "गैलरी परिवर्तन सहेजें",
+                    gallery_images_title: "गैलरी चित्र",
+                    no_gallery_images: "अभी तक कोई गैलरी चित्र नहीं है। ऊपर चित्र अपलोड करें।",
+                    pricing_plans_title: "मूल्य निर्धारण और योजना प्रबंधन",
+                    starting_price: "शुरुआती कीमत (₹)",
+                    sqft: "वर्ग फुट",
+                    parking: "पार्किंग",
+                    available_units: "उपलब्ध इकाइयाँ",
+                    availability_status: "उपलब्धता स्थिति",
+                    available: "उपलब्ध",
+                    limited: "सीमित उपलब्धता",
+                    sold_out: "बिक गया",
+                    coming_soon: "जल्द आ रहा है",
+                    apartment_features: "अपार्टमेंट की विशेषताएं",
+                    add_feature: "सुविधा जोड़ें",
+                    save_pricing: "मूल्य निर्धारण सहेजें",
+                    pricing_preview: "मूल्य निर्धारण पूर्वावलोकन",
+                    live_preview: "लाइव पूर्वावलोकन",
+                    edit: "संपादित करें",
+                    features: "विशेषताएं:",
+                    for_sale: "बिक्री के लिए",
+                    for_rent: "किराये के लिए",
+                    basic_info: "बुनियादी जानकारी",
+                    overview: "अवलोकन",
+                    amenities: "सुविधाएं",
+                    floor_plans_dimensions: "फ्लोर प्लान और आयाम",
+                    location: "स्थान",
+                    documents: "दस्तावेज़",
+                    basic_info_title: "बुनियादी जानकारी",
+                    property_tab_indicator: "यह जानकारी संपत्ति कार्ड पूर्वावलोकन पर दिखाई देती है",
+                    primary_image: "छवि 1 (प्राथमिक छवि)",
+                    upload_primary_image: "प्राथमिक छवि अपलोड करें",
+                    click_drag_upload: "मुख्य संपत्ति छवि अपलोड करने के लिए क्लिक करें या खींचें",
+                    supported_formats_image: "JPG, PNG, WebP 10MB तक",
+                    browse: "ब्राउज़ करें",
+                    image_preview: "छवि 1 पूर्वावलोकन",
+                    upload_to_see_preview: "पूर्वावलोकन देखने के लिए अपलोड करें",
+                    property_title_desc: "संपत्ति का शीर्षक और विवरण (बहुभाषी)",
+                    property_title: "संपत्ति का शीर्षक",
+                    property_description: "विवरण",
+                    property_type: "संपत्ति का प्रकार",
+                    property_category: "श्रेणी",
+                    area_sqft: "क्षेत्रफल (वर्ग फुट)",
+                    floor: "मंजिल",
+                    parking_spaces: "पार्किंग स्थान",
+                    select_status: "स्थिति चुनें",
+                    price: "कीमत",
+                    price_unit: "मूल्य इकाई",
+                    property_id: "संपत्ति आईडी",
+                    facing: "मुखी",
+                    property_images: "संपत्ति के चित्र",
+                    upload_property_images: "संपत्ति के चित्र अपलोड करें",
+                    click_upload_multiple: "कई संपत्ति चित्र अपलोड करने के लिए क्लिक करें",
+                    upload_multiple_hint: "आप एक साथ कई चित्र अपलोड कर सकते हैं",
+                    brochure_document: "विवरणिका दस्तावेज़",
+                    upload_brochure: "विवरणिका दस्तावेज़ अपलोड करें",
+                    click_upload_brochure: "संपत्ति विवरणिका अपलोड करने के लिए क्लिक करें",
+                    supported_formats_brochure: "समर्थित प्रारूप: PDF, DOC, DOCX, PPT, PPTX, JPG, PNG",
+                    browse_brochure: "विवरणिका ब्राउज़ करें",
+                    basic_info_preview: "बुनियादी जानकारी पूर्वावलोकन",
+                    fill_form_preview: "पूर्वावलोकन देखने के लिए ऊपर फॉर्म भरें",
+                    previous: "पिछला",
+                    next: "अगला",
+                    property_overview_title: "संपत्ति अवलोकन",
+                    detailed_description: "विस्तृत विवरण",
+                    key_features: "मुख्य विशेषताएं",
+                    overview_preview: "अवलोकन पूर्वावलोकन",
+                    property_amenities: "संपत्ति की सुविधाएं",
+                    add_amenity_section: "नया सुविधा अनुभाग जोड़ें",
+                    amenities_preview: "सुविधाएं पूर्वावलोकन",
+                    living_room: "ड्राइंग रूम",
+                    master_bedroom: "मास्टर बेडरूम",
+                    bedroom_2: "बेडरूम 2",
+                    add_another_room: "एक और कमरा जोड़ें",
+                    upload_floor_plan_doc: "फ्लोर प्लान दस्तावेज़ अपलोड करें",
+                    click_upload_pdf_dwg: "PDF या DWG फ़ाइल अपलोड करने के लिए क्लिक करें",
+                    floor_plans_preview: "फ्लोर प्लान और आयाम पूर्वावलोकन",
+                    location_details: "स्थान विवरण",
+                    full_address: "पूरा पता",
+                    location_preview: "स्थान पूर्वावलोकन",
+                    upload_property_docs: "संपत्ति के दस्तावेज़ अपलोड करें",
+                    upload_multiple_docs: "कई दस्तावेज़ अपलोड करने के लिए क्लिक करें",
+                    approvals_certificates: "अनुमोदन और प्रमाण पत्र",
+                    upload_approvals_hint: "कई अनुमोदन दस्तावेज़ अपलोड करने के लिए क्लिक करें",
+                    save_complete_property: "पूरी संपत्ति सहेजें",
+                    property_cards_title: "संपत्ति कार्ड",
+                    no_properties_added: "अभी तक कोई संपत्ति नहीं जोड़ी गई है",
+                    add_properties_hint: "ऊपर दिए गए फॉर्म का उपयोग करके संपत्ति जोड़ें",
+                    sale_inquiries_table_title: "शेड्यूल विज़िट और पूछताछ - बिक्री के लिए संपत्तियां",
+                    rent_inquiries_table_title: "शेड्यूल विज़िट और पूछताछ - किराये की संपत्तियां",
+                    date: "तारीख",
+                    name: "नाम",
+                    email: "ईमेल",
+                    phone: "फोन",
+                    message: "संदेश",
+                    inquiry_details_preview: "पूछताछ विवरण पूर्वावलोकन",
+                    select_inquiry_view: "विवरण देखने के लिए एक पूछताछ चुनें",
+                    inquiry_instructions: "पूरी पूछताछ जानकारी देखने के लिए ऊपर दी गई तालिका से \"विवरण देखें\" बटन पर क्लिक करें।",
+                    full_image_preview_title: "छवि पूर्वावलोकन",
+                    property_details_modal_title: "संपत्ति विवरण"
                 },
-                featuredProperties: {
-                    'for-sale': [],
-                    'for-rent': []
-                },
-                scheduleVisits: {
-                    'sale': [
-                        {
-                            id: 1,
-                            date: '2024-02-20',
-                            name: 'John Smith',
-                            email: 'john.smith@example.com',
-                            phone: '+91 98765 43210',
-                            inquiryType: 'Schedule Site Visit',
-                            propertyId: 'NI-PR-2035-001',
-                            propertyTitle: 'Premium 3 BHK Apartment',
-                            message: 'I would like to schedule a site visit for this apartment next week.',
-                            preferredDate: '2024-02-25',
-                            status: 'new',
-                            submittedDate: '2024-02-20 14:30:00'
-                        }
-                    ],
-                    'rent': [
-                        {
-                            id: 2,
-                            date: '2024-02-19',
-                            name: 'Sarah Johnson',
-                            email: 'sarah.j@example.com',
-                            phone: '+91 98765 43211',
-                            inquiryType: 'Virtual Tour Request',
-                            propertyId: 'NI-PR-2035-002',
-                            propertyTitle: '2 BHK Apartment',
-                            message: 'Can I get a virtual tour of the apartment?',
-                            preferredDate: '',
-                            status: 'contacted',
-                            submittedDate: '2024-02-19 11:15:00'
-                        }
-                    ]
+                gu: {
+                    admin_panel: "નરોડા આઇરિશ એડમિન",
+                    admin_name: "એડમિન વપરાશકર્તા",
+                    system_administrator: "સિસ્ટમ એડમિનિસ્ટ્રેટર",
+                    apartment_plans: "એપાર્ટમેન્ટ પ્લાન મેનેજમેન્ટ",
+                    gallery_management: "ગેલેરી મેનેજમેન્ટ",
+                    pricing_management: "કિંમત નિર્ધારણ યોજના મેનેજમેન્ટ",
+                    featured_properties: "ફીચર્ડ પ્રોપર્ટી મેનેજમેન્ટ",
+                    schedule_visits: "શેડ્યૂલ વિઝિટ મેનેજમેન્ટ",
+                    save: "વિગતો સાચવો",
+                    dashboard: "ડેશબોર્ડ",
+                    users: "વપરાશકર્તાઓ",
+                    projects: "પ્રોજેક્ટ્સ",
+                    blogs: "બ્લોગ્સ",
+                    faq: "FAQ",
+                    team: "ટીમ",
+                    gallery: "ગેલેરી",
+                    career: "કારકિર્દી",
+                    news: "સમાચાર",
+                    log_out: "લોગ આઉટ",
+                    loading: "લોડ થઈ રહ્યું છે...",
+                    no_data: "કોઈ ડેટા મળ્યો નથી",
+                    confirm_delete: "શું તમે ખરેખર આ કાઢી નાખવા માંગો છો?",
+                    delete_success: "સફળતાપૂર્વક કાઢી નાખ્યું!",
+                    delete_failed: "કાઢી નાખવામાં નિષ્ફળ",
+                    dashboard_title: "નરોડા આઇરિશ પ્રોજેક્ટ મેનેજમેન્ટ",
+                    view_live_project: "લાઇવ પ્રોજેક્ટ જુઓ",
+                    apartment_plans_tab: "એપાર્ટમેન્ટ પ્લાન્સ",
+                    pricing_plans_tab: "કિંમત અને યોજનાઓ",
+                    featured_properties_tab: "ફીચર્ડ પ્રોપર્ટીઝ",
+                    schedule_visit_tab: "શેડ્યૂલ વિઝિટ અને પૂછપરછ",
+                    apartment_details_title: "એપાર્ટમેન્ટ વિગતો",
+                    super_area: "સુપર એરિયા (ચોરસ ફૂટ)",
+                    bedrooms: "બેડરૂમ",
+                    bathrooms: "બાથરૂમ",
+                    balconies: "બાલ્કની",
+                    apartment_description: "એપાર્ટમેન્ટ વર્ણન",
+                    english: "અંગ્રેજી",
+                    hindi: "હિન્દી",
+                    gujarati: "ગુજરાતી",
+                    auto_translate: "હિન્દી અને ગુજરાતીમાં ઓટો-ભાષાંતર",
+                    floor_plan_image: "ફ્લોર પ્લાન ઈમેજ",
+                    upload_floor_plan: "ફ્લોર પ્લાન ઈમેજ અપલોડ કરો",
+                    click_upload: "ફ્લોર પ્લાન ઈમેજ અપલોડ કરવા માટે ક્લિક કરો",
+                    clear_form: "ફોર્મ સાફ કરો",
+                    save_apartment_plan: "એપાર્ટમેન્ટ પ્લાન સાચવો",
+                    all_apartment_plans: "તમામ એપાર્ટમેન્ટ પ્લાન્સ",
+                    type: "પ્રકાર",
+                    status: "સ્થિતિ",
+                    actions: "ક્રિયાઓ",
+                    no_plans_yet: "હજી કોઈ એપાર્ટમેન્ટ પ્લાન ઉમેર્યા નથી",
+                    upload_gallery_title: "ગેલેરી ઈમેજો અપલોડ કરો",
+                    drag_drop_images: "ઈમેજો અહીં ખેંચો અને છોડો અથવા બ્રાઉઝ કરવા માટે ક્લિક કરો",
+                    supported_formats_gallery: "સમર્થિત ફોર્મેટ્સ: JPG, PNG, WebP દરેક 10MB સુધી",
+                    browse_images: "ઈમેજો બ્રાઉઝ કરો",
+                    save_gallery_changes: "ગેલેરી ફેરફારો સાચવો",
+                    gallery_images_title: "ગેલેરી ઈમેજો",
+                    no_gallery_images: "હજી કોઈ ગેલેરી ઈમેજો નથી. ઉપર ઈમેજો અપલોડ કરો.",
+                    pricing_plans_title: "કિંમત અને યોજના મેનેજમેન્ટ",
+                    starting_price: "શરૂઆતની કિંમત (₹)",
+                    sqft: "ચોરસ ફૂટ",
+                    parking: "પાર્કિંગ",
+                    available_units: "ઉપલબ્ધ એકમો",
+                    availability_status: "ઉપલબ્ધતા સ્થિતિ",
+                    available: "ઉપલબ્ધ",
+                    limited: "મર્યાદિત ઉપલબ્ધતા",
+                    sold_out: "વેચાઈ ગયુ",
+                    coming_soon: "ટૂંક સમયમાં આવી રહ્યું છે",
+                    apartment_features: "એપાર્ટમેન્ટ સુવિધાઓ",
+                    add_feature: "સુવિધા ઉમેરો",
+                    save_pricing: "કિંમત સાચવો",
+                    pricing_preview: "કિંમત પૂર્વાવલોકન",
+                    live_preview: "લાઇવ પૂર્વાવલોકન",
+                    edit: "ફેરફાર કરો",
+                    features: "સુવિધાઓ:",
+                    for_sale: "વેચાણ માટે",
+                    for_rent: "ભાડા માટે",
+                    basic_info: "મૂળભૂત માહિતી",
+                    overview: "ઝાંખી",
+                    amenities: "સુવિધાઓ",
+                    floor_plans_dimensions: "ફ્લોર પ્લાન્સ અને પરિમાણો",
+                    location: "સ્થાન",
+                    documents: "દસ્તાવેજો",
+                    basic_info_title: "મૂળભૂત માહિતી",
+                    property_tab_indicator: "આ માહિતી પ્રોપર્ટી કાર્ડ પૂર્વાવલોકન પર દેખાય છે",
+                    primary_image: "ઈમેજ 1 (પ્રાથમિક ઈમેજ)",
+                    upload_primary_image: "પ્રાથમિક ઈમેજ અપલોડ કરો",
+                    click_drag_upload: "મુખ્ય પ્રોપર્ટી ઈમેજ અપલોડ કરવા માટે ક્લિક કરો અથવા ખેંચો",
+                    supported_formats_image: "JPG, PNG, WebP 10MB સુધી",
+                    browse: "બ્રાઉઝ કરો",
+                    image_preview: "ઈમેજ 1 પૂર્વાવલોકન",
+                    upload_to_see_preview: "પૂર્વાવલોકન જોવા માટે અપલોડ કરો",
+                    property_title_desc: "પ્રોપર્ટી શીર્ષક અને વર્ણન (બહુભાષી)",
+                    property_title: "પ્રોપર્ટી શીર્ષક",
+                    property_description: "વર્ણન",
+                    property_type: "પ્રોપર્ટી પ્રકાર",
+                    property_category: "શ્રેણી",
+                    area_sqft: "વિસ્તાર (ચોરસ ફૂટ)",
+                    floor: "માળ",
+                    parking_spaces: "પાર્કિંગ જગ્યાઓ",
+                    select_status: "સ્થિતિ પસંદ કરો",
+                    price: "કિંમત",
+                    price_unit: "કિંમત એકમ",
+                    property_id: "પ્રોપર્ટી ID",
+                    facing: "મુખ",
+                    property_images: "પ્રોપર્ટી ઈમેજો",
+                    upload_property_images: "પ્રોપર્ટી ઈમેજો અપલોડ કરો",
+                    click_upload_multiple: "ઘણી પ્રોપર્ટી ઈમેજો અપલોડ કરવા માટે ક્લિક કરો",
+                    upload_multiple_hint: "તમે એકસાથે ઘણી ઈમેજો અપલોડ કરી શકો છો",
+                    brochure_document: "બ્રોશર દસ્તાવેજ",
+                    upload_brochure: "બ્રોશર દસ્તાવેજ અપલોડ કરો",
+                    click_upload_brochure: "પ્રોપર્ટી બ્રોશર અપલોડ કરવા માટે ક્લિક કરો",
+                    supported_formats_brochure: "સમર્થિત ફોર્મેટ્સ: PDF, DOC, DOCX, PPT, PPTX, JPG, PNG",
+                    browse_brochure: "બ્રોશર બ્રાઉઝ કરો",
+                    basic_info_preview: "મૂળભૂત માહિતી પૂર્વાવલોકન",
+                    fill_form_preview: "પૂર્વાવલોકન જોવા માટે ઉપરનું ફોર્મ ભરો",
+                    previous: "અગાઉનું",
+                    next: "આગળ",
+                    property_overview_title: "પ્રોપર્ટી ઝાંખી",
+                    detailed_description: "વિગતવાર વર્ણન",
+                    key_features: "મુખ્ય સુવિધાઓ",
+                    overview_preview: "ઝાંખી પૂર્વાવલોકન",
+                    property_amenities: "પ્રોપર્ટી સુવિધાઓ",
+                    add_amenity_section: "નવો સુવિધા વિભાગ ઉમેરો",
+                    amenities_preview: "સુવિધાઓ પૂર્વાવલોકન",
+                    living_room: "લિવિંગ રૂમ",
+                    master_bedroom: "માસ્ટર બેડરૂમ",
+                    bedroom_2: "બેડરૂમ 2",
+                    add_another_room: "બીજો રૂમ ઉમેરો",
+                    upload_floor_plan_doc: "ફ્લોર પ્લાન દસ્તાવેજ અપલોડ કરો",
+                    click_upload_pdf_dwg: "PDF અથવા DWG ફાઇલ અપલોડ કરવા માટે ક્લિક કરો",
+                    floor_plans_preview: "ફ્લોર પ્લાન્સ અને પરિમાણો પૂર્વાવલોકન",
+                    location_details: "સ્થાન વિગતો",
+                    full_address: "સંપૂર્ણ સરનામું",
+                    location_preview: "સ્થાન પૂર્વાવલોકન",
+                    upload_property_docs: "પ્રોપર્ટી દસ્તાવેજો અપલોડ કરો",
+                    upload_multiple_docs: "ઘણા દસ્તાવેજો અપલોડ કરવા માટે ક્લિક કરો",
+                    approvals_certificates: "મંજૂરીઓ અને પ્રમાણપત્રો",
+                    upload_approvals_hint: "ઘણા મંજૂરી દસ્તાવેજો અપલોડ કરવા માટે ક્લિક કરો",
+                    save_complete_property: "સંપૂર્ણ પ્રોપર્ટી સાચવો",
+                    property_cards_title: "પ્રોપર્ટી કાર્ડ્સ",
+                    no_properties_added: "હજી કોઈ પ્રોપર્ટી ઉમેરી નથી",
+                    add_properties_hint: "ઉપરના ફોર્મનો ઉપયોગ કરીને પ્રોપર્ટી ઉમેરો",
+                    sale_inquiries_table_title: "શેડ્યૂલ વિઝિટ અને પૂછપરછ - વેચાણ માટેની પ્રોપર્ટીઝ",
+                    rent_inquiries_table_title: "શેડ્યૂલ વિઝિટ અને પૂછપરછ - ભાડાની પ્રોપર્ટીઝ",
+                    date: "તારીખ",
+                    name: "નામ",
+                    email: "ઇમેઇલ",
+                    phone: "ફોન",
+                    message: "સંદેશ",
+                    inquiry_details_preview: "પૂછપરછ વિગતો પૂર્વાવલોકન",
+                    select_inquiry_view: "વિગતો જોવા માટે પૂછપરછ પસંદ કરો",
+                    inquiry_instructions: "સંપૂર્ણ પૂછપરછ માહિતી જોવા માટે ઉપરના કોષ્ટકમાંથી \"વિગતો જુઓ\" બટન પર ક્લિક કરો.",
+                    full_image_preview_title: "ઈમેજ પૂર્વાવલોકન",
+                    property_details_modal_title: "પ્રોપર્ટી વિગતો"
                 }
             };
+
+            function translateUI() {
+                document.querySelectorAll("[data-i18n]").forEach((element) => {
+                    const key = element.getAttribute("data-i18n");
+                    if (translations[window.currentLanguage] && translations[window.currentLanguage][key]) {
+                        element.textContent = translations[window.currentLanguage][key];
+                    }
+                });
+
+                document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+                    const key = element.getAttribute("data-i18n-placeholder");
+                    if (translations[window.currentLanguage] && translations[window.currentLanguage][key]) {
+                        element.placeholder = translations[window.currentLanguage][key];
+                    }
+                });
+
+                // Update flag
+                const flagImg = document.getElementById("current-flag");
+                if (flagImg) {
+                    switch (window.currentLanguage) {
+                        case "hi": flagImg.src = "https://flagcdn.com/w40/in.png"; break;
+                        case "gu": flagImg.src = "https://flagcdn.com/w40/in.png"; break;
+                        default: flagImg.src = "https://flagcdn.com/w40/gb.png";
+                    }
+                }
+
+                // Set selector value
+                const selector = document.getElementById("global-language-selector");
+                if (selector) selector.value = window.currentLanguage;
+            }
+
+            // Language selector listener
+            const languageSelector = document.getElementById("global-language-selector");
+            if (languageSelector) {
+                languageSelector.addEventListener("change", function (e) {
+                    window.currentLanguage = e.target.value;
+                    localStorage.setItem('adminLanguage', window.currentLanguage);
+                    translateUI();
+                    updateNavbarDateTime();
+                    // Custom: Re-load data if needed
+                    loadGallery();
+                    loadScheduleVisits();
+                });
+            }
+
+            // Initial translation
+            translateUI();
+
+            // Modal Elements
+            // Using a more robust way to handle modals
+            window.imagePreviewModal = null;
+            window.propertyDetailsModal = null;
+
+            if (document.getElementById('imagePreviewModal')) {
+                window.imagePreviewModal = new bootstrap.Modal(document.getElementById('imagePreviewModal'));
+            }
+            if (document.getElementById('propertyDetailsModal')) {
+                window.propertyDetailsModal = new bootstrap.Modal(document.getElementById('propertyDetailsModal'));
+            }
+
+            // ===== DATA STORAGE =====
 
             // ===== INITIALIZE VARIABLES =====
             // Core state variables are now defined globally
@@ -7323,7 +7750,7 @@
                         const fullImagePreview = document.getElementById('full-image-preview');
                         if (fullImagePreview && imageUrl) {
                             fullImagePreview.src = imageUrl;
-                            if (imagePreviewModal) imagePreviewModal.show();
+                            if (window.imagePreviewModal) window.imagePreviewModal.show();
                         }
                     });
                 });
@@ -7423,7 +7850,6 @@
                 if (!container) return;
 
                 const gallery = projectData.gallery || [];
-
                 container.innerHTML = '';
 
                 if (gallery.length === 0) {
@@ -7439,6 +7865,10 @@
                 gallery.forEach(image => {
                     const item = document.createElement('div');
                     item.className = 'gallery-image-item';
+
+                    // Handle both snake_case and camelCase for date
+                    const dateDisplay = image.uploadedDate || image.uploaded_date || 'N/A';
+
                     item.innerHTML = `
                     <img src="${image.url}" alt="${image.title}">
                     <div class="gallery-image-actions">
@@ -7451,57 +7881,78 @@
                     </div>
                     <div class="gallery-image-info">
                         <div class="gallery-image-title">${image.title}</div>
-                        <div class="gallery-image-date">${image.uploadedDate}</div>
+                        <div class="gallery-image-date">${dateDisplay}</div>
                     </div>
                 `;
                     container.appendChild(item);
-                });
 
-                // Add event listeners
-                container.querySelectorAll('.gallery-image-btn.view').forEach(btn => {
-                    btn.addEventListener('click', function () {
-                        const imageId = parseInt(this.getAttribute('data-id'));
-                        const image = gallery.find(img => img.id === imageId);
-                        if (image) {
-                            const fullImagePreview = document.getElementById('full-image-preview');
-                            if (fullImagePreview) {
-                                fullImagePreview.src = image.url;
-                                if (imagePreviewModal) imagePreviewModal.show();
-                            }
-                        }
-                    });
-                });
+                    // Attach listeners to these specific buttons
+                    const viewBtn = item.querySelector('.view');
+                    const deleteBtn = item.querySelector('.delete');
 
-                container.querySelectorAll('.gallery-image-btn.delete').forEach(btn => {
-                    btn.addEventListener('click', async function () {
-                        const imageId = parseInt(this.getAttribute('data-id'));
-                        showConfirmModal(
-                            'Delete Gallery Image',
-                            'Are you sure you want to delete this image? This action cannot be undone.',
-                            async function () {
-                                // SYNC WITH DATABASE
-                                try {
-                                    const response = await fetch('api.php?action=delete_gallery_image', {
-                                        method: 'POST',
-                                        headers: { 'Content-Type': 'application/json' },
-                                        body: JSON.stringify({ id: imageId })
-                                    });
-
-                                    const result = await response.json();
-                                    if (result.status === 'success') {
-                                        projectData.gallery = projectData.gallery.filter(img => img.id !== imageId);
-                                        loadGallery();
-                                        showToast('Image deleted from database!', 'success');
-                                    } else {
-                                        throw new Error(result.message);
+                    if (viewBtn) {
+                        viewBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            const imageId = this.getAttribute('data-id');
+                            const imgData = gallery.find(img => String(img.id) === String(imageId));
+                            if (imgData) {
+                                const fullImagePreview = document.getElementById('full-image-preview');
+                                if (fullImagePreview) {
+                                    fullImagePreview.src = imgData.url;
+                                    // Use the global instance
+                                    if (!window.imagePreviewModal) {
+                                        window.imagePreviewModal = new bootstrap.Modal(document.getElementById('imagePreviewModal'));
                                     }
-                                } catch (error) {
-                                    console.error('Error deleting gallery image:', error);
-                                    showToast('Error deleting from database', 'error');
+                                    window.imagePreviewModal.show();
                                 }
                             }
-                        );
-                    });
+                        });
+                    }
+
+                    if (deleteBtn) {
+                        deleteBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            const imageId = this.getAttribute('data-id');
+                            const imageItem = this.closest('.gallery-image-item');
+
+                            showConfirmModal(
+                                'Delete Gallery Image',
+                                'Are you sure you want to delete this image? This action cannot be undone.',
+                                async function () {
+                                    try {
+                                        const response = await fetch('api.php?action=delete_gallery_image', {
+                                            method: 'POST',
+                                            headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({ id: imageId })
+                                        });
+
+                                        const result = await response.json();
+                                        if (result.status === 'success') {
+                                            // Remove from local data
+                                            projectData.gallery = projectData.gallery.filter(img => String(img.id) !== String(imageId));
+                                            // Remove from DOM immediately
+                                            if (imageItem) {
+                                                imageItem.style.opacity = '0';
+                                                imageItem.style.transform = 'scale(0.8)';
+                                                setTimeout(() => imageItem.remove(), 300);
+                                            }
+                                            showToast('Image deleted successfully!', 'success');
+
+                                            // Optional: reload gallery if empty to show placeholder
+                                            if (projectData.gallery.length === 0) {
+                                                setTimeout(loadGallery, 400);
+                                            }
+                                        } else {
+                                            throw new Error(result.message);
+                                        }
+                                    } catch (error) {
+                                        console.error('Error deleting gallery image:', error);
+                                        showToast('Error deleting from database', 'error');
+                                    }
+                                }
+                            );
+                        });
+                    }
                 });
             }
 
@@ -9188,12 +9639,12 @@
                 initModalTabs();
 
                 // Show the modal
-                if (propertyDetailsModal) {
+                if (window.propertyDetailsModal) {
                     // Update modal title
                     const modalTitle = document.querySelector('#propertyDetailsModal .modal-title');
                     if (modalTitle) modalTitle.textContent = property.title || 'Property Details';
 
-                    propertyDetailsModal.show();
+                    if (window.propertyDetailsModal) window.propertyDetailsModal.show();
                 }
             }
 
