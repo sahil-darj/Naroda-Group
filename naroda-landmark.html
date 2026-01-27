@@ -3544,17 +3544,17 @@
 
       <!-- Apartment Type Tabs -->
       <div class="apartment-type-tabs" id="apartment-type-tabs-container">
-        <button class="apartment-type-tab active" data-apartment="2bhk">
-          2 BHK
+        <button class="apartment-type-tab active" data-apartment="3bhk">
+          3 bhk
         </button>
-        <button class="apartment-type-tab" data-apartment="3bhk">
-          3 BHK
+        <button class="apartment-type-tab" data-apartment="4bhk">
+          4 bhk
         </button>
       </div>
 
       <!-- Apartment Plan Form -->
       <div class="form-section">
-        <h4 class="form-section-title" id="apartment-form-title">2 bhk Apartment Details</h4>
+        <h4 class="form-section-title" id="apartment-form-title">3 bhk Apartment Details</h4>
 
         <!-- Form Fields -->
         <div class="form-grid">
@@ -3717,154 +3717,29 @@
 
       <!-- Pricing Type Tabs -->
       <div class="pricing-type-tabs" id="pricing-type-tabs-container">
-        <button class="pricing-type-tab active" data-pricing="2bhk">2 BHK Pricing</button>
-        <button class="pricing-type-tab" data-pricing="3bhk">3 BHK Pricing</button>
+        <button class="pricing-type-tab active" data-pricing="3bhk">3 bhk Pricing</button>
+        <button class="pricing-type-tab" data-pricing="4bhk">4 bhk Pricing</button>
       </div>
 
-      <!-- 2 BHK Pricing Form -->
-      <div class="form-section active-pricing-form" id="2bhk-pricing-form">
-        <h4 class="form-section-title">2 BHK Apartment Pricing Details</h4>
-
-        <!-- Basic Details -->
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="2bhk-starting-price">Starting Price (₹)</label>
-            <input type="text" id="2bhk-starting-price" placeholder="e.g., 85,00,000" value="85,00,000">
-          </div>
-
-          <div class="form-group">
-            <label for="2bhk-sqft">Sq. Ft.</label>
-            <input type="text" id="2bhk-sqft" placeholder="e.g., 850 sq.ft" value="850 sq.ft">
-          </div>
-
-          <div class="form-group">
-            <label for="2bhk-bedrooms">Bedrooms</label>
-            <input type="number" id="2bhk-bedrooms" value="2" min="1" max="5">
-          </div>
-
-          <div class="form-group">
-            <label for="2bhk-bathrooms">Bathrooms</label>
-            <input type="number" id="2bhk-bathrooms" value="2" min="1" max="5">
-          </div>
-
-          <div class="form-group">
-            <label for="2bhk-parking">Parking</label>
-            <input type="text" id="2bhk-parking" placeholder="e.g., 1 Covered" value="1 Covered">
-          </div>
-
-          <div class="form-group">
-            <label for="2bhk-available">Available Units</label>
-            <input type="number" id="2bhk-available" placeholder="e.g., 18" value="18" min="0">
-          </div>
-        </div>
-
-        <!-- Available Status -->
-        <div class="available-input-group">
-          <div class="form-group">
-            <label for="2bhk-availability-status">Availability Status</label>
-            <div class="available-status">
-              <select id="2bhk-availability-status" class="form-control">
-                <option value="available">Available</option>
-                <option value="limited">Limited Availability</option>
-                <option value="sold-out">Sold Out</option>
-                <option value="coming-soon">Coming Soon</option>
-              </select>
-              <span class="available-status-badge" id="2bhk-status-badge">Available</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Features with Language Tabs -->
-        <div class="form-group">
-          <label>Apartment Features</label>
-          <ul class="nav nav-tabs" id="2bhk-features-lang-tabs" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="2bhk-features-en-tab" data-bs-toggle="tab"
-                data-bs-target="#2bhk-features-en-pane" type="button" role="tab">
-                <i class="fas fa-globe me-1"></i> English
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="2bhk-features-hi-tab" data-bs-toggle="tab"
-                data-bs-target="#2bhk-features-hi-pane" type="button" role="tab">
-                हिंदी
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="2bhk-features-gu-tab" data-bs-toggle="tab"
-                data-bs-target="#2bhk-features-gu-pane" type="button" role="tab">
-                ગુજરાતી
-              </button>
-            </li>
-          </ul>
-          <div class="tab-content" id="2bhk-features-lang-content">
-            <div class="tab-pane fade show active" id="2bhk-features-en-pane" role="tabpanel">
-              <div id="2bhk-features-container-en" class="mt-2">
-                <div class="feature-input-row">
-                  <input type="text" class="feature-input" placeholder="Enter feature in English"
-                    value="Premium Fittings">
-                  <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
-                </div>
-                <div class="feature-input-row">
-                  <input type="text" class="feature-input" placeholder="Enter feature in English"
-                    value="Wooden Flooring">
-                  <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
-                </div>
-              </div>
-              <button type="button" class="add-feature-btn" id="add-2bhk-feature-en"><i class="fas fa-plus"></i> Add
-                Feature</button>
-              <button type="button" class="btn btn-primary mt-2" onclick="autoTranslatePricingFeatures('2bhk', event)">
-                <i class="fas fa-language me-1"></i> Auto-Translate to Hindi & Gujarati
-              </button>
-            </div>
-            <div class="tab-pane fade" id="2bhk-features-hi-pane" role="tabpanel">
-              <div id="2bhk-features-container-hi" class="mt-2">
-                <div class="feature-input-row">
-                  <input type="text" class="feature-input" placeholder="हिंदी में फीचर दर्ज करें">
-                  <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
-                </div>
-              </div>
-              <button type="button" class="add-feature-btn" id="add-2bhk-feature-hi"><i class="fas fa-plus"></i> Add
-                Feature</button>
-            </div>
-            <div class="tab-pane fade" id="2bhk-features-gu-pane" role="tabpanel">
-              <div id="2bhk-features-container-gu" class="mt-2">
-                <div class="feature-input-row">
-                  <input type="text" class="feature-input" placeholder="ગુજરાતીમાં ફીચર દાખલ કરો">
-                  <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
-                </div>
-              </div>
-              <button type="button" class="add-feature-btn" id="add-2bhk-feature-gu"><i class="fas fa-plus"></i> Add
-                Feature</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Save Button -->
-        <div class="save-section">
-          <button class="btn btn-save" id="save-2bhk-pricing">Save 2 BHK Pricing</button>
-        </div>
-      </div>
-
-      <!-- 3 BHK Pricing Form -->
-      <div class="form-section" id="3bhk-pricing-form" style="display: none;">
-        <h4 class="form-section-title">3 BHK Apartment Pricing Details</h4>
+      <!-- 3 bhk Pricing Form -->
+      <div class="form-section active-pricing-form" id="3bhk-pricing-form">
+        <h4 class="form-section-title">3 bhk Apartment Pricing Details</h4>
 
         <!-- Basic Details -->
         <div class="form-grid">
           <div class="form-group">
             <label for="3bhk-starting-price">Starting Price (₹)</label>
-            <input type="text" id="3bhk-starting-price" placeholder="e.g., 1,20,00,000" value="1,20,00,000">
+            <input type="text" id="3bhk-starting-price" placeholder="e.g., 85,00,000" value="85,00,000">
           </div>
 
           <div class="form-group">
             <label for="3bhk-sqft">Sq. Ft.</label>
-            <input type="text" id="3bhk-sqft" placeholder="e.g., 1200 sq.ft" value="1200 sq.ft">
+            <input type="text" id="3bhk-sqft" placeholder="e.g., 850 sq.ft" value="850 sq.ft">
           </div>
 
           <div class="form-group">
             <label for="3bhk-bedrooms">Bedrooms</label>
-            <input type="number" id="3bhk-bedrooms" value="3" min="1" max="5">
+            <input type="number" id="3bhk-bedrooms" value="2" min="1" max="5">
           </div>
 
           <div class="form-group">
@@ -3874,12 +3749,12 @@
 
           <div class="form-group">
             <label for="3bhk-parking">Parking</label>
-            <input type="text" id="3bhk-parking" placeholder="e.g., 2 Covered" value="2 Covered">
+            <input type="text" id="3bhk-parking" placeholder="e.g., 1 Covered" value="1 Covered">
           </div>
 
           <div class="form-group">
             <label for="3bhk-available">Available Units</label>
-            <input type="number" id="3bhk-available" placeholder="e.g., 12" value="12" min="0">
+            <input type="number" id="3bhk-available" placeholder="e.g., 18" value="18" min="0">
           </div>
         </div>
 
@@ -3927,12 +3802,12 @@
               <div id="3bhk-features-container-en" class="mt-2">
                 <div class="feature-input-row">
                   <input type="text" class="feature-input" placeholder="Enter feature in English"
-                    value="Luxury Fittings">
+                    value="Premium Fittings">
                   <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="feature-input-row">
                   <input type="text" class="feature-input" placeholder="Enter feature in English"
-                    value="Marble Flooring">
+                    value="Wooden Flooring">
                   <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
                 </div>
               </div>
@@ -3967,7 +3842,132 @@
 
         <!-- Save Button -->
         <div class="save-section">
-          <button class="btn btn-save" id="save-3bhk-pricing">Save 3 BHK Pricing</button>
+          <button class="btn btn-save" id="save-3bhk-pricing">Save 3 bhk Pricing</button>
+        </div>
+      </div>
+
+      <!-- 4 bhk Pricing Form -->
+      <div class="form-section" id="4bhk-pricing-form" style="display: none;">
+        <h4 class="form-section-title">4 bhk Apartment Pricing Details</h4>
+
+        <!-- Basic Details -->
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="4bhk-starting-price">Starting Price (₹)</label>
+            <input type="text" id="4bhk-starting-price" placeholder="e.g., 1,20,00,000" value="1,20,00,000">
+          </div>
+
+          <div class="form-group">
+            <label for="4bhk-sqft">Sq. Ft.</label>
+            <input type="text" id="4bhk-sqft" placeholder="e.g., 1200 sq.ft" value="1200 sq.ft">
+          </div>
+
+          <div class="form-group">
+            <label for="4bhk-bedrooms">Bedrooms</label>
+            <input type="number" id="4bhk-bedrooms" value="3" min="1" max="5">
+          </div>
+
+          <div class="form-group">
+            <label for="4bhk-bathrooms">Bathrooms</label>
+            <input type="number" id="4bhk-bathrooms" value="2" min="1" max="5">
+          </div>
+
+          <div class="form-group">
+            <label for="4bhk-parking">Parking</label>
+            <input type="text" id="4bhk-parking" placeholder="e.g., 2 Covered" value="2 Covered">
+          </div>
+
+          <div class="form-group">
+            <label for="4bhk-available">Available Units</label>
+            <input type="number" id="4bhk-available" placeholder="e.g., 12" value="12" min="0">
+          </div>
+        </div>
+
+        <!-- Available Status -->
+        <div class="available-input-group">
+          <div class="form-group">
+            <label for="4bhk-availability-status">Availability Status</label>
+            <div class="available-status">
+              <select id="4bhk-availability-status" class="form-control">
+                <option value="available">Available</option>
+                <option value="limited">Limited Availability</option>
+                <option value="sold-out">Sold Out</option>
+                <option value="coming-soon">Coming Soon</option>
+              </select>
+              <span class="available-status-badge" id="4bhk-status-badge">Available</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Features with Language Tabs -->
+        <div class="form-group">
+          <label>Apartment Features</label>
+          <ul class="nav nav-tabs" id="4bhk-features-lang-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="4bhk-features-en-tab" data-bs-toggle="tab"
+                data-bs-target="#4bhk-features-en-pane" type="button" role="tab">
+                <i class="fas fa-globe me-1"></i> English
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="4bhk-features-hi-tab" data-bs-toggle="tab"
+                data-bs-target="#4bhk-features-hi-pane" type="button" role="tab">
+                हिंदी
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="4bhk-features-gu-tab" data-bs-toggle="tab"
+                data-bs-target="#4bhk-features-gu-pane" type="button" role="tab">
+                ગુજરાતી
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="4bhk-features-lang-content">
+            <div class="tab-pane fade show active" id="4bhk-features-en-pane" role="tabpanel">
+              <div id="4bhk-features-container-en" class="mt-2">
+                <div class="feature-input-row">
+                  <input type="text" class="feature-input" placeholder="Enter feature in English"
+                    value="Luxury Fittings">
+                  <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="feature-input-row">
+                  <input type="text" class="feature-input" placeholder="Enter feature in English"
+                    value="Marble Flooring">
+                  <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <button type="button" class="add-feature-btn" id="add-4bhk-feature-en"><i class="fas fa-plus"></i> Add
+                Feature</button>
+              <button type="button" class="btn btn-primary mt-2" onclick="autoTranslatePricingFeatures('4bhk', event)">
+                <i class="fas fa-language me-1"></i> Auto-Translate to Hindi & Gujarati
+              </button>
+            </div>
+            <div class="tab-pane fade" id="4bhk-features-hi-pane" role="tabpanel">
+              <div id="4bhk-features-container-hi" class="mt-2">
+                <div class="feature-input-row">
+                  <input type="text" class="feature-input" placeholder="हिंदी में फीचर दर्ज करें">
+                  <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <button type="button" class="add-feature-btn" id="add-4bhk-feature-hi"><i class="fas fa-plus"></i> Add
+                Feature</button>
+            </div>
+            <div class="tab-pane fade" id="4bhk-features-gu-pane" role="tabpanel">
+              <div id="4bhk-features-container-gu" class="mt-2">
+                <div class="feature-input-row">
+                  <input type="text" class="feature-input" placeholder="ગુજરાતીમાં ફીચર દાખલ કરો">
+                  <button type="button" class="remove-feature-btn"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <button type="button" class="add-feature-btn" id="add-4bhk-feature-gu"><i class="fas fa-plus"></i> Add
+                Feature</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="save-section">
+          <button class="btn btn-save" id="save-4bhk-pricing">Save 4 bhk Pricing</button>
         </div>
       </div>
 
@@ -3983,66 +3983,10 @@
           </div>
         </div>
 
-        <!-- 2 BHK Preview -->
-        <!-- 2 BHK Preview -->
-        <div class="bhk-preview-container active" id="2bhk-preview">
-          <h5 class="mb-3" style="color: var(--primary-color);">2 BHK Apartments</h5>
-          <div class="pricing-details-grid">
-            <div class="pricing-detail-item">
-              <div class="pricing-detail-label">Starting Price</div>
-              <div class="pricing-detail-value" id="2bhk-preview-price">
-                <!-- Dynamic value will be inserted -->
-              </div>
-            </div>
-            <div class="pricing-detail-item">
-              <div class="pricing-detail-label">Sq. Ft.</div>
-              <div class="pricing-detail-value" id="2bhk-preview-sqft">
-                <!-- Dynamic value will be inserted -->
-              </div>
-            </div>
-            <div class="pricing-detail-item">
-              <div class="pricing-detail-label">Bedrooms</div>
-              <div class="pricing-detail-value" id="2bhk-preview-bedrooms">
-                <!-- Dynamic value will be inserted -->
-              </div>
-            </div>
-            <div class="pricing-detail-item">
-              <div class="pricing-detail-label">Bathrooms</div>
-              <div class="pricing-detail-value" id="2bhk-preview-bathrooms">
-                <!-- Dynamic value will be inserted -->
-              </div>
-            </div>
-            <div class="pricing-detail-item">
-              <div class="pricing-detail-label">Parking</div>
-              <div class="pricing-detail-value" id="2bhk-preview-parking">
-                <!-- Dynamic value will be inserted -->
-              </div>
-            </div>
-            <div class="pricing-detail-item">
-              <div class="pricing-detail-label">Available Units</div>
-              <div class="pricing-detail-value" id="2bhk-preview-available">
-                <!-- Dynamic value will be inserted -->
-              </div>
-            </div>
-            <div class="pricing-detail-item">
-              <div class="pricing-detail-label">Status</div>
-              <div class="pricing-detail-value">
-                <span class="available-status-badge"
-                  id="2bhk-preview-status"><!-- Dynamic value will be inserted --></span>
-              </div>
-            </div>
-          </div>
-          <div class="features-list">
-            <h6>Features:</h6>
-            <div id="2bhk-preview-features">
-              <!-- Features will be inserted dynamically -->
-            </div>
-          </div>
-        </div>
-
-        <!-- 3 BHK Preview -->
-        <div class="bhk-preview-container" id="3bhk-preview">
-          <h5 class="mb-3" style="color: var(--primary-color);">3 BHK Apartments</h5>
+        <!-- 3 bhk Preview -->
+        <!-- 3 bhk Preview -->
+        <div class="bhk-preview-container active" id="3bhk-preview">
+          <h5 class="mb-3" style="color: var(--primary-color);">3 bhk Apartments</h5>
           <div class="pricing-details-grid">
             <div class="pricing-detail-item">
               <div class="pricing-detail-label">Starting Price</div>
@@ -4091,6 +4035,62 @@
           <div class="features-list">
             <h6>Features:</h6>
             <div id="3bhk-preview-features">
+              <!-- Features will be inserted dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 bhk Preview -->
+        <div class="bhk-preview-container" id="4bhk-preview">
+          <h5 class="mb-3" style="color: var(--primary-color);">4 bhk Apartments</h5>
+          <div class="pricing-details-grid">
+            <div class="pricing-detail-item">
+              <div class="pricing-detail-label">Starting Price</div>
+              <div class="pricing-detail-value" id="4bhk-preview-price">
+                <!-- Dynamic value will be inserted -->
+              </div>
+            </div>
+            <div class="pricing-detail-item">
+              <div class="pricing-detail-label">Sq. Ft.</div>
+              <div class="pricing-detail-value" id="4bhk-preview-sqft">
+                <!-- Dynamic value will be inserted -->
+              </div>
+            </div>
+            <div class="pricing-detail-item">
+              <div class="pricing-detail-label">Bedrooms</div>
+              <div class="pricing-detail-value" id="4bhk-preview-bedrooms">
+                <!-- Dynamic value will be inserted -->
+              </div>
+            </div>
+            <div class="pricing-detail-item">
+              <div class="pricing-detail-label">Bathrooms</div>
+              <div class="pricing-detail-value" id="4bhk-preview-bathrooms">
+                <!-- Dynamic value will be inserted -->
+              </div>
+            </div>
+            <div class="pricing-detail-item">
+              <div class="pricing-detail-label">Parking</div>
+              <div class="pricing-detail-value" id="4bhk-preview-parking">
+                <!-- Dynamic value will be inserted -->
+              </div>
+            </div>
+            <div class="pricing-detail-item">
+              <div class="pricing-detail-label">Available Units</div>
+              <div class="pricing-detail-value" id="4bhk-preview-available">
+                <!-- Dynamic value will be inserted -->
+              </div>
+            </div>
+            <div class="pricing-detail-item">
+              <div class="pricing-detail-label">Status</div>
+              <div class="pricing-detail-value">
+                <span class="available-status-badge"
+                  id="4bhk-preview-status"><!-- Dynamic value will be inserted --></span>
+              </div>
+            </div>
+          </div>
+          <div class="features-list">
+            <h6>Features:</h6>
+            <div id="4bhk-preview-features">
               <!-- Features will be inserted dynamically -->
             </div>
           </div>
@@ -4247,7 +4247,7 @@
                   <div class="form-grid mt-2">
                     <div class="form-group">
                       <label for="property-title-en">Property Title</label>
-                      <input type="text" id="property-title-en" placeholder="e.g., Premium 3 BHK Apartment">
+                      <input type="text" id="property-title-en" placeholder="e.g., Premium 4 bhk Apartment">
                     </div>
                     <div class="form-group">
                       <label for="property-location-en">Location</label>
@@ -4308,7 +4308,7 @@
             <div class="form-grid">
               <div class="form-group">
                 <label for="property-type">Property Type</label>
-                <input type="text" id="property-type" placeholder="e.g., 3 BHK Apartment">
+                <input type="text" id="property-type" placeholder="e.g., 4 bhk Apartment">
               </div>
 
               <div class="form-group">
@@ -5306,8 +5306,8 @@
           'Floor Plan Image': { hi: 'फ्लोर प्लान छवि', gu: 'ફ્લોર પ્લાન ઇમેજ' },
           'Upload Floor Plan Image': { hi: 'फ्लोर प्लान छवि अपलोड करें', gu: 'ફ્લોર પ્લાન ઇમેજ અપલોડ કરો' },
           'Click to upload floor plan image': { hi: 'फ्लोर प्लान छवि अपलोड करने के लिए क्लिक करें', gu: 'ફ્લોર પ્લાન ઇમેજ અપલોડ કરવા માટે ક્લિક કરો' },
-          '2 BHK Premium Plans': { hi: '2 बीएचके प्रीमियम प्लान', gu: '2 બીએચકે પ્રીમિયમ પ્લાન્સ' },
-          '3 BHK Premium Plans': { hi: '3 बीएचके प्रीमियम प्लान', gu: '3 બીએચકે પ્રીમિયમ પ્લાન્સ' },
+          '3 bhk Premium Plans': { hi: '2 बीएचके प्रीमियम प्लान', gu: '2 બીએચકે પ્રીમિયમ પ્લાન્સ' },
+          '4 bhk Premium Plans': { hi: '3 बीएचके प्रीमियम प्लान', gu: '3 બીએચકે પ્રીમિયમ પ્લાન્સ' },
           'Super Area (Sq. Ft.)': { hi: 'सुपर एरिया (वर्ग फुट)', gu: 'સુપર એરિયા (ચોરસ ફૂટ)' },
           'Super Area': { hi: 'सुपर एरिया', gu: 'સુપર એરિયા' },
           'Bedrooms': { hi: 'बेडरूम', gu: 'બેડરૂમ' },
@@ -5319,8 +5319,8 @@
           'Parking': { hi: 'पार्किंग', gu: 'પાર્કિંગ' },
           'Sq. Ft.': { hi: 'वर्ग फुट', gu: 'ચોરસ ફૂટ' },
           'Starting Price': { hi: 'शुरुआती कीमत', gu: 'શરૂઆતની કિંમત' },
-          '2 BHK': { hi: '2 बीएचके', gu: '2 બીએચકે' },
-          '3 BHK': { hi: '3 बीएचके', gu: '3 બીએચકે' }
+          '3 bhk': { hi: '2 बीएचके', gu: '2 બીએચકે' },
+          '4 bhk': { hi: '3 बीएचके', gu: '3 બીએચકે' }
         }
       };
 
@@ -5718,8 +5718,8 @@
     let isTranslating = false;
     let currentPropertyType = 'for-sale';
     let currentPropertyDetailTab = 'basic-info';
-    let currentApartmentType = '2bhk';
-    let currentPricingType = '2bhk';
+    let currentApartmentType = '3bhk';
+    let currentPricingType = '3bhk';
     let currentApartmentPlanImage = null;
     let editingPropertyId = null;
     let currentPropertyImages = [];
@@ -5732,7 +5732,7 @@
     let currentApprovalsDocuments = [];
     let currentInquiryType = 'sale';
     let projectData = {
-      apartmentPlans: { '2bhk': [], '3bhk': [] },
+      apartmentPlans: { '3bhk': [], '4bhk': [] },
       gallery: [],
       pricingPlans: [],
       featuredProperties: { 'for-sale': [], 'for-rent': [] },
@@ -6434,62 +6434,62 @@
       */
 
       // ===== PRICING FEATURE BUTTONS =====
-      // 2 bhk Features - English
+      // 3 bhk Features - English
       const add1bhkFeatureEn = document.getElementById('add-1bhk-feature-en');
       if (add1bhkFeatureEn) {
         add1bhkFeatureEn.addEventListener('click', () => addFeatureRow('1bhk-features-container-en', 'Enter feature in English'));
       }
 
-      // 2 bhk Features - Hindi
+      // 3 bhk Features - Hindi
       const add1bhkFeatureHi = document.getElementById('add-1bhk-feature-hi');
       if (add1bhkFeatureHi) {
         add1bhkFeatureHi.addEventListener('click', () => addFeatureRow('1bhk-features-container-hi', 'हिंदी में फीचर दर्ज करें'));
       }
 
-      // 2 bhk Features - Gujarati
+      // 3 bhk Features - Gujarati
       const add1bhkFeatureGu = document.getElementById('add-1bhk-feature-gu');
       if (add1bhkFeatureGu) {
         add1bhkFeatureGu.addEventListener('click', () => addFeatureRow('1bhk-features-container-gu', 'ગુજરાતીમાં ફીચર દાખલ કરો'));
       }
 
-      // 2 BHK Features - English
-      const add2bhkFeatureEn = document.getElementById('add-2bhk-feature-en');
-      if (add2bhkFeatureEn) {
-        add2bhkFeatureEn.addEventListener('click', () => addFeatureRow('2bhk-features-container-en', 'Enter feature in English'));
-      }
-
-      // 2 BHK Features - Hindi
-      const add2bhkFeatureHi = document.getElementById('add-2bhk-feature-hi');
-      if (add2bhkFeatureHi) {
-        add2bhkFeatureHi.addEventListener('click', () => addFeatureRow('2bhk-features-container-hi', 'हिंदी में फीचर दर्ज करें'));
-      }
-
-      // 2 BHK Features - Gujarati
-      const add2bhkFeatureGu = document.getElementById('add-2bhk-feature-gu');
-      if (add2bhkFeatureGu) {
-        add2bhkFeatureGu.addEventListener('click', () => addFeatureRow('2bhk-features-container-gu', 'ગુજરાતીમાં ફીચર દાખલ કરો'));
-      }
-
-      // 3 BHK Features - English
+      // 3 bhk Features - English
       const add3bhkFeatureEn = document.getElementById('add-3bhk-feature-en');
       if (add3bhkFeatureEn) {
         add3bhkFeatureEn.addEventListener('click', () => addFeatureRow('3bhk-features-container-en', 'Enter feature in English'));
       }
 
-      // 3 BHK Features - Hindi
+      // 3 bhk Features - Hindi
       const add3bhkFeatureHi = document.getElementById('add-3bhk-feature-hi');
       if (add3bhkFeatureHi) {
         add3bhkFeatureHi.addEventListener('click', () => addFeatureRow('3bhk-features-container-hi', 'हिंदी में फीचर दर्ज करें'));
       }
 
-      // 3 BHK Features - Gujarati
+      // 3 bhk Features - Gujarati
       const add3bhkFeatureGu = document.getElementById('add-3bhk-feature-gu');
       if (add3bhkFeatureGu) {
         add3bhkFeatureGu.addEventListener('click', () => addFeatureRow('3bhk-features-container-gu', 'ગુજરાતીમાં ફીચર દાખલ કરો'));
       }
 
+      // 4 bhk Features - English
+      const add4bhkFeatureEn = document.getElementById('add-4bhk-feature-en');
+      if (add4bhkFeatureEn) {
+        add4bhkFeatureEn.addEventListener('click', () => addFeatureRow('4bhk-features-container-en', 'Enter feature in English'));
+      }
+
+      // 4 bhk Features - Hindi
+      const add4bhkFeatureHi = document.getElementById('add-4bhk-feature-hi');
+      if (add4bhkFeatureHi) {
+        add4bhkFeatureHi.addEventListener('click', () => addFeatureRow('4bhk-features-container-hi', 'हिंदी में फीचर दर्ज करें'));
+      }
+
+      // 4 bhk Features - Gujarati
+      const add4bhkFeatureGu = document.getElementById('add-4bhk-feature-gu');
+      if (add4bhkFeatureGu) {
+        add4bhkFeatureGu.addEventListener('click', () => addFeatureRow('4bhk-features-container-gu', 'ગુજરાતીમાં ફીચર દાખલ કરો'));
+      }
+
       // Add event listeners to pricing features language tabs to update preview
-      ['1bhk', '2bhk', '3bhk'].forEach(type => {
+      ['1bhk', '3bhk', '4bhk'].forEach(type => {
         const tabsContainer = document.getElementById(`${type}-features-lang-tabs`);
         if (tabsContainer) {
           tabsContainer.querySelectorAll('.nav-link').forEach(tab => {
@@ -7248,24 +7248,24 @@
 
       // Pricing Form Elements
       const save1BhkPricingBtn = document.getElementById('save-1bhk-pricing');
-      const save2BhkPricingBtn = document.getElementById('save-2bhk-pricing');
-      const save3BhkPricingBtn = document.getElementById('save-3bhk-pricing');
+      const save3bhkPricingBtn = document.getElementById('save-3bhk-pricing');
+      const save4bhkPricingBtn = document.getElementById('save-4bhk-pricing');
 
       // Feature buttons
       const add1BhkFeatureBtn = document.getElementById('add-1bhk-feature');
-      const add2BhkFeatureBtn = document.getElementById('add-2bhk-feature');
-      const add3BhkFeatureBtn = document.getElementById('add-3bhk-feature');
+      const add3bhkFeatureBtn = document.getElementById('add-3bhk-feature');
+      const add4bhkFeatureBtn = document.getElementById('add-4bhk-feature');
 
       // Availability Status Elements
       const availabilityStatus1Bhk = document.getElementById('1bhk-availability-status');
-      const availabilityStatus2Bhk = document.getElementById('2bhk-availability-status');
-      const availabilityStatus3Bhk = document.getElementById('3bhk-availability-status');
+      const availabilityStatus3bhk = document.getElementById('3bhk-availability-status');
+      const availabilityStatus4bhk = document.getElementById('4bhk-availability-status');
       const statusBadge1Bhk = document.getElementById('1bhk-status-badge');
-      const statusBadge2Bhk = document.getElementById('2bhk-status-badge');
-      const statusBadge3Bhk = document.getElementById('3bhk-status-badge');
+      const statusBadge3bhk = document.getElementById('3bhk-status-badge');
+      const statusBadge4bhk = document.getElementById('4bhk-status-badge');
 
       // Pricing State
-      let currentPricingType = '2bhk'; // Default to 2BHK
+      let currentPricingType = '3bhk'; // Default to 3bhk
 
       // Featured Properties Elements
       const saveCompletePropertyBtn = document.getElementById('save-complete-property');
@@ -7303,7 +7303,7 @@
 
       // ===== PRICING PREVIEW HELPER FUNCTIONS =====
       function updateAllPricingPreviews() {
-        ['1bhk', '2bhk', '3bhk'].forEach(type => {
+        ['1bhk', '3bhk', '4bhk'].forEach(type => {
           updatePricingPreview(type);
           updatePricingActionButtons(type);
         });
@@ -7431,8 +7431,8 @@
       // ===== HELPER FUNCTIONS =====
       function getApartmentTypeName(typeKey) {
         const typeNames = {
-          '2bhk': '2 BHK',
-          '3bhk': '3 BHK'
+          '3bhk': '3 bhk',
+          '4bhk': '4 bhk'
         };
         return typeNames[typeKey] || typeKey;
       }
@@ -7735,7 +7735,7 @@
       }
 
       // ===== LOAD APARTMENT DATA =====
-      function loadApartmentData(type = '2bhk') {
+      function loadApartmentData(type = '3bhk') {
         // Update form
         const apartmentFormTitle = document.getElementById('apartment-form-title');
         if (apartmentFormTitle) {
@@ -7756,7 +7756,7 @@
         const descGu = document.getElementById('apartment-description-gu');
 
         if (apartmentArea) apartmentArea.value = '';
-        if (apartmentBedrooms) apartmentBedrooms.value = type === '1bhk' ? '1' : type === '2bhk' ? '2' : '3';
+        if (apartmentBedrooms) apartmentBedrooms.value = type === '1bhk' ? '1' : type === '3bhk' ? '2' : '3';
         if (apartmentBathrooms) apartmentBathrooms.value = type === '1bhk' ? '1' : '2';
         if (apartmentBalconies) apartmentBalconies.value = '';
 
@@ -7792,7 +7792,7 @@
         const descGu = document.getElementById('apartment-description-gu');
 
         if (apartmentArea) apartmentArea.value = plan.area || '';
-        if (apartmentBedrooms) apartmentBedrooms.value = plan.bedrooms || (typeKey === '1bhk' ? '1' : typeKey === '2bhk' ? '2' : '3');
+        if (apartmentBedrooms) apartmentBedrooms.value = plan.bedrooms || (typeKey === '1bhk' ? '1' : typeKey === '3bhk' ? '2' : '3');
         if (apartmentBathrooms) apartmentBathrooms.value = plan.bathrooms || (typeKey === '1bhk' ? '1' : '2');
         if (apartmentBalconies) apartmentBalconies.value = plan.balconies || '';
 
@@ -7940,7 +7940,7 @@
       }
 
       // ===== LOAD PRICING DATA =====
-      function loadPricingData(type = '2bhk') {
+      function loadPricingData(type = '3bhk') {
         const pricing = projectData.pricingPlans?.[type] || {};
 
         // Update form
@@ -8036,7 +8036,7 @@
       }
       function initializePricingPreviewsOnLoad() {
         // Initialize all pricing previews with "Not set" or database values
-        ['2bhk', '3bhk'].forEach(type => {
+        ['3bhk', '4bhk'].forEach(type => {
           const pricing = projectData.pricingPlans?.[type] || {};
 
           // Only update if we have data, otherwise show "Not set"
@@ -8072,7 +8072,7 @@
         });
       }
       // ===== UPDATE PRICING PREVIEW =====
-      function updatePricingPreview(type = '2bhk') {
+      function updatePricingPreview(type = '3bhk') {
         const pricing = projectData.pricingPlans?.[type] || {};
 
         // Update preview elements
@@ -8160,7 +8160,7 @@
         }
       }
       // ===== SAVE PRICING DATA =====
-      async function savePricingData(type = '2bhk') {
+      async function savePricingData(type = '3bhk') {
         const startingPriceInput = document.getElementById(`${type}-starting-price`);
         const sqftInput = document.getElementById(`${type}-sqft`);
         const bedroomsInput = document.getElementById(`${type}-bedrooms`);
@@ -10329,15 +10329,15 @@
         });
       }
 
-      if (add2BhkFeatureBtn) {
-        add2BhkFeatureBtn.addEventListener('click', function () {
-          addFeatureInput('2bhk-features-container');
+      if (add3bhkFeatureBtn) {
+        add3bhkFeatureBtn.addEventListener('click', function () {
+          addFeatureInput('3bhk-features-container');
         });
       }
 
-      if (add3BhkFeatureBtn) {
-        add3BhkFeatureBtn.addEventListener('click', function () {
-          addFeatureInput('3bhk-features-container');
+      if (add4bhkFeatureBtn) {
+        add4bhkFeatureBtn.addEventListener('click', function () {
+          addFeatureInput('4bhk-features-container');
         });
       }
 
@@ -10348,15 +10348,15 @@
         });
       }
 
-      if (availabilityStatus2Bhk) {
-        availabilityStatus2Bhk.addEventListener('change', function () {
-          updateStatusBadge(this, statusBadge2Bhk);
+      if (availabilityStatus3bhk) {
+        availabilityStatus3bhk.addEventListener('change', function () {
+          updateStatusBadge(this, statusBadge3bhk);
         });
       }
 
-      if (availabilityStatus3Bhk) {
-        availabilityStatus3Bhk.addEventListener('change', function () {
-          updateStatusBadge(this, statusBadge3Bhk);
+      if (availabilityStatus4bhk) {
+        availabilityStatus4bhk.addEventListener('change', function () {
+          updateStatusBadge(this, statusBadge4bhk);
         });
       }
 
@@ -10367,15 +10367,15 @@
         });
       }
 
-      if (save2BhkPricingBtn) {
-        save2BhkPricingBtn.addEventListener('click', function () {
-          savePricingData('2bhk');
+      if (save3bhkPricingBtn) {
+        save3bhkPricingBtn.addEventListener('click', function () {
+          savePricingData('3bhk');
         });
       }
 
-      if (save3BhkPricingBtn) {
-        save3BhkPricingBtn.addEventListener('click', function () {
-          savePricingData('3bhk');
+      if (save4bhkPricingBtn) {
+        save4bhkPricingBtn.addEventListener('click', function () {
+          savePricingData('4bhk');
         });
       }
 
