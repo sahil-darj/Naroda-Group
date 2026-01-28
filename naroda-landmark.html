@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naroda Irish Project | Naroda Group</title>
+  <title>Naroda Lavish Project | Naroda Group</title>
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -910,9 +910,11 @@
 
     /* Floor Plan Image in Table */
     .floor-plan-table-image {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
+      width: 120px;
+      height: auto;
+      min-height: 80px;
+      object-fit: contain !important;
+      background-color: #fff;
       border-radius: var(--radius-md);
       border: 1px solid var(--gray-200);
       cursor: pointer;
@@ -985,8 +987,9 @@
 
     .gallery-image-item img {
       width: 100%;
-      height: 150px;
-      object-fit: cover;
+      height: 250px;
+      object-fit: contain !important;
+      background-color: #f8f9fa;
       display: block;
     }
 
@@ -1075,8 +1078,9 @@
 
     .featured-property-image {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
+      height: 250px;
+      object-fit: contain !important;
+      background-color: #f8f9fa;
       border-bottom: 1px solid var(--gray-200);
     }
 
@@ -1377,7 +1381,7 @@
       border-radius: var(--border-radius);
       margin-top: 15px;
       display: none;
-      object-fit: cover;
+      object-fit: contain;
       background: var(--gray-50);
       border: 2px solid var(--gray-200);
     }
@@ -3513,8 +3517,8 @@
   <main class="main-content" id="main-content">
     <!-- Page Header -->
     <div class="page-header">
-      <h1>Naroda Irish Project Management</h1>
-      <a href="https://naroda-groups-web.vercel.app/projects-irish.html" target="_blank" class="btn btn-gold">
+      <h1>Naroda Lavish Project Management</h1>
+      <a href="https://naroda-groups-web.vercel.app/projects-Lavish.html" target="_blank" class="btn btn-gold">
         <i class="fas fa-external-link-alt"></i>
         View Live Project
       </a>
@@ -4251,7 +4255,7 @@
                     </div>
                     <div class="form-group">
                       <label for="property-location-en">Location</label>
-                      <input type="text" id="property-location-en" placeholder="e.g., Naroda Irish, Ahmedabad">
+                      <input type="text" id="property-location-en" placeholder="e.g., Naroda Lavish, Ahmedabad">
                     </div>
                   </div>
                   <div class="form-group">
@@ -5260,7 +5264,7 @@
           'Log Out': { hi: 'लॉग आउट', gu: 'લોગ આઉટ' },
           'Admin User': { hi: 'व्यवस्थापक उपयोगकर्ता', gu: 'એડમિન વપરાશકર્તા' },
           'System Administrator': { hi: 'सिस्टम व्यवस्थापक', gu: 'સિસ્ટમ એડમિનિસ્ટ્રેટર' },
-          'Naroda Irish Project Management': { hi: 'नरोड़ा आयरिश प्रोजेक्ट प्रबंधन', gu: 'નરોડા આયરીશ પ્રોજેક્ટ મેનેજમેન્ટ' },
+          'Naroda Lavish Project Management': { hi: 'नरोड़ा आयरिश प्रोजेक्ट प्रबंधन', gu: 'નરોડા આયરીશ પ્રોજેક્ટ મેનેજમેન્ટ' },
           'View Live Project': { hi: 'लाइव प्रोजेक्ट देखें', gu: 'લાઈવ પ્રોજેક્ટ જુઓ' },
           'Apartment Plans': { hi: 'अपार्टमेंट योजनाएं', gu: 'એપાર્ટમેન્ટ પ્લાન્સ' },
           'Gallery': { hi: 'गैलरी', gu: 'ગેલેરી' },
@@ -7201,7 +7205,7 @@
           } else if (lang === 'gu') {
             document.title = 'નરોડા આયરીશ પ્રોજેક્ટ | નરોડા ગ્રુપ';
           } else {
-            document.title = 'Naroda Irish Project | Naroda Group';
+            document.title = 'Naroda Lavish Project | Naroda Group';
           }
         });
       });
@@ -10216,25 +10220,25 @@
           const file = e.target.files[0];
           if (file) {
             try {
-              // Show loading state
-              if (apartmentPlanImagePreview) {
-                apartmentPlanImagePreview.src = '';
-                apartmentPlanImagePreview.classList.remove('show');
+              // Smart compression: Only if > 1MB to secure DB saving
+              if (file.size > 1000000) {
+                currentApartmentPlanImage = await compressImage(file, 1600, 0.85);
+              } else {
+                currentApartmentPlanImage = await new Promise(resolve => {
+                  const reader = new FileReader();
+                  reader.onload = e => resolve(e.target.result);
+                  reader.readAsDataURL(file);
+                });
               }
 
-              // Compress image to reduce size (max 1200px width, 80% quality)
-              currentApartmentPlanImage = await compressImage(file, 1200, 0.8);
-
-              // Show preview
               if (apartmentPlanImagePreview) {
                 apartmentPlanImagePreview.src = currentApartmentPlanImage;
                 apartmentPlanImagePreview.classList.add('show');
               }
-
-              showToast('Image uploaded and compressed successfully', 'success');
+              showToast('Image processed successfully', 'success');
             } catch (error) {
               console.error('Error processing image:', error);
-              showToast('Error processing image. Please try a different file.', 'error');
+              showToast('Error processing image', 'error');
               currentApartmentPlanImage = null;
             }
           }
@@ -10755,22 +10759,27 @@
         propertyImageInput.addEventListener('change', async function (e) {
           const files = Array.from(e.target.files);
           if (files.length > 0) {
-            showToast(`Compressing ${files.length} image(s)...`, 'info');
-
+            showToast(`Processing ${files.length} image(s)...`, 'info');
             for (const file of files) {
               try {
-                // Compress each image before adding to array (Reduced to 800px/0.6q for smaller payload)
-                const compressedImage = await compressImage(file, 800, 0.6);
-                currentPropertyImages.push(compressedImage);
+                let processedImage;
+                if (file.size > 1000000) {
+                  processedImage = await compressImage(file, 1600, 0.85);
+                } else {
+                  processedImage = await new Promise(resolve => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.readAsDataURL(file);
+                  });
+                }
+                currentPropertyImages.push(processedImage);
               } catch (error) {
-                console.error('Error compressing image:', error);
-                showToast(`Error processing ${file.name}`, 'error');
+                console.error('Error processing image:', error);
               }
             }
-
             renderPropertyImages();
             updateBasicInfoPreview();
-            showToast('Images uploaded and compressed successfully', 'success');
+            showToast('Images processed and added', 'success');
           }
         });
       }
@@ -11124,15 +11133,22 @@
           const files = Array.from(e.target.files);
           if (files.length > 0) {
             showToast(`Uploading ${files.length} image(s)...`, 'info');
-
             for (const file of files) {
               try {
-                // Compress image before uploading (Reduced to 800px/0.6q)
-                const compressedImage = await compressImage(file, 800, 0.6);
+                let processedImage;
+                if (file.size > 1000000) {
+                  processedImage = await compressImage(file, 1600, 0.85);
+                } else {
+                  processedImage = await new Promise(resolve => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.readAsDataURL(file);
+                  });
+                }
 
                 const newImage = {
                   title: file.name.replace(/\.[^/.]+$/, ""),
-                  url: compressedImage
+                  url: processedImage
                 };
 
                 const response = await fetch('apil.php?action=save_gallery_image', {
@@ -11142,13 +11158,13 @@
                 });
 
                 const result = await response.json();
-
                 if (result.status === 'success') {
                   newImage.id = result.id;
                   newImage.uploadedDate = new Date().toLocaleDateString();
-
                   if (!projectData.gallery) projectData.gallery = [];
                   projectData.gallery.push(newImage);
+                  loadGallery();
+                  showToast('Image uploaded successfully', 'success');
                 } else {
                   throw new Error(result.message);
                 }
@@ -11157,9 +11173,7 @@
                 showToast(`Error uploading ${file.name}`, 'error');
               }
             }
-
-            loadGallery();
-            showToast('Images uploaded successfully!', 'success');
+            showToast('All images uploaded', 'success');
             e.target.value = '';
           }
         });

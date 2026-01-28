@@ -1822,12 +1822,15 @@
       position: relative;
       overflow: hidden;
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .card-image-container img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       transition: transform 0.7s ease;
     }
 
@@ -1843,6 +1846,18 @@
       height: 100%;
       background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.2));
       z-index: 1;
+      pointer-events: none;
+      /* Add this to allow clicking through */
+    }
+
+    /* Fixed Gallery Item */
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      /* Add background for aspect ratio mismatch */
+      transition: transform 0.5s ease;
     }
 
     /* Badge on image */
@@ -3622,8 +3637,8 @@
                   1 BHK
                 </button>
               </li> -->
-              <li class="nav-item active" role="presentation">
-                <button class="nav-link active" id="pills-3bhk-tab" data-bs-toggle="pill" data-bs-target="#pills-3bhk"
+              <li class="nav-item " role="presentation">
+                <button class="nav-link " id="pills-3bhk-tab" data-bs-toggle="pill" data-bs-target="#pills-3bhk"
                   type="button" role="tab" aria-controls="pills-3bhk" aria-selected="true" data-i18n="irish.plans.3bhk">
                   3 BHK
                 </button>
@@ -5901,10 +5916,27 @@
           image: (plan.image && plan.image.trim() !== "") ? plan.image : "https://placehold.co/600x400?text=" + (t["irish.image_not_found"] || "Image Not Found")
         };
 
-        // Fix image path
-        if (planData.image && !planData.image.startsWith('http') && !planData.image.startsWith('https') && !planData.image.startsWith('/') && !planData.image.startsWith('uploads/')) {
-          planData.image = 'uploads/' + planData.image;
+        console.log("Original plan.image:", plan.image);
+        console.log("Before path fix - planData.image:", planData.image);
+
+        // Fix image path - handle both base64 data URIs and file paths
+        if (planData.image && !planData.image.startsWith('http') && !planData.image.startsWith('https')) {
+          // Check if it's a base64 data URI
+          if (planData.image.startsWith('data:image')) {
+            // It's already a base64 data URI, use it as-is
+            console.log("Image is base64 data URI, using as-is");
+          } else if (!planData.image.startsWith('/')) {
+            // It's a filename, prepend the uploads/floorplans/ path
+            if (!planData.image.startsWith('uploads/')) {
+              planData.image = 'uploads/floorplans/' + planData.image;
+            } else if (planData.image.startsWith('uploads/') && !planData.image.startsWith('uploads/floorplans/')) {
+              // If it has uploads/ but not uploads/floorplans/, replace it
+              planData.image = planData.image.replace('uploads/', 'uploads/floorplans/');
+            }
+          }
         }
+
+        console.log("After path fix - planData.image:", planData.image && planData.image.length > 100 ? planData.image.substring(0, 100) + '...' : planData.image);
 
         const encodedData = encodeURIComponent(JSON.stringify(planData));
 
@@ -6057,7 +6089,9 @@
 
         // Fix relative paths for images in modal
         if (plan.image && !plan.image.startsWith('http') && !plan.image.startsWith('https') && !plan.image.startsWith('/') && !plan.image.startsWith('uploads/')) {
-          plan.image = 'uploads/' + plan.image;
+          if (!plan.image.startsWith('data:image')) {
+            plan.image = 'uploads/floorplans/' + plan.image;
+          }
         }
 
         // Fill modal data

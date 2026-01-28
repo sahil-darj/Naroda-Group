@@ -107,8 +107,6 @@
       background-color: #ffffff;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      padding-bottom: 70px;
-      /* Space for mobile bottom nav */
       min-height: 100vh;
       position: relative;
     }
@@ -261,13 +259,35 @@
     }
 
     .navbar-toggler {
-      border: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 5px;
       font-size: 1.25rem;
+      z-index: 2000;
+      /* Ensure it's on top */
+      cursor: pointer;
     }
 
     .navbar-toggler:focus {
       box-shadow: none;
+      outline: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+      width: 1.5em;
+      height: 1.5em;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    /* Force visibility on mobile specifically */
+    @media (max-width: 991px) {
+      .navbar-toggler {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
     }
 
     /* ===== Language Switcher (Copied from index.html) ===== */
@@ -396,13 +416,30 @@
       font-weight: 500;
     }
 
-    /* ===== Footer Styles (Copied from index.html) ===== */
+    /* ===== Footer Styles ===== */
     .footer {
       background: var(--primary-dark);
       color: #b0b7c3;
       padding-top: 70px;
       position: relative;
-      width: 100%;
+      z-index: 1;
+    }
+
+    .decoration-1 {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      right: -150px;
+      animation-duration: 25s;
+    }
+
+    .decoration-2 {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      left: -100px;
+      animation-duration: 30s;
+      animation-direction: reverse;
     }
 
     .footer-title {
@@ -429,13 +466,17 @@
       padding: 25px 0;
       margin-top: 50px;
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
 
-    /* ===== Additional Footer Styles (Copied from index.html) ===== */
+    /* ===== Additional Footer Styles ===== */
     .social-links {
       display: flex;
       gap: 12px;
       margin-top: 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .social-link {
@@ -449,27 +490,35 @@
       transition: var(--transition);
       color: white !important;
       font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
     }
 
     .social-link:hover {
       background: var(--gradient-secondary);
       transform: translateY(-3px);
+      z-index: 3;
     }
 
     .footer-links {
       list-style: none;
       padding: 0;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-links li {
       margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-links a {
-      text-decoration: none;
       color: #b0b7c3;
       transition: var(--transition);
       font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
     }
 
     .footer-links a:hover {
@@ -481,6 +530,8 @@
       display: flex;
       align-items: flex-start;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .contact-info i {
@@ -860,6 +911,10 @@
         display: block;
       }
 
+      .footer {
+        padding-bottom: 130px;
+      }
+
       .floating-buttons {
         bottom: 80px;
         right: 20px;
@@ -952,6 +1007,7 @@
       .timeline-content {
         padding: 20px;
       }
+
     }
 
     @media (max-width: 576px) {
@@ -1707,7 +1763,7 @@
               Premium Commercial Spaces
             </li>
             <li>
-              <a href="projects-irish.html" class="language-content" data-i18n="nav.irish">Naroda Arise
+              <a href="projects-irish.html" class="language-content" data-i18n="nav.irish">Naroda arise
               </a>
             </li>
             <li class="text-white small mb-2 language-content" data-i18n="footer.irish_desc">
@@ -1842,13 +1898,14 @@
   <!-- Translations Script -->
   <script>
 
-    // Initialize AOS
+    // Initialize AOS with mobile disabled
     AOS.init({
       duration: 800,
-      once: true, // Whether animation should happen only once - while scrolling down
-      offset: 100, // Offset (in px) from the original trigger point
-      delay: 100, // Values from 0 to 3000, with step 50ms
-      easing: 'ease-in-out', // Default easing for AOS animations
+      once: true,
+      offset: 100,
+      delay: 100,
+      easing: 'ease-in-out',
+      disable: 'mobile' // Disable animations on mobile devices (max-width: 768px)
     });
 
     // Translation data
@@ -2458,7 +2515,9 @@
 
       // Set mobile nav visibility based on screen width
       updateMobileNavVisibility();
-      window.addEventListener('resize', updateMobileNavVisibility);
+      window.addEventListener('resize', () => {
+        updateMobileNavVisibility();
+      });
 
       // Mobile nav active state
       document.querySelectorAll('.mobile-nav-item').forEach((item) => {
@@ -2574,8 +2633,11 @@ _I'm interested in ${project} and would like to know more details._`;
         });
       }
 
-      // Add click event to enquiry button
-      document.querySelector('.enquiry-btn').addEventListener('click', openEnquiryModal);
+      // Add click event to enquiry button if it exists
+      const enquiryBtn = document.querySelector('.enquiry-btn');
+      if (enquiryBtn) {
+        enquiryBtn.addEventListener('click', openEnquiryModal);
+      }
     });
 
     // Also add the enquiry button to the mobile bottom navigation

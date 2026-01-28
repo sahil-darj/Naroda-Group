@@ -513,7 +513,7 @@
       min-height: 80vh;
       background: linear-gradient(rgba(10, 42, 50, 0.95),
           rgba(10, 42, 74, 0.85)),
-        url("naroda_group_assets/13.png");
+        url("naroda_group_assets/arise4.png");
       background-size: cover;
       background-position: center;
       color: white;
@@ -3342,7 +3342,7 @@
         <div class="row align-items-center">
           <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
             <div class="overview-image">
-              <img src="naroda_group_assets/1 (19).jpeg" alt="Naroda Arise Building" class="img-fluid" loading="lazy" />
+              <img src="naroda_group_assets/arise.png" alt="Naroda Arise Building" class="img-fluid" loading="lazy" />
             </div>
           </div>
 
@@ -5802,10 +5802,27 @@
           image: (plan.image && plan.image.trim() !== "") ? plan.image : "https://placehold.co/600x400?text=" + (t["irish.image_not_found"] || "Image Not Found")
         };
 
-        // Fix image path
-        if (planData.image && !planData.image.startsWith('http') && !planData.image.startsWith('https') && !planData.image.startsWith('/') && !planData.image.startsWith('uploads/')) {
-          planData.image = 'uploads/' + planData.image;
+        console.log("Original plan.image:", plan.image);
+        console.log("Before path fix - planData.image:", planData.image);
+
+        // Fix image path - handle both base64 data URIs and file paths
+        if (planData.image && !planData.image.startsWith('http') && !planData.image.startsWith('https')) {
+          // Check if it's a base64 data URI
+          if (planData.image.startsWith('data:image')) {
+            // It's already a base64 data URI, use it as-is
+            console.log("Image is base64 data URI, using as-is");
+          } else if (!planData.image.startsWith('/')) {
+            // It's a filename, prepend the uploads/floorplans/ path
+            if (!planData.image.startsWith('uploads/')) {
+              planData.image = 'uploads/floorplans/' + planData.image;
+            } else if (planData.image.startsWith('uploads/') && !planData.image.startsWith('uploads/floorplans/')) {
+              // If it has uploads/ but not uploads/floorplans/, replace it
+              planData.image = planData.image.replace('uploads/', 'uploads/floorplans/');
+            }
+          }
         }
+
+        console.log("After path fix - planData.image:", planData.image.substring(0, 100) + (planData.image.length > 100 ? '...' : ''));
 
         const encodedData = encodeURIComponent(JSON.stringify(planData));
 
@@ -5958,7 +5975,9 @@
 
         // Fix relative paths for images in modal
         if (plan.image && !plan.image.startsWith('http') && !plan.image.startsWith('https') && !plan.image.startsWith('/') && !plan.image.startsWith('uploads/')) {
-          plan.image = '/uploads/floorplans/' + plan.image;
+          if (!plan.image.startsWith('data:image')) {
+            plan.image = '/uploads/floorplans/' + plan.image;
+          }
         }
 
         // Fill modal data
