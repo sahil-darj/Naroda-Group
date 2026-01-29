@@ -1,0 +1,47 @@
+
+Table: apartment_plans
+id              | int(11)        
+bhk_type        | varchar(10)    
+area            | varchar(255)   
+bedrooms        | varchar(10)    
+bathrooms       | varchar(10)    
+balconies       | varchar(10)    
+description     | longtext       
+image           | text           
+status          | varchar(20)    
+last_updated    | date           
+
+Table: gallery
+id              | int(11)        
+url             | text           
+title           | varchar(255)   
+description     | text           
+uploaded_date   | date           
+is_featured     | tinyint(1)     
+
+Table: featured_properties
+id              | int(11)        
+property_type   | varchar(20)    
+title           | longtext       
+location        | longtext       
+type            | varchar(255)   
+category        | varchar(255)   
+area            | varchar(255)   
+floor           | varchar(255)   
+parking         | varchar(255)   
+status          | varchar(50)    
+price           | varchar(255)   
+price_unit      | varchar(50)    
+bedrooms        | varchar(10)    
+bathrooms       | varchar(10)    
+property_id     | varchar(100)   
+facing          | varchar(100)   
+description     | longtext       
+images          | longtext       
+brochure        | longtext       
+overview        | longtext       
+amenities       | longtext       
+floor_plans_dimensions | longtext       
+location_details | longtext       
+documents       | longtext       
+created_at      | timestamp      
