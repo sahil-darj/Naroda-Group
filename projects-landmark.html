@@ -3081,6 +3081,99 @@
       font-size: 1rem;
       font-weight: 600;
     }
+
+    /* ===== Brochure Section Styles ===== */
+    .brochure-section {
+      padding: 100px 0;
+      background: #f8f9fa;
+    }
+
+    .brochure-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      height: 100%;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .brochure-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .brochure-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(231, 76, 60, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: #e74c3c;
+      font-size: 2rem;
+    }
+
+    .brochure-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .info-item i {
+      color: var(--primary-color);
+      width: 20px;
+    }
+
+    .info-item strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Responsive styles for brochure section */
+    @media (max-width: 768px) {
+      .brochure-card {
+        padding: 30px 20px;
+      }
+
+      .brochure-info {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .info-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+      }
+    }
+
+    /* Add this to your CSS to ensure tab visibility */
+    .tab-pane {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+    }
+
+    .tab-pane.active {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
   </style>
 </head>
 
@@ -3285,7 +3378,9 @@
               </p>
 
               <div class="hero-buttons-container">
-                <a href="#brochure-download" class="btn btn-gold btn-lg" aria-label="Download project brochure">
+                <a href="uploads/brochures/naroda_lavish_brochure.pdf" class="btn btn-gold btn-lg"
+                  aria-label="Download project brochure" download="Naroda_Lavish_Brochure.pdf"
+                  onclick="trackBrochureDownload()">
                   <i class="fas fa-download me-2" aria-hidden="true"></i>
                   <span data-i18n="lavish.hero.btn.brochure">Download Brochure</span>
                 </a>
@@ -3637,8 +3732,8 @@
                   1 BHK
                 </button>
               </li> -->
-              <li class="nav-item " role="presentation">
-                <button class="nav-link " id="pills-3bhk-tab" data-bs-toggle="pill" data-bs-target="#pills-3bhk"
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-3bhk-tab" data-bs-toggle="pill" data-bs-target="#pills-3bhk"
                   type="button" role="tab" aria-controls="pills-3bhk" aria-selected="true" data-i18n="irish.plans.3bhk">
                   3 BHK
                 </button>
@@ -3648,7 +3743,7 @@
                 <button class="nav-link" id="pills-4bhk-tab" data-bs-toggle="pill" data-bs-target="#pills-4bhk"
                   type="button" role="tab" aria-controls="pills-4bhk" aria-selected="false"
                   data-i18n="irish.plans.4bhk">
-                  4 bhk
+                  4 BHK
                 </button>
               </li>
             </ul>
@@ -3656,19 +3751,17 @@
         </div>
 
         <div class="tab-content" id="floorPlanTabContent" data-aos="fade-up" data-aos-delay="100">
-          <!-- <div class="tab-pane fade show active" id="pills-1bhk" role="tabpanel" aria-labelledby="pills-1bhk-tab">
-            <div class="row g-4" id="premium-container-1bhk">
-              1 BHK Premium Horizontal Cards will be loaded here
-            </div>
-          </div> -->
-          <div class="tab-pane fade active" id="pills-3bhk " role="tabpanel" aria-labelledby="pills-3bhk-tab">
+          <!-- 3 BHK Tab Content -->
+          <div class="tab-pane fade" id="pills-3bhk" role="tabpanel" aria-labelledby="pills-3bhk-tab">
             <div class="row g-4" id="premium-container-3bhk">
-              <!-- 3 bhk Premium Horizontal Cards will be loaded here -->
+              <!-- 3 BHK Premium Horizontal Cards will be loaded here -->
             </div>
           </div>
+
+          <!-- 4 BHK Tab Content -->
           <div class="tab-pane fade" id="pills-4bhk" role="tabpanel" aria-labelledby="pills-4bhk-tab">
             <div class="row g-4" id="premium-container-4bhk">
-              <!-- 4 bhk Premium Horizontal Cards will be loaded here -->
+              <!-- 4 BHK Premium Horizontal Cards will be loaded here -->
             </div>
           </div>
         </div>
@@ -4490,7 +4583,8 @@
         "nav.language": "EN",
         "nav.login": "Login",
         "nav.call": "Call Now",
-
+        "lavish.brochure.downloaded": "Brochure downloaded successfully!",
+        "lavish.brochure.thank_you": "Thank you for downloading our brochure.",
         // Hero Section
         "irish.hero.badge": "Ahmedabad's Premier Luxury Residences",
         "irish.hero.title.part1": "Naroda Arise",
@@ -4810,7 +4904,8 @@
         "nav.language": "हिंदी",
         "nav.login": "लॉगिन",
         "nav.call": "अभी कॉल करें",
-
+        "lavish.brochure.downloaded": "ब्रोशर सफलतापूर्वक डाउनलोड हुआ!",
+        "lavish.brochure.thank_you": "हमारा ब्रोशर डाउनलोड करने के लिए धन्यवाद।",
         // Hero Section
         "irish.hero.badge": "अहमदाबाद के प्रीमियम लग्ज़री आवास",
         "irish.hero.title.part1": "नरोड़ा आयरिश",
@@ -5131,7 +5226,8 @@
         "nav.language": "ગુજરાતી",
         "nav.login": "લોગિન",
         "nav.call": "હવે કૉલ કરો",
-
+        "lavish.brochure.downloaded": "બ્રોશર સફળતાપૂર્વક ડાઉનલોડ થયું!",
+        "lavish.brochure.thank_you": "અમારું બ્રોશર ડાઉનલોડ કરવા બદલ આભાર.",
         // Highlights
         "irish.highlights.badge": "પ્રોજેક્ટ હાઈલાઈટ્સ",
         "irish.highlights.title.part1": "શ્રેષ્ઠ",
@@ -5796,13 +5892,15 @@
               renderPremiumPlans(data.apartment_plans);
 
               // Activate first tab after a slight delay
+              // In the fetchProjectData() function, change this:
+              // Change this section:
               setTimeout(() => {
-                const firstTab = document.getElementById("pills-1bhk-tab");
+                const firstTab = document.getElementById("pills-3bhk-tab");
                 if (firstTab) {
                   const tab = bootstrap.Tab.getOrCreateInstance(firstTab);
                   tab.show();
                   // Force display of tab content
-                  const firstPane = document.getElementById("pills-1bhk");
+                  const firstPane = document.getElementById("pills-3bhk");
                   if (firstPane) firstPane.classList.add("show", "active");
                 }
               }, 300);
@@ -7203,8 +7301,96 @@ _Enquiry sent from Naroda Lavish website_`;
       // Reset form
       document.getElementById("enquiryForm").reset();
     }
+
+    // Brochure download tracking
+    function trackBrochureDownload() {
+      // You can add analytics tracking here
+      console.log('Brochure download initiated');
+
+      // Google Analytics event (if you have GA)
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'brochure_download', {
+          'event_category': 'engagement',
+          'event_label': 'Naroda Lavish Brochure'
+        });
+      }
+
+      // Optional: Show a thank you message
+      setTimeout(() => {
+        showToast('Thank you for downloading our brochure!', 'success');
+      }, 1000);
+    }
   </script>
   <!-- <script src="js/translations.js"></script> -->
 </body>
+<!-- Brochure Download Section -->
+<section class="brochure-section" id="brochure-download" aria-label="Brochure Download">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <span class="badge bg-gradient-accent text-white px-4 py-2 rounded-pill mb-3" data-aos="fade-up">
+          <i class="fas fa-file-pdf me-2"></i>
+          <span class="language-content" data-i18n="lavish.brochure.badge">Digital Brochure</span>
+        </span>
+
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+          <span class="language-content" data-i18n="lavish.brochure.title">Project Brochure</span>
+        </h2>
+
+        <p class="text-muted mb-5" data-aos="fade-up" data-aos-delay="200">
+          <span class="language-content" data-i18n="lavish.brochure.subtitle">
+            Download our comprehensive project brochure for detailed specifications, amenities, and pricing.
+          </span>
+        </p>
+
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-md-6">
+            <div class="brochure-card">
+              <div class="brochure-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h4 class="mb-3 language-content" data-i18n="lavish.brochure.card_title">
+                Naroda Lavish Brochure
+              </h4>
+              <p class="text-muted mb-4 language-content" data-i18n="lavish.brochure.card_text">
+                Complete project details, floor plans, amenities, and specifications
+              </p>
+              <div class="brochure-info">
+                <div class="info-item">
+                  <i class="fas fa-file-alt"></i>
+                  <span class="language-content" data-i18n="lavish.brochure.file_size">File Size:</span>
+                  <strong>2.5 MB</strong>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-file-pdf"></i>
+                  <span class="language-content" data-i18n="lavish.brochure.format">Format:</span>
+                  <strong>PDF</strong>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span class="language-content" data-i18n="lavish.brochure.updated">Updated:</span>
+                  <strong>March 2025</strong>
+                </div>
+              </div>
+              <a href="uploads/brochures/naroda_lavish_brochure.pdf" class="btn btn-emerald btn-lg mt-4 w-100"
+                download="Naroda_Lavish_Project_Brochure.pdf" onclick="trackBrochureDownload()">
+                <i class="fas fa-download me-2"></i>
+                <span class="language-content" data-i18n="lavish.brochure.download_btn">Download Brochure</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 text-center" data-aos="fade-up" data-aos-delay="400">
+          <p class="text-muted small language-content" data-i18n="lavish.brochure.note">
+            <i class="fas fa-info-circle me-2"></i>
+            Having trouble downloading? Email us at
+            <a href="mailto:narodagroup.pvt@gmail.com" class="text-decoration-none">narodagroup.pvt@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 </html>

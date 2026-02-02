@@ -748,37 +748,9 @@
 
     <!-- Quick Stats -->
     <div class="quick-stats-container">
+      <!-- Inquiries (Kept) -->
       <div class="stat-item">
-        <div class="stat-icon" style="
-              background-color: rgba(67, 97, 238, 0.1);
-              color: var(--primary-color);
-            ">
-          <i class="fas fa-user-check"></i>
-        </div>
-        <div class="stat-info">
-          <h4 id="stat-users"><i class="fas fa-spinner fa-spin"></i>1</h4>
-          <p data-translate-key="total_users">Total Users</p>
-        </div>
-      </div>
-
-      <div class="stat-item">
-        <div class="stat-icon" style="
-              background-color: rgba(16, 185, 129, 0.1);
-              color: var(--success-color);
-            ">
-          <i class="fas fa-project-diagram"></i>
-        </div>
-        <div class="stat-info">
-          <h4 id="stat-projects"><i class="fas fa-spinner fa-spin"></i> </h4>
-          <p data-translate-key="active_projects">Active Projects</p>
-        </div>
-      </div>
-
-      <div class="stat-item">
-        <div class="stat-icon" style="
-              background-color: rgba(245, 158, 11, 0.1);
-              color: var(--warning-color);
-            ">
+        <div class="stat-icon" style="background-color: rgba(245, 158, 11, 0.1); color: var(--warning-color);">
           <i class="fas fa-question-circle"></i>
         </div>
         <div class="stat-info">
@@ -787,11 +759,9 @@
         </div>
       </div>
 
+      <!-- Team Members (Kept) -->
       <div class="stat-item">
-        <div class="stat-icon" style="
-              background-color: rgba(239, 68, 68, 0.1);
-              color: var(--danger-color);
-            ">
+        <div class="stat-icon" style="background-color: rgba(239, 68, 68, 0.1); color: var(--danger-color);">
           <i class="fas fa-users"></i>
         </div>
         <div class="stat-info">
@@ -800,6 +770,7 @@
         </div>
       </div>
 
+      <!-- News (Uncommented & Kept) -->
       <!-- <div class="stat-item">
         <div class="stat-icon" style="background-color: rgba(147, 51, 234, 0.1); color: #9333ea">
           <i class="fas fa-newspaper"></i>
@@ -810,6 +781,7 @@
         </div>
       </div> -->
 
+      <!-- Applications (Kept) -->
       <div class="stat-item">
         <div class="stat-icon" style="background-color: rgba(6, 182, 212, 0.1); color: #06b6d4">
           <i class="fas fa-file-contract"></i>
@@ -820,6 +792,7 @@
         </div>
       </div>
 
+      <!-- Job Openings (Kept) -->
       <div class="stat-item">
         <div class="stat-icon" style="background-color: rgba(34, 197, 94, 0.1); color: #22c55e">
           <i class="fas fa-briefcase"></i>
@@ -830,6 +803,7 @@
         </div>
       </div>
 
+      <!-- FAQ (Kept) -->
       <div class="stat-item">
         <div class="stat-icon" style="background-color: rgba(249, 115, 22, 0.1); color: #f97316">
           <i class="fas fa-question"></i>
@@ -840,26 +814,7 @@
         </div>
       </div>
 
-      <div class="stat-item">
-        <div class="stat-icon" style="background-color: rgba(59, 130, 246, 0.1); color: #3b82f6">
-          <i class="fas fa-shopping-cart"></i>
-        </div>
-        <div class="stat-info">
-          <h4>1,245</h4>
-          <p data-translate-key="total_buyers">Total Buyers</p>
-        </div>
-      </div>
-
-      <div class="stat-item">
-        <div class="stat-icon" style="background-color: rgba(168, 85, 247, 0.1); color: #a855f7">
-          <i class="fas fa-home"></i>
-        </div>
-        <div class="stat-info">
-          <h4>342</h4>
-          <p data-translate-key="rent_properties">Rent Properties</p>
-        </div>
-      </div>
-
+      <!-- Blog Posts (Kept) -->
       <div class="stat-item">
         <div class="stat-icon" style="background-color: rgba(236, 72, 153, 0.1); color: #ec4899">
           <i class="fas fa-blog"></i>
@@ -868,108 +823,6 @@
           <h4 id="stat-blogs"><i class="fas fa-spinner fa-spin"></i></h4>
           <p data-translate-key="blog_posts">Blog Posts</p>
         </div>
-      </div>
-
-      <!-- Gallery Items with Image/Video breakdown -->
-      <div class="stat-item">
-        <div class="stat-icon" style="background-color: rgba(14, 165, 233, 0.1); color: #0ea5e9">
-          <i class="fas fa-photo-video"></i>
-        </div>
-        <div class="stat-info">
-          <h4 id="stat-gallery"><i class="fas fa-spinner fa-spin"></i></h4>
-          <p data-translate-key="gallery_items">Gallery Items</p>
-          <div class="gallery-details">
-            <div class="gallery-count">
-              <i class="fas fa-image"></i>
-              <span id="stat-images">0 Images</span>
-            </div>
-            <div class="gallery-count">
-              <i class="fas fa-video"></i>
-              <span id="stat-videos">0 Videos</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Recent Activity Table -->
-    <div class="recent-activity">
-      <h3 data-translate-key="recent_activity">Recent Activity</h3>
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th data-translate-key="user">User</th>
-              <th data-translate-key="activity">Activity</th>
-              <th data-translate-key="time">Time</th>
-              <th data-translate-key="status">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="https://ui-avatars.com/api/?name=John+Doe&background=3a0ca3&color=fff" alt="John Doe"
-                    class="rounded-circle me-2" width="30" height="30" />
-                  <span data-translate-key="john_doe">John Doe</span>
-                </div>
-              </td>
-              <td data-translate-key="activity_1">
-                Created new project "Backend API"
-              </td>
-              <td data-translate-key="time_1">10:24 AM</td>
-              <td>
-                <span class="badge badge-success" data-translate-key="completed">Completed</span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="https://ui-avatars.com/api/?name=Jane+Smith&background=4361ee&color=fff" alt="Jane Smith"
-                    class="rounded-circle me-2" width="30" height="30" />
-                  <span data-translate-key="jane_smith">Jane Smith</span>
-                </div>
-              </td>
-              <td data-translate-key="activity_2">
-                Updated user permissions
-              </td>
-              <td data-translate-key="time_2">09:42 AM</td>
-              <td>
-                <span class="badge badge-success" data-translate-key="completed">Completed</span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="https://ui-avatars.com/api/?name=Mike+Johnson&background=10b981&color=fff"
-                    alt="Mike Johnson" class="rounded-circle me-2" width="30" height="30" />
-                  <span data-translate-key="mike_johnson">Mike Johnson</span>
-                </div>
-              </td>
-              <td data-translate-key="activity_3">Published new blog post</td>
-              <td data-translate-key="yesterday">Yesterday</td>
-              <td>
-                <span class="badge badge-primary" data-translate-key="pending">Pending</span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="https://ui-avatars.com/api/?name=Sarah+Williams&background=f59e0b&color=fff"
-                    alt="Sarah Williams" class="rounded-circle me-2" width="30" height="30" />
-                  <span data-translate-key="sarah_williams">Sarah Williams</span>
-                </div>
-              </td>
-              <td data-translate-key="activity_4">
-                Uploaded 15 images to gallery
-              </td>
-              <td data-translate-key="yesterday">Yesterday</td>
-              <td>
-                <span class="badge badge-success" data-translate-key="completed">Completed</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </main>
@@ -1006,8 +859,8 @@
         gallery_items: "Gallery Items",
         images_count: "1,045 Images",
         videos_count: "200 Videos",
-        careers_applied: "Carriers Applied",
-        openings: "Openings",
+        careers_applied: "Applications",
+        openings: "Job Openings",
 
         // Recent activity
         recent_activity: "Recent Activity",
@@ -1058,8 +911,8 @@
         gallery_items: "गैलरी आइटम",
         images_count: "1,045 छवियाँ",
         videos_count: "200 वीडियो",
-        careers_applied: "आवेदित करियर",
-        openings: "रिक्तियाँ",
+        careers_applied: "आवेदन",
+        openings: "नौकरी रिक्तियां",
 
         // Recent activity
         recent_activity: "हाल की गतिविधि",
@@ -1110,8 +963,8 @@
         gallery_items: "ગેલેરી આઇટમ્સ",
         images_count: "1,045 છબીઓ",
         videos_count: "200 વિડીયો",
-        careers_applied: "લાગુ કરાયેલ કારકિર્દી",
-        openings: "રિક્તિઓ",
+        careers_applied: "અરજીઓ",
+        openings: "જોબ ઓપનિંગ્સ",
 
         // Recent activity
         recent_activity: "તાજેતરની પ્રવૃત્તિ",
@@ -1323,13 +1176,22 @@
         }
       };
 
-      // Fetch Users count
-      const usersData = await safeFetch('api/users_api.php?action=get_users&perPage=1');
-      if (usersData?.success) {
-        updateStat('stat-users', usersData.total || 0);
-      } else {
-        updateStat('stat-users', '0');
+      // Fetch Inquiries from multiple sources
+      let totalInquiries = 0;
+
+      // Landmark Inquiries
+      const landmarkInquiries = await safeFetch('api/naroda_landmark_api.php?action=get_inquiries');
+      if (landmarkInquiries?.success) {
+        totalInquiries += landmarkInquiries.inquiries?.length || 0;
       }
+
+      // Irish Inquiries
+      const irishInquiries = await safeFetch('api/naroda_irish_api.php?action=get_inquiries');
+      if (irishInquiries?.success) {
+        totalInquiries += irishInquiries.data?.length || 0;
+      }
+
+      updateStat('stat-inquiries', totalInquiries);
 
       // Fetch Team Members count
       const teamData = await safeFetch('api/team_api.php?action=get_members&perPage=1');
@@ -1337,27 +1199,6 @@
         updateStat('stat-team', teamData.total || 0);
       } else {
         updateStat('stat-team', '0');
-      }
-
-      // Fetch Gallery statistics (images, videos, highlights)
-      const galleryData = await safeFetch('api/gallery_api.php?action=get_gallery_data');
-      if (galleryData?.success) {
-        const images = galleryData.data?.images?.length || 0;
-        const videos = galleryData.data?.videos?.length || 0;
-        const total = images + videos;
-        updateStat('stat-gallery', total);
-        document.getElementById('stat-images').textContent = `${images} Images`;
-        document.getElementById('stat-videos').textContent = `${videos} Videos`;
-      } else {
-        updateStat('stat-gallery', '0');
-      }
-
-      // Fetch Blogs count
-      const blogsData = await safeFetch('api/blogs_api.php?action=get_blogs');
-      if (blogsData?.success) {
-        updateStat('stat-blogs', blogsData.data?.length || 0);
-      } else {
-        updateStat('stat-blogs', '0');
       }
 
       // Fetch News count
@@ -1392,10 +1233,13 @@
         updateStat('stat-faq', '0');
       }
 
-      // For static cards that don't have APIs (projects, inquiries, buyers, rent)
-      // Keep them as placeholders or set to 0
-      updateStat('stat-projects', '0');
-      updateStat('stat-inquiries', '0');
+      // Fetch Blogs count
+      const blogsData = await safeFetch('api/blogs_api.php?action=get_blogs');
+      if (blogsData?.success) {
+        updateStat('stat-blogs', blogsData.data?.length || 0);
+      } else {
+        updateStat('stat-blogs', '0');
+      }
 
       console.log('Dashboard statistics loaded successfully');
     }

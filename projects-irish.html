@@ -3051,6 +3051,85 @@
       font-size: 1rem;
       font-weight: 600;
     }
+
+    /* ===== Brochure Section Styles ===== */
+    .brochure-section {
+      padding: 100px 0;
+      background: #f8f9fa;
+    }
+
+    .brochure-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      height: 100%;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .brochure-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .brochure-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(231, 76, 60, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: #e74c3c;
+      font-size: 2rem;
+    }
+
+    .brochure-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .info-item i {
+      color: var(--primary-color);
+      width: 20px;
+    }
+
+    .info-item strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Responsive styles for brochure section */
+    @media (max-width: 768px) {
+      .brochure-card {
+        padding: 30px 20px;
+      }
+
+      .brochure-info {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .info-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+      }
+    }
   </style>
 </head>
 
@@ -3255,9 +3334,11 @@
               </p>
 
               <div class="hero-buttons-container">
-                <a href="#brochure-download" class="btn btn-gold btn-lg" aria-label="Download project brochure">
+                <a href="uploads/brochures/naroda_arise_brochure.pdf" class="btn btn-gold btn-lg"
+                  aria-label="Download project brochure" download="Naroda_Arise_Brochure.pdf"
+                  onclick="trackBrochureDownload('arise')">
                   <i class="fas fa-download me-2" aria-hidden="true"></i>
-                  <span data-i18n="arise.hero.btn.brochure">Download Brochure</span>
+                  <span data-i18n="irish.hero.btn.brochure">Download Brochure</span>
                 </a>
                 <a href="#pricing" class="btn btn-outline-light btn-lg" aria-label="View pricing information">
                   <i class="fas fa-home me-2" aria-hidden="true"></i>
@@ -4436,7 +4517,9 @@
         "nav.login": "Login",
         "nav.call": "Call Now",
         // Add to all language objects (en, hi, gu):
-
+        "irish.hero.btn.brochure": "Download Brochure",
+        "irish.brochure.downloaded": "Naroda Arise brochure downloaded successfully!",
+        "irish.brochure.thank_you": "Thank you for downloading Naroda Arise brochure.",
         // Hero Section for Arise
         "arise.hero.badge": "Premier Luxurious Living & Retail",
         "arise.hero.title.part1": "Naroda Arise",
@@ -5013,6 +5096,9 @@
         "irish.plans.starting_price": "शुरुआती कीमत",
         "irish.plans.view_details": "विवरण देखें",
         "irish.plans.download": "फर्श योजना डाउनलोड करें",
+        "irish.hero.btn.brochure": "ब्रोशर डाउनलोड करें",
+        "irish.brochure.downloaded": "नरोड़ा अराइज ब्रोशर सफलतापूर्वक डाउनलोड हुआ!",
+        "irish.brochure.thank_you": "नरोड़ा अराइज ब्रोशर डाउनलोड करने के लिए धन्यवाद।",
       },
       gu: {
         // Navigation
@@ -5346,7 +5432,10 @@
       "enquiry.project": "રુચિનો પ્રોજેક્ટ",
       "enquiry.message": "સંદેશ",
       "enquiry.submit": "વોટ્સએપ દ્વારા મોકલો",
-      "enquiry.note": "અમે તમને સીધા અમારી સેલ્સ ટીમ સાથે જોડીશું"
+      "enquiry.note": "અમે તમને સીધા અમારી સેલ્સ ટીમ સાથે જોડીશું",
+      "irish.hero.btn.brochure": "બ્રોશર ડાઉનલોડ કરો",
+      "irish.brochure.downloaded": "નરોડા અરાઈઝ બ્રોશર સફળતાપૂર્વક ડાઉનલોડ થયું!",
+      "irish.brochure.thank_you": "નરોડા અરાઈઝ બ્રોશર ડાઉનલોડ કરવા બદલ આભાર.",
     };
   </script>
 
@@ -7087,8 +7176,100 @@ _Enquiry sent from Naroda Arise website_`;
       // Reset form
       document.getElementById("enquiryForm").reset();
     }
+    // Brochure download tracking
+    function trackBrochureDownload(project = 'lavish') {
+      const projectNames = {
+        'lavish': 'Naroda Lavish',
+        'arise': 'Naroda Arise'
+      };
+
+      console.log(`${projectNames[project]} Brochure download initiated`);
+
+      // Google Analytics event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'brochure_download', {
+          'event_category': 'engagement',
+          'event_label': `${projectNames[project]} Brochure`
+        });
+      }
+
+      // Optional: Show a thank you message
+      setTimeout(() => {
+        showToast(`Thank you for downloading ${projectNames[project]} brochure!`, 'success');
+      }, 1000);
+    }
   </script>
   <!-- <script src="js/translations.js"></script> -->
 </body>
+<!-- Brochure Download Section -->
+<section class="brochure-section" id="brochure-download" aria-label="Brochure Download">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <span class="badge bg-gradient-accent text-white px-4 py-2 rounded-pill mb-3" data-aos="fade-up">
+          <i class="fas fa-file-pdf me-2"></i>
+          <span class="language-content" data-i18n="irish.brochure.badge">Digital Brochure</span>
+        </span>
+
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+          <span class="language-content" data-i18n="irish.brochure.title">Naroda Arise Project Brochure</span>
+        </h2>
+
+        <p class="text-muted mb-5" data-aos="fade-up" data-aos-delay="200">
+          <span class="language-content" data-i18n="irish.brochure.subtitle">
+            Download our comprehensive project brochure for detailed specifications, floor plans, amenities, and
+            pricing.
+          </span>
+        </p>
+
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-md-6">
+            <div class="brochure-card">
+              <div class="brochure-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <h4 class="mb-3 language-content" data-i18n="irish.brochure.card_title">
+                Naroda Arise Brochure
+              </h4>
+              <p class="text-muted mb-4 language-content" data-i18n="irish.brochure.card_text">
+                Complete project details, 2 & 3 BHK floor plans, amenities, and specifications
+              </p>
+              <div class="brochure-info">
+                <div class="info-item">
+                  <i class="fas fa-file-alt"></i>
+                  <span class="language-content" data-i18n="irish.brochure.file_size">File Size:</span>
+                  <strong>2.8 MB</strong>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-file-pdf"></i>
+                  <span class="language-content" data-i18n="irish.brochure.format">Format:</span>
+                  <strong>PDF</strong>
+                </div>
+                <div class="info-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span class="language-content" data-i18n="irish.brochure.updated">Updated:</span>
+                  <strong>March 2025</strong>
+                </div>
+              </div>
+              <a href="uploads/brochures/naroda_arise_brochure.pdf" class="btn btn-emerald btn-lg mt-4 w-100"
+                download="Naroda_Arise_Project_Brochure.pdf" onclick="trackBrochureDownload('arise')">
+                <i class="fas fa-download me-2"></i>
+                <span class="language-content" data-i18n="irish.brochure.download_btn">Download Brochure</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 text-center" data-aos="fade-up" data-aos-delay="400">
+          <p class="text-muted small language-content" data-i18n="irish.brochure.note">
+            <i class="fas fa-info-circle me-2"></i>
+            Having trouble downloading? Email us at
+            <a href="mailto:narodagroup.pvt@gmail.com" class="text-decoration-none">narodagroup.pvt@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 </html>

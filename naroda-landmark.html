@@ -5095,48 +5095,6 @@
       if (timeElement) timeElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
       if (dateElement) dateElement.textContent = dateString;
     }
-
-    /**
-     * HIGH QUALITY IMAGE COMPRESSION
-     * Fixes blur by keeping resolution high (1920px) and quality (0.9)
-     * Fixes cropping/not-saving by reducing payload size to fit PHP limits
-     */
-    async function compressImage(file, maxWidth = 1920, quality = 0.9) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = (event) => {
-          const img = new Image();
-          img.src = event.target.result;
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            let width = img.width;
-            let height = img.height;
-
-            // Only rescale if the image is actually larger than maxWidth
-            if (width > maxWidth || height > maxWidth) {
-              if (width > height) {
-                height = (height * maxWidth) / width;
-                width = maxWidth;
-              } else {
-                width = (width * maxWidth) / height;
-                height = maxWidth;
-              }
-            }
-
-            canvas.width = width;
-            canvas.height = height;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, height);
-
-            // Output as high-quality JPEG
-            resolve(canvas.toDataURL('image/jpeg', quality));
-          };
-          img.onerror = reject;
-        };
-        reader.onerror = reject;
-      });
-    }
     // ===== COMPREHENSIVE TRANSLATION SYSTEM =====
 
     let currentLanguage = 'en'; // Default language
@@ -5780,9 +5738,9 @@
     let projectData = {
       apartmentPlans: { '3bhk': [], '4bhk': [] },
       gallery: [],
-      pricingPlans: { '3bhk': {}, '4bhk': {} },
+      pricingPlans: [],
       featuredProperties: { 'for-sale': [], 'for-rent': [] },
-      scheduleVisits: { 'sale': [], 'rent': [] }
+      inquiries: []
     };
 
 
@@ -7303,8 +7261,10 @@
       const add4bhkFeatureBtn = document.getElementById('add-4bhk-feature');
 
       // Availability Status Elements
+      const availabilityStatus1Bhk = document.getElementById('1bhk-availability-status');
       const availabilityStatus3bhk = document.getElementById('3bhk-availability-status');
       const availabilityStatus4bhk = document.getElementById('4bhk-availability-status');
+      const statusBadge1Bhk = document.getElementById('1bhk-status-badge');
       const statusBadge3bhk = document.getElementById('3bhk-status-badge');
       const statusBadge4bhk = document.getElementById('4bhk-status-badge');
 
@@ -7347,7 +7307,7 @@
 
       // ===== PRICING PREVIEW HELPER FUNCTIONS =====
       function updateAllPricingPreviews() {
-        ['3bhk', '4bhk'].forEach(type => {
+        ['1bhk', '3bhk', '4bhk'].forEach(type => {
           updatePricingPreview(type);
           updatePricingActionButtons(type);
         });
@@ -7800,8 +7760,8 @@
         const descGu = document.getElementById('apartment-description-gu');
 
         if (apartmentArea) apartmentArea.value = '';
-        if (apartmentBedrooms) apartmentBedrooms.value = type === '3bhk' ? '3' : '4';
-        if (apartmentBathrooms) apartmentBathrooms.value = '3';
+        if (apartmentBedrooms) apartmentBedrooms.value = type === '1bhk' ? '1' : type === '3bhk' ? '2' : '3';
+        if (apartmentBathrooms) apartmentBathrooms.value = type === '1bhk' ? '1' : '2';
         if (apartmentBalconies) apartmentBalconies.value = '';
 
         if (descEn) descEn.value = '';
@@ -7836,8 +7796,8 @@
         const descGu = document.getElementById('apartment-description-gu');
 
         if (apartmentArea) apartmentArea.value = plan.area || '';
-        if (apartmentBedrooms) apartmentBedrooms.value = plan.bedrooms || (typeKey === '3bhk' ? '3' : '4');
-        if (apartmentBathrooms) apartmentBathrooms.value = plan.bathrooms || '3';
+        if (apartmentBedrooms) apartmentBedrooms.value = plan.bedrooms || (typeKey === '1bhk' ? '1' : typeKey === '3bhk' ? '2' : '3');
+        if (apartmentBathrooms) apartmentBathrooms.value = plan.bathrooms || (typeKey === '1bhk' ? '1' : '2');
         if (apartmentBalconies) apartmentBalconies.value = plan.balconies || '';
 
         // Handle complex description object or legacy string
@@ -8267,7 +8227,7 @@
         }
       }
 
-      // ===== FEATURED PROPERTIES FUNCTIONS (From Lavish Page) =====
+      // ===== FEATURED PROPERTIES FUNCTIONS (From Landmark Page) =====
       // Helper function to add feature input
       // addPropertyFeatureInput is now global
 
@@ -10260,15 +10220,22 @@
           const file = e.target.files[0];
           if (file) {
             try {
-              // Optimized high-quality image upload
-              showToast('Optimizing image...', 'info');
-              currentApartmentPlanImage = await compressImage(file, 1920, 0.9);
+              // Smart compression: Only if > 1MB to secure DB saving
+              if (file.size > 1000000) {
+                currentApartmentPlanImage = await compressImage(file, 1600, 0.85);
+              } else {
+                currentApartmentPlanImage = await new Promise(resolve => {
+                  const reader = new FileReader();
+                  reader.onload = e => resolve(e.target.result);
+                  reader.readAsDataURL(file);
+                });
+              }
 
               if (apartmentPlanImagePreview) {
                 apartmentPlanImagePreview.src = currentApartmentPlanImage;
                 apartmentPlanImagePreview.classList.add('show');
               }
-              showToast('Image optimized successfully', 'success');
+              showToast('Image processed successfully', 'success');
             } catch (error) {
               console.error('Error processing image:', error);
               showToast('Error processing image', 'error');
@@ -10360,6 +10327,12 @@
       }
 
       // Add feature buttons for pricing
+      if (add1BhkFeatureBtn) {
+        add1BhkFeatureBtn.addEventListener('click', function () {
+          addFeatureInput('1bhk-features-container');
+        });
+      }
+
       if (add3bhkFeatureBtn) {
         add3bhkFeatureBtn.addEventListener('click', function () {
           addFeatureInput('3bhk-features-container');
@@ -10373,6 +10346,12 @@
       }
 
       // Availability status change listeners
+      if (availabilityStatus1Bhk) {
+        availabilityStatus1Bhk.addEventListener('change', function () {
+          updateStatusBadge(this, statusBadge1Bhk);
+        });
+      }
+
       if (availabilityStatus3bhk) {
         availabilityStatus3bhk.addEventListener('change', function () {
           updateStatusBadge(this, statusBadge3bhk);
@@ -10386,6 +10365,12 @@
       }
 
       // Save pricing buttons
+      if (save1BhkPricingBtn) {
+        save1BhkPricingBtn.addEventListener('click', function () {
+          savePricingData('1bhk');
+        });
+      }
+
       if (save3bhkPricingBtn) {
         save3bhkPricingBtn.addEventListener('click', function () {
           savePricingData('3bhk');
@@ -10774,20 +10759,27 @@
         propertyImageInput.addEventListener('change', async function (e) {
           const files = Array.from(e.target.files);
           if (files.length > 0) {
-            showToast(`Optimizing ${files.length} image(s)...`, 'info');
+            showToast(`Processing ${files.length} image(s)...`, 'info');
             for (const file of files) {
               try {
-                // Use robust compression to stay under PHP total payload limit (40MB)
-                const processedImage = await compressImage(file, 1920, 0.9);
+                let processedImage;
+                if (file.size > 1000000) {
+                  processedImage = await compressImage(file, 1600, 0.85);
+                } else {
+                  processedImage = await new Promise(resolve => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.readAsDataURL(file);
+                  });
+                }
                 currentPropertyImages.push(processedImage);
               } catch (error) {
                 console.error('Error processing image:', error);
-                showToast(`Error processing ${file.name}`, 'error');
               }
             }
             renderPropertyImages();
             updateBasicInfoPreview();
-            showToast('Images optimized and added', 'success');
+            showToast('Images processed and added', 'success');
           }
         });
       }
@@ -10872,7 +10864,7 @@
 
       // File input change handler - IMMEDIATE PREVIEW
       if (image1Input) {
-        image1Input.addEventListener('change', async function (e) {
+        image1Input.addEventListener('change', function (e) {
           const file = e.target.files[0];
           if (file) {
             // Validate file type
@@ -10880,26 +10872,24 @@
               showToast('Please select an image file', 'error');
               return;
             }
-            // Validate file size (individual check)
-            if (file.size > 15 * 1024 * 1024) {
-              showToast('Image too large (Max 15MB)', 'error');
+            // Validate file size (max 10MB)
+            if (file.size > 10 * 1024 * 1024) {
+              showToast('Image size should be less than 10MB', 'error');
               return;
             }
 
-            try {
-              showToast('Optimizing primary image...', 'info');
-              const processedImage = await compressImage(file, 1920, 0.9);
-
+            const reader = new FileReader();
+            reader.onload = function (event) {
               currentImage1 = {
                 name: file.name,
                 size: file.size,
-                url: processedImage,
+                url: event.target.result,
                 type: file.type
               };
 
               // Show immediate preview
               if (image1Preview) {
-                image1Preview.src = processedImage;
+                image1Preview.src = event.target.result;
                 image1Preview.style.display = 'block';
               }
               if (image1Placeholder) {
@@ -10911,18 +10901,16 @@
 
               // Also add to currentPropertyImages array as the first image
               if (currentPropertyImages.length === 0) {
-                currentPropertyImages.push(processedImage);
+                currentPropertyImages.push(event.target.result);
               } else {
-                currentPropertyImages[0] = processedImage;
+                currentPropertyImages[0] = event.target.result;
               }
               renderPropertyImages();
               updateBasicInfoPreview();
 
-              showToast('Primary image optimized!', 'success');
-            } catch (error) {
-              console.error('Error optimizing image:', error);
-              showToast('Error processing primary image', 'error');
-            }
+              showToast('Image 1 uploaded successfully!', 'success');
+            };
+            reader.readAsDataURL(file);
           }
         });
       }
@@ -10971,24 +10959,20 @@
       }
 
       if (floorPlansDimensionsInput) {
-        floorPlansDimensionsInput.addEventListener('change', async function (e) {
+        floorPlansDimensionsInput.addEventListener('change', function (e) {
           const file = e.target.files[0];
           if (file) {
-            try {
-              showToast('Optimizing floor plan...', 'info');
-              // Ensure floor plans are ultra-sharp but optimized for size
-              currentFloorPlanImageProperty = await compressImage(file, 2000, 0.95);
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              currentFloorPlanImageProperty = event.target.result;
               const preview = document.getElementById('floor-plans-dimensions-preview');
               if (preview) {
                 preview.src = currentFloorPlanImageProperty;
                 preview.classList.add('show');
               }
               updateFloorPlansPreview();
-              showToast('Floor plan optimized!', 'success');
-            } catch (error) {
-              console.error('Error processing floor plan:', error);
-              showToast('Error processing floor plan', 'error');
-            }
+            };
+            reader.readAsDataURL(file);
           }
         });
       }
@@ -11148,11 +11132,19 @@
         galleryImageUpload.addEventListener('change', async function (e) {
           const files = Array.from(e.target.files);
           if (files.length > 0) {
-            showToast(`Optimizing ${files.length} image(s)...`, 'info');
+            showToast(`Uploading ${files.length} image(s)...`, 'info');
             for (const file of files) {
               try {
-                // Optimized high-quality compression for gallery
-                const processedImage = await compressImage(file, 1920, 0.9);
+                let processedImage;
+                if (file.size > 1000000) {
+                  processedImage = await compressImage(file, 1600, 0.85);
+                } else {
+                  processedImage = await new Promise(resolve => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.readAsDataURL(file);
+                  });
+                }
 
                 const newImage = {
                   title: file.name.replace(/\.[^/.]+$/, ""),
